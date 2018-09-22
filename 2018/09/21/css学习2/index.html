@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-css," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="年龄越大，越学会了顺其自然，以前总认为坚持会让人更强大，但是长大后才发现，让我们强大的是放下。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 css渲染机制section div ui li a em { }。计算机找这些标签的时候是从右向左找的，一步一步的过滤。这样找的时间最短，速度最快。这个就是css渲染机制，在上一篇blog中提到过这一点。 css属性*">
+<meta name="keywords" content="-css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css学习2">
+<meta property="og:url" content="http://moreluckily.com/2018/09/21/css学习2/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="年龄越大，越学会了顺其自然，以前总认为坚持会让人更强大，但是长大后才发现，让我们强大的是放下。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 css渲染机制section div ui li a em { }。计算机找这些标签的时候是从右向左找的，一步一步的过滤。这样找的时间最短，速度最快。这个就是css渲染机制，在上一篇blog中提到过这一点。 css属性*">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/img/blog3.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog4.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog5.png">
+<meta property="og:updated_time" content="2018-09-22T12:17:05.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css学习2">
+<meta name="twitter:description" content="年龄越大，越学会了顺其自然，以前总认为坚持会让人更强大，但是长大后才发现，让我们强大的是放下。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 css渲染机制section div ui li a em { }。计算机找这些标签的时候是从右向左找的，一步一步的过滤。这样找的时间最短，速度最快。这个就是css渲染机制，在上一篇blog中提到过这一点。 css属性*">
+<meta name="twitter:image" content="http://moreluckily.com/img/blog3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/21/css学习2/"/>
+
+
+
+
+
+  <title>css学习2 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/21/css学习2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css学习2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T15:02:33+08:00">
+                2018-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>年龄越大，越学会了顺其自然，以前总认为坚持会让人更强大，但是长大后才发现，让我们强大的是放下。</p>
+<p>新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。</p>
+<h2 id="css渲染机制"><a href="#css渲染机制" class="headerlink" title="css渲染机制"></a>css渲染机制</h2><p>section div ui li a em { }。<br>计算机找这些标签的时候是从右向左找的，一步一步的过滤。这样找的时间最短，速度最快。这个就是css渲染机制，在上一篇blog中提到过这一点。</p>
+<h2 id="css属性"><a href="#css属性" class="headerlink" title="css属性*"></a>css属性*</h2><p>接下来说一下常见的css属性：</p>
+<p>1、background-color：设定背景颜色</p>
+<p>2、color：设定字体颜色</p>
+<p>3、font-size：设定字体大小，默认字体大小为16px，这里设定的是字体的高，如果设定字体宽就会显得参差不齐。</p>
+<p>4、font-weight：设定字体粗细，常用值为bold（加粗），normal（正常），lighter（细），一般只有bold和normal好使，这取决于浏览器的字体包是否有我们需要的字体。还可以通过integer这个属性来设置，100|200..|900 改变粗细，具体的写法是：font-weight:100,200…<br>strong天生有这个属性。</p>
+<p>5、font-style：italic，改变字体为斜体。em标签是天生就有这个属性。</p>
+<p>6、font-family：字体，通用字体就是font-family: Arial。 这个字体是<br>最好看的，最美观的。</p>
+<h4 id="颜色的三种表示方法"><a href="#颜色的三种表示方法" class="headerlink" title="颜色的三种表示方法"></a>颜色的三种表示方法</h4><p>1、直接形式<br>英文的green，blue，yellow，red等，表示的是比较含糊的值。</p>
+<p>2、颜色代码<br>十六进制表示：光源三原色rgb，两位两位的十六进制数，0-ff，颜色饱和程度，0表示没有颜色混合； rgb 对应都是两位重复，则可以简写。 它的写法是：<br>例如：#ffff00，可以简写为#ff0；#f0f0f0，就不能进行简写了。<br>最常见的就是淘宝红#f40了。<br>3、颜色函数<br>rgb代表顺序Red(红色)、Green(绿色)和Blue(蓝色)。<br>它的写法就是：<br>rgb(255，255，255) 白色<br>rgb(255，0， 0)代表红色<br>rgb(0，255， 0)代表绿色<br>rgb(0， 0，255)代表蓝色</p>
+<h2 id="css盒模型"><a href="#css盒模型" class="headerlink" title="css盒模型*"></a>css盒模型*</h2><p>首先来了解一下css盒模型的一些概念。</p>
+<h4 id="1、content：内容区，大小为width乘height。就是我们以前经常写的东西。"><a href="#1、content：内容区，大小为width乘height。就是我们以前经常写的东西。" class="headerlink" title="1、content：内容区，大小为width乘height。就是我们以前经常写的东西。"></a>1、content：内容区，大小为width乘height。就是我们以前经常写的东西。</h4><h4 id="2、padding：内边距，用来进行分隔边框和content，可以理解为缓冲位置。分上下左右四部分，设定的时候我们可以这样来写："><a href="#2、padding：内边距，用来进行分隔边框和content，可以理解为缓冲位置。分上下左右四部分，设定的时候我们可以这样来写：" class="headerlink" title="2、padding：内边距，用来进行分隔边框和content，可以理解为缓冲位置。分上下左右四部分，设定的时候我们可以这样来写："></a>2、padding：内边距，用来进行分隔边框和content，可以理解为缓冲位置。分上下左右四部分，设定的时候我们可以这样来写：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">padding:30px;//(表示上下左右全部为30px)</span><br><span class="line"></span><br><span class="line">padding:30px 20px 10px 20px;//(顺序为:上右下左，顺时针,进行设定内边距）</span><br><span class="line"></span><br><span class="line">padding:50px 20px 30px;//(顺序为:上  左右  下）</span><br><span class="line">padding:50px  30px;//(顺序为:上下  左右）</span><br></pre></td></tr></table></figure>
+<p>当然也可以通过padding-left，right，top，bottom分别来进行设置。</p>
+<h4 id="3、border：边框"><a href="#3、border：边框" class="headerlink" title="3、border：边框"></a>3、border：边框</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">border-width:10px 20px 30px 40px;</span><br><span class="line">border-style:solid;</span><br><span class="line">border-color:balck;//边框的颜色</span><br><span class="line">border:1px solid black;//产生边框的形象，1px边框的粗细</span><br><span class="line">border-top-width:10px;//左边框的长度</span><br></pre></td></tr></table></figure>
+<p>style表示的是边框的样式为实线，color表示颜色为黑色，边框粗细为上右下左10px，20px，30px，40px像素，border设定粗细的时候顺序问题跟padding是一样的。上面是几种不同的设置方法，但最后都能得到我们想要的结果。</p>
+<h4 id="4、margin：外边距，设定盒子与盒子之间的距离。可以单独设置。但是margin不属于有色区域，计算盒子模型的大小的时候，不需要考虑其大小。"><a href="#4、margin：外边距，设定盒子与盒子之间的距离。可以单独设置。但是margin不属于有色区域，计算盒子模型的大小的时候，不需要考虑其大小。" class="headerlink" title="4、margin：外边距，设定盒子与盒子之间的距离。可以单独设置。但是margin不属于有色区域，计算盒子模型的大小的时候，不需要考虑其大小。"></a>4、margin：外边距，设定盒子与盒子之间的距离。可以单独设置。但是margin不属于有色区域，计算盒子模型的大小的时候，不需要考虑其大小。</h4><h4 id="5、盒模型图"><a href="#5、盒模型图" class="headerlink" title="5、盒模型图"></a>5、盒模型图</h4><p>通过上面的介绍，其实我们得到一张盒模型的图：<br><img src="/img/blog3.png" alt="盒模型图"><br>这个图就能特别清晰明了的知道了整个盒模型的基本情况。</p>
+<h4 id="6、远视图效果"><a href="#6、远视图效果" class="headerlink" title="6、远视图效果"></a>6、远视图效果</h4><p>通过这些知识，我们就能写一个比较小的好玩的东西了，下面我就做了一个远视图效果的东西。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper1&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.box&#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 20px;</span><br><span class="line">    background-color: red;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 20px;</span><br><span class="line">    background-color: blue;</span><br><span class="line">    padding: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper&#123;</span><br><span class="line">    width: 60px;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color:red;</span><br><span class="line">    padding: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper1&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color:blue;</span><br><span class="line">    padding: 20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>得到的效果是如下图所示：<br><img src="/img/blog4.png" alt="盒模型图"><br>当然还可以继续多加几层，是不是特别好玩呢？</p>
+<h2 id="margin塌陷问题"><a href="#margin塌陷问题" class="headerlink" title="margin塌陷问题"></a>margin塌陷问题</h2><p>先来看一下什么是margin塌陷：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&apos;father&apos;&gt;</span><br><span class="line">    &lt;div class=&apos;son&apos;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.father&#123;</span><br><span class="line">    width:200px;</span><br><span class="line">    height:200px;</span><br><span class="line">    background-color:red;</span><br><span class="line">    &#125;</span><br><span class="line">.son&#123;</span><br><span class="line">    margin-top:50px; </span><br><span class="line">    width:100px;</span><br><span class="line">    height:100px;</span><br><span class="line">    background-color:green;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p> 我们可以看到的现象是如下图所示：<br> <img src="/img/blog5.png" alt="margin塌陷图"></p>
+<p>子元素加上绿色，父元素为红色，理论上我们给子元素设置margin-top，绿色顶部应该跟黄色会产生一段距离，但是现在的问题就是，子元素带动父元素一起移动了50px，这就是margin塌陷问题。<br>那怎么解决这个问题呢？就是让子元素离父元素的顶部50px，但父元素不移动。</p>
+<h4 id="margin塌陷解决"><a href="#margin塌陷解决" class="headerlink" title="margin塌陷解决"></a>margin塌陷解决</h4><p>1、第一种方法就是父级元素的顶部没了，塌陷了，那我给他加一个顶。<br><code>border-top:10px solid black;</code><br>这样虽然结决了这块的问题，但是在开发整个页面的时候是不行的，这个方法特别不靠谱，不能用这个方法。那就引出了下面的第二个方法了。</p>
+<p>2、触发bfc机制，什么是bfc呢？bfc的全称是bfc-block format content。每一个盒模型都会有它们默认的一套渲染机制，就是我们平常用的都属于它们的默认渲染机制，在这套机制里面，会存在margin塌陷的问题，这时候，我们需要利用另一套渲染机制来进行渲染，这就叫做利用触发bfc了。那怎样触发bfc呢？</p>
+<p>在这里先只介绍三种方法：</p>
+<blockquote>
+<p>overflow:hidden;  //溢出隐藏<br>position：absolute;<br>float浮动</p>
+</blockquote>
+<p>当我们在父级father触发bfc即可得到我们想要的情况，操作方法如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.father&#123; </span><br><span class="line">width:200px; </span><br><span class="line">height:200px; </span><br><span class="line">background-color:red; </span><br><span class="line">overflow:hidden; &#125;</span><br></pre></td></tr></table></figure></p>
+<p> 操作完成之后，我们在重新进入以下页面，尽可以看见正常位置了，也就是我们想要得到的东西。</p>
+<h2 id="margin合并问题"><a href="#margin合并问题" class="headerlink" title="margin合并问题"></a>margin合并问题</h2><p>margin合并讨论的就不是父子结构了，而是兄弟结构。一个设定了margin-bottom,另外一个设定了margin-top，这两个取的是更大的一个，它们并不会产生更大的间距。这时候我们需要在其中一个兄弟元素中套上一个父级标签，对父级标签触发bfc即可解决这个问题。但是通常我们不会通过这种方法解决margin合并的问题，因为这样会带来其他的反效果。我们通常就直接取其中的最大值来用就行了。</p>
+<p>好了，这篇blog到这里就结束了，希望大家喜欢。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># -css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/21/css学习1/" rel="next" title="css学习1">
+                <i class="fa fa-chevron-left"></i> css学习1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#css渲染机制"><span class="nav-number">1.</span> <span class="nav-text">css渲染机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css属性"><span class="nav-number">2.</span> <span class="nav-text">css属性*</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#颜色的三种表示方法"><span class="nav-number">2.0.1.</span> <span class="nav-text">颜色的三种表示方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css盒模型"><span class="nav-number">3.</span> <span class="nav-text">css盒模型*</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、content：内容区，大小为width乘height。就是我们以前经常写的东西。"><span class="nav-number">3.0.1.</span> <span class="nav-text">1、content：内容区，大小为width乘height。就是我们以前经常写的东西。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、padding：内边距，用来进行分隔边框和content，可以理解为缓冲位置。分上下左右四部分，设定的时候我们可以这样来写："><span class="nav-number">3.0.2.</span> <span class="nav-text">2、padding：内边距，用来进行分隔边框和content，可以理解为缓冲位置。分上下左右四部分，设定的时候我们可以这样来写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、border：边框"><span class="nav-number">3.0.3.</span> <span class="nav-text">3、border：边框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、margin：外边距，设定盒子与盒子之间的距离。可以单独设置。但是margin不属于有色区域，计算盒子模型的大小的时候，不需要考虑其大小。"><span class="nav-number">3.0.4.</span> <span class="nav-text">4、margin：外边距，设定盒子与盒子之间的距离。可以单独设置。但是margin不属于有色区域，计算盒子模型的大小的时候，不需要考虑其大小。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、盒模型图"><span class="nav-number">3.0.5.</span> <span class="nav-text">5、盒模型图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、远视图效果"><span class="nav-number">3.0.6.</span> <span class="nav-text">6、远视图效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin塌陷问题"><span class="nav-number">4.</span> <span class="nav-text">margin塌陷问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#margin塌陷解决"><span class="nav-number">4.0.1.</span> <span class="nav-text">margin塌陷解决</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin合并问题"><span class="nav-number">5.</span> <span class="nav-text">margin合并问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
