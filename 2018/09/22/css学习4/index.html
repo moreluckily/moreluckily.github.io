@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://moreluckily.com/img/blog10.png">
 <meta property="og:image" content="http://moreluckily.com/img/blog11.png">
 <meta property="og:image" content="http://moreluckily.com/img/blog12.png">
-<meta property="og:updated_time" content="2018-09-22T14:06:33.935Z">
+<meta property="og:updated_time" content="2018-09-22T14:10:48.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css学习4">
 <meta name="twitter:description" content="这个世界那么大、那么精彩，你什么都还没有看到过的时候就甘心的呆在一个格子里面，循规蹈矩安分守己地生活，这样的生活没有任何的风险，也不会被别人嘲笑，但是我总觉得一个没有把百酒都尝遍的人他是不大懂得清水之味的。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 两栏布局*这是一个经常考的一个问题，两栏布局问题也是一个特别重要的问题之一，它的题目是右侧固定，左侧自适应。">
@@ -419,7 +419,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;nav&quot;&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;淘抢购&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;电器城&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;司法拍卖&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    color: #424242;</span><br><span class="line">    font-family: arial;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.nav&#123;           //3+1清除浮动</span><br><span class="line">    list-style: none;</span><br><span class="line">    *zoom: 1;</span><br><span class="line">&#125;</span><br><span class="line">.nav::after&#123;</span><br><span class="line">    content: &quot;&quot;;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br><span class="line">.nav .nav-item&#123;</span><br><span class="line">    float: left;</span><br><span class="line">    margin: 0 8px;</span><br><span class="line">    height: 25px;</span><br><span class="line">    line-height: 25px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.nav .nav-item a&#123;</span><br><span class="line">    height: 25px;</span><br><span class="line">    padding: 0 5px;</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line">.nav .nav-item a:hover&#123;</span><br><span class="line">    border-radius: 15px;</span><br><span class="line">    background-color: #f40;</span><br><span class="line">    color:#fff;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>得到的效果图就是如下图所示：</p>
 <p><img src="/img/blog12.png" alt="导航栏"></p>
-<p>可以看到这个导航栏使用浮动模型来写的，基本和淘宝的导航栏是一样的。是不是特别有意思。</p>
+<p>可以看到这个导航栏使用浮动模型来写的，基本和淘宝的导航栏是一样的。是不是特别有意思。<br>鼠标放在哪个导航栏上，导航栏就会变色，你们可以去淘宝上看是不是这样的，哈哈。</p>
 <p>这一篇blog就先讲到这里，下篇blog会更有意思。谢谢大家。</p>
 
       
@@ -468,6 +468,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/22/css学习5/" rel="prev" title="css学习5">
+                css学习5 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -548,7 +552,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-css," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="从小到大我们都在听着别人的声音给自己的人生划格子，左边的这条线是要学业有成，右边的这条线是一定要有一个安稳的好工作，上面的这条线是三十岁之前要结婚，下面的这条线就是你结了婚一定得生个孩子，好像只有在这个格子里面才是安全的，才被别人认为是幸福的。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 溢出打点溢出打点是什么？ 一上来我们肯定会有这样的问题。其实在百度的网">
+<meta name="keywords" content="-css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css学习5">
+<meta property="og:url" content="http://moreluckily.com/2018/09/22/css学习5/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="从小到大我们都在听着别人的声音给自己的人生划格子，左边的这条线是要学业有成，右边的这条线是一定要有一个安稳的好工作，上面的这条线是三十岁之前要结婚，下面的这条线就是你结了婚一定得生个孩子，好像只有在这个格子里面才是安全的，才被别人认为是幸福的。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 溢出打点溢出打点是什么？ 一上来我们肯定会有这样的问题。其实在百度的网">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/img/blog13.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog14.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog15.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog16.png">
+<meta property="og:updated_time" content="2018-09-22T15:27:41.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css学习5">
+<meta name="twitter:description" content="从小到大我们都在听着别人的声音给自己的人生划格子，左边的这条线是要学业有成，右边的这条线是一定要有一个安稳的好工作，上面的这条线是三十岁之前要结婚，下面的这条线就是你结了婚一定得生个孩子，好像只有在这个格子里面才是安全的，才被别人认为是幸福的。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 溢出打点溢出打点是什么？ 一上来我们肯定会有这样的问题。其实在百度的网">
+<meta name="twitter:image" content="http://moreluckily.com/img/blog13.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/22/css学习5/"/>
+
+
+
+
+
+  <title>css学习5 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/22/css学习5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css学习5</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-22T22:07:33+08:00">
+                2018-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>从小到大我们都在听着别人的声音给自己的人生划格子，左边的这条线是要学业有成，右边的这条线是一定要有一个安稳的好工作，上面的这条线是三十岁之前要结婚，下面的这条线就是你结了婚一定得生个孩子，好像只有在这个格子里面才是安全的，才被别人认为是幸福的。</p>
+<p>新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。</p>
+<h2 id="溢出打点"><a href="#溢出打点" class="headerlink" title="溢出打点"></a>溢出打点</h2><p>溢出打点是什么？ 一上来我们肯定会有这样的问题。其实在百度的网页中，这是特别常见的。我们先来看一下：</p>
+<p><img src="/img/blog13.png" alt="溢出打点"></p>
+<p>在文字的结尾处，我们发现内容并没有显示的特别完整，文字的最后是以“…”的形式结束的，这个效果是怎么实现的呢？</p>
+<p>首先是单行打点的情况：在标签中，当文字快溢出容器的时候，它们是会自动换行的。但是一旦换行，我们就不会有那种打点的效果了。这时候，有一个属性：</p>
+<blockquote>
+<p>white-space:nowrap;</p>
+</blockquote>
+<p>它会使文字失去换行的本领。</p>
+<p>这时候，文字就不会自动换行了，但是又要怎样才能让它出现“…”的形式呢？这时候又有一个属性：</p>
+<blockquote>
+<p>txet-overflow:ellipsis;</p>
+</blockquote>
+<p>这就是文字溢出之后是ellipsis（省略），也就得到了文字溢出打点的效果。</p>
+<p>最后当然也需要将溢出的文字隐藏起来，这就实现了文字溢出打点的效果了。</p>
+<p>这三个东西配合，也就是三件套配合，会得到溢出打点的效果。举个例子来看一下吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;有志者事竟成，破釜沉舟，百二秦关终属楚；</span><br><span class="line">    苦心人天不负，卧薪尝胆，三千越甲可吞吴。</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">div&#123;</span><br><span class="line">    width:200px;</span><br><span class="line">    height:60px;</span><br><span class="line">    border:1px solid black;</span><br><span class="line">    white-space:nowrap;</span><br><span class="line">    text-overflow:ellipsis;</span><br><span class="line">    overflow:hidden;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>它的效果特别明显了，如下图所示：</p>
+<p><img src="/img/blog14.png" alt="效果图"></p>
+<p>可以看到，文字省略的部分已经用了“…”来代替了。</p>
+<p>这个是单行打点，如果是多行文字打点呢？鉴于兼容性，多行文字我们一般不做打点处理，一般做多行文字截断处理。</p>
+<p>而且在百度中常见的多行文字打点是什么情况呢？<br>我们检查一下里面的情况，我们可以发现如下情况：</p>
+<p><img src="/img/blog15.png" alt="百度打点"></p>
+<p>通过该图片我们可以发现，直接用的就是“…”的形式，即没有用技术的手段是实现索航文字打点技术。</p>
+<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>当引用一张图片的时候，这些图片就是当做背景图片来进行设定的。</p>
+<p>首先我们来了解一下背景图片的几个属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">background-image:url(adress);//图片地址</span><br><span class="line">background-repeat:no-repeat;//图片不重复,不允许平铺</span><br><span class="line">background-repeat:repeat-x;//图片向x轴平铺</span><br><span class="line">background-repeat:repeat-y;//图片向y轴平铺</span><br><span class="line">background-size:100px 100px;//图片大小</span><br><span class="line">background-position:50% 50%;//图片位置,放在正中间 </span><br><span class="line">background-position:center center;//图片位置,放在正中间</span><br></pre></td></tr></table></figure>
+<p>先说一下 background-repeat，如我们不设定这个属性，当引入一张图片的时候，如果图片大小不等于容器大小的话，它们会自动重复，直到铺满容器。 第二再说一下background-position,这里的50%直接就是居中到容器中心，不需要在调整margin。还可以设定left  center表示左边居中，当然还有bottom值来进行设定，可以灵活运用进行图片的定位。当background-size设定为100%的时候，就是直接铺满整个容器。</p>
+<p>background引入图片的时候，存在网络不好，这时候就只加载html，不加载css和javaScript，图片显示不出来的时候，我们需要想利用img标签那样给它添加文字，怎样做呢？这里有2中方法去实现。</p>
+<p>1、第一种方法，先让文字溢出，然后强制不换行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#&quot;&gt;淘宝&lt;/a&gt;</span><br><span class="line">a&#123;</span><br><span class="line">display:block;</span><br><span class="line">text-decoration:none;</span><br><span class="line">width:142px;</span><br><span class="line">height:58px;</span><br><span class="line">border:1px solid balck;</span><br><span class="line">background-image:url(address);            </span><br><span class="line">background-repeat:no-repeat;</span><br><span class="line">background-size:100% 100%;            </span><br><span class="line">text-indent:150px;//缩进大于容器宽度 让文字出去 </span><br><span class="line">white-space:nowrap;//不换行</span><br><span class="line">overflow:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、这个是重点，比较常用。利用padding来显示背景图。当css加载不出来的时候，显示文字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#&quot;&gt;淘宝&lt;/a&gt;</span><br><span class="line">a&#123;</span><br><span class="line">display:block;</span><br><span class="line">text-decoration:none;</span><br><span class="line">width:142px;</span><br><span class="line">height:0px;</span><br><span class="line">border:1px solid balck;</span><br><span class="line">background-image:url(address);</span><br><span class="line">back-repeat:no-repeat;</span><br><span class="line">background-size:100% 100%;            </span><br><span class="line">overflow:hidden;//文字溢出隐藏</span><br><span class="line">padding-top:100px;//利用padding来放背景图。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="比较常用的实战方法"><a href="#比较常用的实战方法" class="headerlink" title="比较常用的实战方法"></a>比较常用的实战方法</h2><ul>
+<li>inline-block元素或者block元素可以嵌套任何元素</li>
+</ul>
+<ul>
+<li><p>行级元素可以嵌套行级元素</p>
+</li>
+<li><p>p标签里不能放块级元素</p>
+</li>
+<li><p>a标签里不能放a标签</p>
+</li>
+<li><p>父子关系别写太多，4层5层就行了，写多了就浪费效率</p>
+</li>
+</ul>
+<h2 id="float浮动模型实战"><a href="#float浮动模型实战" class="headerlink" title="float浮动模型实战"></a>float浮动模型实战</h2><p>上一篇blog由于篇幅的影响，今天再来对其进行实战。来实现显示淘宝的标价和多少人付款。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;span class=&quot;price&quot;&gt;$1000&lt;/span&gt;</span><br><span class="line">	&lt;span class=&quot;offer&quot;&gt;20人付款&lt;/span&gt;</span><br><span class="line">&lt;/div&gt; </span><br><span class="line">*&#123;</span><br><span class="line">	margin:0;</span><br><span class="line">	padding:0;</span><br><span class="line">	font-family: arial;</span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	border:1px solid black;</span><br><span class="line">	*zoom:1;</span><br><span class="line">&#125;</span><br><span class="line">div::after&#123;</span><br><span class="line">	content: &quot;&quot;;</span><br><span class="line">	display:block;</span><br><span class="line">	clear:both;</span><br><span class="line">&#125;</span><br><span class="line">.price&#123;</span><br><span class="line">	float:left;</span><br><span class="line">	color:#f40;</span><br><span class="line">	font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.offer&#123;</span><br><span class="line">	float:right;</span><br><span class="line">	font-size: 12px;</span><br><span class="line">	color:#999;</span><br><span class="line">	margin-top: 2px;//可以调节</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现的效果图如下图所示：</p>
+<p><img src="/img/blog16.png" alt="淘宝标价"></p>
+<p>通过这个例子，你是不是对其理解的更加深刻呢？是不是觉得WEB前端特别有意思。</p>
+<p>好了，今天到这就把前端的基础和css讲完了，下篇blog将带着大家把百度的主页做出来，当然我们也可以做淘宝的静态主页了。淘宝的静态主页就不在blog中放出来了，大家可以加我微信一起交流，谢谢大家！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># -css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/22/css学习4/" rel="next" title="css学习4">
+                <i class="fa fa-chevron-left"></i> css学习4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#溢出打点"><span class="nav-number">1.</span> <span class="nav-text">溢出打点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景图片"><span class="nav-number">2.</span> <span class="nav-text">背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较常用的实战方法"><span class="nav-number">3.</span> <span class="nav-text">比较常用的实战方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float浮动模型实战"><span class="nav-number">4.</span> <span class="nav-text">float浮动模型实战</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
