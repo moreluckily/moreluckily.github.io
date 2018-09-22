@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-css," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这个世界那么大、那么精彩，你什么都还没有看到过的时候就甘心的呆在一个格子里面，循规蹈矩安分守己地生活，这样的生活没有任何的风险，也不会被别人嘲笑，但是我总觉得一个没有把百酒都尝遍的人他是不大懂得清水之味的。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 两栏布局*这是一个经常考的一个问题，两栏布局问题也是一个特别重要的问题之一，它的题目是右侧固定，左侧自适应。">
+<meta name="keywords" content="-css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css学习4">
+<meta property="og:url" content="http://moreluckily.com/2018/09/22/css学习4/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="这个世界那么大、那么精彩，你什么都还没有看到过的时候就甘心的呆在一个格子里面，循规蹈矩安分守己地生活，这样的生活没有任何的风险，也不会被别人嘲笑，但是我总觉得一个没有把百酒都尝遍的人他是不大懂得清水之味的。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 两栏布局*这是一个经常考的一个问题，两栏布局问题也是一个特别重要的问题之一，它的题目是右侧固定，左侧自适应。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/img/blog8.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog9.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog10.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog11.png">
+<meta property="og:image" content="http://moreluckily.com/img/blog12.png">
+<meta property="og:updated_time" content="2018-09-22T14:06:33.935Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css学习4">
+<meta name="twitter:description" content="这个世界那么大、那么精彩，你什么都还没有看到过的时候就甘心的呆在一个格子里面，循规蹈矩安分守己地生活，这样的生活没有任何的风险，也不会被别人嘲笑，但是我总觉得一个没有把百酒都尝遍的人他是不大懂得清水之味的。 新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。 两栏布局*这是一个经常考的一个问题，两栏布局问题也是一个特别重要的问题之一，它的题目是右侧固定，左侧自适应。">
+<meta name="twitter:image" content="http://moreluckily.com/img/blog8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/22/css学习4/"/>
+
+
+
+
+
+  <title>css学习4 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/22/css学习4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css学习4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-22T21:01:39+08:00">
+                2018-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这个世界那么大、那么精彩，你什么都还没有看到过的时候就甘心的呆在一个格子里面，循规蹈矩安分守己地生活，这样的生活没有任何的风险，也不会被别人嘲笑，但是我总觉得一个没有把百酒都尝遍的人他是不大懂得清水之味的。</p>
+<p>新的blog，新的开始。今天我将带着大家一起继续学习css中一些特别重要的的知识。</p>
+<h2 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局*"></a>两栏布局*</h2><p>这是一个经常考的一个问题，两栏布局问题也是一个特别重要的问题之一，它的题目是右侧固定，左侧自适应。也就是无论浏览怎么拉伸和收缩，右侧的一部分内容不会发生变化，而左侧的那部分内容进行自适应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;left&quot;&gt;举个例子举个例子举</span><br><span class="line">    个例子举个例子举个例子举个例子举个例</span><br><span class="line">    子举个例子举个例子举个例子举个例子举个例</span><br><span class="line">    子举个例子举个例子举个例子举个例子举个例子举个</span><br><span class="line">    例子举个例子举个例子&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;right&quot;&gt;&lt;/div&gt;//写这么多字，让我们看起来更加的直观。</span><br><span class="line">*&#123;</span><br><span class="line">	margin:0;</span><br><span class="line">	padding:0;</span><br><span class="line">&#125;</span><br><span class="line">.left&#123;</span><br><span class="line">	margin-right: 100px; (重点)</span><br><span class="line">	height: 100px;</span><br><span class="line">	background-color: green;</span><br><span class="line">&#125;</span><br><span class="line">.right&#123;</span><br><span class="line">	position: absolute;</span><br><span class="line">	top:0;</span><br><span class="line">	right:0;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background-color: red;</span><br><span class="line">	opacity: 0.5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>会得到如下图所示的图形，由此我们知道，改变浏览器的宽度，不会使右侧的更改了透明度的红色正方形方块发生变化。</p>
+<p><img src="/img/blog8.png" alt="两栏布局"></p>
+<h2 id="三栏布局"><a href="#三栏布局" class="headerlink" title="三栏布局*"></a>三栏布局*</h2><p>这是一个经常考的一个问题，三栏布局问题也是一个特别重要的问题之一，它的题目是右侧和左侧固定，中间部分自适应。也就是无论浏览怎么拉伸和收缩，右侧和左侧的一部分内容不会发生变化，而中间的那部分内容进行自适应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;middle&quot;&gt;举个例子举个例子举</span><br><span class="line">    个例子举个例子举个例子举个例子举个例子</span><br><span class="line">    举个例子举个例子举个例子举个例子举个例子举个例</span><br><span class="line">    子举个例子举个例子举个例子举个例子举个例子举个例子</span><br><span class="line">    举个例子&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">*&#123;</span><br><span class="line">	margin:0;</span><br><span class="line">	padding:0;</span><br><span class="line">&#125;</span><br><span class="line">.left,.right,.middle&#123;</span><br><span class="line">	height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">.left,.right&#123;</span><br><span class="line">	position: absolute;</span><br><span class="line">	width:100px;</span><br><span class="line">	opacity: 0.5;</span><br><span class="line">&#125;</span><br><span class="line">.left&#123;</span><br><span class="line">	top:0;</span><br><span class="line">	left:0;</span><br><span class="line">	background-color: red;</span><br><span class="line">&#125;</span><br><span class="line">.right&#123;</span><br><span class="line">	top:0;</span><br><span class="line">	right: 0;</span><br><span class="line">	background-color: green;</span><br><span class="line">&#125;</span><br><span class="line">.middle&#123;</span><br><span class="line">	margin:0 100px;</span><br><span class="line">	background-color: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会得到如下图所示的图形，由此我们知道，改变浏览器的宽度，中间自适应，两边的东西大小不会发生改变。</p>
+<p><img src="/img/blog9.png" alt="三栏布局"></p>
+<h2 id="float浮动模型"><a href="#float浮动模型" class="headerlink" title="float浮动模型**"></a>float浮动模型**</h2><p>float属性是一个古老的属性。它是用的最频繁的布局属性，以前它是专门为了实现文字环绕效果而设置的。就是用来为报纸设计的一个功能属性。<br>但是对于响应式布局来说，float不具容错性比较差，容易出现比较严重的布局问题，而且他还可能带来一些其它问题，例如父元素塌陷，以及其它兼容性的问题。</p>
+<h4 id="文字环绕图片"><a href="#文字环绕图片" class="headerlink" title="文字环绕图片"></a>文字环绕图片</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;C:/Users/Administrator/Desktop/hg.jpg&quot; alt=&quot;这是胡歌&quot; class=&quot;left&quot;&gt;很多胡歌加油</span><br><span class="line">*&#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">.left&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    float: left;</span><br><span class="line">    margin-right: 1px;</span><br><span class="line">    margin-bottom: 1px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到下图所示的样子：<br><img src="/img/blog10.png" alt="文字环绕图片"><br>就像报纸一样，是不是特别有意思呢？哈哈哈。</p>
+<h4 id="float模型的特点"><a href="#float模型的特点" class="headerlink" title="float模型的特点"></a>float模型的特点</h4><p>float模型的feature（特点）：产生浮动流，只有块级元素（block）看不见浮动元素，所以块级元素会占据浮动元素原来的位置。文本（文字），文本类元素（inline,inline-block）,并且触发了bfc的元素都能看到浮动元素，并且会排列到浮动元素的后面。</p>
+<h4 id="clear加伪元素"><a href="#clear加伪元素" class="headerlink" title="clear加伪元素"></a>clear加伪元素</h4><p>clear是用来对抗float的。而且只有块级元素才能用clear。通常，我们会使用到伪元素来进行clear。</p>
+<p>伪元素又是什么呢？</p>
+<p>看下这个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;加油&lt;/span&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">span&#123;</span><br><span class="line">        background-color: red;</span><br><span class="line">&#125;</span><br><span class="line">span::before&#123;</span><br><span class="line">    content: &quot;lucky&quot;;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    width:60px;</span><br><span class="line">    height: 20px;</span><br><span class="line">    background-color: green;</span><br><span class="line">&#125;</span><br><span class="line">span::after&#123;</span><br><span class="line">    content: &quot;Fighting&quot;;</span><br><span class="line">    background-color:orange;</span><br></pre></td></tr></table></figure></p>
+<p>会得到如下的图形:<br><img src="/img/blog11.png" alt="伪元素"></p>
+<p>伪元素：（天生就存在），可以当元素使用，但是inline元素要改成display:inline-block。每个标签都有2个伪元素。</p>
+<h4 id="浮动的解决办法"><a href="#浮动的解决办法" class="headerlink" title="浮动的解决办法"></a>浮动的解决办法</h4><p>只有块级元素才可以清除浮动，这里有个标准。3+1标准：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">father&#123;*zoom：1；&#125;</span><br><span class="line"></span><br><span class="line">father::after&#123;//注意这里写的是两个冒号，主要的是跟伪类进行区分</span><br><span class="line">content:&quot;&quot;; //注意的是，即使content没有内容，也需要写</span><br><span class="line">display:block;</span><br><span class="line">clear:both;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="实例讲解float浮动模型"><a href="#实例讲解float浮动模型" class="headerlink" title="实例讲解float浮动模型**"></a>实例讲解float浮动模型**</h2><p>这个例子就是淘宝的导航栏：我们使用float浮动模型来对它的一部分导航栏进行制作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;nav&quot;&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;淘抢购&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;电器城&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;司法拍卖&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    color: #424242;</span><br><span class="line">    font-family: arial;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.nav&#123;           //3+1清除浮动</span><br><span class="line">    list-style: none;</span><br><span class="line">    *zoom: 1;</span><br><span class="line">&#125;</span><br><span class="line">.nav::after&#123;</span><br><span class="line">    content: &quot;&quot;;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br><span class="line">.nav .nav-item&#123;</span><br><span class="line">    float: left;</span><br><span class="line">    margin: 0 8px;</span><br><span class="line">    height: 25px;</span><br><span class="line">    line-height: 25px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.nav .nav-item a&#123;</span><br><span class="line">    height: 25px;</span><br><span class="line">    padding: 0 5px;</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line">.nav .nav-item a:hover&#123;</span><br><span class="line">    border-radius: 15px;</span><br><span class="line">    background-color: #f40;</span><br><span class="line">    color:#fff;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>得到的效果图就是如下图所示：</p>
+<p><img src="/img/blog12.png" alt="导航栏"></p>
+<p>可以看到这个导航栏使用浮动模型来写的，基本和淘宝的导航栏是一样的。是不是特别有意思。</p>
+<p>这一篇blog就先讲到这里，下篇blog会更有意思。谢谢大家。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># -css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/22/css学习3/" rel="next" title="css学习3">
+                <i class="fa fa-chevron-left"></i> css学习3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两栏布局"><span class="nav-number">1.</span> <span class="nav-text">两栏布局*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三栏布局"><span class="nav-number">2.</span> <span class="nav-text">三栏布局*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float浮动模型"><span class="nav-number">3.</span> <span class="nav-text">float浮动模型**</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文字环绕图片"><span class="nav-number">3.0.1.</span> <span class="nav-text">文字环绕图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#float模型的特点"><span class="nav-number">3.0.2.</span> <span class="nav-text">float模型的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clear加伪元素"><span class="nav-number">3.0.3.</span> <span class="nav-text">clear加伪元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浮动的解决办法"><span class="nav-number">3.0.4.</span> <span class="nav-text">浮动的解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例讲解float浮动模型"><span class="nav-number">4.</span> <span class="nav-text">实例讲解float浮动模型**</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
