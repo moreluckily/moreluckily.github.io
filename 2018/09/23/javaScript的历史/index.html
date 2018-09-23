@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。 前面的html和css忘了一些不要紧，我们需要好好学习javaScript，因为前端工程师也可以叫做JS工程师，也就是说JS是前端最重要的，大家一起加油吧！ JS的发展史首先我要说一下javaScript的简称是js，而且js和java没有任何的关系，它俩是两个东西。现在介绍一下js的发展史吧！1994年4月，马克.安德森和Si">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaScript的历史">
+<meta property="og:url" content="http://moreluckily.com/2018/09/23/javaScript的历史/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。 前面的html和css忘了一些不要紧，我们需要好好学习javaScript，因为前端工程师也可以叫做JS工程师，也就是说JS是前端最重要的，大家一起加油吧！ JS的发展史首先我要说一下javaScript的简称是js，而且js和java没有任何的关系，它俩是两个东西。现在介绍一下js的发展史吧！1994年4月，马克.安德森和Si">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/img/blog18.png">
+<meta property="og:updated_time" content="2018-09-23T15:45:21.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javaScript的历史">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。 前面的html和css忘了一些不要紧，我们需要好好学习javaScript，因为前端工程师也可以叫做JS工程师，也就是说JS是前端最重要的，大家一起加油吧！ JS的发展史首先我要说一下javaScript的简称是js，而且js和java没有任何的关系，它俩是两个东西。现在介绍一下js的发展史吧！1994年4月，马克.安德森和Si">
+<meta name="twitter:image" content="http://moreluckily.com/img/blog18.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/23/javaScript的历史/"/>
+
+
+
+
+
+  <title>javaScript的历史 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/23/javaScript的历史/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">javaScript的历史</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-23T01:02:44+08:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。</p>
+<p>前面的html和css忘了一些不要紧，我们需要好好学习javaScript，因为前端工程师也可以叫做JS工程师，也就是说JS是前端最重要的，大家一起加油吧！</p>
+<h2 id="JS的发展史"><a href="#JS的发展史" class="headerlink" title="JS的发展史"></a>JS的发展史</h2><p>首先我要说一下javaScript的简称是js，而且js和java没有任何的关系，它俩是两个东西。<br>现在介绍一下js的发展史吧！<br>1994年4月，马克.安德森和Silicon Graphics（简称为SGI，中译为“视算科技”或“硅图”）公司的创始人吉姆·克拉克（Jim Clark）在美国加州设立了“Mosaic Communication Corporation”。<br>Mosaic公司成立后，由于伊利诺伊大学拥有Mosaic的商标权，且伊利诺伊大学已将技术转让给Spy Glass公司，开发团队必须彻底重新撰写浏览器程式码，且浏览器名称更改为Netscape Navigator，公司名字于1994年11月改名为“Netscape Communication Corporation”，此后沿用至今，中译为“网景”。<br>微软的Internet Explorer及Mozilla Firefox等，其早期版本皆以Mosaic为基础而开发。微软随后买下Spy Glass公司的技术开发出Internet Explorer浏览器，而Mozilla Firefox则是网景通讯家开放源代码后所衍生出的版本。</p>
+<p>JavaScript作为Netscape Navigator浏览器的一部分首次出现在1996年。它最初的设计目标是改善网页的用户体验。<br>初期JavaScript被命名为，LiveScript，后因和Sun公司合作，因市场宣传需要改名JavaScript。后来Sun公司被Oracle收购，JavaScript版权归Oracle所有。</p>
+<h2 id="浏览器组成"><a href="#浏览器组成" class="headerlink" title="浏览器组成"></a>浏览器组成</h2><p>浏览器分为shell部分和内核部分。内核部分又有渲染引擎（语法规则和渲染），和Js引擎以及其他模块。最出名的就是谷歌公司chrome的js引擎，就是著名的v8引擎。它的特点就是可以直接把js编译为机器码，所以这速度是最快的，后来许多浏览器也有了自己的js引擎。</p>
+<p>js引擎的发展：</p>
+<p>2001年发布ie6，首次实现对js引擎的优化。<br>2008年Google发布最新浏览器Chrome，它是采用优化后的javascript引擎，引擎代号V8，因能把js代码直接转化为机械码来执行，进而以速度快而闻名。<br>后Firefox也推出了具备强大功能的js引擎<br>Firefox3.5   TraceMonkey（对频繁执行的代码做了路径优化）<br>Firefox4.0   JeagerMonkey</p>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><p>同步就是，同一时间只能干一件事情。异步就是，同一时间可以干多件事情。</p>
+<p>单线程，同一时间，只能干一件事情。 多线程，同一时间，能干多个事情。</p>
+<h2 id="js的特点"><a href="#js的特点" class="headerlink" title="js的特点"></a>js的特点</h2><h4 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h4><p>计算机语言可以分为两种，第一种称为编译性语言，第二种称为解释性语言。</p>
+<p>编译性语言：通篇翻译完，再执行一遍，然后生成一个编译文件，执行的是编译文件，优点是：比较快，缺点：跨平台差。典型的例子：C，C++等</p>
+<p>解释型语言：翻译一行，执行一行，缺点就是：速度慢，优点是：可以跨平台。典型代表：PHP，Python，js。</p>
+<p>注意比较常见的一种语言：Java，它属于两者之间，既不是编译型语言，也不是解释型语言。通过javac弄成.class文件，有兴趣的可以去百度一下。</p>
+<p>js就是单线程的，同一时间只能干一件事。但我们可以让它看起来像多线程一样。<br>举个例子，就像我们吃饭一样，吃一口饭，再吃一口菜，吃完之后，我们将这段时间快进快进，现在看碗里的饭和盘里的菜。我们可以看见饭和菜是同时慢慢减少的。这就是js的执行队列。</p>
+<p>ECMA标注 —  为了取得技术优势，微软推出了JScript，CEnvi推出ScriptEase，与JavaScript同样可在浏览器上运行。为了统一规格JavaScript兼容于ECMA标准，因此也称为ECMAScript。</p>
+<h2 id="开始学习JS"><a href="#开始学习JS" class="headerlink" title="开始学习JS"></a>开始学习JS</h2><p>JS分为三大部分，ECMAScript ， DOM，BOM。前两个最重要，ECMAScript是基础，DOM可以操作html和CSS。而BOM可以操作浏览器，那这样的话就权限太大了，在开发中是不允许。</p>
+<h4 id="JS的引入"><a href="#JS的引入" class="headerlink" title="JS的引入"></a>JS的引入</h4><p>JS的引入方式和CSS类似，首先介绍第一种方式，就是页面级js，在head或者body中加入：<br><code>&lt;script&gt;js的内容&lt;/sxript&gt;</code><br>第二种方式就是外部js形式，一般在head标签里加：<br><code>&lt;script src=&quot;lesson1.js&quot;&gt;&lt;/script&gt;</code><br>为符合web的开发标准：结构html、样式css、行为js相分离，通常采用外部引入。</p>
+<p>有一点需要注意的就是：<br>JS文件加载的时候，它会把所有内容都阻塞了，所有东西都不能够进行操作，必须要等到JS加载完才能进行操作。所以我们最后一般将script标签放在body标签的底部。避免js文件阻塞html和CSS的运行。</p>
+<h2 id="js的基本语法"><a href="#js的基本语法" class="headerlink" title="js的基本语法"></a>js的基本语法</h2><h4 id="JS中的变量（variable）"><a href="#JS中的变量（variable）" class="headerlink" title="JS中的变量（variable）"></a>JS中的变量（variable）</h4><p>一个变量，肯定首先需要对这个变量进行声明。<br><code>var a;</code><br>然后对变量进行赋值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br><span class="line">a = 1;</span><br><span class="line">var a = 1;</span><br></pre></td></tr></table></figure></p>
+<p>前两句的效果和第三句的效果是一模一样的。<br>当声明多个变量时，可以这样来写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a,a,b,c,d;</span><br><span class="line">var a,//一般都这样来写</span><br><span class="line">	b,</span><br><span class="line">	c,</span><br><span class="line">	d;</span><br></pre></td></tr></table></figure></p>
+<h4 id="变量的命名规则"><a href="#变量的命名规则" class="headerlink" title="变量的命名规则"></a>变量的命名规则</h4><p>1、变量名必须以英文字母、_、$ 开头</p>
+<p>2、变量名可以包括英文字母、_、$、数字</p>
+<p>3、不可以用系统的关键字、保留字作为变量名</p>
+<p>那js中有哪些关键字和保留字呢？看下面这张图：<br><img src="/img/blog18.png" alt="效果图"></p>
+<p>这些我们并不需要去背。</p>
+<h2 id="js的基本语法-1"><a href="#js的基本语法-1" class="headerlink" title="js的基本语法"></a>js的基本语法</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据的类型分为两大类，原始值和引用值。</p>
+<h4 id="原始值（栈数据）"><a href="#原始值（栈数据）" class="headerlink" title="原始值（栈数据）"></a>原始值（栈数据）</h4><ul>
+<li>Number，数字类型。例如：1,2,3…</li>
+<li>String，字符串类型。例如：”123”,’123’。要用单引号或双引号包裹起来</li>
+<li>Boolean，布尔类型，只有:true,false。</li>
+<li>Undefined，未定义，只有一个，它自己本身undefined</li>
+<li>Null，空，也只有一个，null</li>
+</ul>
+<h4 id="引用值（堆数据）"><a href="#引用值（堆数据）" class="headerlink" title="引用值（堆数据）"></a>引用值（堆数据）</h4><p>前期先介绍三类：</p>
+<ul>
+<li>Array，数组。例如：[1,2,3]</li>
+<li>Object，对象。例如：{name : “wang”,age : 20 }</li>
+<li>Function，函数，例如：function () {}</li>
+</ul>
+<h4 id="栈数据和对数据的区别"><a href="#栈数据和对数据的区别" class="headerlink" title="栈数据和对数据的区别"></a>栈数据和对数据的区别</h4><p>栈（stack）数据，类似一个框，只有一个口。先进后出。first in last out。<br>堆（heap）数据，指向的是堆的地址。</p>
+<p>那我们来分析一下下面代码的情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">a = 2;</span><br></pre></td></tr></table></figure>
+<p>首先，js向系统索取了一个地址，假设为1000，来放a这个变量，然后赋值为1。然后当我们修改这个变量的时候，原来的1000地址的名字将不再为a，但是它的数据仍然存在。这个时候系统将另外取一个地址，假设为1001，这个地址将会命名为a，并且，值为2。它并不是真正意义上的删除，而是将原来的地址名字删掉，并重新赋值一个新地址而已。</p>
+<h2 id="js语法句的基本规则"><a href="#js语法句的基本规则" class="headerlink" title="js语法句的基本规则"></a>js语法句的基本规则</h2><p>1、语句后面要用分号结束“；”</p>
+<p>2、js语法错误会引发后续代码终止，但不会影响其它js代码块</p>
+<p>3、书写格式要规范，“= + / -”两边都应该有空格</p>
+<p>好了，今天的这篇blog就到这里结束了，谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/23/制作百度主页/" rel="next" title="制作百度主页">
+                <i class="fa fa-chevron-left"></i> 制作百度主页
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/24/js的运算符及语句/" rel="prev" title="js的运算符及语句">
+                js的运算符及语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS的发展史"><span class="nav-number">1.</span> <span class="nav-text">JS的发展史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器组成"><span class="nav-number">2.</span> <span class="nav-text">浏览器组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步和异步"><span class="nav-number">3.</span> <span class="nav-text">同步和异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js的特点"><span class="nav-number">4.</span> <span class="nav-text">js的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释型语言"><span class="nav-number">4.0.1.</span> <span class="nav-text">解释型语言</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始学习JS"><span class="nav-number">5.</span> <span class="nav-text">开始学习JS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS的引入"><span class="nav-number">5.0.1.</span> <span class="nav-text">JS的引入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js的基本语法"><span class="nav-number">6.</span> <span class="nav-text">js的基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS中的变量（variable）"><span class="nav-number">6.0.1.</span> <span class="nav-text">JS中的变量（variable）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的命名规则"><span class="nav-number">6.0.2.</span> <span class="nav-text">变量的命名规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js的基本语法-1"><span class="nav-number">7.</span> <span class="nav-text">js的基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">7.1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原始值（栈数据）"><span class="nav-number">7.1.1.</span> <span class="nav-text">原始值（栈数据）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用值（堆数据）"><span class="nav-number">7.1.2.</span> <span class="nav-text">引用值（堆数据）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈数据和对数据的区别"><span class="nav-number">7.1.3.</span> <span class="nav-text">栈数据和对数据的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js语法句的基本规则"><span class="nav-number">8.</span> <span class="nav-text">js语法句的基本规则</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
