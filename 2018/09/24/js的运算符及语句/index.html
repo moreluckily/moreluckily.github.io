@@ -86,15 +86,18 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的运算符和JavaScript的一些基本语句。 JS的运算符运算符首先运算符分为：算数运算符，比较运算符以及逻辑运算符。 “+和-”运算符“+”和“-”运算符其实是一样的规则的，在这里我只介绍“+”运算符，他和”-“运算符是一样的，就不花大量的时间去介绍了。 在这里比较重要的两点：数学运算、字符串链">
 <meta name="keywords" content="-javaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js的运算符及语句">
 <meta property="og:url" content="http://moreluckily.com/2018/09/24/js的运算符及语句/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的运算符和JavaScript的一些基本语句。 JS的运算符运算符首先运算符分为：算数运算符，比较运算符以及逻辑运算符。 “+和-”运算符“+”和“-”运算符其实是一样的规则的，在这里我只介绍“+”运算符，他和”-“运算符是一样的，就不花大量的时间去介绍了。 在这里比较重要的两点：数学运算、字符串链">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-23T15:45:19.786Z">
+<meta property="og:updated_time" content="2018-09-24T15:31:57.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js的运算符及语句">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的运算符和JavaScript的一些基本语句。 JS的运算符运算符首先运算符分为：算数运算符，比较运算符以及逻辑运算符。 “+和-”运算符“+”和“-”运算符其实是一样的规则的，在这里我只介绍“+”运算符，他和”-“运算符是一样的，就不花大量的时间去介绍了。 在这里比较重要的两点：数学运算、字符串链">
 
 
 
@@ -350,7 +353,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.5k
                 </span>
               
 
@@ -366,7 +369,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -387,7 +390,45 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的运算符和JavaScript的一些基本语句。</p>
+<h2 id="JS的运算符"><a href="#JS的运算符" class="headerlink" title="JS的运算符"></a>JS的运算符</h2><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>首先运算符分为：算数运算符，比较运算符以及逻辑运算符。</p>
+<h4 id="“-和-”运算符"><a href="#“-和-”运算符" class="headerlink" title="“+和-”运算符"></a>“+和-”运算符</h4><p>“+”和“-”运算符其实是一样的规则的，在这里我只介绍“+”运算符，他和”-“运算符是一样的，就不花大量的时间去介绍了。</p>
+<p>在这里比较重要的两点：数学运算、字符串链接，而且任何数据类型加字符串都等于字符串。</p>
+<p>下面举一些例子来说明这些问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = &apos;a&apos; + 1 + 1 ; //得到: a = &apos;a11&apos;</span><br><span class="line">var a = 1 + 1 + &apos;a&apos; + 1;//得到: a = &apos;2a1&apos;</span><br></pre></td></tr></table></figure>
+<p>这里就需要注意运算时的优先级了。优先级”=“最弱，”()”优先级较高。而且运算时是从左向右运算的，和生活中的数学计算还是有一定的差别的。这里需要注意一下。</p>
+<p>再来看一下这些例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = a++;  //2</span><br><span class="line">var c = ++a;  //3</span><br><span class="line">console.log(a++);//3</span><br><span class="line">console.log(++a);//5</span><br></pre></td></tr></table></figure>
+<p>由以上的例子我们可以知道，a++和++a是有区别的，a++是先进行该语句，再进行a+1，++a是先进行a+1，再进行该语句。</p>
+<h4 id="“-和-”运算符-1"><a href="#“-和-”运算符-1" class="headerlink" title="“/和%”运算符"></a>“/和%”运算符</h4><p>“/”就是数学中的除法，这个没什么特别的作用，“%”是取余的意思。<br>举个例子吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 10 / 3;//3.3333333333333335</span><br><span class="line">var b = 10 % 3;//1</span><br></pre></td></tr></table></figure>
+<p>通过这个例子我们也能知道数字在浏览器中只能取小数点后的17位，而且第17位是不准确的。</p>
+<p>在来看下面的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a = 1.0000000000000001;</span><br><span class="line">var b = 1.0000000000000001;//小数点后16位</span><br><span class="line">var c = a + b;</span><br><span class="line">var d = 1.000000000000001;</span><br><span class="line">var e = 1.000000000000001;//小数点后15位</span><br><span class="line">var f = d + e;</span><br><span class="line">console.log(c);//2</span><br><span class="line">console.log(f);//2.000000000000002</span><br></pre></td></tr></table></figure>
+<p> 从这里我们可以知道，浏览器只能计算小数点后15位的数据。</p>
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><p>比较运算符有“&gt;”，”&lt;”，”==”，“&gt;=”，“&lt;=”，”!=”等等，两个值的比较结果为boolean值，即只有true和false这两种结果，而且需要注意的是：比较运算符如果存在跟算术运算符一起出现的时候，先计算算术运算符部分，即算数运算符的优先级是要高于比较运算符的。</p>
+<p>OK，接下来就举一些例子来对其进行说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 + 2 &gt; 2 + 2;//false</span><br><span class="line">var a = 3 &gt; 2 &gt; 1;//false</span><br></pre></td></tr></table></figure>
+<p>第一个，首先进行加减运算，即两边得到：3&gt;4，答案肯定是false。<br>第二个，首先进行3&gt;2，答案是true，这里会发生一个隐式类型转换，即会将true转换为1，1&gt;1，答案当然是false。</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符*"></a>逻辑运算符*</h3><p>首先要说的就是运算时，会发生隐式类型转换，有6个值会转换为false，其他的都是true。这个是必须要记住的。</p>
+<p>underfined NAN null 0 “”（空串） false。这6个值会转换成false,然后再去进行计算。</p>
+<h4 id="amp-amp-运算符"><a href="#amp-amp-运算符" class="headerlink" title="&amp;&amp; 运算符"></a>&amp;&amp; 运算符</h4><p>这是我们常说的与运算符。先不说它的特点。<br>那接下来举一些例子吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 &amp;&amp; 2;//2</span><br><span class="line">var a = 0 &amp;&amp; 2;//0</span><br><span class="line">var a = 3 &amp;&amp; 2 &amp;&amp; 1;//1</span><br><span class="line">var a = 1 + 2 &amp;&amp; 2 + 3;//5</span><br></pre></td></tr></table></figure></p>
+<p>&amp;&amp;运算符就是当前面的出现false时，就不看后面的结果，直接将0返回。<br>当前面不为0时，就将后面的值返回，当也要注意的是：加减的优先级任然是高于逻辑运算符的。<br>比较常见的应用就是短路语句了，举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var data;</span><br><span class="line">data &amp;&amp; fn(data);//data有数据才执行后面的函数</span><br></pre></td></tr></table></figure></p>
+<h4 id="运算符-1"><a href="#运算符-1" class="headerlink" title="| | 运算符"></a>| | 运算符</h4><p>或运算符，||当前面为true,就返回前面的东西，||当前面为false,再看后面的东西。<br>举一些例子来看一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 || 2;//1</span><br><span class="line">var a = 0 || NaN || undefined;//undefined</span><br></pre></td></tr></table></figure></p>
+<h4 id="运算符-2"><a href="#运算符-2" class="headerlink" title="! 运算符"></a>! 运算符</h4><p>非运算符，就是取反的意思。这个没什么介绍的。</p>
+<h2 id="JS语句"><a href="#JS语句" class="headerlink" title="JS语句"></a>JS语句</h2><h3 id="if-语句"><a href="#if-语句" class="headerlink" title="if( )语句"></a>if( )语句</h3><p>如果if( )语句里面的判断是正确的话，那么就会走接下来的代码块，否则就跳过if语句。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(a)&#123;</span><br><span class="line">      console.log(a);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="if-else-语句"><a href="#if-else-语句" class="headerlink" title="if( ) else 语句"></a>if( ) else 语句</h3><p>看例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(a)&#123;</span><br><span class="line">console.log(a)</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">var a = 5 ;</span><br><span class="line">console.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果，a不为0就会打印出a，否则就进行else里的语句。</p>
+<h3 id="else-if-语句"><a href="#else-if-语句" class="headerlink" title="else if( )语句"></a>else if( )语句</h3><p>看例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(date is monday）&#123;</span><br><span class="line">console.log(&apos;monday&apos;)</span><br><span class="line">&#125;else if(date is tuesday)&#123;</span><br><span class="line">console.log(tuesday)</span><br><span class="line">&#125;else&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="for循环语句"><a href="#for循环语句" class="headerlink" title="for循环语句"></a>for循环语句</h3><p>这个是最常见的语句之一，看例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var i = 0; i &lt;= 10; i++;)&#123;</span><br><span class="line">console.log(i + &apos;,&apos;);</span><br><span class="line">&#125; //0,1,2....10</span><br></pre></td></tr></table></figure></p>
+<p>这个也比较好理解，我就不多说了。</p>
+<h3 id="while-循环语句"><a href="#while-循环语句" class="headerlink" title="while 循环语句"></a>while 循环语句</h3><p>这个语句跟for循环是差不多的，但是我们有时候可以利用它来进行递归，这样效率更高（少些几行而已）while（）括号里面直接填写的是判断条件，代码块写的就是执行语句。但是我们要注意，如果填入的是一个一直成立的表达式，那么它就可能会一直死循环下去。never-ending loop 无限死循环。</p>
+<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><p>这个语句相信大家都很熟悉吧，我先来举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var date = window.prompt(&apos;input&apos;);</span><br><span class="line">switch(date)&#123;</span><br><span class="line">    case &quot;monday&quot;：</span><br><span class="line">        doucment.write(&apos;working&apos;);</span><br><span class="line">    case &quot;tuesday&quot;:</span><br><span class="line">        document.write(&apos;working&apos;);</span><br><span class="line">    case &quot;wendesday&apos;:</span><br><span class="line">        document.write(&apos;working&apos;);</span><br><span class="line">    case &quot;sunday&quot;:</span><br><span class="line">        document.write(&apos;resting&apos;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>当输入monday，会出现working，working，working，resting。<br>就需要优化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var date = window.prompt(&apos;input&apos;);</span><br><span class="line">switch(date)&#123;</span><br><span class="line">    case &quot;monday&quot; :</span><br><span class="line">    case &quot;tuesday&quot; :</span><br><span class="line">    case &quot;wendesday&quot; :</span><br><span class="line">         document.write(&apos;working&apos;);</span><br><span class="line">    break;</span><br><span class="line">    case &quot;sunday&quot; :</span><br><span class="line">        document.write(&apos;resting&apos;);</span><br><span class="line">    break;</span><br><span class="line">    defalut :document.write(&apos;nice!&apos;)//其他的情况；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>break停止的是里面的一个循环。外面的循环正常进行。（停止循环就用break），continue结束本次循环，继续进行下一次循环。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中的类型转换，谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -434,6 +475,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/24/js类型转换/" rel="prev" title="js类型转换">
+                js类型转换 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -485,8 +530,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,7 +559,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,6 +638,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS的运算符"><span class="nav-number">1.</span> <span class="nav-text">JS的运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">1.1.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#“-和-”运算符"><span class="nav-number">1.1.1.</span> <span class="nav-text">“+和-”运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“-和-”运算符-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">“/和%”运算符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较运算符"><span class="nav-number">1.2.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">1.3.</span> <span class="nav-text">逻辑运算符*</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#amp-amp-运算符"><span class="nav-number">1.3.1.</span> <span class="nav-text">&amp;&amp; 运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">| | 运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">! 运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS语句"><span class="nav-number">2.</span> <span class="nav-text">JS语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-语句"><span class="nav-number">2.1.</span> <span class="nav-text">if( )语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-else-语句"><span class="nav-number">2.2.</span> <span class="nav-text">if( ) else 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#else-if-语句"><span class="nav-number">2.3.</span> <span class="nav-text">else if( )语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for循环语句"><span class="nav-number">2.4.</span> <span class="nav-text">for循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-循环语句"><span class="nav-number">2.5.</span> <span class="nav-text">while 循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-语句"><span class="nav-number">2.6.</span> <span class="nav-text">switch 语句</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

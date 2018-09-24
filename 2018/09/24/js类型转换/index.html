@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的类型转换的知识。 初识引用值首先先简单的介绍2种引用值，数组和对象。首先来说一下数组（array）吧，举个例子：1234var arr = [1,undefined,null,true,345]；document.write(arr[0]);//1arr[0] = 2;document.write">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js类型转换">
+<meta property="og:url" content="http://moreluckily.com/2018/09/24/js类型转换/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的类型转换的知识。 初识引用值首先先简单的介绍2种引用值，数组和对象。首先来说一下数组（array）吧，举个例子：1234var arr = [1,undefined,null,true,345]；document.write(arr[0]);//1arr[0] = 2;document.write">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-24T15:31:55.526Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js类型转换">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的类型转换的知识。 初识引用值首先先简单的介绍2种引用值，数组和对象。首先来说一下数组（array）吧，举个例子：1234var arr = [1,undefined,null,true,345]；document.write(arr[0]);//1arr[0] = 2;document.write">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/24/js类型转换/"/>
+
+
+
+
+
+  <title>js类型转换 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/24/js类型转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js类型转换</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-24T23:29:42+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript的类型转换的知识。</p>
+<h2 id="初识引用值"><a href="#初识引用值" class="headerlink" title="初识引用值"></a>初识引用值</h2><p>首先先简单的介绍2种引用值，数组和对象。首先来说一下数组（array）吧，举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,undefined,null,true,345]；</span><br><span class="line">document.write(arr[0]);//1</span><br><span class="line">arr[0] = 2;</span><br><span class="line">document.write(arr[0]);//2</span><br></pre></td></tr></table></figure></p>
+<p>能读能写，数组的长度可以用arr.length来表示。<br>接下来说一下对象（object），属性有属性名和属性值组成，举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var mrDeng = &#123;</span><br><span class="line">    name:&quot;XXX&quot;,</span><br><span class="line">    age:33,</span><br><span class="line">    lastName:&quot;xxx&quot;,</span><br><span class="line">    wife : &#123;</span><br><span class="line">        name:&quot;xxx&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        height:172,</span><br><span class="line">        health:100</span><br><span class="line">&#125;</span><br><span class="line">document.write(mrDeng.name);//xxx</span><br></pre></td></tr></table></figure></p>
+<p>这两个今天就先讲到这里吧，后面还会比较详细的讲到。</p>
+<h2 id="编程形式的区别"><a href="#编程形式的区别" class="headerlink" title="编程形式的区别"></a>编程形式的区别</h2><p>编程语言按照形式上分，有两类，第一种称之为面向过程，第二种称为面向对象。<br>面向过程编程：主要是按照步奏来来进行编程，考虑是怎么做。典型例子为C语言。<br>面向对象编程：包含面向过程编程，但是它主要考虑是处理方法，利用什么资源进行编程，更加的结构化。<br>js即面向过程又面向对象。</p>
+<h2 id="typeof-运算符"><a href="#typeof-运算符" class="headerlink" title="typeof 运算符"></a>typeof 运算符</h2><p>在我们处理数据的时候，经常需要关注数据的类型，这时候可以使用typeof运算符。 typeof（）运算符可以区分出数据的类型，他返回六种值，分别是object，number，string，undefined，boolean，function。返回的是形式都是字符串形式。它还有一个特点就是，当一个变量未经声明就使用时会报错的，但是利用typeof判断一个未经声明的变量，会返回undefined，但是不报错。了解了typeof之后，我们就可以正式介绍类型转换了。</p>
+<p>举一些例子来看一下吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 123;</span><br><span class="line">typeof（a）;//出现number</span><br><span class="line"></span><br><span class="line">var a = NaN</span><br><span class="line">typeof（a）;//出现number</span><br></pre></td></tr></table></figure></p>
+<p>这就很奇怪了，下面就一起来学习类型转换吧。</p>
+<h2 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h2><h3 id="Number（）"><a href="#Number（）" class="headerlink" title="Number（）"></a>Number（）</h3><p>这个方法可以将传进去的参数转化为数字类型的数据，如果传进去的不能被转化为数字，就会返回NAN。</p>
+<p>有个注意的地方就是，false,null，’’(空串)，会转化成0，undefined，NAN，都会转化为NaN。</p>
+<p>举一些例子吧，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Number(&apos;asdfa&apos;)          // NaN</span><br><span class="line">Number(&apos;12333&apos;)          // 12333</span><br><span class="line">Number(null)             // 0</span><br><span class="line">Number(undefined)        // NaN</span><br><span class="line">Number(NaN)              //0</span><br></pre></td></tr></table></figure>
+<h3 id="parseInt"><a href="#parseInt" class="headerlink" title="parseInt()"></a>parseInt()</h3><p>这个方法会将字符串转化为数字类型，并进行数字截断处理，当传入的是数字和字符串，它会把数字单独截取。第二个用法，就是它可以进行十进制数向其他进制数进行转化。<br>举一些例子吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var num = parseInt（xxx）;</span><br><span class="line">&quot;123&quot;       //123</span><br><span class="line">undefined   //NaN </span><br><span class="line">NaN         //NaN</span><br><span class="line">var num=parseInt(&quot;12a3&quot;);//12</span><br><span class="line">var num=parseInt(&quot;6&quot;,2)//将6转化为2进制, 110</span><br></pre></td></tr></table></figure></p>
+<h3 id="parseFloat（）toFix（）"><a href="#parseFloat（）toFix（）" class="headerlink" title="parseFloat（）toFix（）"></a>parseFloat（）toFix（）</h3><p>parseFloat（）这个方法也是将参数转化为数字类型，但是它不可以进行进制的转换。<br><code>var num=parseFloat(&quot;10.123&quot;)  //10.123</code></p>
+<p>toFix（）可以设定保留多少为有效数字.<br><code>var a = 199.223; a.toFixed(2); //199.23</code></p>
+<h3 id="string"><a href="#string" class="headerlink" title="string()"></a>string()</h3><p>string():这个方法就是将传进的参数转化为字符串类型的数据。这个没什么好说的。</p>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean()"></a>Boolean()</h3><p>boolean():这个方法就是将传进的参数转化为true，或者是false，只有那6个值为false。undefined,null,NaN,””,false,0。</p>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>这个方法很重要，首先它可以将调用它的变量转化字符串，第二个就是它可以将调用它的变量转化为十进制。另外可以利用它来判断object和array。这个之后可以跟大家在介绍，今天就不展开了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = 123;</span><br><span class="line">var num = str.toString(2);//string类型,将10进制转化为2进制。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将2进制转化为8进制：</span><br><span class="line">var num=parseInt(&quot;1000&quot;,2);</span><br><span class="line">document.write(num.toString(8));</span><br><span class="line">先转化成2进制，再转化为8进制。</span><br></pre></td></tr></table></figure>
+<h2 id="隐式类型转化"><a href="#隐式类型转化" class="headerlink" title="隐式类型转化"></a>隐式类型转化</h2><h3 id="isNaN（）"><a href="#isNaN（）" class="headerlink" title="isNaN（）"></a>isNaN（）</h3><p>NaN是一个很特殊的东西，它“六亲不认”，它任何东西都不等于，包括它自己。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NaN == NaN //false</span><br><span class="line">NaN === NaN //false</span><br></pre></td></tr></table></figure></p>
+<p>isNaN（）就是用来判断NaN的。它可以将传入的参数判断是否为NaN。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isNaN(NaN) //true</span><br><span class="line">isNaN(0)   //false</span><br></pre></td></tr></table></figure>
+<h3 id="其他的隐式类型转化"><a href="#其他的隐式类型转化" class="headerlink" title="其他的隐式类型转化"></a>其他的隐式类型转化</h3><p>一元正负运算符:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;1234&quot;;</span><br><span class="line">var b = a + 1;     // 12341</span><br></pre></td></tr></table></figure></p>
+<p>当使用+ 号进行字符串和数字类型进行操作的时候，+号两边，会有一个隐式类型转换，就是将数字调用string，然后进行拼接。</p>
+<p>还有就是++运算符，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;123&quot;;</span><br><span class="line">//Number(a) ++</span><br><span class="line">document.write(a++ + &quot;:&quot; + typeof(a));//123:Number</span><br></pre></td></tr></table></figure></p>
+<p>会先把a转化为数字类型,在进行其他的计算。</p>
+<p>  “- * / %” 转化成number,&amp;&amp;  ||  !转化成布尔值。&gt; &lt; &lt;= &gt;=在一侧是数字时转化成number。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">underfined == 0   //false</span><br><span class="line">null == 0         //false</span><br><span class="line">null == underfined  //true(特殊规定)</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<p>var a = “10” &gt; “9”;<br>document.write(a);//输出false(字符串会比较ASCII码)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">还有：===绝对等于和   </span><br><span class="line">!==绝对不等于不会发生类型转换，只有2侧一致才返回true。</span><br></pre></td></tr></table></figure></p>
+<p>var a = 0 == “”;   //true<br>var a = 0 === “”;   //false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>var a=(“11”*3 + “2”)/2   //166, 33+”2” 等于”332”<br><code>`</code><br>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中的函数 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/24/js的运算符及语句/" rel="next" title="js的运算符及语句">
+                <i class="fa fa-chevron-left"></i> js的运算符及语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/25/js函数相关/" rel="prev" title="js函数相关">
+                js函数相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识引用值"><span class="nav-number">1.</span> <span class="nav-text">初识引用值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程形式的区别"><span class="nav-number">2.</span> <span class="nav-text">编程形式的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof-运算符"><span class="nav-number">3.</span> <span class="nav-text">typeof 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式类型转换"><span class="nav-number">4.</span> <span class="nav-text">显式类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Number（）"><span class="nav-number">4.1.</span> <span class="nav-text">Number（）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseInt"><span class="nav-number">4.2.</span> <span class="nav-text">parseInt()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseFloat（）toFix（）"><span class="nav-number">4.3.</span> <span class="nav-text">parseFloat（）toFix（）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string"><span class="nav-number">4.4.</span> <span class="nav-text">string()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean"><span class="nav-number">4.5.</span> <span class="nav-text">Boolean()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">4.6.</span> <span class="nav-text">toString()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式类型转化"><span class="nav-number">5.</span> <span class="nav-text">隐式类型转化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#isNaN（）"><span class="nav-number">5.1.</span> <span class="nav-text">isNaN（）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他的隐式类型转化"><span class="nav-number">5.2.</span> <span class="nav-text">其他的隐式类型转化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
