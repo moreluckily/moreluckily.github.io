@@ -94,15 +94,15 @@
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
 <meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中函数预编译的相关知识。 js运行三部曲首先一个JS程序能运行起来，需要经历三个步骤：第一步，语法分析，先通篇看一遍，看有没有低级语法错误，例如：有没有中文符号，多加了括号什么的。第二步，预编译。第三步，开始执行。 暗示全局变量imply global 暗示全局变量：即任何变量，如果变量未经声明就赋">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://moreluckily.com/img/js1/blog1.png">
-<meta property="og:image" content="http://moreluckily.com/img/js1/blog2.png">
-<meta property="og:image" content="http://moreluckily.com/img/js1/blog3.png">
-<meta property="og:image" content="http://moreluckily.com/img/js1/blog4.png">
-<meta property="og:updated_time" content="2018-09-25T04:03:06.910Z">
+<meta property="og:image" content="http://moreluckily.com/img/js/blog1.png">
+<meta property="og:image" content="http://moreluckily.com/img/js/blog2.png">
+<meta property="og:image" content="http://moreluckily.com/img/js/blog3.png">
+<meta property="og:image" content="http://moreluckily.com/img/js/blog4.png">
+<meta property="og:updated_time" content="2018-09-25T06:01:43.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js的预编译">
 <meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中函数预编译的相关知识。 js运行三部曲首先一个JS程序能运行起来，需要经历三个步骤：第一步，语法分析，先通篇看一遍，看有没有低级语法错误，例如：有没有中文符号，多加了括号什么的。第二步，预编译。第三步，开始执行。 暗示全局变量imply global 暗示全局变量：即任何变量，如果变量未经声明就赋">
-<meta name="twitter:image" content="http://moreluckily.com/img/js1/blog1.png">
+<meta name="twitter:image" content="http://moreluckily.com/img/js/blog1.png">
 
 
 
@@ -433,10 +433,10 @@
 <p>运行期上下文:当函数执行时，会创建一个称为执行期上下文的内部对象。一个执行期上下文定义了一个函数执行时的环境，函数每次执行时对应的执行上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行上下文，当函数执行完毕，执行上下文被销毁。</p>
 <p>作用域链：就是scope中所存储的执行期上下文的集合，这个集合成链式连接。就是作用域链。来个例子讲解一下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function a() &#123;</span><br><span class="line">    function b() &#123;</span><br><span class="line">        var b = 234;</span><br><span class="line">        &#125;</span><br><span class="line">        var a = 123;</span><br><span class="line">        b();</span><br><span class="line">&#125;</span><br><span class="line">var glob = 100;</span><br><span class="line">a();</span><br><span class="line">//a定义：a.[ [ scope ] ] --&gt; scope chain ---&gt; 0:GO（全局作用域链）;如图一</span><br><span class="line">//a执行：a.[ [ scope ] ] --&gt; scope chain ---&gt; 0:aAO;   1：GO；如图二</span><br></pre></td></tr></table></figure>
-<p>图一：<br><img src="/img/js1/blog1.png" alt="图一"><br>图二：<br><img src="/img/js1/blog2.png" alt="图二"></p>
+<p>图一：<br><img src="/img/js/blog1.png" alt="图一"><br>图二：<br><img src="/img/js/blog2.png" alt="图二"></p>
 <p>可以看到，当a定义的时候，已经拥有了GO，查找元素的时候，就是在scope里找，如果在自己的作用链就在自己的AO中索取，如果不存在，就从顶往下寻找。 当函数执行完之后，会销毁a中产生的执行期上下文，回归到a定义的时候。这也可以跟我们之前所说的，只能里面访问外面的，不能外面访问里面的一样，具体到理论上，就是外面的作用链，没有局部的作用域链，所以不能找到所需要的变量。</p>
 <p>同样，我们在分析一下b，当b定义的时候，已经又有了a的劳动成果，就是a的作用域。如图三。 然后当b执行的时候，又产生了自己的作用域链。如图四。</p>
-<p>图三：<br><img src="/img/js1/blog3.png" alt="图三"><br>图四：<br><img src="/img/js1/blog4.png" alt="图四"></p>
+<p>图三：<br><img src="/img/js/blog3.png" alt="图三"><br>图四：<br><img src="/img/js/blog4.png" alt="图四"></p>
 <p>最后强调一下，当b执行完之后，意味着a也执行完了，意味着a和b的执行期上下文都被销毁，直接就恢复到a被定义的时候，只有全局的GO。</p>
 <p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中闭包的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
 
