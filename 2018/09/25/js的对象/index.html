@@ -86,15 +86,18 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中对象的相关知识。 复习一下首先来复习一下前几节课的内容，概念啥的就不多说什么了，来做几道题吧。 12(window.foo || (window.foo = &amp;quot;bar&amp;quot;));//先执行后面的，||直接返回document.write(window.foo);     //bar">
 <meta name="keywords" content="-javaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js的对象">
 <meta property="og:url" content="http://moreluckily.com/2018/09/25/js的对象/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中对象的相关知识。 复习一下首先来复习一下前几节课的内容，概念啥的就不多说什么了，来做几道题吧。 12(window.foo || (window.foo = &amp;quot;bar&amp;quot;));//先执行后面的，||直接返回document.write(window.foo);     //bar">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-25T05:44:38.131Z">
+<meta property="og:updated_time" content="2018-09-25T08:20:11.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js的对象">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中对象的相关知识。 复习一下首先来复习一下前几节课的内容，概念啥的就不多说什么了，来做几道题吧。 12(window.foo || (window.foo = &amp;quot;bar&amp;quot;));//先执行后面的，||直接返回document.write(window.foo);     //bar">
 
 
 
@@ -350,7 +353,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2.4k
                 </span>
               
 
@@ -366,7 +369,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -387,7 +390,63 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中对象的相关知识。</p>
+<h2 id="复习一下"><a href="#复习一下" class="headerlink" title="复习一下"></a>复习一下</h2><p>首先来复习一下前几节课的内容，概念啥的就不多说什么了，来做几道题吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(window.foo || (window.foo = &quot;bar&quot;));//先执行后面的，||直接返回</span><br><span class="line">document.write(window.foo);     //bar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var foo = &#123;n : 1&#125;;</span><br><span class="line">var bar = foo;         //是foo的地址</span><br><span class="line">foo.x = foo = &#123;n : 2&#125;; //从右向左解析</span><br><span class="line">//相当于 bar.x = foo = &#123;n : 2&#125;,和foo没关系</span><br><span class="line">//视觉效果，要忽略视觉效果</span><br><span class="line">console.log(foo.x);   //undefined</span><br><span class="line">bar.x = foo = &#123;n : 2&#125;;</span><br><span class="line">console.log(bar.x);   //&#123;n : 2&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="对象（object）"><a href="#对象（object）" class="headerlink" title="对象（object）"></a>对象（object）</h2><p>对象（onject）是一个引用值，它可以有方法，属性，属性和方法之间要用逗号隔开，不能用分号隔开，否则会报错。举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var mrWang = &#123;</span><br><span class="line">    firstName : &quot;moreluckily&quot;,</span><br><span class="line">    lastName : &quot;wang&quot;,</span><br><span class="line">    age : 20,</span><br><span class="line">    sex : &quot;male&quot;,</span><br><span class="line">    sister : &#123;</span><br><span class="line">        name : &quot;moreluck&quot;,</span><br><span class="line">        age : 25</span><br><span class="line">    &#125;,</span><br><span class="line">    brother : &#123;</span><br><span class="line">        name : &quot;morelucky&quot;,</span><br><span class="line">        age : 22</span><br><span class="line">    &#125;,</span><br><span class="line">    study : function () &#123;</span><br><span class="line">        console.log(&quot;I am studying, cool!&quot;);</span><br><span class="line">    &#125;,</span><br><span class="line">    sing : function () &#123;</span><br><span class="line">        console.log(&quot;I am singing, good!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="对象的属性的增、删、改、查"><a href="#对象的属性的增、删、改、查" class="headerlink" title="对象的属性的增、删、改、查"></a>对象的属性的增、删、改、查</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mrWang.borther2 = &quot;moreluclier&quot;;//增</span><br><span class="line">delete mrWang.borther2;//删除,只能删除对象的属性</span><br><span class="line">mrWang.age = 21; //改</span><br><span class="line">console.log(mrWang.age = 21);//查</span><br></pre></td></tr></table></figure>
+<h2 id="对象的创建方法"><a href="#对象的创建方法" class="headerlink" title="对象的创建方法"></a>对象的创建方法</h2><h4 id="对象字面量格式"><a href="#对象字面量格式" class="headerlink" title="对象字面量格式"></a>对象字面量格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;   //PlainObject  对象字面量/对象直接量</span><br></pre></td></tr></table></figure>
+<h4 id="构造函数创建对象"><a href="#构造函数创建对象" class="headerlink" title="构造函数创建对象"></a>构造函数创建对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object ();</span><br><span class="line">obj.name = &quot;moreluckily&quot;;</span><br></pre></td></tr></table></figure>
+<p>这种方法太麻烦了，属性要一个个的加进去，能写字面量，就不写这种方法。</p>
+<h4 id="自定义构造函数"><a href="#自定义构造函数" class="headerlink" title="自定义构造函数**"></a>自定义构造函数**</h4><p>自定义构造函数，使用大驼峰的写法，即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function TheFirstName() &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>自定义的构造函数方法可以自己定义方法，用于批量生产对象。举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Car() &#123;</span><br><span class="line">    this.name = &quot;Maserati&quot;</span><br><span class="line">    this.height = 1400;</span><br><span class="line">    this.width = 2000;</span><br><span class="line">	this.run = function () &#123;</span><br><span class="line">    this.health --;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var car = new Car(); </span><br><span class="line">var car1 = new Car();//不同的对象</span><br><span class="line">car.color = red;//car的属性改变了，car1的属性不能改变</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子写的有些麻烦，我们可以对其进行一些优化，用传参数的方式来直接写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Car(color) &#123;</span><br><span class="line">    this.name = &quot;Maserati&quot;</span><br><span class="line">    this.height = 1400;</span><br><span class="line">    this.width = 2000;</span><br><span class="line">    this.health = 100;</span><br><span class="line">    this.run = function () &#123;</span><br><span class="line">        this.health --;</span><br><span class="line">    &#125;</span><br><span class="line">    this.color = color;</span><br><span class="line">&#125;</span><br><span class="line">var car = new Car(&quot;red&quot;); </span><br><span class="line">var car1 = new Car(&quot;green&quot;);//个性化</span><br></pre></td></tr></table></figure>
+<h2 id="构造函数的内部原理"><a href="#构造函数的内部原理" class="headerlink" title="构造函数的内部原理"></a>构造函数的内部原理</h2><p>1.在函数体最前面隐式的加上this = {};<br>2.执行 this.xxx = xxx;<br>3.隐式的返回this</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, sex) &#123;</span><br><span class="line">    //var this = &#123;&#125;;</span><br><span class="line">    //AO = &#123;</span><br><span class="line">        // this : &#123;</span><br><span class="line">            // this.name = name;</span><br><span class="line">            // this.age = age;</span><br><span class="line">            // this.sex = sex;</span><br><span class="line">        // &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">    this.sex = sex;</span><br><span class="line">    //return this;</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person(&quot;moreluckily&quot;, 123, &quot;male&quot;)</span><br></pre></td></tr></table></figure>
+<p>在函数person函数定义的时候，首先，会隐式地在执行上下文中添加一个空对象名为this，然后，执行每句语句，相当于往this里面添加对象的属性和方法。最后，所有语句读执行完毕的时候，隐式地把this对象返回出去。</p>
+<p>如果构造函数没有使用new来进行引用的时候，那么，this就是指向的window，例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var person1 = Person();//直接这样写</span><br></pre></td></tr></table></figure></p>
+<p>那么，这里的name指向的就是window，所有的带this的属性指向的都是window。当我们查询person.name的时候返回的是undefined，其他的属性的都是undefined。可以看出，没有利用new来进行引用的构造函数，那么里面的this指向的就是window。window.name等属性是undefined。</p>
+<h4 id="自己写一个和构造函数一样的函数封装"><a href="#自己写一个和构造函数一样的函数封装" class="headerlink" title="自己写一个和构造函数一样的函数封装"></a>自己写一个和构造函数一样的函数封装</h4><p>我们已经知道了构造函数的相关原理，我们就可以利用它的原理自己来写一个和构造函数一样的函数封装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Peason(name, age, sex) &#123;</span><br><span class="line">    var that = &#123;&#125;;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = sge;</span><br><span class="line">    this.sex = sex;</span><br><span class="line">    return that;</span><br><span class="line">    &#125;</span><br><span class="line">    var person = new Person(&quot;moreluckily&quot;, 123, &quot;male&quot;)</span><br><span class="line">//通过new,return之后的东西一定是一个对象</span><br></pre></td></tr></table></figure>
+<p>首先我们手动的创建一个空对象命名为that，然后给that对象定义方法和属性，最后显式地return that对象，但是这个人工的构造函数，效率等各方面都没有原生的好。大家还是不要用自己写的构造函数。</p>
+<p>在这里还要注意的一点， return 12; return “2”; return true; return { }，我们可以发现，前三个都是原来由构造函数生产出来的对象，但是对于第四个，就变成一个空对象了，意思就是，如果我们return的如果是原始值，那么对结构没影响，但是如果返回的是一个引用值，那么结果就是return出来的那个引用值。</p>
+<h2 id="闭包的作用：私有化变量"><a href="#闭包的作用：私有化变量" class="headerlink" title="闭包的作用：私有化变量"></a>闭包的作用：私有化变量</h2><p>在之前说闭包的时候，没有讲到构造函数，其实闭包还有一个作用，就是私有化变量。来看一下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function Deng() &#123;</span><br><span class="line">    var prepareWife = &quot;moreluck&quot;</span><br><span class="line">    var obj = &#123;</span><br><span class="line">        name : &quot;moreluckily&quot;,</span><br><span class="line">        age : 20,</span><br><span class="line">        sex : &quot;male&quot;,</span><br><span class="line">        wife : &quot;morelucky&quot;,</span><br><span class="line">        divorce : function () &#123;</span><br><span class="line">            delete this.wife;</span><br><span class="line">        &#125;,</span><br><span class="line">        getMarried : function () &#123;</span><br><span class="line">            this.wife = prepareWife;</span><br><span class="line">        &#125;,</span><br><span class="line">        changePrepare : function (someone) &#123;</span><br><span class="line">            prepareWife = someone;</span><br><span class="line">        &#125;,</span><br><span class="line">        sayMyWife : function () &#123;</span><br><span class="line">            return this.wife;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br><span class="line">var deng = Deng();</span><br></pre></td></tr></table></figure>
+<p>我们对其进行操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deng.sayMyWife()         //&quot;morelucky&quot;</span><br><span class="line">deng.divouce()           //undefined (没有返回值）</span><br><span class="line">deng.sayWife()           //已经删除,undefined</span><br><span class="line">deng.changePrepare(&apos;xiaoxiaozhang&apos;)   //undefined (函数没有返回值）</span><br><span class="line">deng.getMarried()        //undefined</span><br><span class="line">deng.sayMyWife()         //&quot;xiaoxiaozhang&quot;</span><br><span class="line">deng.prepareWife         //undefined</span><br></pre></td></tr></table></figure>
+<p>我们手动地查询prepareWife的时候，发现是undefined，因为这个是函数里面的变量，不在全局作用域里，所以我们访问不了，但是，一系列的操作都是围绕prepareWife来进行的，它们都可以正常访问这个变量，所以，像这种只能通过与这个变量产生闭包的方法，属性，才能给对那个变量进行访问，所以，我们就称之为，私有化变量，我们可以通过定制接口等各种方法，来对变量的安全程度进行设置。</p>
+<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类*"></a>包装类*</h2><p>首先我们要清楚知道的一点是：原始值是没有属性和方法的。</p>
+<p>前面讲过原始值有：Number,String,Boolean,undefined,null。</p>
+<p>引用值有：array, object, function。</p>
+<p>那么你硬要给原始值加上属性和方法，那么系统就会把它转化为原始值对应的对象的形式，称之为包装，那么该原始值的对象形式称之为包装类。</p>
+<p>我们可以通过new来将原始值变成其对象形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Number --&gt; new Number() --&gt;数字的对象形式</span><br><span class="line">String --&gt; new String() --&gt;字符串的对象形式</span><br><span class="line">Boolean --&gt; new Boolean() --&gt;布尔的对象形式</span><br></pre></td></tr></table></figure>
+<p>那当我们把一个原始值添加属性的时候，会发生什么事情呢？</p>
+<p>JS引擎会隐式地将原始值转化为对应的对象类型，然后，进行delete操作，意思就是，当我们给一个原始值添加属性的时候，引擎将会马上删除该原始值的对象形式。举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num = 123;</span><br><span class="line">//new Number(num).abc = &quot;a&quot;; --&gt;delete</span><br><span class="line">num.abc = &quot;a&quot;;</span><br><span class="line">//新的 new Number(num).abc</span><br><span class="line">console.log(num.abc);//undefined</span><br></pre></td></tr></table></figure>
+<p>我们知道引用值数组有一个属性length，它可以查看数组的长度，那么字符串也是有长度的，但是它不能像数组那样使用length对字符串进行截断处理，就是因为当对string进行设置length之后，之后会把马上销毁掉不进行任何地保留或者处理。也就是字符串的对象形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;abcd&quot;;</span><br><span class="line">//new String(str).length = 2; --&gt;delete</span><br><span class="line">str.length = 2;</span><br><span class="line">// //新的 new String(str).length</span><br><span class="line">console.log(str.length);//4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3,4];</span><br><span class="line">arr.length = 2;</span><br><span class="line">console.log(arr); //[1,2]</span><br></pre></td></tr></table></figure>
+<h4 id="包装类的一些例子"><a href="#包装类的一些例子" class="headerlink" title="包装类的一些例子*"></a>包装类的一些例子*</h4><p>我们来看一下和包装类相关的一些例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//题目1：</span><br><span class="line">//运行text()和new text()的结果分别是什么？</span><br><span class="line">var a = 5;</span><br><span class="line">function text() &#123;</span><br><span class="line">    a = 0;</span><br><span class="line">    alert(a);</span><br><span class="line">//会产生一个：var this = &#123;&#125;</span><br><span class="line">    alert(this.a);</span><br><span class="line">    var a;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;</span><br><span class="line">text();// 0 5 0</span><br><span class="line">new text();// 0 undefined 0</span><br></pre></td></tr></table></figure>
+<p>像第一个text( );，this.a就是window.a，也就是说第二个出来的是5。其他的两个0是AO里的，在这里就不多说了。</p>
+<p>像第二个new text( );，在内部会产生一个var this = {},其内部没有东西，所以没有任何东西，出现的就是undefined。</p>
+<p>再来一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;abc&quot;;</span><br><span class="line">str += 1;</span><br><span class="line">var text = typeof(str);</span><br><span class="line">if(text.length == 6)&#123;</span><br><span class="line">    text.sign = &quot;typeof返回的可能是string&quot;;</span><br><span class="line">&#125;</span><br><span class="line">document.write(text.sign);//undefined</span><br></pre></td></tr></table></figure>
+<p>这题的陷阱很深，最后大家可能都认为能够打印出来”typeof的返回结果可能是String”，但是，大家可能忘了，包装类，当定义完之后，就会被马上销毁，所以最后打印结果是undefined。</p>
+<p>再举一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, sex) &#123;</span><br><span class="line">    var a = 0;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">    this.sex = sex;</span><br><span class="line">    function sss() &#123;</span><br><span class="line">        a ++;</span><br><span class="line">        document.write(a);</span><br><span class="line">    &#125;</span><br><span class="line">    this.say = sss; //上面的函数体</span><br><span class="line">&#125;</span><br><span class="line">var oPerson = new Person();</span><br><span class="line">oPerson.say();//1</span><br><span class="line">oPerson.say();//2</span><br><span class="line">var oPerson1 = new Person();</span><br><span class="line">oPerson1.say();//1</span><br></pre></td></tr></table></figure>
+<p>这就是闭包的作用：私有化变量。</p>
+<p>再看一下接下里的这个题目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var foo = &#123;n : 1&#125;;</span><br><span class="line">var bar = foo;</span><br><span class="line">foo.x = foo = &#123;n : 2&#125;;</span><br><span class="line">console.log(foo.x);//undefined</span><br><span class="line">bar.x = foo = &#123;n : 2&#125;;</span><br><span class="line">console.log(bar.x);//    &#123;n : 2&#125;</span><br><span class="line">console.log(bar);//&#123;n : 1,x:&#123;n : 2&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>上次被这个问题困扰了很久，现在是不是明白了。</p>
+<p>还有一点要情调的是：</p>
+<p><code>undefined == null //true //true</code></p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中原型的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -434,6 +493,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/25/js的原型/" rel="prev" title="js的原型">
+                js的原型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -485,8 +548,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,7 +577,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,6 +656,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复习一下"><span class="nav-number">1.</span> <span class="nav-text">复习一下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象（object）"><span class="nav-number">2.</span> <span class="nav-text">对象（object）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的属性的增、删、改、查"><span class="nav-number">2.0.1.</span> <span class="nav-text">对象的属性的增、删、改、查</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的创建方法"><span class="nav-number">3.</span> <span class="nav-text">对象的创建方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象字面量格式"><span class="nav-number">3.0.1.</span> <span class="nav-text">对象字面量格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数创建对象"><span class="nav-number">3.0.2.</span> <span class="nav-text">构造函数创建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义构造函数"><span class="nav-number">3.0.3.</span> <span class="nav-text">自定义构造函数**</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数的内部原理"><span class="nav-number">4.</span> <span class="nav-text">构造函数的内部原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自己写一个和构造函数一样的函数封装"><span class="nav-number">4.0.1.</span> <span class="nav-text">自己写一个和构造函数一样的函数封装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的作用：私有化变量"><span class="nav-number">5.</span> <span class="nav-text">闭包的作用：私有化变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装类"><span class="nav-number">6.</span> <span class="nav-text">包装类*</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#包装类的一些例子"><span class="nav-number">6.0.1.</span> <span class="nav-text">包装类的一些例子*</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

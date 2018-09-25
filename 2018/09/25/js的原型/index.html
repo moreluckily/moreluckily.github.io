@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中原型的相关知识。 原型**先说一下原型的定义：原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象，也可以对它进行增删改查，举2个例子： 12345678910Person.prototype.name =">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的原型">
+<meta property="og:url" content="http://moreluckily.com/2018/09/25/js的原型/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中原型的相关知识。 原型**先说一下原型的定义：原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象，也可以对它进行增删改查，举2个例子： 12345678910Person.prototype.name =">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/blog1.png">
+<meta property="og:updated_time" content="2018-09-25T12:47:34.195Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的原型">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中原型的相关知识。 原型**先说一下原型的定义：原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象，也可以对它进行增删改查，举2个例子： 12345678910Person.prototype.name =">
+<meta name="twitter:image" content="http://moreluckily.com/blog1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/25/js的原型/"/>
+
+
+
+
+
+  <title>js的原型 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/25/js的原型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的原型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T14:02:56+08:00">
+                2018-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中原型的相关知识。</p>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型**"></a>原型**</h2><p>先说一下原型的定义：原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象，也可以对它进行增删改查，举2个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = &quot;wang&quot;;</span><br><span class="line">Person.prototype.age = 20;</span><br><span class="line">Person.Prototype.sex = &quot;male&quot;;</span><br><span class="line">function Person() &#123; &#125;</span><br><span class="line">var person1 = new Person();</span><br><span class="line">var person2 = new Person();</span><br><span class="line">person1.name    //&quot;wang&quot;</span><br><span class="line">person2.age     // 20</span><br><span class="line">person1.sex     //male</span><br><span class="line">person1         //Person --&gt; __proto__:Object (原型)</span><br></pre></td></tr></table></figure>
+<p>虽然person1表面上什么都没有，但是因为它是由Person构造出来的，所以他继承了Person的原型，所以就有其他的看不见的属性想name，age，sex。但是我们要注意的是，person1上面的属性是只读的，不能修改它原型上的属性，也不能够删除。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">person1.name = &quot;moreluckily&quot;;</span><br><span class="line">person1.name     // &quot;wang&quot;</span><br><span class="line">delete person1.name;</span><br><span class="line">person1.name     //&quot;wang&quot;</span><br></pre></td></tr></table></figure>
+<p>对于数组，我们是可以利用数组自身的一些方法进行修改，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.card = [100,100,100];</span><br><span class="line">function Person() &#123; &#125;</span><br><span class="line">var person1 = new Person();</span><br><span class="line">person1.card.push(100);</span><br><span class="line">console.log(person1.card);//[100,100,100,100]</span><br></pre></td></tr></table></figure>
+<h3 id="提取共有属性"><a href="#提取共有属性" class="headerlink" title="提取共有属性"></a>提取共有属性</h3><p>利用原型特点和概念，可以提取共有属性。举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Car(color)&#123;</span><br><span class="line">    this.height = 1400;</span><br><span class="line">    this.width =1900;</span><br><span class="line">    this.color = color;</span><br><span class="line">&#125;</span><br><span class="line">var car1 = new Car(&quot;green&quot;);</span><br><span class="line">var car2 = new Car(&quot;red&quot;);</span><br></pre></td></tr></table></figure>
+<p>这个例子可以看到，car1和car2只是color不一样，但是，height和width都是重复执行的，换句话说就是耦合的，这时候我们就需要对其进行解耦，这时候，原型就派上用场了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Car.prototype.height = 1400;</span><br><span class="line">Car.prototype.width = 1900;</span><br><span class="line">function Car(color)&#123;</span><br><span class="line">    this.color = color;</span><br><span class="line">&#125;</span><br><span class="line">var car1 = new Car(&quot;green&quot;);</span><br><span class="line">var car2 = new Car(&quot;red&quot;);</span><br></pre></td></tr></table></figure>
+<p>因为原型也是一个对象，所以我们更简便的去写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Car.prototype = &#123;</span><br><span class="line">    height = 1400,</span><br><span class="line">    width = 1900</span><br><span class="line">&#125;//更简便了</span><br></pre></td></tr></table></figure>
+<p>但是没有，constructor 构造器这个属性，不提倡使用自己写的。<br>总结一下就是，原型就是一个对象，每一个函数有一个原型，而且每一个函数都只有一个原型。</p>
+<h3 id="原型链简介"><a href="#原型链简介" class="headerlink" title="原型链简介"></a>原型链简介</h3><p>构造函数创建对象的时候，里面有一个<br><code>__proto__ //由于在文本中不能输入__proto__,所以以后就用proto代替它</code><br>的属性，它指向的是该函数的原型，当访问变量的时候，如果自身没有该属性，它就会寻找proto上面指向的该函数的原型上去寻找，如果这个原型上面也没有，会继续沿着原型上面的proto属性继续寻找，这条链式结构，就称之为原型链，每条原型链的终点就是Object()。如果，在原型链终点上面也没有找到查询的变量就会报undefined。</p>
+<h3 id="constructor-构造器"><a href="#constructor-构造器" class="headerlink" title="constructor 构造器"></a>constructor 构造器</h3><p>构造函数创建对象的时候，会有一个constructor属性，指向的是构造出该对象的函数。 当我们自定义的方法设定原型的时候，constructor属性是没有的。这就是与原生原型的区别，这时候我们还需要手动添加constructor属性，这样就完美了。接着上面的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">没有设定constructor属性的时候：</span><br><span class="line">car1.constructor    // function Object() &#123;[native code]&#125;</span><br><span class="line">//设定了constructor属性的时候：constructor 就是指向Car</span><br><span class="line">Car.prototype = &#123;</span><br><span class="line">height : 1400,</span><br><span class="line">width : 4950,</span><br><span class="line">constructor : Car</span><br><span class="line">&#125;</span><br><span class="line">function (color) &#123;</span><br><span class="line">this.color = color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链*"></a>原型链*</h2><p>对象如何查看原型：前面我们提到了构造函数可以通过.prototype的方法来查看构造函数的原型，那么我们怎么查看对象的原型呢？</p>
+<p>我们前面提到过用构造函数构造对象的时候，会隐式创建一个this对象，这个this对象里面有一个默认的属性叫做proto属性，这个属性的值就是指向的这个对象的原型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var this = &#123;</span><br><span class="line">     // xxx</span><br><span class="line">     __proto__ : Person.prototype; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原型链：有了原型，原型还是一个对象，那么这个名为原型的对象自然还有自己的原型，这样的原型上还有原型的结构就构成了原型链。举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">GrandFather.prototype.lastName = &apos;DDD&apos;;</span><br><span class="line">function GrandFather() &#123;</span><br><span class="line">    //this = &#123;__proto__: GrandFather.prototype&#125; </span><br><span class="line">&#125;</span><br><span class="line">var grand = new GrandFather();</span><br><span class="line">Father.prototype = grand;</span><br><span class="line">function Father () &#123;</span><br><span class="line">    //this = &#123;__proto__: Father.prototype&#125;</span><br><span class="line">    this.forture = &#123;</span><br><span class="line">        house : 2,</span><br><span class="line">        money : 99999</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var father = new Father();</span><br><span class="line">Son.prototype = father;</span><br><span class="line">function Son () &#123;</span><br><span class="line">    //this = &#123;__proto__: Son.prototype&#125;</span><br><span class="line">    this.name = &quot;fff&quot;;</span><br><span class="line">    this.age = 10;</span><br><span class="line">&#125;</span><br><span class="line">var son = new Son();</span><br><span class="line">var oSon = son;</span><br><span class="line">console.log(oSon.lastName); //D</span><br></pre></td></tr></table></figure></p>
+<p>Father创造出来的每一个对象都继承自grand这个对象，Son的每一个对象都继承自father这个由Father创造出来的对象，这样son就可以继承上面Foo和Gra的所有属性。</p>
+<p>当我们查找oSon上的属性的时候，如果son自身有属性，那么就打印出来，如果没有，就向上查找原型father，如果father上面还有这个属性，那么继续向上查找grand，如果有就输出，如果没有就返回undefined。</p>
+<p>那我们可以画一个图来进行更好的去理解它：</p>
+<p><img src="/blog1.png" alt="原型链图"></p>
+<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h2><p>创建对象的第四种方法，使用Object.create()方法。</p>
+<p>这样可以得到一个没有原型的对象。</p>
+<p><code>Object.create(prototype)</code></p>
+<p>这种方法创建对象，传进去的必须是原型，然后不能是原始值，否则会报错。</p>
+<p>特殊情况，如果填null，是不会报错，但是里面的东西就没有原形了，其他增删改查都是正常进行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">document.write(obj);</span><br><span class="line">document.write(obj.toString());//其实是调用这个</span><br></pre></td></tr></table></figure>
+<p>如果没有原型，有一些问题就会出现。例如，当我们使用document.write的时候，对象是不能直接打印出来的，只能隐式地调用toString方法，然后再进行操作，如果没有原型，那么就没有toString方法，那么使用document.write的时候就会报错。</p>
+<p>另外，只有使用Object.create的时候才能把null传进去，其他情况手动的将prototype设定为null都是不好使的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = Object.create(null);//没原型</span><br></pre></td></tr></table></figure>
+<p>面试题：所有对象的终端指向object.prototype是错误的，绝大多数才是对的，因为null没有原型。</p>
+<h2 id="this的一些问题"><a href="#this的一些问题" class="headerlink" title="this的一些问题"></a>this的一些问题</h2><p>前面我们知道函数内部的this默认的指向是全局对象window，那么我们有什么办法可以改变this的指向吗？</p>
+<p>我们就可以用call/apply来改变this指向。</p>
+<p>call/apply</p>
+<p>作用：改变this指向。</p>
+<p>区别：后面传的参数形式不同。</p>
+<p>我们现在写一个函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line">    this.name = &quot;abc&quot;;</span><br><span class="line">    this.age = 123;</span><br><span class="line">&#125;</span><br><span class="line">Person();//window</span><br><span class="line">//window.name = &apos;abc&apos;;</span><br></pre></td></tr></table></figure>
+<p>这个时候this指向window，name属性自然也就是window上面的全局属性。</p>
+<p>用call/apply来改变this的指向：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">    this.name = &quot;abc&quot;;</span><br><span class="line">    this.age = 123;</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">Person.call(obj, &quot;bcd&quot;, 18);//Person.call(obj,参数1，参数2)</span><br><span class="line">Person.apply(obj, [&quot;bcd&quot;, 18]);//Person.apply(obj,[参数一，参数二])</span><br><span class="line">//obj : &#123;name: &quot;bcd&quot;, age: 123&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到，当使用了call方法之后，Person函数内部的this就指向了我们传递的这个对象。现在这个函数就可以为obj来赋属性值了。</p>
+<p>apply和call基本没有区别，唯一的区别是call后面的参数是一个一个传的，而apply后面的参数是放进一个数组里面然后传进去的。</p>
+<p>在实际开发中，更多的是使用apply，因为我们可以利用arguments来进行不定参操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">    this.name = &quot;abc&quot;;</span><br><span class="line">    this.age = 123;</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">function text() &#123;</span><br><span class="line">    Person.apply(obj, arguments)//apply用的比较多    </span><br><span class="line">&#125;</span><br><span class="line">text(&quot;abc&quot;, 123);</span><br></pre></td></tr></table></figure>
+<p>另外再多人开发中，当我们需要使用之前已经写好的一个十分复杂的代码块的时候，复制代码十分麻烦，因为通常变量都是涉及到上下文中的各个变量。我们不需要重新写一遍，直接使用apply，将this指向改变就可以了。就是利用其他的方法来构建自己的方法，最后进行个性化的定制即可。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中继承的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/25/js的对象/" rel="next" title="js的对象">
+                <i class="fa fa-chevron-left"></i> js的对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/25/js的继承/" rel="prev" title="js的继承">
+                js的继承 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">1.</span> <span class="nav-text">原型**</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提取共有属性"><span class="nav-number">1.1.</span> <span class="nav-text">提取共有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链简介"><span class="nav-number">1.2.</span> <span class="nav-text">原型链简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor-构造器"><span class="nav-number">1.3.</span> <span class="nav-text">constructor 构造器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链"><span class="nav-number">2.</span> <span class="nav-text">原型链*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-create"><span class="nav-number">3.</span> <span class="nav-text">Object.create()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this的一些问题"><span class="nav-number">4.</span> <span class="nav-text">this的一些问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
