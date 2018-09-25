@@ -94,12 +94,12 @@
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
 <meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中闭包的相关知识。 闭包初探先来举个例子吧，让我们看看什么是闭包。 1234567891011121314function a()&amp;#123;   //AO = &amp;#123;  aaa:12 , b : function ()&amp;#123;&amp;#125;&amp;#125;   function b()&amp;#12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://moreluckily.com/img/js1/blog5.png">
-<meta property="og:updated_time" content="2018-09-25T05:35:11.516Z">
+<meta property="og:image" content="http://moreluckily.com/img/js/blog5.png">
+<meta property="og:updated_time" content="2018-09-25T05:46:58.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js的闭包">
 <meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中闭包的相关知识。 闭包初探先来举个例子吧，让我们看看什么是闭包。 1234567891011121314function a()&amp;#123;   //AO = &amp;#123;  aaa:12 , b : function ()&amp;#123;&amp;#125;&amp;#125;   function b()&amp;#12">
-<meta name="twitter:image" content="http://moreluckily.com/img/js1/blog5.png">
+<meta name="twitter:image" content="http://moreluckily.com/img/js/blog5.png">
 
 
 
@@ -396,7 +396,7 @@
 <h2 id="闭包初探"><a href="#闭包初探" class="headerlink" title="闭包初探"></a>闭包初探</h2><p>先来举个例子吧，让我们看看什么是闭包。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">   //AO = &#123;  aaa:12 , b : function ()&#123;&#125;&#125;</span><br><span class="line">   function b()&#123;</span><br><span class="line">   //AO = &#123; bbb: 234&#125;</span><br><span class="line">   var bbb  = 234;</span><br><span class="line">   console.log(aaa);//12</span><br><span class="line">   &#125;</span><br><span class="line">   var aaa = 12;</span><br><span class="line">   return b;</span><br><span class="line">  &#125;</span><br><span class="line">  a();</span><br><span class="line">  var glob = 100;</span><br><span class="line">  var demo = a();</span><br><span class="line">  demo();</span><br></pre></td></tr></table></figure>
 <p>函数里面还套了另一个函数，看起来特别难的样子。让我们先来分析一下。<br>当b执行完之后，就相当于a也执行完了，这样a都会把自己的执行上下文销毁，但是这时候，因为return b，把b保存给了外部的变量demo，这时候当demo执行的时候，可以正常打印出12，具体原因就是，虽然a把自己的执行期上下文删掉，但是这时候b仍然保存有a的劳动成果，当它返回给外部变量的时候，就相当于外部变量也有这个执行期上下文，所以就能够访问到aaa了。这就是我们经常听说的内存泄漏，就是因为原有的作用域链不释放所导致的。具体来看下图。</p>
-<p><img src="/img/js1/blog5.png" alt="闭包图"></p>
+<p><img src="/img/js/blog5.png" alt="闭包图"></p>
 <p>当a执行完成之后，a scope chain [0] 中的指向将会被删除，但是因为b的指向仍然存在，所以仍能访问到所需要的变量。</p>
 <p>举个例子吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function a() &#123;</span><br><span class="line">    var aaa = 123;</span><br><span class="line">    function b() &#123;</span><br><span class="line">        console.log(++aaa);</span><br><span class="line">    &#125;</span><br><span class="line">    return b;</span><br><span class="line">&#125;</span><br><span class="line">var demo = a();</span><br><span class="line">demo(); //124</span><br><span class="line">demo(); //125</span><br></pre></td></tr></table></figure></p>
 <p>当a函数定义的时候，产生一个执行上下文，里面有一个aaa，和一个函数b，当b定义的时候，已经含有a的劳动成果，意思就是它已经有a的执行上下文，并且在b执行的时候，产生它自己的执行上下文，最后当a函数执行完之后，把函数b返回到了全局作用域，虽然a执行完，并且销毁了它自己的执行上下文，但是因为其内部b函数的存在，仍然有a的全部执行上下文，所以，仍然可以通过demo来访问function a( ) { }里面的aaa变量。</p>
