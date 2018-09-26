@@ -86,15 +86,18 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中数组的相关知识。 数组的创建数组的创建基本上只有两种： 1、数组字面量直接创建： 1var arr = [1,2,3]; 2、通过数组构造函数构造数组： 123var arr = new Array(1,2,3);//[1,2,3]var arr = new Array(20);//空数组都是，有">
 <meta name="keywords" content="-javaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js中的数组">
 <meta property="og:url" content="http://moreluckily.com/2018/09/26/js中的数组/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中数组的相关知识。 数组的创建数组的创建基本上只有两种： 1、数组字面量直接创建： 1var arr = [1,2,3]; 2、通过数组构造函数构造数组： 123var arr = new Array(1,2,3);//[1,2,3]var arr = new Array(20);//空数组都是，有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T12:31:41.885Z">
+<meta property="og:updated_time" content="2018-09-26T13:58:19.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js中的数组">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中数组的相关知识。 数组的创建数组的创建基本上只有两种： 1、数组字面量直接创建： 1var arr = [1,2,3]; 2、通过数组构造函数构造数组： 123var arr = new Array(1,2,3);//[1,2,3]var arr = new Array(20);//空数组都是，有">
 
 
 
@@ -350,7 +353,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2.7k
                 </span>
               
 
@@ -366,7 +369,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -387,7 +390,101 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中数组的相关知识。</p>
+<h2 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h2><p>数组的创建基本上只有两种：</p>
+<p>1、数组字面量直接创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3];</span><br></pre></td></tr></table></figure>
+<p>2、通过数组构造函数构造数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = new Array(1,2,3);//[1,2,3]</span><br><span class="line">var arr = new Array(20);//空数组都是，有20位,表示的是length</span><br><span class="line">var arr = new Array(20.1);//会报错</span><br></pre></td></tr></table></figure>
+<p>要注意的是，如果我们在构造函数里面只写一个数字new Array(20);这个时候这个数字就不是第一个值是20的意思了，而是我们新创建的这个数组长度是20。</p>
+<p>一般情况下都是使用第一种方法直接构建数组字面量。</p>
+<h2 id="数组的读写"><a href="#数组的读写" class="headerlink" title="数组的读写"></a>数组的读写</h2><p>js的数组是弱数据类型的数组，不像其他语言那样严格。不可以溢出读：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2];</span><br><span class="line">console.log(arr[3]); //undefined</span><br></pre></td></tr></table></figure>
+<p>但是数组是可以溢出写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr[4] = 4;</span><br><span class="line">console.log(arr);//1,2, , ,4</span><br></pre></td></tr></table></figure>
+<h2 id="改变数组的方法"><a href="#改变数组的方法" class="headerlink" title="改变数组的方法"></a>改变数组的方法</h2><p>改变原数组的方法主要有：reverse,sort,push,pop,shift,unshift,splice</p>
+<p>1、push（）</p>
+<p>arr.push( );可以在数组的最后面直接添加数据，可以任意个数，任意类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [];</span><br><span class="line">arr.push(1,2,3,[],&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>知道了push，我们就可以写一个方法，和它的功能是一样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.push = function () &#123;</span><br><span class="line">    for(var i = 0; i &lt; arguments.length; i++)&#123;</span><br><span class="line">        this[this.length] = arguments[i];//加参数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、pop（）</p>
+<p>pop从数组后面剪切一位数据，同时返回这个被删除的数据，没有参数。只能一个一个剪切。</p>
+<p>3、shift（）</p>
+<p>和pop（）类似，在前面剪切数据，也只能一个一个的剪切。</p>
+<p>4、unshift（）</p>
+<p>和push（）类似，在前面加数据，也能传多个参数。</p>
+<p>5、reverse（）<br>将数组中的数据进行逆转，这个就不多说了。</p>
+<p>6、splice（）*</p>
+<p>splice的英文意思是切片，剪切的意思。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//splice(从第几位开始，剪切多少个长度,在切口处把该值添加进去)；</span><br><span class="line">var arr = [1,2,3];</span><br><span class="line">arr.splice(1, 1, 100, 200, 300);</span><br><span class="line">//[1,100,200,300,3]</span><br><span class="line">//剪切的也是一个数组</span><br><span class="line">//在1后面加一个0</span><br><span class="line">// var arr = [1,2,3];</span><br><span class="line">// arr.splice(1,0,0);</span><br><span class="line">arr = [1, 0, 2, 3];</span><br></pre></td></tr></table></figure>
+<p>7、sort（）**</p>
+<p>这个属性很重要，我们可以用它来进行排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,4,5,0];</span><br><span class="line">arr.sort();</span><br><span class="line">//排序[0,1,2,4,5]，升序排列</span><br><span class="line">var arr = [1,12,3,4];</span><br><span class="line">arr.sort();</span><br><span class="line">//[1,12,3,4]</span><br><span class="line">//按ASCII码进行排序，不是大小排序</span><br></pre></td></tr></table></figure>
+<p>我们可以自定义排序，关注返回值，一旦返回值为负值，那么前面的参数代表的数据就在前面。一旦返回值为正值，那么前面的参数代表的数据就在后面。然后根据返回值，按照上述方法进行排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,12,2,3,4];</span><br><span class="line">//自己写一个规则，升序</span><br><span class="line">arr.sort(function (a,b) &#123;</span><br><span class="line">	if(a &gt; b)&#123;</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">//arr [1,2,3,4,12] 升序</span><br><span class="line">//自己写一个规则，降序</span><br><span class="line">	arr.sort(function (a,b)&#123;</span><br><span class="line">	    if(a &lt; b)&#123;</span><br><span class="line">		    return 1;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			return -1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">//arr [12,4,3,2,1]; 降序</span><br></pre></td></tr></table></figure>
+<p>这种比较的方式就是冒泡排序，将这些数随机的取2个数去对比(不是随机)，再进行排序,冒泡排序法（重点），冒泡排序法（重点)：我的理解是：<br>先将第一个数和第二个数进行比较，取出较小值，然后将较小值放在第一个数，然后再和后面的比较，最小的放在第一位。然后将第二位的数和后面的每个数比较，取出较小值，一圈一圈的进行对比。…比完之后，就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//简化的一种写法：</span><br><span class="line">var arr = [1,12,2,3,4];</span><br><span class="line">arr.sort(function (a,b) &#123;</span><br><span class="line">	return a-b;//升序</span><br><span class="line">	return b-a;//将序</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>给对象的某个属性进行排序，按ASCII码进行排序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var arr = [</span><br><span class="line">    &#123;name:&apos;moreluckb&apos;,age:20&#125;,</span><br><span class="line">    &#123;name:&apos;moreluckc&apos;,age:10&#125;,</span><br><span class="line">    &#123;name:&apos;morelucka&apos;,age:30&#125;</span><br><span class="line">]</span><br><span class="line">//ASCII码进行排序，a&lt;b&lt;c&lt;d...</span><br><span class="line">arr.sort(function (a,b) &#123;</span><br><span class="line">    if(a.name &gt; b.name)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);//升序排列</span><br><span class="line">//  &#123;name:&apos;morelucka&apos;,age:30&#125;,</span><br><span class="line">    &#123;name:&apos;moreluckb&apos;,age:20&#125;,</span><br><span class="line">    &#123;name:&apos;moreluckc&apos;,age:10&#125;</span><br></pre></td></tr></table></figure>
+<p>将正序的数组进行随机打乱排序:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3,4,5,6,7];</span><br><span class="line">arr.sort(function () &#123;</span><br><span class="line">    return Math.random() - 0.5;</span><br><span class="line">&#125;); //Math.random();//返回随机数,(0,1)</span><br><span class="line">//每次比较都是不一样的，而且是乱的</span><br></pre></td></tr></table></figure>
+<h2 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h2><p>1、concat（）</p>
+<p>对两个数组进行连接。并且原数组是不会发生变化的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//arr.concat(): 对两个数组进行连接。</span><br><span class="line">var arr = [1,2,3];</span><br><span class="line">var arr1 = [4,5,6];</span><br><span class="line">var arr2 = arr.concat(arr1); // [1,2,3,4,5,6]</span><br></pre></td></tr></table></figure>
+<p>当然我们如果要连接多个数组的话，那么concat里面的数组之间用逗号分隔即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr3 = [5, 5];</span><br><span class="line">arr = arr1.concat(arr2, arr3);</span><br></pre></td></tr></table></figure>
+<p>2、toString（）</p>
+<p>将数组的每一位转化成字符串并返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&#123;&#125;,1,2,true];</span><br><span class="line">arr.toString();  // &quot;[object Object],1,2,true&quot;</span><br></pre></td></tr></table></figure>
+<p>3、slice（）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// arr.slice(第几位开始截，第几位结束)</span><br><span class="line">// arr.slice(第几位开始截到最后全部)，负数也可以，从后面开始到最后</span><br><span class="line">var arr = [1,2,3];</span><br><span class="line">var arr1 = arr.slice(0,1);//[1]</span><br><span class="line">var arr2 = arr.slice(1);//[2,3]</span><br></pre></td></tr></table></figure>
+<p>4、join（）</p>
+<p>将数组按照传进去的符号进行连接，最后转化为字符串返回。默认是逗号连接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//join将数组弄成字符串</span><br><span class="line">var arr = [&apos;more&apos;,&apos;&amp;&apos;,&apos;luck&apos;,&apos;&amp;&apos;,&apos;ily&apos;];</span><br><span class="line">console.log(arr.join(&quot;&quot;));//more&amp;luck&amp;ily</span><br><span class="line">console.log(arr.join(&quot;,&quot;));//more,&amp;,luck,&amp;,ily</span><br><span class="line">var str = arr.join();//默认连接的是&quot;,&quot;</span><br></pre></td></tr></table></figure>
+<p>5、split（）</p>
+<p>将字符串按照传进去的符号拆分为字符串形式数组。注意它是字符串的方法。但是它跟join操作是互逆的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;the-first-name&quot;;</span><br><span class="line">console.log(str.split(&quot;-&quot;));//[&quot;the&quot;, &quot;first&quot;, &quot;name&quot;]</span><br><span class="line">console.log(str.split(&quot;&quot;));//[&quot;t&quot;, &quot;h&quot;, &quot;e&quot;, &quot;-&quot;, &quot;f&quot;, &quot;i&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;-&quot;, &quot;n&quot;, &quot;a&quot;, &quot;m&quot;, &quot;e&quot;]</span><br><span class="line">console.log(str.split(&quot;-f&quot;));//[&quot;the&quot;, &quot;irst-name&quot;]//以这个进行截</span><br></pre></td></tr></table></figure>
+<p>举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;百度&apos;,&apos;alibaba&apos;,&apos;tencent&apos;,&apos;toutiao&apos;,&apos;wangyi&apos;</span><br><span class="line">把它们连接起来。</span><br></pre></td></tr></table></figure></p>
+<p>第一种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;&quot;;</span><br><span class="line">str += ...；</span><br></pre></td></tr></table></figure>
+<p>这种很耗性能，因为它属于栈操作。</p>
+<p>第二种方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;百度&apos;,&apos;alibaba&apos;,&apos;tencent&apos;,&apos;toutiao&apos;,&apos;wangyi&apos;];</span><br><span class="line">arr.join(&apos;,&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>堆内存散列操作，节省操作。<br>栈内存，放进去容易，取出来容易，特别恶心。</p>
+<h2 id="数组去重问题"><a href="#数组去重问题" class="headerlink" title="数组去重问题"></a>数组去重问题</h2><p>这里有一个我们必须要掌握的方法：数组去重方法。</p>
+<p>把数组中重复的元素去掉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,1,1,1,2,3,3,2,3,2,undefined,undefined];</span><br><span class="line">Array.prototype.unique = function () &#123;</span><br><span class="line">    var obj = &#123;&#125;,</span><br><span class="line">        arr = []</span><br><span class="line">    for(var i = 0;i &lt; this.length; i++) &#123;</span><br><span class="line">        if(!obj[this[i]]) &#123;</span><br><span class="line">            obj[this[i]] = &apos;abc&apos;;</span><br><span class="line">            arr.push(this[i]);</span><br><span class="line">        &#125;           </span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr.unique());//[1, 2, 3, undefined]</span><br></pre></td></tr></table></figure>
+<p>这里我们运用了一个简单的哈希结构。当我们数组中的这个数据出现过一次之后，我们就在obj中将这个元素的值的位置标记成’abc’，后面如果出现相同的属性值，因为这个位置已经是’abc’了，所以就不会添加到新数组里面，从而达到了去重的效果。</p>
+<h2 id="ES5的数组方法"><a href="#ES5的数组方法" class="headerlink" title="ES5的数组方法"></a>ES5的数组方法</h2><p>刚才的那些常用的数组方法都是ES3中定义的，ES5中出现了一些新的方法。</p>
+<p>1、forEach（）</p>
+<p>这个方法会改变原数组，它让数组中的元素从头到尾遍历一遍，每一个都调用一下我们在forEach里面传递的方法，中间不会停止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3, 4];</span><br><span class="line">arr.forEach(function () &#123;</span><br><span class="line">      arr[i] += 1;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(arr); // 2 3 4 5</span><br></pre></td></tr></table></figure>
+<p>2、map（）</p>
+<p>这个方法和forEach很像，只不过forEach会改变原数组，而map不会改变原数组，而是返回一个新的数组，它也是让传递一个指定的方法，让数组中的每一个元素都调用一遍这个方法。不过记得map方法最后有返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">var test = arr.map(function (x) &#123;</span><br><span class="line">        return x * x;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(test); // 1 4 9</span><br><span class="line">console.log(arr); // 1 2 3</span><br></pre></td></tr></table></figure>
+<p>3、filter（）</p>
+<p>这个方法是过滤的作用，它同样不会改变原数组，而是返回一个原数组的子集。我们同样会传递一个方法，每一个元素都会调用一下这个方法，但是只有返回true的元素才会被添加到新数组里面，返回false的不会被添加到新数组里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = [1 ,2 , 3, 4, 5];</span><br><span class="line">var b = a.filter(function (x) &#123;</span><br><span class="line">      return x &gt; 2</span><br><span class="line">&#125;);</span><br><span class="line">console.log(b); // 3 4 5</span><br></pre></td></tr></table></figure>
+<p>同时，filter( )会跳过稀疏数组里面缺少的元素，它的返回数组总是稠密的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,,,,,,3,4];</span><br><span class="line">var b = arr.filter(function () &#123;</span><br><span class="line">      return true;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(arr); // 1 3 4</span><br></pre></td></tr></table></figure>
+<p>4、every（） 和 some（）</p>
+<p>这两个方法是数组的逻辑判定，他们对数组应用指定的函数进行判定，返回true或者false。</p>
+<p>every是如果每一个元素经过传递的方法的判定之后都返回true，那么最后才返回true。</p>
+<p>some是只要有一个元素返回true，那么就返回true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1 ,2 ,3];</span><br><span class="line">console.log(arr.some(function (x) &#123;return x&lt;3;&#125;)); true</span><br><span class="line">console.log(arr.every(function (x) &#123;return x&lt;3;&#125;)); false</span><br></pre></td></tr></table></figure>
+<p>5、reduce（） 和 reduceRight（）</p>
+<p>reduce()和reduceRight()方法使用指定的函数将数组元素进行组合，最后变成一个值，reduce是从左向右，reduceRight是从右向左。有两个参数，第一个是方法，第二个是可选参数，即我们最后的这个值的初始值。</p>
+<p>当我们没有设置初始值的时候，用数组的第一个元素的值作为初始值。不过当数组为空的时候，不带初始值就会报错。</p>
+<p>当我们的数组只有一个元素并且没有指定初始值，或者有一个空数组并且指定一个初始值的情况下，reduce只是简单地返回那个值，而不会调用函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">var sum = a.reduce(function (x, y) &#123; return x + y&#125;, 0);</span><br><span class="line">// 0 + 1 + 2 + 3 = 6;</span><br><span class="line">var temp = [1];</span><br><span class="line">var temoOut = a.reduce(function (x, y) &#123;return x  x  y&#125;); </span><br><span class="line">// 1 不会调用这个函数，因为数组只有一个值，除非我们设置一个初始值</span><br></pre></td></tr></table></figure>
+<p>前面说的isArray()方法来检测是否是数组，其实是ES5里面的。</p>
+<p>最好的检验数组的方法是：</p>
+<blockquote>
+<p>Object.prototype.toString.call(arr) === ‘[object Array]’ </p>
+</blockquote>
+<p>这是最可靠的检测是否是数组类型的方法。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中的类数组的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -489,8 +586,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,6 +694,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的创建"><span class="nav-number">1.</span> <span class="nav-text">数组的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的读写"><span class="nav-number">2.</span> <span class="nav-text">数组的读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变数组的方法"><span class="nav-number">3.</span> <span class="nav-text">改变数组的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不改变原数组"><span class="nav-number">4.</span> <span class="nav-text">不改变原数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组去重问题"><span class="nav-number">5.</span> <span class="nav-text">数组去重问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5的数组方法"><span class="nav-number">6.</span> <span class="nav-text">ES5的数组方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
