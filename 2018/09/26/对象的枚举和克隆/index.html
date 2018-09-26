@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中克隆的相关知识。 对象的枚举我们知道要枚举一个数组的所有元素，只要用一个for循环从头到尾遍历一遍就可以了。 但是对象并不能用for循环来遍历属性，所以这里我们就要使用for-in操作了。 123456789101112var obj = &amp;#123;    name : &amp;quot;abc&amp;qu">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象的枚举和克隆">
+<meta property="og:url" content="http://moreluckily.com/2018/09/26/对象的枚举和克隆/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中克隆的相关知识。 对象的枚举我们知道要枚举一个数组的所有元素，只要用一个for循环从头到尾遍历一遍就可以了。 但是对象并不能用for循环来遍历属性，所以这里我们就要使用for-in操作了。 123456789101112var obj = &amp;#123;    name : &amp;quot;abc&amp;qu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-26T12:31:46.177Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象的枚举和克隆">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中克隆的相关知识。 对象的枚举我们知道要枚举一个数组的所有元素，只要用一个for循环从头到尾遍历一遍就可以了。 但是对象并不能用for循环来遍历属性，所以这里我们就要使用for-in操作了。 123456789101112var obj = &amp;#123;    name : &amp;quot;abc&amp;qu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/26/对象的枚举和克隆/"/>
+
+
+
+
+
+  <title>对象的枚举和克隆 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/26/对象的枚举和克隆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">对象的枚举和克隆</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-26T20:29:19+08:00">
+                2018-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中克隆的相关知识。</p>
+<h2 id="对象的枚举"><a href="#对象的枚举" class="headerlink" title="对象的枚举"></a>对象的枚举</h2><p>我们知道要枚举一个数组的所有元素，只要用一个for循环从头到尾遍历一遍就可以了。</p>
+<p>但是对象并不能用for循环来遍历属性，所以这里我们就要使用for-in操作了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    name : &quot;abc&quot;,</span><br><span class="line">    age : 123,</span><br><span class="line">    sex : &quot;male&quot;</span><br><span class="line">&#125;</span><br><span class="line">for(var prop in obj) &#123;</span><br><span class="line">var prop , prop in obj，也可以这样写</span><br><span class="line">    console.log(obj[prop]);</span><br><span class="line">    // 每一次prop都代表obj中的一个属性名</span><br><span class="line">    //obj.prop不行</span><br><span class="line">    //obj.prop --&gt;（电脑转化）--&gt;obj[&quot;prop&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>能把对象中的每一个属性都打印出来。var prop 相当于声明一个变量，in obj，每次循环都会从obj中拿出来一个属性名，obj[prop]就可以得到每一个属性值。注意不能写obj.prop这个形式，因为系统会将它变成obj[‘prop’]属性，所以每次都是undefined。</p>
+<p>而且可以把var prop写在外面。</p>
+<p>但直接这样写会有错误，看下面的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = &apos;abc&apos;;</span><br><span class="line">function Person() &#123;</span><br><span class="line">    this.age = 123;</span><br><span class="line">    this.sex = &apos;male&apos;;</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person();</span><br><span class="line">for(var prop in person) &#123;</span><br><span class="line">    console.log(person[prop]);</span><br><span class="line">&#125;</span><br><span class="line">//会打印出&quot;abc.....</span><br></pre></td></tr></table></figure>
+<p>它会把自己原型链的属性也会打印出来，这有时候就不是我们需要的，我们只需要它自己的属性。</p>
+<p>下面我们来介绍三种操作符：</p>
+<p>1 、hasOwnProperty</p>
+<p>这个操作符的作用是查看当前这个属性是不是对象自身的属性，在原型链上的属性则会被过滤掉。如果是自身的，就返回true，否则返回false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = &apos;abc&apos;;</span><br><span class="line">function Person() &#123;</span><br><span class="line">    this.age = 123;</span><br><span class="line">    this.sex = &apos;male&apos;;</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person();</span><br><span class="line">for(var prop in person) &#123;</span><br><span class="line">    if(person.hasOwnProperty(prop))&#123;</span><br><span class="line">        console.log(person[prop]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们的for-in循环就会只打印自身的属性而不会去打印原型上的属性。</p>
+<p>2、in操作符</p>
+<p>这个操作符的作用是查看一个属性是不是在这个对象或者它的原型里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    name : &quot;abc&quot;,</span><br><span class="line">    age : 123</span><br><span class="line">&#125;</span><br><span class="line">console.log(&apos;name&apos; in obj);  //true</span><br><span class="line">console.log(&apos;age&apos; in obj);   //true</span><br><span class="line">console.log(&apos;sex&apos; in obj);  //false</span><br></pre></td></tr></table></figure>
+<p>3、instanceof 操作符</p>
+<p>这个操作符的作用是查看前面的对象是不是后面的构造函数构造出来的，和constructor挺像的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">var person = new Person();</span><br><span class="line">console.log(person instanceof Person);</span><br><span class="line">//true，是不是构造的?</span><br></pre></td></tr></table></figure>
+<p>也可以理解为：后面的构造器的原型是否在前面对象的原型链上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function grand() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = new grand();</span><br><span class="line">function Person() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">var person = new Person();</span><br><span class="line">console.log(person instanceof grand);</span><br><span class="line">//true</span><br></pre></td></tr></table></figure>
+<p>在这里介绍一下快捷键的使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">撤销   ctrl+z</span><br><span class="line">反撤销  ctrl+y</span><br><span class="line">选中：Shift + 左右</span><br><span class="line">        ctrl + d</span><br><span class="line">Tab == ctrl + [</span><br><span class="line">Shift+Tab == ctrl + ] </span><br><span class="line">选中一行：Shift+ctrl + 左右</span><br></pre></td></tr></table></figure>
+<h2 id="区分数组和对象"><a href="#区分数组和对象" class="headerlink" title="区分数组和对象"></a>区分数组和对象</h2><p>1、instanceof 操作符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[] instanceof Object //true</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj instanceof Object//true</span><br><span class="line">[] instanceof Array //true</span><br><span class="line">obj instanceof Array//false</span><br></pre></td></tr></table></figure>
+<p>2、利用constructor属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [];</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">arr.constructor --&gt;Array</span><br><span class="line">obj.constructor --&gt;Object</span><br></pre></td></tr></table></figure>
+<p>3、toString方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString</span><br><span class="line">Array.prototype.toString</span><br><span class="line">Number.prototype.toString</span><br><span class="line">Boolean.prototype.toString</span><br><span class="line">String.prototype.toString</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.toString = function () &#123;</span><br><span class="line">    return &quot;moreluckily&quot;;</span><br><span class="line">&#125;</span><br><span class="line">var arr = [1,2,3,4];</span><br><span class="line">document.write(arr);//moreluckily</span><br><span class="line">console.log(arr);//[1,2,3,4]</span><br></pre></td></tr></table></figure>
+<p>为了方便各种类型进行打印，系统在每个原型链上面都重写了toString方法。因为对象，数组都不能直接使用document.write()进行打印，系统会内部进行调用该变量的toString方法。但是我们需要跳过数组自身的toString方法，去使用Object上面的toString。这时候，就要使用call来改变指向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; &#125;;</span><br><span class="line">var arr = [ ];</span><br><span class="line">var  toStr = Object.prototype.toString;</span><br><span class="line">console.log(toStr.call(obj));//[Object Object]</span><br><span class="line">console.log(toStr.call(arr));//[Object Array]</span><br></pre></td></tr></table></figure>
+<p>封装成方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function isArrayOrObject(target) &#123;</span><br><span class="line">    var toStr = Object.prototype.toString,</span><br><span class="line">        arrStr = &apos;[Object Array]&apos;;</span><br><span class="line"></span><br><span class="line">        if(toStr.call(target) === arrStr) &#123;</span><br><span class="line">            return &apos;this is Array&apos;;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return &apos;this is Object&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那能不能写一个函数将所有的类型的数据都判断出来呢？所有的原始值和引用值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">number string boolean undefined null  //原始值</span><br><span class="line">------typeof() ---object function //null注意</span><br><span class="line">//typeof(null) -- &gt; object</span><br><span class="line">//if(null == null)&#123;return null&#125;</span><br><span class="line">object array function Number() Boolean() String() //引用值</span><br></pre></td></tr></table></figure>
+<p>封装成方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function type(target) &#123;</span><br><span class="line">    var typeStr = typeof(target),</span><br><span class="line">        toStr = Object.prototype.toString,</span><br><span class="line">        objStr = &#123;</span><br><span class="line">            &quot;[object Object]&quot; : &quot;object - object&quot;,</span><br><span class="line">            &quot;[object Array]&quot; : &quot;array - object&quot;,</span><br><span class="line">            &quot;[object Number]&quot; : &quot;number - object&quot;,</span><br><span class="line">            &quot;[object Boolean]&quot; : &quot;boolean - object&quot;,</span><br><span class="line">            &quot;[object String]&quot; : &quot;string - object&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    if(target === null) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;else if(typeStr === &quot;function&quot;) &#123;</span><br><span class="line">        return &quot;function&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    if(typeStr !== &quot;object&quot;)&#123;</span><br><span class="line">        return typeStr;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return objStr[toStr.call(target)]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>4、Array.isArray( )方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Array.isArray([1, 2, 3]);  // true</span><br><span class="line">Array.isArray(&#123;foo: 123&#125;); // false</span><br><span class="line">Array.isArray(&apos;foobar&apos;);   // false</span><br><span class="line">Array.isArray(undefined);  // false</span><br></pre></td></tr></table></figure>
+<p>比较推荐使用前面讲的第三种方法。</p>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p>在开始介绍克隆的代码和数组的相关知识点之前，我在前面先介绍一下arguments.callee方法和func.caller属性。</p>
+<p>1、arguments.callee</p>
+<p>arguments是每个函数都具有的一个对象，实参列表。它有一个属性叫做callee，指向的是函数的本身。</p>
+<p>当我们在一些匿名函数或者立即执行函数里面进行递归调用函数本身的时候，由于这个函数没有名字，我们不能用函数名的方式调用，就可以用arguments.callee来调用。</p>
+<p>一般当我们需要通过计算来进行初始化的时候，我们写一个立即执行函数，当这个立即执行函数还需要递归调用自身的时候，我们就是用arguments.callee方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var num = (function (n) &#123;</span><br><span class="line">    if(n == 1)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return n * arguments.callee(n-1);</span><br><span class="line">&#125;(5))</span><br><span class="line">console.log(num); //120</span><br><span class="line">//小数点后能计算到15位,再多就不好使了</span><br></pre></td></tr></table></figure>
+<p>2、func.caller</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function demo() &#123;</span><br><span class="line">    text();</span><br><span class="line">&#125;</span><br><span class="line">function text() &#123;</span><br><span class="line">    console.log(text.caller);</span><br><span class="line">&#125;</span><br><span class="line">demo(); //demo() &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>func.caller：这是函数本身自带的一个属性，可以指出当前函数里运行环境的函数引用，即这个函数是在哪个函数体里面执行的。</p>
+<p>会考它俩的区别。</p>
+<h2 id="克隆-1"><a href="#克隆-1" class="headerlink" title="克隆"></a>克隆</h2><p>克隆和我们前面所讲的继承有一些区别，克隆是复制出来一个一模一样的目标对象，而克隆又分为浅层克隆和深层克隆。</p>
+<h3 id="浅层克隆"><a href="#浅层克隆" class="headerlink" title="浅层克隆"></a>浅层克隆</h3><p>克隆大致就是我们的源对象里面有什么属性，目标文件就有什么属性，依照这个原理，我们可以写出下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    name : &apos;abc&apos;,</span><br><span class="line">    age : 123</span><br><span class="line">&#125;</span><br><span class="line">var obj1 = &#123;&#125;</span><br><span class="line">for(var prop in obj)&#123;</span><br><span class="line">    obj1[prop] = obj[prop];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将其封装成一个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    name : &apos;abc&apos;,</span><br><span class="line">    age : 123</span><br><span class="line">&#125;</span><br><span class="line">var obj1 = &#123;&#125;</span><br><span class="line">function extend(origin, targrt) &#123;</span><br><span class="line">        for(var prop in origin)&#123;</span><br><span class="line">        target[prop] = origin[prop];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浅层的拷贝，对引用值不好使，即当我们有一个属性是引用值（数组或者对象）的时候，按照我们这种克隆方式，只是把这个引用值的指向赋给了新的目标对象，也就是说，我们一旦改变了源对象或者目标对象的引用值属性，另一个也会跟着改变，这一点就是浅层克隆的缺点。</p>
+<h3 id="深层克隆"><a href="#深层克隆" class="headerlink" title="深层克隆"></a>深层克隆</h3><p>为了解决浅层克隆的引用值的问题，我们又需要一种深层克隆。</p>
+<p>其实深层克隆的原理也很简单，我们只要不克隆引用值的引用，而是把引用值也当做一个源对象，把里面的值一个一个的克隆进目标对象里面，不就解决了他们二者相同指向的问题了吗。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(origin, target) &#123; //传不传target都行</span><br><span class="line">    var target = target || &#123;&#125;,</span><br><span class="line">        arrStr = &quot;Array - Object&quot;;</span><br><span class="line">    for(var prop in origin) &#123;</span><br><span class="line">        if(origin.hasOwnProperty(prop)) &#123; //判断是不是对象</span><br><span class="line">            if(typeof(origin[prop] === &quot;object&quot;)) &#123;</span><br><span class="line">                if(type(target[prop]) == arrStr)&#123;</span><br><span class="line">                    target[prop] = [];</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    target[prop] = &#123;&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">                deepClone(origin[prop], target[prop]);   </span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                target[prop] = origin[prop];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们运用了递归调用的方法，当我们检测到源对象里面的这个属性值是引用类型的，那么就在目标对象里面也创建一个引用类型的属性，如果原来是数组就创建数组，是对象就创建对象，然后分别将源对象里面的这个引用值和目标对象里面的引用值分别当做新的源对象和目标对象进行克隆，这样就是克隆的里面每一个值了，而不是把整个引用都克隆过去。</p>
+<p>这个时候目标对象和源对象的引用值之间就没有了关系，自己都是独立值，可以进行修改了。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中的数组的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/25/js中的this/" rel="next" title="js中的this">
+                <i class="fa fa-chevron-left"></i> js中的this
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/26/js中的数组/" rel="prev" title="js中的数组">
+                js中的数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的枚举"><span class="nav-number">1.</span> <span class="nav-text">对象的枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分数组和对象"><span class="nav-number">2.</span> <span class="nav-text">区分数组和对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆"><span class="nav-number">3.</span> <span class="nav-text">克隆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆-1"><span class="nav-number">4.</span> <span class="nav-text">克隆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅层克隆"><span class="nav-number">4.1.</span> <span class="nav-text">浅层克隆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深层克隆"><span class="nav-number">4.2.</span> <span class="nav-text">深层克隆</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
