@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM基本操作续的相关知识。 DOM基本操作续createElement创建元素节点: 我们可以通过:1document.createElement(‘div’); 这个方法来创建一个元素，里面的参数填写我们要创建的标签名称，像div、p、span等等。 createTextNode创建文本节点:">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的DOM操作续">
+<meta property="og:url" content="http://moreluckily.com/2018/09/27/js的DOM操作续/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM基本操作续的相关知识。 DOM基本操作续createElement创建元素节点: 我们可以通过:1document.createElement(‘div’); 这个方法来创建一个元素，里面的参数填写我们要创建的标签名称，像div、p、span等等。 createTextNode创建文本节点:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-27T16:36:36.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的DOM操作续">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM基本操作续的相关知识。 DOM基本操作续createElement创建元素节点: 我们可以通过:1document.createElement(‘div’); 这个方法来创建一个元素，里面的参数填写我们要创建的标签名称，像div、p、span等等。 createTextNode创建文本节点:">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/27/js的DOM操作续/"/>
+
+
+
+
+
+  <title>js的DOM操作续 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/27/js的DOM操作续/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的DOM操作续</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T23:25:10+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM基本操作续的相关知识。</p>
+<h2 id="DOM基本操作续"><a href="#DOM基本操作续" class="headerlink" title="DOM基本操作续"></a>DOM基本操作续</h2><h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><p>创建元素节点:</p>
+<p>我们可以通过:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.createElement(‘div’);</span><br></pre></td></tr></table></figure></p>
+<p>这个方法来创建一个元素，里面的参数填写我们要创建的标签名称，像div、p、span等等。</p>
+<h3 id="createTextNode"><a href="#createTextNode" class="headerlink" title="createTextNode"></a>createTextNode</h3><p>创建文本节点:</p>
+<p>我们可以通过:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.createTextNode(‘abcd’)</span><br></pre></td></tr></table></figure></p>
+<p>方法来创建一个文本节点，里面的参数填写我们的文本内容。</p>
+<h3 id="createComment"><a href="#createComment" class="headerlink" title="createComment"></a>createComment</h3><p>创建注释节点:</p>
+<p>我们可以通过:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.createComment(‘comment’);</span><br></pre></td></tr></table></figure></p>
+<p>方法来创建一个注释节点，参数写我们要写的注释内容。</p>
+<h3 id="createDocumentFragment"><a href="#createDocumentFragment" class="headerlink" title="createDocumentFragment"></a>createDocumentFragment</h3><p>这个方法可以创建一个文档碎片，有关提高性能的部分会用到这个方法。</p>
+<h3 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h3><h4 id="appendChild-child"><a href="#appendChild-child" class="headerlink" title="appendChild(child);"></a>appendChild(child);</h4><p>这个是父级调用的方法，它会将child元素插入到父级里面，而且是放到逻辑后面的位置上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">div.appendChild(text);</span><br><span class="line">div.appendChild(comment);</span><br></pre></td></tr></table></figure>
+<p>这里如果是我们创建的元素，那么appendChild就是把新元素插入进去，但是如果是DOM里面已经存在的元素，那么appendChild就是把这个已经存在的元素给剪切掉，然后放到新的位置上。</p>
+<h4 id="insertBefore-a-b"><a href="#insertBefore-a-b" class="headerlink" title="insertBefore(a, b);"></a>insertBefore(a, b);</h4><p>这个依然是父节点调用的方法，它的意思是将a插入到b前面的位置上，其中b要求是这个父级的子节点。这个方法可以记作为 insert a before b;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var span = document.createElement(‘span’);</span><br><span class="line">div.insertBefore(span, comment);</span><br></pre></td></tr></table></figure>
+<p>这样我们就把一个span元素插入到了刚才的注释文本前面。</p>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><h4 id="removeChild"><a href="#removeChild" class="headerlink" title="removeChild"></a>removeChild</h4><p>这个方法依然是父级调用的，参数就是要删除的子节点，其实实际上是剪切，这个方法会把我们删除掉的元素给返回，我们可以用一个变量去保存这个被删除的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var div = document.body.remove(div);</span><br></pre></td></tr></table></figure>
+<p>这样我们的div变量就可以保存刚才被删除的div这个元素。</p>
+<h3 id="替换操作"><a href="#替换操作" class="headerlink" title="替换操作"></a>替换操作</h3><h4 id="replaceChild-new-origin"><a href="#replaceChild-new-origin" class="headerlink" title="replaceChild(new, origin)"></a>replaceChild(new, origin)</h4><p>这个方法同样是父级调用，用新的元素new来替换原来的origin元素，原来的被替换掉的元素可以被返回，我们可以像删除操作那样用一个变量来保存。</p>
+<p>现在我们就可以通过以上这些方法来动态创建一棵DOM树了。</p>
+<p>下面介绍一些Element节点的属性和方法：</p>
+<h3 id="innerHTML"><a href="#innerHTML" class="headerlink" title="innerHTML"></a>innerHTML</h3><p>这个属性可以用字面意思来理解，元素里面的HTML结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.innerHML = ‘&lt;div&gt;123&lt;/div&gt;’;</span><br></pre></td></tr></table></figure>
+<p>我们可以直接通过这个属性来改变元素内部的结构和内容，不过注意它会直接删除掉以前的所有结构，如果以前内容还有其他的节点的话，使用的时候就要小心了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">demo.innerHTML = &apos;&lt;p&gt;\</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;\</span><br><span class="line">&lt;/p&gt;&apos;;</span><br><span class="line">//不能有空格，加\</span><br></pre></td></tr></table></figure>
+<p>拷贝的时候注意，不能有空格。</p>
+<h3 id="innerText-textContent"><a href="#innerText-textContent" class="headerlink" title="innerText/textContent"></a>innerText/textContent</h3><p>innerText老版本的火狐浏览器不兼容，textContent老版本的IE浏览器不兼容。</p>
+<p>这个属性可以直接调出来元素内部的文本信息，若果这个元素还有很多的子元素的话，那么会把子元素里面的文本信息一起返回。</p>
+<p>不过需要注意的是，如果我们要改写innerText或者textContent的话，它会像innerHTML一样，先把内部的所有html结构先删除掉，然后再写入text文本，因此里面有html结构的时候写入也要小心。</p>
+<p>这里提一下，如果我们有很多字符串要添加到一个元素的内部的话，虽然用innerHTML或者innerText方法，但是却不是用innerHML += str的方法，因为+=操作符的效率极低，当字符串很多的时候会非常非常消耗性能。</p>
+<p>遇到这种情况我们一般是用数组的join方法将字符串全部连接成一个字符串，然后一次性写入innerHTML。</p>
+<h3 id="ele-setAttribute"><a href="#ele-setAttribute" class="headerlink" title="ele.setAttribute();"></a>ele.setAttribute();</h3><p>这个方法可以设置元素的属性（特性），比如class、id等一些行间属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.setAttribute(‘id’, ‘demo’);</span><br></pre></td></tr></table></figure>
+<p>这个操作就可以给div这个元素设置一个叫做demo的id。</p>
+<h3 id="ele-getAttribute"><a href="#ele-getAttribute" class="headerlink" title="ele.getAttribute();"></a>ele.getAttribute();</h3><p>这个方法是获取元素的行间属性。同样这里需要提一下，每个元素自带的行间属性都有自己特殊的功能，而我们通过自己给他们设置的属性并没有任何功能，因此我们可以来赋予他们功能和用处。还有一点，我们在后面改变元素的样式的时候，通常不是直接修改他的css样式，而是事先写好它应该变成的样式，然后装进一个class里面，我们直接修改他的类名而不是css样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;demo&quot;&gt;&lt;/div&gt;</span><br><span class="line">demo.setAttribute(&apos;sex&apos;, &apos;male&apos;);</span><br><span class="line">demo.setAttribute(&apos;clickTimes&apos;, &apos;10&apos;);</span><br><span class="line">console.log(demo.getAttribute(&apos;id&apos;));//demo</span><br><span class="line">console.log(demo.getAttribute(&apos;clickTimes&apos;));//10</span><br></pre></td></tr></table></figure>
+<p>请编写一段JavaScript脚本生成下面这段DOM结构。要求：使用标准的DOM方法或属性。其实就是用DOM动态生成这样一个结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=”example”&gt;</span><br><span class="line">      &lt;p class=”slogan”&gt;HelloWorld&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>比较麻烦的写法就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var div = document.createElement(‘div’),</span><br><span class="line">p = document.createElement(‘p’),</span><br><span class="line">text = document.create(‘HelloWorld’);</span><br><span class="line">div.setAttribute(‘class’, ‘example’);</span><br><span class="line">p.setAttribute(‘class’, ‘slogan’);</span><br><span class="line">p.appendChild(text);</span><br><span class="line">div.appendChild(p);</span><br><span class="line">document.body.append(div);</span><br></pre></td></tr></table></figure>
+<p>不过这里有点小提示，节点的className属性可以读写操作class。</p>
+<p>因此这里我们为标签赋类名的值的时候可以不用setAttribute，可以直接用className。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">div.className = ‘example’;</span><br><span class="line">p.className = ‘slogan’;</span><br></pre></td></tr></table></figure>
+<p>不过，还有一个最取巧的办法，那就是直接用innerHTML。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.innerHTML = &lt;p class=“slogan”&gt;HelloWorld&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中的日期对象相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/27/js的DOM结构树/" rel="next" title="js的DOM结构树">
+                <i class="fa fa-chevron-left"></i> js的DOM结构树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM基本操作续"><span class="nav-number">1.</span> <span class="nav-text">DOM基本操作续</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createElement"><span class="nav-number">1.1.</span> <span class="nav-text">createElement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createTextNode"><span class="nav-number">1.2.</span> <span class="nav-text">createTextNode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createComment"><span class="nav-number">1.3.</span> <span class="nav-text">createComment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createDocumentFragment"><span class="nav-number">1.4.</span> <span class="nav-text">createDocumentFragment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入操作"><span class="nav-number">1.5.</span> <span class="nav-text">插入操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#appendChild-child"><span class="nav-number">1.5.1.</span> <span class="nav-text">appendChild(child);</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insertBefore-a-b"><span class="nav-number">1.5.2.</span> <span class="nav-text">insertBefore(a, b);</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除操作"><span class="nav-number">1.6.</span> <span class="nav-text">删除操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#removeChild"><span class="nav-number">1.6.1.</span> <span class="nav-text">removeChild</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换操作"><span class="nav-number">1.7.</span> <span class="nav-text">替换操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#replaceChild-new-origin"><span class="nav-number">1.7.1.</span> <span class="nav-text">replaceChild(new, origin)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHTML"><span class="nav-number">1.8.</span> <span class="nav-text">innerHTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#innerText-textContent"><span class="nav-number">1.9.</span> <span class="nav-text">innerText/textContent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ele-setAttribute"><span class="nav-number">1.10.</span> <span class="nav-text">ele.setAttribute();</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ele-getAttribute"><span class="nav-number">1.11.</span> <span class="nav-text">ele.getAttribute();</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

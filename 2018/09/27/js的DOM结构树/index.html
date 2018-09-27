@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM结构树的相关知识。 DOM结构树 这个图表中说明了每一个对象的父级。 123456//Document -&amp;gt; 是一个构造函数 -&amp;gt; 但是用户不能newdocument.__proto__ === HTMLDocument.prototype; //true//HTMLDocume">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的DOM结构树">
+<meta property="og:url" content="http://moreluckily.com/2018/09/27/js的DOM结构树/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM结构树的相关知识。 DOM结构树 这个图表中说明了每一个对象的父级。 123456//Document -&amp;gt; 是一个构造函数 -&amp;gt; 但是用户不能newdocument.__proto__ === HTMLDocument.prototype; //true//HTMLDocume">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/09/27/js的DOM结构树/blog1.png">
+<meta property="og:updated_time" content="2018-09-27T16:38:37.277Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的DOM结构树">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM结构树的相关知识。 DOM结构树 这个图表中说明了每一个对象的父级。 123456//Document -&amp;gt; 是一个构造函数 -&amp;gt; 但是用户不能newdocument.__proto__ === HTMLDocument.prototype; //true//HTMLDocume">
+<meta name="twitter:image" content="http://moreluckily.com/2018/09/27/js的DOM结构树/blog1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/27/js的DOM结构树/"/>
+
+
+
+
+
+  <title>js的DOM结构树 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/27/js的DOM结构树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的DOM结构树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T23:24:27+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM结构树的相关知识。</p>
+<h2 id="DOM结构树"><a href="#DOM结构树" class="headerlink" title="DOM结构树"></a>DOM结构树</h2><p><img src="/2018/09/27/js的DOM结构树/blog1.png" alt="DOM结构树"></p>
+<p>这个图表中说明了每一个对象的父级。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//Document -&gt; 是一个构造函数 -&gt; 但是用户不能new</span><br><span class="line">document.__proto__ === HTMLDocument.prototype;</span><br><span class="line"> //true</span><br><span class="line">//HTMLDocument.prototype -&gt; &#123;__proto__: Document.prototype&#125;</span><br><span class="line">//Document.prototype -&gt; &#123;__proto__: Node.prototype&#125;</span><br><span class="line">Node.__proto__.__proto__.__proto__ --&gt; object</span><br></pre></td></tr></table></figure>
+<p>浏览器除了可以处理html页面外，还可以处理xml和xhtml等页面。</p>
+<p>我们发现HTMLDocument继承自HTMLDocument.prototype，我们在原型上定义一个属性来测试一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTMLDocument.prototype.abc = 123;</span><br><span class="line">document.abc; // 123</span><br><span class="line">document.getElementById(‘demo’).abc; // 报错</span><br></pre></td></tr></table></figure>
+<p>由此可见，HTMLDocument确实继承HTMLDocument对象的属性，但是相对的Element上面并没有这个方法。</p>
+<p>这里的Node上面也还是有父级的，我们可以通过Node.prototype来查看，这里就不举例了。Node的原型链终端指向我们熟悉的Object。</p>
+<p>Element：构造出html元素，包括各种head标签，body 元素等，它们的元素都继承自对应的父级的方法，意思是，HTMLheadelement的方法，只能允许HeadElement使用，其他元素节点不可以使用。</p>
+<p>下面是一些DOM结构树的总结：</p>
+<h2 id="DOM树总结"><a href="#DOM树总结" class="headerlink" title="DOM树总结*"></a>DOM树总结*</h2><p>1、getElementById方法定义在Document.prototype上，意思就是document下的所有元素的都能使用，其他层级下就不行，例如Element节点上不能使用。</p>
+<p>2、getElementByName方法定义在HTMLDocument.prototype上，非html中的document不能使用(xml document、Element);</p>
+<p>3.getElementsByTagName方法定义在Document.prototype和Element.prototype上，也就是document和元素都可以用这个方法。</p>
+<p>4.HTMLDocument.prototype上定义了一些常用的属性，body、head分别代指HTML文档中的bode,html标签。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.body  //直接能用</span><br><span class="line">document.head  // 直接能用</span><br></pre></td></tr></table></figure>
+<p>5.Document.prototype上定义了documentElement属性，指代文档的根元素，在html文档中，它总代指html元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docuent.documentElement  //特指html</span><br></pre></td></tr></table></figure>
+<p>6.getElementByClassName、querySelectorAll、querySelector在Document、Element类中均有定义。</p>
+<h2 id="DOM的基础练习代码"><a href="#DOM的基础练习代码" class="headerlink" title="DOM的基础练习代码"></a>DOM的基础练习代码</h2><p>前面介绍了DOM的一些基础的知识，整理一下有关其知识点的封装函数。</p>
+<h3 id="遍历元素节点树，要求不能用children属性"><a href="#遍历元素节点树，要求不能用children属性" class="headerlink" title="遍历元素节点树，要求不能用children属性"></a>遍历元素节点树，要求不能用children属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function retChildren(node)&#123;</span><br><span class="line">	var child = node.childNodes;</span><br><span class="line">	var len = child.length;</span><br><span class="line">	var arr = [];</span><br><span class="line">	for (var i = 0; i &lt; len; i++)&#123;</span><br><span class="line">		if(child[i].nodeType === 1)&#123;</span><br><span class="line">		arr.push(child[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return arr;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>拿出一层树，循环遍历父节点，求子节点的的子节点，层层递归即可</p>
+<h3 id="封装函数，返回元素e的第n层祖先元素。"><a href="#封装函数，返回元素e的第n层祖先元素。" class="headerlink" title="封装函数，返回元素e的第n层祖先元素。"></a>封装函数，返回元素e的第n层祖先元素。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;strong&gt;</span><br><span class="line">	&lt;em&gt;</span><br><span class="line">	    &lt;span&gt;123&lt;span&gt;</span><br><span class="line">	&lt;/em&gt;</span><br><span class="line">    &lt;/strong&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">var span = document.getElementsByTagName(&apos;span&apos;)[0];</span><br><span class="line">function retParent(e, n)&#123;</span><br><span class="line">	while(e || n)&#123; //如果n太大，e为null，为了兼容，先判断e是否存在。</span><br><span class="line">		e = e.parentElement;//寻找父节点,并赋值给自己，下一圈循环直接使用。</span><br><span class="line">		n --;</span><br><span class="line">	&#125;</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>封装成函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function retParent(e, n) &#123;</span><br><span class="line">      var n = n || 0; // 进行简单的容错检测</span><br><span class="line">      if(n === 0) &#123;</span><br><span class="line">            return e;</span><br><span class="line">      &#125;</span><br><span class="line">      for(var i = 0; e &amp;&amp; i &lt; n; i++) &#123;</span><br><span class="line">            e = e.parentNode;</span><br><span class="line">      &#125;</span><br><span class="line">      return e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="封装函数，返回元素e的第n个兄弟元素节点，如果n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己"><a href="#封装函数，返回元素e的第n个兄弟元素节点，如果n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己" class="headerlink" title="封装函数，返回元素e的第n个兄弟元素节点，如果n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己"></a>封装函数，返回元素e的第n个兄弟元素节点，如果n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function retSibling(e,n)&#123;//兼容IE</span><br><span class="line">	var nodeSibling = e;</span><br><span class="line">	while (nodeSibling &amp;&amp; n)&#123;//利用循环控制圈数</span><br><span class="line">		if (n&gt;0) &#123;</span><br><span class="line">			if(nodeSibling.nextElementSibling)&#123;// 如果不是ie浏览器</span><br><span class="line">				nodeSibling = nodeSibling.nextElementSibling;</span><br><span class="line">			&#125;else&#123; // 如果是ie浏览器</span><br><span class="line">				for(nodeSibling = nodeSibling.nextElementSibling;  nodeSibling &amp;&amp; nodeSibling.nodeType !== 1; nodeSibling = nodeSibling.nextElementSibling);</span><br><span class="line">			&#125;//利用for循环执行流程解决，判断是否为Element节点，而且判断存在的时候才能赋值（因为存在null的情况）</span><br><span class="line">			n --;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			if (nodeSibling.previousElementSibling) &#123;</span><br><span class="line">				nodeSibling = nodeSibling.previousElementSibling;</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				for(nodeSibling = nodeSibling.previousElementSibling; nodeSibling &amp;&amp; nodeSibling.nodeType !==1;nodeSibling = nodeSibling.previousElementSibling);</span><br><span class="line">			&#125;</span><br><span class="line">			n ++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return nodeSibling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="封装函数，实现children功能，在原型链上编程"><a href="#封装函数，实现children功能，在原型链上编程" class="headerlink" title="封装函数，实现children功能，在原型链上编程"></a>封装函数，实现children功能，在原型链上编程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Element.prototype.myChildren = function () &#123;</span><br><span class="line">	var myChildNodes = this.childNodes,</span><br><span class="line">		len = myChildNodes.length,</span><br><span class="line">		arr = &#123; //高级写法 仿一个类数组</span><br><span class="line">			length : 0,</span><br><span class="line">			splice : Array.prototype.splice,</span><br><span class="line">			push : Array.prototype.push,</span><br><span class="line">		&#125;;</span><br><span class="line">	for(var i = 0; i &lt; len; i++)&#123;</span><br><span class="line">		if(myChildNodes[i].nodeType == 1)&#123;</span><br><span class="line">			arr.push(myChildNodes[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>判断元素节点，非元素节点扔掉。</p>
+<h3 id="自己封装hasChildren-方法，不可用children属性"><a href="#自己封装hasChildren-方法，不可用children属性" class="headerlink" title="自己封装hasChildren()方法，不可用children属性"></a>自己封装hasChildren()方法，不可用children属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Element.prototype.myChildren = function () &#123;</span><br><span class="line">	var myChildNodes = this.childNodes,</span><br><span class="line">		len = myChildNodes.length;</span><br><span class="line">	for(var i = 0; i &lt; len; i++)&#123;</span><br><span class="line">			if(myChildNodes[i].nodeType == 1)&#123;</span><br><span class="line">			    return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中DOM基本操作续的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/27/js的DOM操作/" rel="next" title="js的DOM操作">
+                <i class="fa fa-chevron-left"></i> js的DOM操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/27/js的DOM操作续/" rel="prev" title="js的DOM操作续">
+                js的DOM操作续 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM结构树"><span class="nav-number">1.</span> <span class="nav-text">DOM结构树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM树总结"><span class="nav-number">2.</span> <span class="nav-text">DOM树总结*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM的基础练习代码"><span class="nav-number">3.</span> <span class="nav-text">DOM的基础练习代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历元素节点树，要求不能用children属性"><span class="nav-number">3.1.</span> <span class="nav-text">遍历元素节点树，要求不能用children属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装函数，返回元素e的第n层祖先元素。"><span class="nav-number">3.2.</span> <span class="nav-text">封装函数，返回元素e的第n层祖先元素。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#封装函数，返回元素e的第n个兄弟元素节点，如果n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己"><span class="nav-number">3.2.1.</span> <span class="nav-text">封装函数，返回元素e的第n个兄弟元素节点，如果n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装函数，实现children功能，在原型链上编程"><span class="nav-number">3.3.</span> <span class="nav-text">封装函数，实现children功能，在原型链上编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己封装hasChildren-方法，不可用children属性"><span class="nav-number">3.4.</span> <span class="nav-text">自己封装hasChildren()方法，不可用children属性</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

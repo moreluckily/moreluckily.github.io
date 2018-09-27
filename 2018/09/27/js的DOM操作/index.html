@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM的相关知识。 DOM什么是DOM呢？  DOM的全称是Document Object Model 文档对象模型，DOM定义了表示和修改文档所需的对象、这些对象的行为和属性以及这些对象之间的关系。 DOM对象即为宿主对象，由浏览器厂商定义，用来操作html的css功能的一类对象和集合。不过浏览">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的DOM操作">
+<meta property="og:url" content="http://moreluckily.com/2018/09/27/js的DOM操作/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM的相关知识。 DOM什么是DOM呢？  DOM的全称是Document Object Model 文档对象模型，DOM定义了表示和修改文档所需的对象、这些对象的行为和属性以及这些对象之间的关系。 DOM对象即为宿主对象，由浏览器厂商定义，用来操作html的css功能的一类对象和集合。不过浏览">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-27T15:28:16.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的DOM操作">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM的相关知识。 DOM什么是DOM呢？  DOM的全称是Document Object Model 文档对象模型，DOM定义了表示和修改文档所需的对象、这些对象的行为和属性以及这些对象之间的关系。 DOM对象即为宿主对象，由浏览器厂商定义，用来操作html的css功能的一类对象和集合。不过浏览">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/27/js的DOM操作/"/>
+
+
+
+
+
+  <title>js的DOM操作 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/27/js的DOM操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的DOM操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T23:24:10+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中DOM的相关知识。</p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p>什么是DOM呢？</p>
+<p> DOM的全称是Document Object Model 文档对象模型，DOM定义了表示和修改文档所需的对象、这些对象的行为和属性以及这些对象之间的关系。</p>
+<p>DOM对象即为宿主对象，由浏览器厂商定义，用来操作html的css功能的一类对象和集合。不过浏览器厂商之间大部分都遵循w3c标准。</p>
+<p>简单来说，DOM就是用来操作html和css的，它是一系列对象的集合。</p>
+<p>为什么要用DOM？<br>JS不能直接操作html，但是浏览器提供了一类对象，这些对象可以作为js操作html的桥梁，也就是说这类对象中有方法和属性，对方法和属性的调用与修改都会映射到html对应的标签中。</p>
+<p>DOM操作：按照文档对象模型 （这些固定的方法和规则）操作标签，这里首先要说一下document这个老大哥，它是JS操作HTML标签的开始，无论你是要获取标签还是创建新标签都需要它。</p>
+<h3 id="DOM如何操作HTML"><a href="#DOM如何操作HTML" class="headerlink" title="DOM如何操作HTML"></a>DOM如何操作HTML</h3><p>document代表整个文档，它也是一个dom元素，我们dom对html的操作，即使对html的增删改查。下面我就介绍一下dom都是如何增删改查html的。</p>
+<p>那么我们如何查看元素节点？</p>
+<p>我们知道css中有id、class、标签等选择器，同样，我们的document对象上也定义了很多类似的方法来查看元素节点。</p>
+<h4 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById"></a>getElementById</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;only&quot;&gt;&lt;/div&gt;</span><br><span class="line">document.getElementById(&apos;id&apos;);</span><br><span class="line">//或者</span><br><span class="line">document.getElementById(&apos;only&apos;);</span><br></pre></td></tr></table></figure>
+<p>通过元素的id来选择出相对应的元素的，因为id是唯一标示，所以方法名中是Element。通过id选出来的对象只有一个对象。</p>
+<p>值得注意的是，在ie8以下的浏览器中，不区分大小写，而且标签的name属性也可以被当做id被选择出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div name=&quot;only&quot;&gt;&lt;/div&gt;</span><br><span class="line">document.getElementById(&apos;only&apos;);</span><br></pre></td></tr></table></figure>
+<p>这里同样能把这个div选择出来了。</p>
+<h4 id="getElementsByClassName"><a href="#getElementsByClassName" class="headerlink" title="getElementsByClassName"></a>getElementsByClassName</h4><p><code>document.getElementsByClassName(&#39;class&#39;);</code></p>
+<p>获取到的是一个类数组，因为很多元素都可以有一个类名。我们可以通过[ ]的方式来选择到具体的哪一个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&apos;demo&apos;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&apos;demo&apos;&gt;&lt;/div&gt;</span><br><span class="line">var div = document.getElementsByClassName(&apos;demo&apos;)[0];</span><br></pre></td></tr></table></figure>
+<p>这样我们就可以选择到第一个div了。</p>
+<p>那如果碰到下面这种情况怎么办呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&apos;demo&apos;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&apos;demo demo1&apos;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&apos;demo1&apos;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里，我们的getElementsByClassName其实后面可以填写多个类名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByClassName(&apos;demo demo1&apos;)[0];//一定要选[ ]</span><br></pre></td></tr></table></figure>
+<p>这样，我们就可以选择出来第二个div了。</p>
+<p>但是值得注意的是，ie8及以下的版本中没有这种方法。</p>
+<h4 id="getElementsByTagName"><a href="#getElementsByTagName" class="headerlink" title="getElementsByTagName"></a>getElementsByTagName</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementsByTagName(&apos;div&apos;);</span><br></pre></td></tr></table></figure>
+<p>返回的是一个类数组。简单判断选择出来的是一个还是一组，可以看Element后面有没有s有就是一组，没有就是一个。当选出来是一组的话，想操作单个对象，就需要在后面加[ ]。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;/li&gt;</span><br><span class="line">var li = document.getElementsByTagName(&apos;li&apos;)[0]; </span><br><span class="line">//单独选出来第一个li元素。</span><br></pre></td></tr></table></figure>
+<h4 id="getElementsByName"><a href="#getElementsByName" class="headerlink" title="getElementsByName"></a>getElementsByName</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementsByName();</span><br></pre></td></tr></table></figure>
+<p>只有部分标签的name可以生效，比如：表单、表单元素、img、iframe等。需要注意的是：div就是没有name属性的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input name=&apos;123&apos;&gt;</span><br><span class="line">document.getElementsByName(&apos;123&apos;)[0];</span><br></pre></td></tr></table></figure>
+<p>同样是选择出来一组，不过这个方法不是很常用。有些情况要跟后端进行数据传输的时候就需要用到。</p>
+<h4 id="querySeletor-和querySelectorAll"><a href="#querySeletor-和querySelectorAll" class="headerlink" title="querySeletor()和querySelectorAll()"></a>querySeletor()和querySelectorAll()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.querySeletor();//选出一个</span><br><span class="line">document.querySelectorAll();//选出一组</span><br></pre></td></tr></table></figure>
+<p>我们知道选择元素最强的是css，而这两个里面写的参数就是我们css选择器的写法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;em class=&quot;abc&quot;&gt;&lt;/em&gt;</span><br><span class="line">	&lt;span class=&apos;abc&apos;&gt;</span><br><span class="line">		&lt;em class=&quot;abc&quot;&gt;123&lt;/em&gt;</span><br><span class="line">	&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">var emEle = document.querySelector(&quot;div .abc  span em&quot;);</span><br></pre></td></tr></table></figure>
+<p>不过querySelector永远选择一组里面的第一个，所以返回的不是一个类数组而是一个具体的元素。</p>
+<p>而我们如果要返回一个类数组的集合的话，那么就用第二个querySelectorAll()方法。</p>
+<p>不过这两个方法的问题在于，他们返回的不像前面四个是一个实时改变的元素，而是一个副本。当我们用这两个方法选择出来元素之后，我们把本身那个元素修改一下，会发现我们选择出来的那个元素没有变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=”content”&gt;111&lt;/div&gt;</span><br><span class="line">&lt;div class=”content”&gt;222&lt;/div&gt;</span><br><span class="line">&lt;div class=”content”&gt;333&lt;/div&gt;</span><br><span class="line">var div = document.querySelectorAll(‘.content’);</span><br><span class="line">var div1 = document.getElementsByClassName(‘content’)[0];</span><br><span class="line">console.log(div);</span><br><span class="line">div1.remove();</span><br><span class="line">console.log(div);</span><br></pre></td></tr></table></figure>
+<p>我们发现两次打印出来的都是[div.content, div.content, div.content]，也就是说我们实际删除的那个元素对用querySelector选择出来的那个副本没有影响。</p>
+<p>不过，在ie7及以下的版本没有这两个方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里面我们我们最常用的是id和tag</span><br></pre></td></tr></table></figure>
+<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><h3 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h3><p>我们页面里面的节点类型很多，比如元素节点、文本节点、注释节点、属性节点等等。</p>
+<p>我们可以通过nodeType属性这个来查看这个节点的类型是什么。而nodeType返回的是一些数字，下面介绍几个基础的类型和数字的对应关系：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">元素节点——1</span><br><span class="line">属性节点——2</span><br><span class="line">文本节点——3</span><br><span class="line">注释节点——8</span><br><span class="line">document——9</span><br><span class="line">DocumentFragment——11</span><br></pre></td></tr></table></figure>
+<h3 id="节点的其他属性"><a href="#节点的其他属性" class="headerlink" title="节点的其他属性"></a>节点的其他属性</h3><h4 id="nodeName"><a href="#nodeName" class="headerlink" title="nodeName"></a>nodeName</h4><p>这个属性可以返回元素的标签名，以大写的形式表示，只读，不允许写入!!!</p>
+<p>有几个特殊的节点返回的也不太一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">文本节点–&gt; #text</span><br><span class="line">注释节点–&gt; #comment</span><br><span class="line">document节点–&gt;#document</span><br></pre></td></tr></table></figure>
+<h4 id="nodeValue"><a href="#nodeValue" class="headerlink" title="nodeValue"></a>nodeValue</h4><p>Text节点或者Comment节点的文本内容，可以读写。能修改，能查询。</p>
+<h4 id="attributes"><a href="#attributes" class="headerlink" title="attributes"></a>attributes</h4><p>把元素的行间属性都读取出来，放到一个对象里面返回，对象里面的每一个属性都是一个节点，这个节点就是我们前面提到的属性节点。</p>
+<p>注意：对象里面的属性叫做property，而元素里面的属性叫attributes，实际应该叫特性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width: 100px; height: 100px;&quot; class=&quot;demo&quot; &gt;</span><br><span class="line">var div = document.getElementByTagName(&apos;div&apos;)[0];</span><br><span class="line">div.attributes  // NamedNodeMap&#123; 0:style,1:class, length:2&#125;</span><br><span class="line">div.attbributes[0] //style = &quot;width:100px;height:100px;&quot;</span><br></pre></td></tr></table></figure>
+<p>节点还有一个方法：</p>
+<p>hasChildNodes( )可以检测是否有子节点。</p>
+<h2 id="遍历节点树"><a href="#遍历节点树" class="headerlink" title="遍历节点树"></a>遍历节点树</h2><h3 id="parentNode-查找父节点"><a href="#parentNode-查找父节点" class="headerlink" title="parentNode 查找父节点"></a>parentNode 查找父节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">      &lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>这里strong的父节点就是p，p的父节点是div，div的父节点是body，body的父节点是html，html的父节点是document，document的父节点是null，在后面就没有了。</p>
+<h3 id="childNodes-子节点们"><a href="#childNodes-子节点们" class="headerlink" title="childNodes 子节点们"></a>childNodes 子节点们</h3><p>childNodes 没有说明类型，那么就是说这个方法是把所有的子节点都返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">      &lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>我们div里面的childNodes其实有3个，第一个是前面的空格——文本节点，第二个是中间的p标签——元素节点，第三个是最后的空格——文本节点。</p>
+<h4 id="firstChild-第一个子节点"><a href="#firstChild-第一个子节点" class="headerlink" title="firstChild 第一个子节点"></a>firstChild 第一个子节点</h4><h4 id="lastChild-最后一个子节点"><a href="#lastChild-最后一个子节点" class="headerlink" title="lastChild 最后一个子节点"></a>lastChild 最后一个子节点</h4><h4 id="nextSibling-下一个兄弟节点"><a href="#nextSibling-下一个兄弟节点" class="headerlink" title="nextSibling 下一个兄弟节点"></a>nextSibling 下一个兄弟节点</h4><h4 id="previousSibling-上一个兄弟节点"><a href="#previousSibling-上一个兄弟节点" class="headerlink" title="previousSibling 上一个兄弟节点"></a>previousSibling 上一个兄弟节点</h4><p>以上这些方法的兼容性都很好，所有的浏览器都支持，但是下面这些就不行了。</p>
+<h2 id="基于元素节点树的遍历"><a href="#基于元素节点树的遍历" class="headerlink" title="基于元素节点树的遍历"></a>基于元素节点树的遍历</h2><h3 id="parentElement"><a href="#parentElement" class="headerlink" title="parentElement"></a>parentElement</h3><p> 返回当前元素的父元素节点，在这个方法上面，html上面的父元素节点就不是document而是null了。因为document自成一类，不是元素节点。</p>
+<p>但是ie不兼容。</p>
+<h3 id="children"><a href="#children" class="headerlink" title="children"></a>children</h3><p>所有子元素节点，这个方法所有的浏览器都兼容。</p>
+<h3 id="childElementCount"><a href="#childElementCount" class="headerlink" title="childElementCount"></a>childElementCount</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node.children.length === node.childElementCount</span><br></pre></td></tr></table></figure>
+<p>这个属性就是子元素节点的数量，不过更常用的是前面的那个。</p>
+<h3 id="nextElementSibling和previousElementSibling"><a href="#nextElementSibling和previousElementSibling" class="headerlink" title="nextElementSibling和previousElementSibling"></a>nextElementSibling和previousElementSibling</h3><p>返回后一个/前一个兄弟元素节点（IE不兼容)</p>
+<h3 id="firstElementChild和lastElementChild"><a href="#firstElementChild和lastElementChild" class="headerlink" title="firstElementChild和lastElementChild"></a>firstElementChild和lastElementChild</h3><p>返回第一个/最后一个兄弟元素节点（IE不兼容)</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中DOM结构树的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/26/js的类数组/" rel="next" title="js的类数组">
+                <i class="fa fa-chevron-left"></i> js的类数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/27/js的DOM结构树/" rel="prev" title="js的DOM结构树">
+                js的DOM结构树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM"><span class="nav-number">1.</span> <span class="nav-text">DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM如何操作HTML"><span class="nav-number">1.1.</span> <span class="nav-text">DOM如何操作HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getElementById"><span class="nav-number">1.1.1.</span> <span class="nav-text">getElementById</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getElementsByClassName"><span class="nav-number">1.1.2.</span> <span class="nav-text">getElementsByClassName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getElementsByTagName"><span class="nav-number">1.1.3.</span> <span class="nav-text">getElementsByTagName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getElementsByName"><span class="nav-number">1.1.4.</span> <span class="nav-text">getElementsByName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#querySeletor-和querySelectorAll"><span class="nav-number">1.1.5.</span> <span class="nav-text">querySeletor()和querySelectorAll()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#节点"><span class="nav-number">2.</span> <span class="nav-text">节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#节点类型"><span class="nav-number">2.1.</span> <span class="nav-text">节点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点的其他属性"><span class="nav-number">2.2.</span> <span class="nav-text">节点的其他属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nodeName"><span class="nav-number">2.2.1.</span> <span class="nav-text">nodeName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nodeValue"><span class="nav-number">2.2.2.</span> <span class="nav-text">nodeValue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attributes"><span class="nav-number">2.2.3.</span> <span class="nav-text">attributes</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历节点树"><span class="nav-number">3.</span> <span class="nav-text">遍历节点树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#parentNode-查找父节点"><span class="nav-number">3.1.</span> <span class="nav-text">parentNode 查找父节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#childNodes-子节点们"><span class="nav-number">3.2.</span> <span class="nav-text">childNodes 子节点们</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#firstChild-第一个子节点"><span class="nav-number">3.2.1.</span> <span class="nav-text">firstChild 第一个子节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lastChild-最后一个子节点"><span class="nav-number">3.2.2.</span> <span class="nav-text">lastChild 最后一个子节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nextSibling-下一个兄弟节点"><span class="nav-number">3.2.3.</span> <span class="nav-text">nextSibling 下一个兄弟节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#previousSibling-上一个兄弟节点"><span class="nav-number">3.2.4.</span> <span class="nav-text">previousSibling 上一个兄弟节点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于元素节点树的遍历"><span class="nav-number">4.</span> <span class="nav-text">基于元素节点树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#parentElement"><span class="nav-number">4.1.</span> <span class="nav-text">parentElement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#children"><span class="nav-number">4.2.</span> <span class="nav-text">children</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#childElementCount"><span class="nav-number">4.3.</span> <span class="nav-text">childElementCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nextElementSibling和previousElementSibling"><span class="nav-number">4.4.</span> <span class="nav-text">nextElementSibling和previousElementSibling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#firstElementChild和lastElementChild"><span class="nav-number">4.5.</span> <span class="nav-text">firstElementChild和lastElementChild</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
