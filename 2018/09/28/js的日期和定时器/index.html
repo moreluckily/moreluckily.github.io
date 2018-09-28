@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中日期对象和定时器的相关知识。 封装一个函数insertAfter(),功能类似于insertBefore()上篇的blog说过了关于insertBefore(a,b)的方法，父级调用，在a之前插入b.那么对于这个insertAfter(a,b)方法也是类似的，也是有父级调用，在a后面插入b。了解了">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的日期和定时器">
+<meta property="og:url" content="http://moreluckily.com/2018/09/28/js的日期和定时器/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中日期对象和定时器的相关知识。 封装一个函数insertAfter(),功能类似于insertBefore()上篇的blog说过了关于insertBefore(a,b)的方法，父级调用，在a之前插入b.那么对于这个insertAfter(a,b)方法也是类似的，也是有父级调用，在a后面插入b。了解了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/09/28/js的日期和定时器/blog1.png">
+<meta property="og:updated_time" content="2018-09-28T08:49:12.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的日期和定时器">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中日期对象和定时器的相关知识。 封装一个函数insertAfter(),功能类似于insertBefore()上篇的blog说过了关于insertBefore(a,b)的方法，父级调用，在a之前插入b.那么对于这个insertAfter(a,b)方法也是类似的，也是有父级调用，在a后面插入b。了解了">
+<meta name="twitter:image" content="http://moreluckily.com/2018/09/28/js的日期和定时器/blog1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/28/js的日期和定时器/"/>
+
+
+
+
+
+  <title>js的日期和定时器 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/28/js的日期和定时器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的日期和定时器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-28T16:43:38+08:00">
+                2018-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中日期对象和定时器的相关知识。</p>
+<h2 id="封装一个函数insertAfter-功能类似于insertBefore"><a href="#封装一个函数insertAfter-功能类似于insertBefore" class="headerlink" title="封装一个函数insertAfter(),功能类似于insertBefore()"></a>封装一个函数insertAfter(),功能类似于insertBefore()</h2><p>上篇的blog说过了关于insertBefore(a,b)的方法，父级调用，在a之前插入b.那么对于这个insertAfter(a,b)方法也是类似的，也是有父级调用，在a后面插入b。了解了功能之后，我们就要开始实现了。由于手头上方法，也就那么一个 insertBefore()，利用它我们可以进行插入的操作。但是，在插入之前，我们需要找到插入节点的位置，那么我们怎样才能找到需要进行插入操作得节点呢？请看以下分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">    &lt;em&gt;&lt;/em&gt;</span><br><span class="line">    &lt;a&gt;&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>如果我们需要在em标签后面插入节点，就相当于在a标签之前插入节点，他们两个是等价的，所以，我们就可以利用这个思维，先找到想插入的节点a的下一个兄弟节点b，然后对b节点调用insertBefore方法，在b之前插入目的节点，那么就相当于在a之后插入了一个目标节点了。</p>
+<p>明白了这个问题之后，我们还需要判断他是否有兄弟节点，如果存在，就调用insertBefore，如果没有就进行appendChild即可。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Element.prototype.insertAfter = function (target,afterNode)&#123;</span><br><span class="line">    var siblingNode = afterNode.nextElementSibling;</span><br><span class="line">	if(siblingNode)&#123; </span><br><span class="line">		this.insertBefore(target, siblingNode);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		this.appendChild(target);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们来实验一下，看一下这个封装的方法对不对。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var p = document.createElement(&apos;p&apos;);//创建一个p标签</span><br><span class="line">var div = document.getElementsByTagName(&apos;div&apos;)[0];</span><br><span class="line">var span = document.getElementsByTagName(&apos;span&apos;)[0];</span><br><span class="line">var em = document.getElementsByTagName(&apos;em&apos;)[0];</span><br><span class="line">var a = document.getElementsByTagName(&apos;a&apos;)[0];</span><br><span class="line"></span><br><span class="line">div.insertAfter(p, a);//p标签去a标签的后面</span><br><span class="line">console.log(div);//p标签去a的后面了</span><br><span class="line">div.insertAfter(p, span);</span><br><span class="line">console.log(div);//p标签去span的后面了</span><br></pre></td></tr></table></figure>
+<h2 id="封装remove-函数，使得child-remove-可以销毁自身。"><a href="#封装remove-函数，使得child-remove-可以销毁自身。" class="headerlink" title="封装remove()函数，使得child.remove()可以销毁自身。"></a>封装remove()函数，使得child.remove()可以销毁自身。</h2><p>在原型链上对其进行操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Element.prototype.remove = function () &#123;</span><br><span class="line">    var parent = this.parentNode;</span><br><span class="line">    parent.removeChild(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个问题的代码其实很简单，只要找到这个元素的父级，然后让父级删除掉这个元素就可以了。</p>
+<h2 id="将目标节点内部的节点顺序逆序。"><a href="#将目标节点内部的节点顺序逆序。" class="headerlink" title="将目标节点内部的节点顺序逆序。"></a>将目标节点内部的节点顺序逆序。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;a&gt;&lt;/a&gt;&lt;/div&gt;    --&gt;  (逆转)</span><br><span class="line"></span><br><span class="line">&lt;div&gt;&lt;a&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>对于这个题目，是利用我们插入的元素如果是本身就存在的，那么就会剪切到新的位置上这个特性来做的。</p>
+<p>其实就是将倒数第二个标签，放在最后一个位置，然后倒数第三个标签其实还在倒数第三个标签的位置，然后将倒数第三个标签放在最后一个位置。依次类推：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Element.prototype.reverseElement = function()&#123;</span><br><span class="line">    var len = this.childNodes.length,</span><br><span class="line">            child,</span><br><span class="line">            first = this.firstChild;</span><br><span class="line">    for (var i = 0; i &lt; len - 1; i++)&#123;</span><br><span class="line">            child = this.lastChild;</span><br><span class="line">            this.insertBefore(child, first);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var p = document.getElementsByTagName(&apos;p&apos;)[0];</span><br><span class="line">var div = document.getElementsByTagName(&apos;div&apos;)[0];</span><br><span class="line">var a = document.getElementsByTagName(&apos;a&apos;)[0];</span><br><span class="line">console.log(div.reverseElement());//就会逆序</span><br></pre></td></tr></table></figure>
+<h2 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h2><p>JavaScript慢慢发展向面向对象，朝向Java方向，原型，继承等都是面向对象的，慢慢就摒弃面向过程编程。当我们想使用某些方法的时候，通常可以使用new进行构造出来，或者直接使用 原型链上的方法，这种形式的就叫动态的方法。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line">	this.aaa = function() &#123; &#125;;</span><br><span class="line">&#125;</span><br><span class="line">var demo = new Person();</span><br><span class="line">demo.aaa();//调用方法</span><br></pre></td></tr></table></figure>
+<p>这种就叫做动态类。</p>
+<p>后来有些方法不需要这么麻烦的方法，每次都去生成一个对象。有些很简单的就不需要这样操作。例如Math方法：Math.random,Math.sqrt。这样的方法其实是直接挂在一个对象上面可以直接调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Math = &#123;</span><br><span class="line">	random: function() &#123; &#125;,</span><br><span class="line">	sqrt: function() &#123; ],</span><br><span class="line">	.........</span><br><span class="line">&#125;//可以直接调用</span><br></pre></td></tr></table></figure>
+<h2 id="日期对象"><a href="#日期对象" class="headerlink" title="日期对象"></a>日期对象</h2><p>日期对象的各种方法和用法在w3c上有详细的介绍。</p>
+<p>日期对象也是javascript的内置对象之一，我们可以直接使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var data = new Data();</span><br><span class="line">Date();</span><br><span class="line">// &quot;Fri Sep 28 2018 11:23:56 GMT+0800 (中国标准时间)&quot;</span><br></pre></td></tr></table></figure>
+<p>|Date()|返回当日的日期和时间。|<br>//date.getDate()//28<br>|getDate()|从 Date 对象返回一个月中的某一天 (1 ~ 31)。|<br>|getDay()|从 Date 对象返回一周中的某一天 (0 ~ 6)。|<br>|getMonth()|从 Date 对象返回月份 (0 ~ 11)。|//要自己加一<br>|getFullYear()|从 Date 对象以四位数字返回年份。|<br>|getYear()|请使用 getFullYear() 方法代替。|<br>|getHours()|返回 Date 对象的小时 (0 ~ 23)。|<br>|getMinutes()|返回 Date 对象的分钟 (0 ~ 59)。|<br>|getSeconds()|返回 Date 对象的秒数 (0 ~ 59)。|<br>|getMilliseconds()|返回 Date 对象的毫秒(0 ~ 999)。|<br>|getTime()|返回距1970年1月1日凌晨的毫秒数|</p>
+<p>|getTime()|返回距1970年1月1日凌晨的毫秒数|<br>纪元时间,计算机查现在到这个时候得时间,然后返回今天的时间.<br>通常是两个getTime联合使用，求时间差。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var firstTime = new Date().getTime;</span><br><span class="line">for(i = 0; i &lt; 100000000; i++)&#123;</span><br><span class="line">&#125;</span><br><span class="line">var lastTime = new Date().getTime;</span><br><span class="line">console.log(lastTime - firstTime)</span><br><span class="line">//这个可以求出来程序的执行时间。</span><br></pre></td></tr></table></figure>
+<p>第二个作用就是作为时间戳：每一次发的请求都是不一样的，利用它可以做唯一表识。</p>
+<p>Date.parse( ) : 注意它是用Date作为调用对象，参数是必须的，将参数转化为毫秒数。</p>
+<p>|setDate()|设置 Date 对象中月的某一天 (1 ~ 31)。|<br>|setMonth()|设置 Date 对象中月份 (0 ~ 11)。|<br>|setFullYear()|设置 Date 对象中的年份（四位数字）。|<br>|setYear()|请使用 setFullYear() 方法代替。|<br>|setHours()|设置 Date 对象中的小时 (0 ~ 23)。|<br>|setMinutes()|设置 Date 对象中的分钟 (0 ~ 59)。|<br>|setSeconds()|设置 Date 对象中的秒钟 (0 ~ 59)。|<br>|setMilliseconds()|设置 Date 对象中的毫秒 (0 ~ 999)。|<br>|setTime()|以毫秒设置 Date 对象。|</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">设置时间，在哪个时间干别的事</span><br><span class="line">var date = new Date();</span><br><span class="line">date.setSeconds(date.getSeconds() +20);  //设定时间 </span><br><span class="line">setInterval(function () &#123;</span><br><span class="line">	if(Math.abs(new Date().getTime() - date.getTime()) &lt; 500 )&#123;</span><br><span class="line">	console.log(&apos;coming&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;, 500);</span><br><span class="line">//程序到了规定时间将会打印出coming。</span><br></pre></td></tr></table></figure>
+<h2 id="Js定时器"><a href="#Js定时器" class="headerlink" title="Js定时器"></a>Js定时器</h2><p>一个常识：浏览器会每隔16毫秒刷新页面一次</p>
+<p>setInterval(); //定时<br>clearInterval(); //清除定时</p>
+<p>这些方法都是定义在window对象上面的，因此我们写window.setInterval和解setInterval的意思是一样的，前面的window可以省略掉。</p>
+<p>setInterval这个定时器的功能是每过一段时间，就把我们想要执行的函数放到js的执行队列中等待执行。因为执行队列不一定是空的，需要等执行队列中的所有任务都执行完之后才会执行我们的函数，因此这个函数执行的时间也会有细微的差别。</p>
+<p>这个方法的语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setInterval(function () &#123;&#125;, 1000);</span><br></pre></td></tr></table></figure>
+<p>第一个参数是我们要执行的函数，第二个参数是每过多长时间把函数放入执行队列。</p>
+<p>这里要说明的是，第一个参数的那个函数，不能带有参数。其次，里面的this默认指向window，因为前面提到过，谁调用方法，方法里面的this就指向谁，setInterval其实前面省略了window，因此里面的this默认一定指向window，不论这个setInterval是否是一个对象的方法。</p>
+<p>setInterval其实很消耗内存，这个定时器一旦执行，就不会终止，因此需要我们的内核一直监听这个函数。</p>
+<p>这个时候我们就需要一个方法来清除定时器了：clearInterval。</p>
+<p>定时器其实会返回一个标记，我们可以通过定时器的这个标记来清除掉相对应的定时器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var i = 0;</span><br><span class="line">var timer = setInterval(function () &#123;</span><br><span class="line">    console.log(i++);</span><br><span class="line">    if(i &gt; 10)&#123;</span><br><span class="line">        clearInterval(timer);//清除定时器</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 1000); //在1000ms左右</span><br></pre></td></tr></table></figure>
+<p>这个函数的功能就是每1000ms打印一个数字i，当i大于10时，就会清除定时器，也就是打印出了0~10。</p>
+<p>这里有一点需要特别强调：凡是写定时器，一定要清除定时器！</p>
+<p>还有一点需要注意的是，定时器是先等待再执行。</p>
+<p>有时候我们只需要这个函数延迟一段时间执行，并不需要专门开启一个定时器，这个时候就需要用到setTimeout了。</p>
+<p>setTimeout是延迟执行的意思，语法和用法和setInterval一样，只是这个方法只是把函数延迟一段时间之后执行一次而已。比较常见的就是看电影的试看功能。</p>
+<p>同时它也有clearTimeout，当我们不想让这个函数执行了，提前把它clear掉就可以了。</p>
+<p>其实setInterval和setTimeout的第一个参数不一定非要是一个函数，它也可以是一串字符型的js代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setInterval(“console.log(1);”, 100);</span><br></pre></td></tr></table></figure>
+<p>这段代码同样可以执行，定时器每100ms给我们打印一个1。</p>
+<p>通过这个特性，我们不一定要把函数写在定时器里面，大部分时间我们都是在外部把函数定义好了，然后直接把函数名传进去就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function test () &#123;&#125;</span><br><span class="line">setInterval(test, 1000);</span><br></pre></td></tr></table></figure>
+<h2 id="写一个计时器，到三分钟停止"><a href="#写一个计时器，到三分钟停止" class="headerlink" title="写一个计时器，到三分钟停止"></a>写一个计时器，到三分钟停止</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    input&#123;</span><br><span class="line">        border: 1px solid rgba(0,0,200,0.5);</span><br><span class="line">        text-align: right;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">minute:&lt;input type=&quot;text&quot; value=&quot;0&quot;&gt;   </span><br><span class="line">second:&lt;input type=&quot;text&quot; value=&quot;0&quot;&gt; </span><br><span class="line"></span><br><span class="line">var minuteNode = document.getElementsByTagName(&apos;input&apos;)[0];</span><br><span class="line">var secondNode = document.getElementsByTagName(&apos;input&apos;)[1];</span><br><span class="line">var minute = 0;</span><br><span class="line">var second = 0;</span><br><span class="line">var timer = 0;</span><br><span class="line">timer = setInterval(function() &#123;</span><br><span class="line">	second ++;</span><br><span class="line">	if(second == 60) &#123;</span><br><span class="line">		minute += 1;</span><br><span class="line">		second = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	minuteNode.value = minute;</span><br><span class="line">	secondNode.setAttribute(&apos;value&apos;,second);</span><br><span class="line">	if(minute == 3)&#123;</span><br><span class="line">		clearInterval(timer);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;, 10);</span><br></pre></td></tr></table></figure>
+<p>得到的结果如下图所示：</p>
+<p><img src="/2018/09/28/js的日期和定时器/blog1.png" alt="计数器"></p>
+<p>就是右边的没个10ms计一个数，当超过60个数时，左边的数加一，右边的数又从0开始计数，等左边的数为3使，停止计数。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中的滚动条与元素尺寸相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/27/js的DOM操作续/" rel="next" title="js的DOM操作续">
+                <i class="fa fa-chevron-left"></i> js的DOM操作续
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/28/js的滚动条和元素尺寸/" rel="prev" title="js的滚动条和元素尺寸">
+                js的滚动条和元素尺寸 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装一个函数insertAfter-功能类似于insertBefore"><span class="nav-number">1.</span> <span class="nav-text">封装一个函数insertAfter(),功能类似于insertBefore()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装remove-函数，使得child-remove-可以销毁自身。"><span class="nav-number">2.</span> <span class="nav-text">封装remove()函数，使得child.remove()可以销毁自身。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将目标节点内部的节点顺序逆序。"><span class="nav-number">3.</span> <span class="nav-text">将目标节点内部的节点顺序逆序。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态类"><span class="nav-number">4.</span> <span class="nav-text">静态类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期对象"><span class="nav-number">5.</span> <span class="nav-text">日期对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Js定时器"><span class="nav-number">6.</span> <span class="nav-text">Js定时器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写一个计时器，到三分钟停止"><span class="nav-number">7.</span> <span class="nav-text">写一个计时器，到三分钟停止</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
