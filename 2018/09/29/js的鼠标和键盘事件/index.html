@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中鼠标事件和键盘事件的相关知识。 鼠标事件鼠标事件有很多：click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout。这些方法的语义化都很好，大家看名字基本都懂是什么意思。 其中，contextmenu是右键出现菜单事件，并不是右">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的鼠标和键盘事件">
+<meta property="og:url" content="http://moreluckily.com/2018/09/29/js的鼠标和键盘事件/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中鼠标事件和键盘事件的相关知识。 鼠标事件鼠标事件有很多：click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout。这些方法的语义化都很好，大家看名字基本都懂是什么意思。 其中，contextmenu是右键出现菜单事件，并不是右">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-29T11:05:26.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的鼠标和键盘事件">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中鼠标事件和键盘事件的相关知识。 鼠标事件鼠标事件有很多：click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout。这些方法的语义化都很好，大家看名字基本都懂是什么意思。 其中，contextmenu是右键出现菜单事件，并不是右">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/29/js的鼠标和键盘事件/"/>
+
+
+
+
+
+  <title>js的鼠标和键盘事件 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/29/js的鼠标和键盘事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的鼠标和键盘事件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T19:03:30+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中鼠标事件和键盘事件的相关知识。</p>
+<h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><p>鼠标事件有很多：click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout。这些方法的语义化都很好，大家看名字基本都懂是什么意思。</p>
+<p>其中，contextmenu是右键出现菜单事件，并不是右键事件。</p>
+<p>click是一个完整的点击事件，包括mousedown和mouseup。</p>
+<p>mouseover和mouseout是一组事件，对应于鼠标的移入移出事件。</p>
+<p>• 所有的鼠标事件都有clientX和clientY，代表的是鼠标点击的位置，我们可以通过e.clientX和e.clentY来查看。</p>
+<p>• 左键点击的顺序是：mousedown、mouseup、click</p>
+<p>我们先来写一个简单的拖拽，思路：鼠标每移动一次，记录一下数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width:100px;height:100px;background-color: red;position: absolute;left: 0;top: 0;&quot;&gt;&lt;/div&gt; </span><br><span class="line"></span><br><span class="line">var div = document.getElementsByTagName(&apos;div&apos;)[0];</span><br><span class="line">var disX,</span><br><span class="line">    disY;</span><br><span class="line">div.onmousedown = function (e) &#123;</span><br><span class="line">    disX = e.pageX - parseInt(div.style.left); //</span><br><span class="line">    disY = e.pageY - parseInt(div.style.top);</span><br><span class="line">    document.onmousemove = function (e) &#123;</span><br><span class="line">    // 绑定在div上面的话，只有在div身上移动的时候，才会触发事件，而检测事件是有系统监控的，如果刷新频率跟不上移动的速率，这个时候，就会造成，鼠标移动了，但是方块没移动，就是掉帧。所以要绑定在document上面。</span><br><span class="line">                    var event = e || window.event;</span><br><span class="line">                    div.style.left = e.pageX - disX + &quot;px&quot;;  //以中心点为移动中心</span><br><span class="line">                    div.style.top = e.pageY - disY + &quot;px&quot;;</span><br><span class="line">                &#125;</span><br><span class="line">    div.onmouseup = function () &#123;</span><br><span class="line">        div.onmousemove = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>div.setCapture()；捕获页面上的所有地方的事件，获取到div身上，获取完之后要释放，利用div.releaseCapture(),不然在其他地方都用不了事件。</p>
+<p>mousedown：鼠标按下事件</p>
+<p>mouseup：鼠标抬起事件</p>
+<p>click: 鼠标点击事件。等于mousedown + mouseup 。先down后up再click。</p>
+<p>mouseover/mouseenter：鼠标进入事件，</p>
+<p>mouseout/mouseleave：鼠标离开事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">document.onclick = function (e) &#123;</span><br><span class="line">    console.log(‘click’);</span><br><span class="line">&#125;</span><br><span class="line">document.onmousedown = function (e) &#123;</span><br><span class="line">    console.log(‘mousedown’);</span><br><span class="line">&#125;</span><br><span class="line">document.onmouseup = function (e) &#123;</span><br><span class="line">    console.log(‘mouseup’);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出的结果是mousedown、mouseup、click。</p>
+<p>• 当我们同时绑定了click事件和mousedown事件后，如何解决mousedown和click的冲突问题？</p>
+<p>其实方法很简单，我们可以通过按下鼠标的事件来判断是执行click还是mousedown事件。</p>
+<h2 id="利用button来区分左右键。"><a href="#利用button来区分左右键。" class="headerlink" title="利用button来区分左右键。"></a>利用button来区分左右键。</h2><p>只能用mouseup和mousedown来区分。当我们触发mousedown的时候，事件对象会有一个属性叫做“button”，如果返回的是2，那么就是右键，如果是返回0，那么就是左键。中间滚动轮为1.</p>
+<p>click事件永远都是左键，有左键和右键的区别的是mousedown事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">document.onmousedown = function (e) &#123;</span><br><span class="line">    if (e.button == 0) &#123;</span><br><span class="line">        console.log(‘left’);</span><br><span class="line">    &#125;else if (e.button == 1) &#123;</span><br><span class="line">        console.log(‘mid’);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        console.log(‘right’);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>练习：区分拖拽事件和点击事件，通过时间差。大于一定时间为拖拽，否则就是点击。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var key = false; //开关，判断走哪个代码块</span><br><span class="line">var firstTime,</span><br><span class="line">	lastTime;</span><br><span class="line">div.onclick = function (e)&#123;</span><br><span class="line">	if(key)&#123;</span><br><span class="line">		console.log(&apos;click&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">div.onmousedown =function (e)&#123;</span><br><span class="line">	firstTime = new Date().getTime();</span><br><span class="line">&#125;</span><br><span class="line">div.onmouseup = function (e)&#123;</span><br><span class="line">	lastTime =new Date().getTime();</span><br><span class="line">	if(lastTime - firstTime &gt; 200)&#123;</span><br><span class="line">		key = false;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		key = true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">div.onmousemove = function (e)&#123;</span><br><span class="line">	console.log(e.pageX + &quot;&quot; + e.pageY)	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>针对鼠标帧频过快的问题，IE中有一个也可以说是另一种事件捕获的方法——domEle.setCapture()。</p>
+<p>调用这个方法之后，页面后续的所有操作就会全部都归于这个domEle上，比如div有一个拖拽事件，不过mousemove绑定在div上，只要调用了这个方法，当鼠标拖拽过程中鼠标移出了div，这个时候有效的鼠标移动就变成了document上的mousemove事件了，但是它还是归于了div上，因此div还是可以跟着鼠标移动。</p>
+<p>同时还有一个domEle.releaseCapture()方法可以来释放这个捕获行为。</p>
+<h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><p>键盘事件主要有三个：keydown、keypress、keyup。</p>
+<p>触发顺序分别是keydown、keypress、keyup。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">document.onkeydown = function (e) &#123;</span><br><span class="line">    console.log(‘keydown’);</span><br><span class="line">&#125;</span><br><span class="line">document.onkeypress = function (e) &#123;</span><br><span class="line">    console.log(‘keypress’);</span><br><span class="line">&#125;</span><br><span class="line">document.onkeyup = function (e) &#123;</span><br><span class="line">    console.log(‘keyup’);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出的结果是keydown、keypress、keyup。</p>
+<p>keydown和keypress可以响应连续操作，我们一直按着键盘就会一直触发事件。</p>
+<p>keypress的范围和keydown有所区别：</p>
+<p>keydown可以响应任意键盘按键，keypress只能响应字符类按键，也就是有ASCII码的字符的按键，像字母数字回车空格之类的。</p>
+<p>事件对象的属性方面：</p>
+<p>只有keypress有charCode属性，这个属性代表的我们输入的这个字符的ASCII码，配合SHIFT之类的按键可以直接获取大写字母等。</p>
+<p>keyCode和which每个方法都有，表示的是这个键的唯一标示，可以告诉浏览器我们按下的是键盘上的哪一个键，比如空格是32，32就代表空格。不过我们一般都用which，keyCode用的较少。</p>
+<p>• String上有一个方法叫做fromCharCode，可以接受一个Unicode值（包含ASCII值），然后返回对应的字符串，我们可以配合这个方法和charCode来直接获取输入的字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.onkeypress = function (e) &#123;</span><br><span class="line">    console.log(String.fromCharCode(e.charCode));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="文本类操作事件"><a href="#文本类操作事件" class="headerlink" title="文本类操作事件"></a>文本类操作事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input.oninput = function (e) &#123;</span><br><span class="line">	console.log(this.value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检测文本框里面的信息，只要有变化就会触发事件，就会打印出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input.change = function(e) &#123;</span><br><span class="line">	console.log(this.value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检测文本框里面，状态是否发生变化，变化了，失去鼠标焦点的时候就会触发，如果没有变化，失去鼠标焦点不会发生变化。</p>
+<p>写一个类似于新浪的输入框功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; value=&quot;请输入用户名&quot; </span><br><span class="line">style=&quot;color:#999&quot; onfocus=&quot;if(this.value==&apos;请输入用户名&apos;)&#123;</span><br><span class="line">this.value=&apos;&apos;;this.style.color=&apos;#424242&apos;    </span><br><span class="line">&#125;&quot; onblur=&quot;ifif(this.value==&apos;&apos;)&#123;</span><br><span class="line">this.value=&apos;请输入用户名&apos;;this.style.color=&apos;#999&apos;&quot;&gt; </span><br><span class="line">//鼠标聚焦，一行字没了，鼠标离开，一行字又回来了</span><br></pre></td></tr></table></figure>
+<h2 id="窗体类事件（window上的事件）"><a href="#窗体类事件（window上的事件）" class="headerlink" title="窗体类事件（window上的事件）"></a>窗体类事件（window上的事件）</h2><p>scroll ：当滚动条滚动，就会触发该事件，利用这个我们可以模拟一个position：fix，IE里面没有fix。利用这个模拟一个定位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function fixed (elem)&#123;</span><br><span class="line">	var posX = parseInte(getStyle(elemm &apos;left&apos;));</span><br><span class="line">	var posY = parseInt(getStyle(elemm &apos;top&apos;));</span><br><span class="line">	window.onscroll = function() &#123;</span><br><span class="line">		var disX = getScrollOffset().x;</span><br><span class="line">		var disY = getScrollOffset().y;</span><br><span class="line">		console.log(disX + &apos;&apos; + disY);</span><br><span class="line">		elem.style.left = parseInt(getStyle(elem,&apos;left&apos;)) + disX + &apos;px&apos;;</span><br><span class="line">		elem.style.top = parseInt(getStyle(elem,&apos;top&apos;)) + disY + &apos;px&apos;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>window.onload事件：解析文档的时候，html和css是一起解析的，html会形成一个DOM树，css会形成一个css树，当两个树拼到一起会形成一个渲染树（renderTree） ，然后开始进行渲染。如果碰到img标签，会先挂到树上，不着急下载，在解析的时候，会多开一个线程，并行地下载img。当所有html标签都解析完之后，JavaScript就开始解析了。但是window.onload是等所有资源解析并下载万才能触发该事件。效率非常低。这个事件通常是用来提醒加载完毕。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中JSON格式的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/28/js中的事件/" rel="next" title="js中的事件">
+                <i class="fa fa-chevron-left"></i> js中的事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/29/js的JSON格式/" rel="prev" title="js的JSON格式">
+                js的JSON格式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标事件"><span class="nav-number">1.</span> <span class="nav-text">鼠标事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用button来区分左右键。"><span class="nav-number">2.</span> <span class="nav-text">利用button来区分左右键。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键盘事件"><span class="nav-number">3.</span> <span class="nav-text">键盘事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本类操作事件"><span class="nav-number">4.</span> <span class="nav-text">文本类操作事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#窗体类事件（window上的事件）"><span class="nav-number">5.</span> <span class="nav-text">窗体类事件（window上的事件）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

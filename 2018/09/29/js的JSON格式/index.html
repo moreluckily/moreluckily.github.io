@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中json的相关知识。 json格式先介绍一下JSON： 我们传输数据就两种格式：xml和json。 xml是以html为模板，自定义标签名作为数据名来传递数据，书写起来很麻烦，现在多用json，很少使用xml。 json是传输数据的另一种格式，它是以对象为模板（本质上就是对象，但是用途有所区别，对">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的JSON格式">
+<meta property="og:url" content="http://moreluckily.com/2018/09/29/js的JSON格式/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中json的相关知识。 json格式先介绍一下JSON： 我们传输数据就两种格式：xml和json。 xml是以html为模板，自定义标签名作为数据名来传递数据，书写起来很麻烦，现在多用json，很少使用xml。 json是传输数据的另一种格式，它是以对象为模板（本质上就是对象，但是用途有所区别，对">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-29T13:30:56.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的JSON格式">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中json的相关知识。 json格式先介绍一下JSON： 我们传输数据就两种格式：xml和json。 xml是以html为模板，自定义标签名作为数据名来传递数据，书写起来很麻烦，现在多用json，很少使用xml。 json是传输数据的另一种格式，它是以对象为模板（本质上就是对象，但是用途有所区别，对">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/29/js的JSON格式/"/>
+
+
+
+
+
+  <title>js的JSON格式 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/29/js的JSON格式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的JSON格式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T19:04:25+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中json的相关知识。</p>
+<h2 id="json格式"><a href="#json格式" class="headerlink" title="json格式"></a>json格式</h2><p>先介绍一下JSON：</p>
+<p>我们传输数据就两种格式：xml和json。</p>
+<p>xml是以html为模板，自定义标签名作为数据名来传递数据，书写起来很麻烦，现在多用json，很少使用xml。</p>
+<p>json是传输数据的另一种格式，它是以对象为模板（本质上就是对象，但是用途有所区别，对象是本地使用，json是用来传输数据）。</p>
+<p>json对象跟我们平常的对象主要区别是属性名必须要使用双引号。</p>
+<p>json是可以解析的，有两个方法。一般情况下，正常的数据传输都是会转化为二进制的文件或数据，多数都是字符串，我们需要对字符串进行操作。</p>
+<p>不过我们传输数据的时候并不能将一个json对象直接传过去，我们只能传过去json形式的字符串，这个时候我们就需要用到JSON上的两个方法了。    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JSON.parse() —&gt; string-&gt;json</span><br><span class="line">JSON.stringify() —&gt; json-&gt;string</span><br></pre></td></tr></table></figure>
+<p>通过JSON上的这两个方法，我们就可以进行数据传输了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    &apos;name&apos;: &apos;scarlett&apos;,</span><br><span class="line">    &apos;age&apos;: 18</span><br><span class="line">&#125;;</span><br><span class="line">var string = JSON.stringify(obj);</span><br><span class="line">console.log(string); // ‘&#123;“name”:”scarlett”,”age”:18&#125;’</span><br><span class="line">var data = JSON.parse(string);</span><br><span class="line">console.log(data); // Object &#123;name: “scarlett”, age: 18&#125;</span><br></pre></td></tr></table></figure>
+<p>将json类型的字符串转化为json类型的对象。（把接收过来的信息转化为json）必须注意：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var stjson = &apos;&#123; &quot;name&quot; : &quot;xiaozhang&quot;,&quot;age&quot; : &quot;20&quot;&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>字符串不能手动写成多行，字符串必须是一行。否则会报错。</p>
+<p>可以这样来写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var json1 = &apos;&#123; \</span><br><span class="line">    &quot;name&quot; : &quot;xiaozhang&quot;,\</span><br><span class="line">    &quot;age&quot; : &quot;20&quot;\</span><br><span class="line">    &#125;&apos;;</span><br></pre></td></tr></table></figure>
+<h2 id="异步加载JS"><a href="#异步加载JS" class="headerlink" title="异步加载JS"></a>异步加载JS</h2><p>tml加载的时候是一边加载一边解析。当我们加载到script标签的时候会阻塞页面。在我们正常编程的时候，有很多script，css文件。当我们script过多的时候，有很多方法库，类库等会阻塞很久，如果有个文件发生错误，下面的所有文件都会瘫痪掉。这时候，我们需要将JavaScript文件（库文件，不用执行的方法）一部分异步加载出来，就是一边加载JavaScript一边加载html、css等。</p>
+<p>总结一下，归于以下两点：</p>
+<p>js加载的缺点：加载工具方法也阻塞文档，过多js加载会影响页面效率，一旦网速不好，那么整个网站将等待js加载而不进行后续渲染等工作。</p>
+<p>有些工具方法需要按需加载，用到再加载，不用不加载。</p>
+<p>我们需要对某些JavaScript文件，进行按需加载，需要的时候才加载，不需要的时候不加载。</p>
+<h2 id="异步加载js的方法"><a href="#异步加载js的方法" class="headerlink" title="异步加载js的方法"></a>异步加载js的方法</h2><p>文档解析的时候，先解析html结构和css文件，形成DOM树和css树，然后两个树拼在一起，形成渲染树randerTree。然后在这个过程中有几个状态： 这里先讲一个状态，dom树解析完毕。把标签都放在DOM树上，不用看完里面的内容，就可以把它挂在树上。这就叫解析完成。在DOM树加载完毕之前是先解析完毕。</p>
+<h3 id="defer异步加载"><a href="#defer异步加载" class="headerlink" title="defer异步加载"></a>defer异步加载</h3><p>我们在script标签的行间写一个defer=“defer”或者直接写defer，就可以让这个script变成异步加载了。但是这种异步只是针对下载方面，只有等DOMTree全部解析完成（不包括下载完里面的资源）后才会异步执行。而且这个方法只有IE和一些高版本的firefox和chrome可以用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;xx.js&quot; defer&gt;</span><br><span class="line">	console.log(&apos;a&apos;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>不过这一种方式可以在script标签里面写代码。</p>
+<p>注意：IE6和IE7的异步加载最多只能有2个，当多余两个的时候必须等前两个加载完才会加载第三个。</p>
+<p>所有defer的js代码都保证按照顺序执行。</p>
+<h3 id="async异步加载"><a href="#async异步加载" class="headerlink" title="async异步加载"></a>async异步加载</h3><p>async是asynchronous的缩写,是异步的缩写，它是html5的标准，下载完成之后就会立即异步执行，这种方法除了IE6-IE8其他的浏览器都好用。 asynchronous javascript and XML就是ajax的缩写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=“text/javascript” async=“async”&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>不过这种方式不能把代码写在script标签里面，只能引用。（虽然标准是这么写的，但是现在随着内核升级，async里面也可以写代码了，在没有src的情况下）。</p>
+<p>而且async的js代码不能保证是顺序执行的。</p>
+<p>• 这两个属性不能一起使用！</p>
+<p>我们现在看个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src=&quot;demo.js&quot;&gt;&lt;/script&gt;//demo.js里面有test函数</span><br><span class="line">&lt;script&gt; test()&lt;/script&gt;//test执行</span><br></pre></td></tr></table></figure>
+<p>当执行到第一个script的时候主线程会继续向下解析，并开一个新线程解析demo.js，当解析到第二个script的时候，因为不是异步的，就会阻塞所有进程，这个时候的demo.js可能已经解析完，但是没有下载完，这个时候就会报错，因为test还没有下载完就执行了。</p>
+<p>以上两种方法不能做到按需加载，只能做到异步加载。通常开发，我们使用第三种方法。</p>
+<h3 id="动态添加script标签"><a href="#动态添加script标签" class="headerlink" title="动态添加script标签"></a>动态添加script标签</h3><p>w3c的标准规定：动态添加的script标签是异步的。</p>
+<p>创建script，插入到DOM中，加载完毕后callBack回调。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var script = document.createElement(&apos;script&apos;);</span><br><span class="line">script.src = &quot;demo.js&quot;;</span><br><span class="line">document.boddy.appendChild(script);</span><br><span class="line">test() //报错，因为这个是异步加载，还没加载完就执行，报 test is not defined</span><br></pre></td></tr></table></figure>
+<p>这种方法可以实行按需加载，异步加载。但是这个时候，我们需要知道异步加载js的加载完成时间，告诉我们js文件已经加载完成。这个时候就有一个很人性化的方法：load事件。（IE没有load事件）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">script.onload = function () &#123;</span><br><span class="line">	//加载完之后需要进行的操作，写在里面</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IE上面的方法用readyState 有两个状态，loading表示正在加载，如果加载完成就会变成complete或loaded。还有一个事件就是onreadystatechange，是用来检测readystate状态的变化，如果变化了就会触发这个事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function loadScript(url) &#123;</span><br><span class="line">	var script = document.createElement(&apos;script&apos;);</span><br><span class="line">	script.src = url;</span><br><span class="line">	document.body.appendChild(script);</span><br><span class="line">	if(script.readyState)&#123;</span><br><span class="line">		script.onreadystatechange = function () &#123;</span><br><span class="line">			if(script.readyState == &quot;complete&quot; || script.readyState == &quot;loaded&quot;)&#123;</span><br><span class="line">				test();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;else&#123;//Safari firefox goole chrome opera</span><br><span class="line">		scripte.onload = function () &#123;</span><br><span class="line">			test();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">loadScript(&apos;dome.js&apos;);</span><br></pre></td></tr></table></figure>
+<p>以上就是最常用的异步记载，按需加载的方法。但是如果下载的非常快，解析完成的时候，马上就下载完，这个时候，onreadystatechange马上变成最终状态，我们还没检测，它已经变化完毕了，所以我们需要调换一下顺序。最后才插入脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function loadScript(url) &#123;</span><br><span class="line">	var script = document.createElement(&apos;script&apos;);</span><br><span class="line">	script.src = url;</span><br><span class="line">	if(script.readyState)&#123;</span><br><span class="line">		script.onreadystatechange = function () &#123;</span><br><span class="line">			if(script.readyState == &quot;complete&quot; || script.readyState == &quot;loaded&quot;)&#123;</span><br><span class="line">				test();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;else&#123;//Safari firefox goole chrome opera</span><br><span class="line">		scripte.onload = function () &#123;</span><br><span class="line">			test();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	document.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line">loadScript(&apos;dome.js&apos;);</span><br></pre></td></tr></table></figure>
+<p>最后要变成一个传参形式，自定义函数，注意不能直接写函数名，否则会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">	test : function ()&#123; &#125; </span><br><span class="line">	&#125;//写在demo.js文件里面</span><br><span class="line">function loadScript(url,callback) &#123;</span><br><span class="line">	var script = document.createElement(&apos;script&apos;);</span><br><span class="line">	script.src = url;</span><br><span class="line">	if(script.readyState)&#123;</span><br><span class="line">		script.onreadystatechange = function () &#123;</span><br><span class="line">			if(script.readyState == &quot;complete&quot; || script.readyState == &quot;loaded&quot;)&#123;</span><br><span class="line">			script.onreadystatechange = null;//降低性能，不用时刻监听</span><br><span class="line">				obj[callback]();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;else&#123;//Safari firefox goole chrome opera</span><br><span class="line">		script.onload = function () &#123;</span><br><span class="line">			script.onload = null; //降低性能，不用时刻监听</span><br><span class="line">			obj[callback]();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	document.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line">loadScript(&apos;dome.js&apos;,&quot;test&quot;);</span><br></pre></td></tr></table></figure>
+<p>这就是完整的整个方法，实行按需异步加载。</p>
+<p>• 异步加载js不允许使用document.write这个方法。它会清除文档流，一旦执行就会把全部的标签都清除掉，包括自身的script标签。</p>
+<h2 id="JS加载时间线（performace-timing-line）"><a href="#JS加载时间线（performace-timing-line）" class="headerlink" title="JS加载时间线（performace timing line）"></a>JS加载时间线（performace timing line）</h2><p>1、创建Document对象，开始解析web页面。解析HTML元素和他们的文本内容后添加Element对象和Text节点到文档中。这个阶段document.readyState = ‘loading’。</p>
+<p>2、遇到link外部css，创建线程加载，并继续解析文档。</p>
+<p>3、遇到script外部js，并且没有设置async、defer，浏览器加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。</p>
+<p>4、遇到script外部js，并且设置有async、defer，浏览器创建线程加载，并继续解析文档。 对于async属性的脚本，脚本加载完成后立即执行。（异步禁止使用document.write()）</p>
+<p>5、遇到img等，先正常解析dom结构，然后浏览器异步加载src，并继续解析文档。</p>
+<p>6、当文档解析完成，document.readyState = ‘interactive’。</p>
+<p>7、文档解析完成后，所有设置有defer的脚本会按照顺序执行。（注意与async的不同,但同样禁止使用document.write();</p>
+<p>8、document对象触发DOMContentLoaded事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。</p>
+<p>9、当所有async的脚本加载完成并执行后、img等加载完成后，document.readyState = ‘complete’，window对象触发load事件。</p>
+<p>10、从此，以异步响应方式处理用户输入、网络事件等。</p>
+<p>要注意的是，任何情况都禁止使用document.write()，因为它能够清除文档流（如果文档流没有加载完毕，不会清楚，而是跟着加载了的文档后面），所有标签都清除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	console.log(document.readyState);//loading</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;span&gt;&lt;/span&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	console.log(document.readyState);//loading,script也是标签，这里不是interactive</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>JS的时间线是非常重要的知识点，希望大家能背下来这一块。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解JS中正则表达式的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/29/js的鼠标和键盘事件/" rel="next" title="js的鼠标和键盘事件">
+                <i class="fa fa-chevron-left"></i> js的鼠标和键盘事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#json格式"><span class="nav-number">1.</span> <span class="nav-text">json格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步加载JS"><span class="nav-number">2.</span> <span class="nav-text">异步加载JS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步加载js的方法"><span class="nav-number">3.</span> <span class="nav-text">异步加载js的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#defer异步加载"><span class="nav-number">3.1.</span> <span class="nav-text">defer异步加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async异步加载"><span class="nav-number">3.2.</span> <span class="nav-text">async异步加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态添加script标签"><span class="nav-number">3.3.</span> <span class="nav-text">动态添加script标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS加载时间线（performace-timing-line）"><span class="nav-number">4.</span> <span class="nav-text">JS加载时间线（performace timing line）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
