@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中一些知识的补充。 DOCTYPE查看视口的尺寸有两个方法，window.innerWidth/innerHeight IE8及IE8以下不兼容，还有就是document.documentElement.clientWidth/clientHeight ，这个在标准模式下任意浏览器都兼容，最后还有，">
+<meta name="keywords" content="-javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的终章">
+<meta property="og:url" content="http://moreluckily.com/2018/09/30/js的终章/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中一些知识的补充。 DOCTYPE查看视口的尺寸有两个方法，window.innerWidth/innerHeight IE8及IE8以下不兼容，还有就是document.documentElement.clientWidth/clientHeight ，这个在标准模式下任意浏览器都兼容，最后还有，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-30T15:58:12.094Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的终章">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中一些知识的补充。 DOCTYPE查看视口的尺寸有两个方法，window.innerWidth/innerHeight IE8及IE8以下不兼容，还有就是document.documentElement.clientWidth/clientHeight ，这个在标准模式下任意浏览器都兼容，最后还有，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/09/30/js的终章/"/>
+
+
+
+
+
+  <title>js的终章 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/09/30/js的终章/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js的终章</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T20:18:05+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习javaScript。今天要讲一下JavaScript中一些知识的补充。</p>
+<h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p>查看视口的尺寸有两个方法，window.innerWidth/innerHeight IE8及IE8以下不兼容，还有就是document.documentElement.clientWidth/clientHeight ，这个在标准模式下任意浏览器都兼容，最后还有，document.body.clientWidth/clientHeight 这个适用于怪异模式下的浏览器。</p>
+<p>这里就涉及到一些关于标准模式和怪异模式的知识了。</p>
+<p>首先我们要知道渲染模式，在多年以前（IE6诞生以前），各浏览器都处于各自比较封闭的发展中（基本没有兼容性可谈）。随着WEB的发展，兼容性问题的解决越来越显得迫切，随即，各浏览器厂商发布了按照标准模式（遵循各厂商制定的统一标准）工作的浏览器，比如IE6就是其中之一。但是考虑到以前建设的网站并不支持标准模式（也可以理解更新前的网页版本），所以各浏览器在加入标准模式的同时也保留了混杂模式（即以前那种未按照统一标准工作的模式，也叫怪异模式）。</p>
+<p>三种标准模式的写法：（如果没有写或者写错了就是怪异模式）</p>
+<p>三种标准模式的写法</p>
+<p>1.&lt;!DOCTYPE html&gt;（直接用这个就可以）</p>
+<p>2.&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “<a href="http://www.w3.org/TR/html4/strict.dtd”&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/html4/strict.dtd”&gt;</a></p>
+<p>3.&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”&gt;</a></p>
+<h2 id="BOM（Browser-Object-Model）"><a href="#BOM（Browser-Object-Model）" class="headerlink" title="BOM（Browser Object Model）"></a>BOM（Browser Object Model）</h2><p>BOM定义了操作浏览器的接口，它最常见的5个对象：window（操作window），history（操作历史记录），navigator（操作导航栏），screen（操作屏幕的），location（操作地理位置）。</p>
+<h3 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h3><p>alert(): 显示一段消息并有一个确定按钮的弹出框。</p>
+<p>close(): 关闭浏览器窗口，通常是配合iframe使用。</p>
+<p>open() : 打开一个新的窗口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var newWindow = window.open(&apos;http://www.baidu.com&apos;,&apos;baidu&apos;,&apos;width=200px,height=200px&apos;);</span><br></pre></td></tr></table></figure>
+<p>这样就可以得到一个子窗口。我们可以查询它的一些window属性。</p>
+<p>属性：</p>
+<p>closed: 用来查询是否关闭。通常是查询子窗体是否关闭。</p>
+<p>opener: 查询该窗口是在那个窗口打开的。</p>
+<h3 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h3><p>可以区别浏览器和之间的不同。浏览器嗅探。</p>
+<p>userAgent: 可以真正区别浏览器是啥。利用正则表达式进行截取后，匹配操作之后，可以知道浏览器是哪个。</p>
+<p>online: 查看浏览器是否脱机模式。<br>就看电脑有没有联网，有网true，没网false。</p>
+<p>platform：浏览器平台。</p>
+<h3 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h3><p>返回屏幕的各种参数，分辨率，高度等，但是不兼容。直接略过。</p>
+<h3 id="Hisory"><a href="#Hisory" class="headerlink" title="Hisory"></a>Hisory</h3><p>length: 历史记录的长度</p>
+<p>方法：</p>
+<p>back(): 往后退一次。</p>
+<p>forword(): 往前进一次。</p>
+<p>go(): 跳转，在历史记录上进行跳转。</p>
+<h3 id="location"><a href="#location" class="headerlink" title="location"></a>location</h3><p>hash: 哈希，手动置锚点。后端前端整合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.hash = &quot;only&quot; //可以直接找到锚点的位置。例如在a标签写id，就可以用hash找到。</span><br></pre></td></tr></table></figure>
+<p>host: 查询主机名。</p>
+<p>href: 完整的URL。</p>
+<p>pathname: 返回URL中的路径名部分。</p>
+<p>assign: 跳转到某个页面。</p>
+<p>replace: 新页面代替当前页面。</p>
+<p>reload: 刷新页面。</p>
+<h3 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h3><p>label标签: 输入框聚焦的时候，只能点击文本框，如果点击文本框前的文字却聚焦不了，我们需要将他们连接起来， 使得点击文本都能聚焦。这就需要使用label标签了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;&quot;&gt;</span><br><span class="line">    &lt;label for=&quot;demo&quot;&gt;username&lt;/label&gt;</span><br><span class="line">    &lt;input id=&apos;demo&apos; type=&quot;text&quot; name=&quot;user&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">demo.onclick = function()&#123;</span><br><span class="line">	alert(&apos;is easy&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>属性映射，一个标签有一些属性，例如id，class等标签先天就有的，不需要我们手动添加，我们称之为特性。但是有些我们可以给他后天添加的属性，它们就不是特性。如果是特性，他们就有一种映射关系，如果利用js修改，它们可以直接在html里面改也发生变，如果是简单的属性，就是我们后天添加的，它们就没有一一对应的关系，在js里面修改，并不会在html里面体现，如果在html里面添加一个简单属性，那么在js里面访问就是undefined。</p>
+<h3 id="getByClass"><a href="#getByClass" class="headerlink" title="getByClass"></a>getByClass</h3><p>写一个方法通过类名取元素。getByClass。弥补IE8的getElementByClassName不好使的缺点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Document.prototype.getByClass = function(target) &#123;</span><br><span class="line">	//先选择出所有的元素，一个一个看它们的类名。如果类名有空格（前面有，后面有，中间有），要去空格。先去两边空格，在判断中间有没有空格。</span><br><span class="line">	var all = document.getElementsByTagName(&apos;*&apos;);</span><br><span class="line">	var arr = []; //use to handle</span><br><span class="line">	var trim = /^\s+|\s+$/g</span><br><span class="line">	for(var i = 0; i &lt; len; i++)&#123;</span><br><span class="line">		var nodeClassName = all[i].className.replace(regSpace, &quot;&quot;);//这里需要调试一下正则，以防出错；</span><br><span class="line">		var testArr = nodeClassName.split(&quot; &quot;);</span><br><span class="line">		for(var j = 0; j &lt; testArr.length; j++)&#123;</span><br><span class="line">			if(testArr[j] === target)&#123;</span><br><span class="line">				arr.push(all[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="图片预加载和懒加载"><a href="#图片预加载和懒加载" class="headerlink" title="图片预加载和懒加载"></a>图片预加载和懒加载</h3><p>网页加载图片的时候，并不是一开始全部都加载出来，而是，用户读到哪才加载到哪（懒加载）。预加载就是在没有读到之前，就尽量加载，加载完在展示，不要加一点显示一点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var oimg = new Image();//创建一个图片</span><br><span class="line">oimg.src = &quot;图片地址&quot;;</span><br><span class="line">oimg.onload = function() &#123;</span><br><span class="line">	//加载完才注册事件</span><br><span class="line">	btn.onclick = function ()&#123;//点击才会出现图片 实现懒加载</span><br><span class="line">		document.body.appendChild(oimg);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="cdn-缓存服务器"><a href="#cdn-缓存服务器" class="headerlink" title="cdn 缓存服务器"></a>cdn 缓存服务器</h3><p>请求资源的时候，先找到最近的cdn，如果没有，再到总的服务器找所需要的资源。（网络课详细讲）。CDN的多少，确定世界各地访问该资源的速度。我们有时候也需要往cdn上面放东西。</p>
+<p>断点调试（重要）</p>
+<p>在读html之前如果有js脚本会阻塞文本，如果这时候有有DOM操作会报错。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	var div = document.getElementsByTagsName(&apos;div&apos;)[0];</span><br><span class="line">	div.innerHTML = &quot;hehe&quot;;//报错，cannot read the property of undefined</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>这个时候我们可以使用断点调试。在浏览器的source可以进行调试。里面有很多行，如果在某一行点击一下，相当于断点，这个时候刷新，程序读到哪一行，就会停止。这个有助于我们一步一步排错。类似于我们在页面上写console.log。</p>
+<h3 id="文档碎片"><a href="#文档碎片" class="headerlink" title="文档碎片"></a>文档碎片</h3><p>页面加载的时候，有重绘（painting）和重排（rendering），我们要减少重排的次数，把需要改变的东西放在文档碎片里面，最后整个文档碎片加到body里面。一个一个放到body里面很耗性能。避免多次重排。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var df = document.createDocumentFragment();</span><br><span class="line">df.appendChild(xxx);</span><br><span class="line">document.body.appendChild(df);</span><br></pre></td></tr></table></figure>
+<p>这样就可以减小重排的操作了。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解网络的相关知识 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># -javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/30/js中的正则表达式/" rel="next" title="js中的正则表达式">
+                <i class="fa fa-chevron-left"></i> js中的正则表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOCTYPE"><span class="nav-number">1.</span> <span class="nav-text">DOCTYPE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM（Browser-Object-Model）"><span class="nav-number">2.</span> <span class="nav-text">BOM（Browser Object Model）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Window"><span class="nav-number">2.1.</span> <span class="nav-text">Window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#navigator"><span class="nav-number">2.2.</span> <span class="nav-text">navigator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#screen"><span class="nav-number">2.3.</span> <span class="nav-text">screen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hisory"><span class="nav-number">2.4.</span> <span class="nav-text">Hisory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#location"><span class="nav-number">2.5.</span> <span class="nav-text">location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#label标签"><span class="nav-number">2.6.</span> <span class="nav-text">label标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getByClass"><span class="nav-number">2.7.</span> <span class="nav-text">getByClass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片预加载和懒加载"><span class="nav-number">2.8.</span> <span class="nav-text">图片预加载和懒加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cdn-缓存服务器"><span class="nav-number">2.9.</span> <span class="nav-text">cdn 缓存服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档碎片"><span class="nav-number">2.10.</span> <span class="nav-text">文档碎片</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
