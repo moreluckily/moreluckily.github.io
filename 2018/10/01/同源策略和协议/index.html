@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-网络," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中同源策略和协议的一些知识。 同源策略浏览器有一个很重要的概念————同源策略（same-origin policy），所谓同源指的是：域名，协议，端口相同。不同源的客户端脚本（JavaScript、actionscript）在没有明确授权的情况下，不能读写对方的资源。 简单来说啊，浏览器不允许包含在腾讯页面的脚本访问阿里巴巴页面">
+<meta name="keywords" content="-网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同源策略和协议">
+<meta property="og:url" content="http://moreluckily.com/2018/10/01/同源策略和协议/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中同源策略和协议的一些知识。 同源策略浏览器有一个很重要的概念————同源策略（same-origin policy），所谓同源指的是：域名，协议，端口相同。不同源的客户端脚本（JavaScript、actionscript）在没有明确授权的情况下，不能读写对方的资源。 简单来说啊，浏览器不允许包含在腾讯页面的脚本访问阿里巴巴页面">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/01/同源策略和协议/blog.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/01/同源策略和协议/blog1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/01/同源策略和协议/blog2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/01/同源策略和协议/blog3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/01/同源策略和协议/blog4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/01/同源策略和协议/blog5.png">
+<meta property="og:updated_time" content="2018-10-01T11:24:29.323Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="同源策略和协议">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中同源策略和协议的一些知识。 同源策略浏览器有一个很重要的概念————同源策略（same-origin policy），所谓同源指的是：域名，协议，端口相同。不同源的客户端脚本（JavaScript、actionscript）在没有明确授权的情况下，不能读写对方的资源。 简单来说啊，浏览器不允许包含在腾讯页面的脚本访问阿里巴巴页面">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/01/同源策略和协议/blog.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/01/同源策略和协议/"/>
+
+
+
+
+
+  <title>同源策略和协议 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/01/同源策略和协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">同源策略和协议</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T18:47:43+08:00">
+                2018-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络/" itemprop="url" rel="index">
+                    <span itemprop="name">网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中同源策略和协议的一些知识。</p>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>浏览器有一个很重要的概念————同源策略（same-origin policy），所谓同源指的是：域名，协议，端口相同。不同源的客户端脚本（JavaScript、actionscript）在没有明确授权的情况下，不能读写对方的资源。</p>
+<p>简单来说啊，浏览器不允许包含在腾讯页面的脚本访问阿里巴巴页面的数据资源，会受到同源策略的限制。</p>
+<p>例如：我们在百度页面搜索：lol。会有一个wd关键字，它是我们需要搜索的内容。如果搜索lol，一般出现特别长的一段代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=0&amp;rsv_idx=1&amp;tn=baidu&amp;wd=lol&amp;rsv_pq=8576d71b00025292&amp;rsv_t=f996f7E4HJRAldhArJ4GpWAOnLeGnWAC8ZtULFXSTjEcvagG9YNeN0wZRZg&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_sug3=2&amp;rsv_sug1=2&amp;rsv_sug7=100</span><br></pre></td></tr></table></figure>
+<p>我们可以写短一点也可以得到相同的搜索结果，我们可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/s?wd=lol</span><br></pre></td></tr></table></figure>
+<p>这样写可以得到相同的搜索结果。</p>
+<p>但是要注意的是，这个必须是在百度页面才能访问，如果我们在本地发送请求是会报错的。</p>
+<p><img src="/2018/10/01/同源策略和协议/blog.png" alt="域名不同"></p>
+<p>这就是因为同源策略的限制，我们不能在不同源的页面请求数据。（域名不相同，协议不相同）。</p>
+<h2 id="URL-资源定位符-构成"><a href="#URL-资源定位符-构成" class="headerlink" title="URL(资源定位符)构成"></a>URL(资源定位符)构成</h2><p>协议://域名（端口号，参数，查询等）例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.zhidao.baidu.com</span><br></pre></td></tr></table></figure>
+<p>1.其中协议就是http，域名就是<a href="http://www.zhidao.baidu.com，域名是倒着解析的，baidu.com属于一级域名，zhidao.baidu.com属于二级域名，www是一级域名前缀，表示由万维网维护的。这个前缀是用来区别处理信息的，用来分开不同的服务器进行处理。例如邮件利用a服务器，网站用b服务器，通过前缀就可以直接找到处理网站的b服务器了。但是现在基本不需要使用www了。" target="_blank" rel="noopener">www.zhidao.baidu.com，域名是倒着解析的，baidu.com属于一级域名，zhidao.baidu.com属于二级域名，www是一级域名前缀，表示由万维网维护的。这个前缀是用来区别处理信息的，用来分开不同的服务器进行处理。例如邮件利用a服务器，网站用b服务器，通过前缀就可以直接找到处理网站的b服务器了。但是现在基本不需要使用www了。</a></p>
+<p>zhidao.baidu.com属于百度自己进行维护的。com，org，net属于顶级域名，是在全世界范围内解析的，hk，cn，例如，cn就是在中国解析的。</p>
+<p>2.端口、通常有几个80/90/3000等，http默认是80端口。https默认端口443.这里涉及到一个dns解析问题，</p>
+<p>当我们输入URL之后，会进行寻找服务器，每个服务器上面有很多端口，每个端口有不同的功能，用来处理不同的业务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">举例来说，http://www.example.com/dir/page.html</span><br><span class="line">协议是http://</span><br><span class="line">域名是www.example.com</span><br><span class="line">端口是80（默认端口可以省略）</span><br><span class="line"></span><br><span class="line">http://www.example.com/dir2/other.html：同源</span><br><span class="line">http://example.com/dir/other.html：不同源（域名不同）</span><br><span class="line">http://v2.www.example.com/dir/other.html：不同源（域名不同）</span><br><span class="line">http://www.example.com:81/dir/other.html：不同源（端口不同）</span><br><span class="line">https://www.example.com/dir/page.html ：不同源（协议不同）</span><br></pre></td></tr></table></figure>
+<h2 id="输入一个URL之后发生了什么"><a href="#输入一个URL之后发生了什么" class="headerlink" title="输入一个URL之后发生了什么"></a>输入一个URL之后发生了什么</h2><p>同源就是指协议，域名，端口都相同的网页。</p>
+<p>1.浏览器通过DNS域名解析到服务IP（ping <a href="http://www.baidu.com）" target="_blank" rel="noopener">www.baidu.com）</a>.</p>
+<p>DNS解析可以将我们输入的URL解析成一个IP地址，通过这个IP地址也能直接找到该网页。</p>
+<p>2.客户端(浏览器)通过TCP协议建立到服务器的TCP连接 (三次握手)。</p>
+<p>当找到服务器之后，我们需要建立一个连接才能进行数据的传输。那么通过TCP建立连接需要有一个过程，叫做“三次握手”.断开连接的时候也有一个过程叫做，“四次挥手”</p>
+<p>3.客户端（浏览器）向web服务器端（HTTP服务器）发送HTTP协议包，请求服务器里的资源文档 （telnet 模拟）</p>
+<p>在交互数据这里也有一个协议叫做http协议。请求服务器的资源文档。</p>
+<p>4.服务器想客户端发送HTTP协议应答包</p>
+<p>5.客户端和服务器断开（四次挥手），客户端开始解释处理HTML文档。</p>
+<p>画图来说明一切：</p>
+<p><img src="/2018/10/01/同源策略和协议/blog1.png" alt="url之后"></p>
+<h2 id="TCP-UDP-传输层协议"><a href="#TCP-UDP-传输层协议" class="headerlink" title="TCP/UDP(传输层协议)"></a>TCP/UDP(传输层协议)</h2><h3 id="面向连接的TCP"><a href="#面向连接的TCP" class="headerlink" title="面向连接的TCP"></a>面向连接的TCP</h3><p>TCP（Transmission Control Protocol，传输控制协议）是基于连接的协议，也就是说，在正式收发数据前，必须和对方建立可靠的连接。一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂，我们这里只做简单、形象的介绍，你只要做到能够理解这个过程即可。</p>
+<h3 id="面向非连接的UDP协议"><a href="#面向非连接的UDP协议" class="headerlink" title="面向非连接的UDP协议"></a>面向非连接的UDP协议</h3><p>“面向非连接”就是在正式通信前不必与对方先建立连接，不管对方状态就直接发送。与手机短信非常相似：你在发短信的时候，只需要输入对方手机号就OK了。 UDP（User Data Protocol，用户数据报协议）是与TCP相对应的协议。它是面向非连接的协议，它不与对方建立连接，而是直接就把数据包发送过去！</p>
+<p>总的来说TCP协议是需要建立连接的，而UDP是不需要建立连接的。</p>
+<h3 id="三次握手过程"><a href="#三次握手过程" class="headerlink" title="三次握手过程"></a>三次握手过程</h3><p>具体过程：</p>
+<p>第一次握手：建立连接时，客户端A发送SYN包（SYN=j）到服务器B，并进入SYN—SEND状态，等待服务器B确认。（先Client端发送连接请求报文。）</p>
+<p>第二次握手：服务器B收到SYN包，必须确认客户A的SYN（ACK=j+1），同时自己也发送一个SYN包（SYN=k），即SYN+ACK包，此时服务器B进入SYN-RECV状态。(Server段接受连接后回复ACK报文，并为这次连接分配资源。)</p>
+<p>第三次握手：客户端A收到服务器B的SYN＋ACK包，向服务器B发送确认包ACK（ACK=k+1），此包发送完毕，客户端A和服务器B进入ESTABLISHED状态，完成三次握手。(Client端接收到ACK报文后也向Server段发送ACK报文，并分配资源，这样TCP连接就建立了。)</p>
+<p>完成三次握手，客户端与服务器开始传送数据</p>
+<p>如图： </p>
+<p><img src="/2018/10/01/同源策略和协议/blog2.png" alt="三次握手"></p>
+<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>四次挥手 1.Client端发起中断连接请求，也就是发送FIN报文。Server端接到FIN报文后，意思是说”我Client端没有数据要发给你了”，但是如果你还有数据没有发送完成，则不必急着关闭（Socket），可以继续发送数据。</p>
+<p>2.server发送ACK，告诉Client端，你的请求我收到了，但是我还没准备好，请继续等我的消息。 wait:这个时候Client端就进入FIN-WAIT状态，继续等待Server端的FIN报文。</p>
+<p>3.当Server端确定数据已发送完成，则向Client端发送FIN报文，告诉Client端，好了，我这边数据发完了，准备好关闭连接了。</p>
+<p>4.Client端收到FIN报文后，就知道可以关闭连接了，但是他还是不相信网络，怕Server端不知道要关闭，所以发送ACK后进入TIME-WAIT状态，如果Server端没有收到ACK则可以重传。Server端收到ACK后，”就知道可以断开连接了”。Client端等待了2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，我Client端也可以关闭连接了。Ok，TCP连接就这样关闭了！</p>
+<p><img src="/2018/10/01/同源策略和协议/blog3.png" alt="四次挥手"></p>
+<h2 id="应用层协议（http和https）"><a href="#应用层协议（http和https）" class="headerlink" title="应用层协议（http和https）"></a>应用层协议（http和https）</h2><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。</p>
+<p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。</p>
+<p>上面的协议为了建立客户端与服务器端的连接，此协议为了让两者进行沟通。</p>
+<p>为什么要有此协议呢，让计算机之间按照规矩说话，你问我答，你怎么问我怎么答，否则计算机各说各话，没办法沟通。</p>
+<h3 id="http格式"><a href="#http格式" class="headerlink" title="http格式"></a>http格式</h3><p>http（请求报文，响应报文）通过报文进行沟通.</p>
+<p>请求报文：</p>
+<p>先说一下请求报文吧。首先请求报文有几部分构成：“请求头”，“请求行”，“请求主体”。</p>
+<p>请求行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求方法（GET POST DELETE HEAD TRACE OPTION）       请求资源 (URL)           请求协议版本（HTTP/1.1）</span><br></pre></td></tr></table></figure>
+<p>要注意的是在http1.0，每次请求的时候都需要建立连接这样很耗性能，在1.1版本，出现了一个长连接的概念，例如，如果我们有十张图片资源需要请求，这个时候，会产生一个长连接，一次就接受10张图，而不需要每张图都建立一个连接。</p>
+<p>请求头：允许客户端传递关于自身的信息和希望的响应形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Accept：指定客户端能够接收的内容类型</span><br><span class="line">Content-Length：请求的内容长度//这个就限定了post和get的数据请求长度</span><br><span class="line">Date：请求发送的日期和时间</span><br></pre></td></tr></table></figure>
+<p>请求主体：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表单提交数据如：name=cst&amp;age=18;</span><br></pre></td></tr></table></figure>
+<p>这个可以跟我们昨天讲的post发送数据的时候，把内容就是放在报文体里面。</p>
+<p><img src="/2018/10/01/同源策略和协议/blog4.png" alt="报文体和报文头"></p>
+<p>关于响应报文，格式类似于请求报文，有几部分构成：“响应行”，“响应头”，“响应主体”。</p>
+<p>响应报文：</p>
+<p><img src="/2018/10/01/同源策略和协议/blog5.png" alt="响应报文"></p>
+<p>1.响应行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">响应协议版本号（HTTP/1.1）       响应状态码  （200）    响应状态文字  （0K）</span><br></pre></td></tr></table></figure>
+<p>常见的http状态码：</p>
+<p>成功状态码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">200 服务器成功返回内容</span><br><span class="line">301/2 临时/永久重定向</span><br><span class="line">304 资源未被修改过</span><br></pre></td></tr></table></figure>
+<p>失败状态码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">404 请求内容不存在</span><br><span class="line">500 服务器暂时不可用</span><br><span class="line">503 服务器内部错误</span><br></pre></td></tr></table></figure>
+<p>2.响应头（HTTP Responses Header ）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date就是原始服务器消息发出的时间，</span><br><span class="line">Expires，响应过期的日期和时间，等</span><br></pre></td></tr></table></figure>
+<p>3.响应主体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">‘sign success’ (注册成功)</span><br></pre></td></tr></table></figure>
+<p>响应体里面就有咱们请求回来的数据。</p>
+<h3 id="GET和POST的区别"><a href="#GET和POST的区别" class="headerlink" title="GET和POST的区别"></a>GET和POST的区别</h3><p> 在http协议里实际上没有区别！ </p>
+<p>常规理解：<br>1.GET 使用URL 或Cookie 传参，而POST将数据，放在BODY中。 ? NAME = ‘FA’&amp;AGE=18</p>
+<p>2.GET 的URL会有长度上的限制， POST可以传输很多数据。</p>
+<p>3.POST比GET安全。</p>
+<p>但其实HTTP协议里没有规定POST数据就要放在BODY里， 也没有要求GET数据就一定要放在URL中而不能放在BODY中。</p>
+<p>HTTP协议对GET和POST 都没有对数据的长度进行限制，两方面原因造成数据限制的原因</p>
+<p>1.早期浏览器会对URL长度进行限制（浏览器URL输入框）</p>
+<p>2.浏览器会对Content-length进行限制，这是为了服务器安全和稳定。</p>
+<p>安全问题呢，看你怎么想了，对于纯小白什么都是安全的，对于黑客什么都是不安全的</p>
+<h2 id="浏览器缓存机制"><a href="#浏览器缓存机制" class="headerlink" title="浏览器缓存机制"></a>浏览器缓存机制</h2><p>响应头里面有一个属性叫做ETag，它是每个数据都特有的一个唯一标识，第一次请求的时候，会把这个唯一标识缓存起来，那么在下次请求的时候会直接把这个唯一表示放到请求报文的请求头里面，再次给服务器发送的时候，有一个属性叫做“if-None-Match”它是匹配ETag的值的，如果if-None-Match和服务器的ETag一样，会返回一个304状态码，然后将本地的缓存给返回过来，如果发生改变就会返回新的资源。</p>
+<h3 id="ETag交互过程"><a href="#ETag交互过程" class="headerlink" title="ETag交互过程"></a>ETag交互过程</h3><p>Etag由服务器端生成，客户端通过If-Match或者说If-None-Match这个条件判断请求来验证资源是否修改。常见的是使用If-None-Match.请求一个文件的流程可能如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">====第一次请求===</span><br><span class="line">1.客户端发起 HTTP GET 请求一个文件；</span><br><span class="line">2.服务器处理请求，返回文件内容和一堆Header，当然包括Etag(例如&quot;2e681a-6-5d044840&quot;)(假设服务器支持Etag生成和已经开启了Etag).状态码200</span><br><span class="line">====第二次请求===</span><br><span class="line">1.客户端发起 HTTP GET 请求一个文件，注意这个时候客户端同时发送一个If-None-Match头，这个头的内容就是第一次请求时服务器返回的Etag：2e681a-6-5d044840</span><br><span class="line">2.服务器判断发送过来的Etag和计算出来的Etag匹配，因此If-None-Match为False，不返回200，返回304，客户端继续使用本地缓存；</span><br></pre></td></tr></table></figure>
+<p>还有一个if-Modified-Since是用来确定服务器发过来的资源的最后修改时间，如果发现修改了，不取缓存。</p>
+<p>最后再讲一下一些响应头信息。</p>
+<p>Date： 服务器响应内容日期</p>
+<p>Cache-control：内容缓存时间</p>
+<p>no-cache 会被缓存的，只不过每次在向客户端（浏览器）提供响应数据时，缓存都要向服务器评估缓存响应的有效性。 </p>
+<p>no-store 用于防止重要的信息被无意的发布。在请求消息中发送将使得请求和响应消息都不使用缓存。 根据缓存超时</p>
+<p>max-age 指示客户机可以接收生存期不大于指定时间（以秒为单位）的响应。</p>
+<p>min-fresh 指示客户机可以接收响应时间小于当前时间加上指定时间的响应。</p>
+<p>max-stale 指示客户机可以接收超出超时期间的响应消息。如果指定max-stale消息的值，那么客户机可以 接收超出超时期指定值之内的响应消息。</p>
+<p>Expires：内容保质期，表示存在时间，允许客户端在这个时间之前不去检查（发请求），等同max-age的效果。但是如果同时存在，则被cache-control的max-age覆盖。</p>
+<p>referer：可以统计用户从哪里点击而来的，如果从浏览器地址里直接输入地址，请求头里面是没有referer的。计算点击量，从而对其进行计费什么的。</p>
+<p>好吧，那么关于同源策略和http的相关知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag"># -网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/01/Ajax简介/" rel="next" title="Ajax简介">
+                <i class="fa fa-chevron-left"></i> Ajax简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同源策略"><span class="nav-number">1.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-资源定位符-构成"><span class="nav-number">2.</span> <span class="nav-text">URL(资源定位符)构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入一个URL之后发生了什么"><span class="nav-number">3.</span> <span class="nav-text">输入一个URL之后发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-UDP-传输层协议"><span class="nav-number">4.</span> <span class="nav-text">TCP/UDP(传输层协议)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向连接的TCP"><span class="nav-number">4.1.</span> <span class="nav-text">面向连接的TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向非连接的UDP协议"><span class="nav-number">4.2.</span> <span class="nav-text">面向非连接的UDP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三次握手过程"><span class="nav-number">4.3.</span> <span class="nav-text">三次握手过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.4.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层协议（http和https）"><span class="nav-number">5.</span> <span class="nav-text">应用层协议（http和https）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http格式"><span class="nav-number">5.1.</span> <span class="nav-text">http格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET和POST的区别"><span class="nav-number">5.2.</span> <span class="nav-text">GET和POST的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器缓存机制"><span class="nav-number">6.</span> <span class="nav-text">浏览器缓存机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ETag交互过程"><span class="nav-number">6.1.</span> <span class="nav-text">ETag交互过程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

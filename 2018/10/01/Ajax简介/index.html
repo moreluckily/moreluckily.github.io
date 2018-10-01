@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-网络," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Ajax的一些知识。 复习一下form标签在一开始的时候，我们使用form表单进行数据的传输。 1&amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/form&amp;gt; action属性是指这个数据要传输到那个地方，意思就是数据传送的地址，method属性就是数据传输的">
+<meta name="keywords" content="-网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax简介">
+<meta property="og:url" content="http://moreluckily.com/2018/10/01/Ajax简介/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Ajax的一些知识。 复习一下form标签在一开始的时候，我们使用form表单进行数据的传输。 1&amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/form&amp;gt; action属性是指这个数据要传输到那个地方，意思就是数据传送的地址，method属性就是数据传输的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-01T10:49:33.790Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ajax简介">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Ajax的一些知识。 复习一下form标签在一开始的时候，我们使用form表单进行数据的传输。 1&amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/form&amp;gt; action属性是指这个数据要传输到那个地方，意思就是数据传送的地址，method属性就是数据传输的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/01/Ajax简介/"/>
+
+
+
+
+
+  <title>Ajax简介 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/01/Ajax简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ajax简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T10:04:45+08:00">
+                2018-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络/" itemprop="url" rel="index">
+                    <span itemprop="name">网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Ajax的一些知识。</p>
+<h2 id="复习一下form标签"><a href="#复习一下form标签" class="headerlink" title="复习一下form标签"></a>复习一下form标签</h2><p>在一开始的时候，我们使用form表单进行数据的传输。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;&quot; method=&quot;&quot;&gt;&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>action属性是指这个数据要传输到那个地方，意思就是数据传送的地址，method属性就是数据传输的方式，有get和post两种方式。</p>
+<p>post和get传送数据方式的区别：</p>
+<p>1.get数据传递直接利用&amp;符号拼接到URL后面</p>
+<p>2.post和get传输数据长度要求不一样，post更长一些，get长度小一点。get会受输入框的长度限制。</p>
+<p>3.get相对于post，安全性更弱一点，因为它可以直接在输入框中看到数据。当然，post也是可以的，但是需要在浏览器后台进行操作。在network下面的headers也是可以看到数据的。</p>
+<p>4.get多数用在获取数据，post通常用于传送数据。</p>
+<p>form表单还有一个属性enctype：application/ x - www- form -urlencoded 告诉浏览器 用什么编码格式来进行编码</p>
+<p>我们还可以利用input type=file,来进行文件的上传，这个时候:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enctype: multipart/form-data //不对字符进行编码，在使用包含文件上传控件的表单是，必须使用该值。</span><br></pre></td></tr></table></figure>
+<p>但是form有一个最大的缺点就是，它在刷新数据的时候是整个页面都会刷新，并不是将需要改变的那部分进行刷新，这样就是非常耗性能的。例如，在我们经常使用的地图软件中，我们经常会刷新地点，看看自己的位置之类的，如果这个时候是利用form表单的话，我们是移动一下地图，然后全部数据都重新发送一遍，并不是局部发生改变，这样就是一个很大的缺点。所以现在form基本上被淘汰了。Ajax就是局部发生变化。</p>
+<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>ajax（Asynchronous JavaScript And Xml）才是我们现在常用的数据传输方法。它用JavaScript以异步的方式操作xml（现在操作的是json）</p>
+<p>现在又有一个异步和同步的概念，异步就是可以同时干两个事情，同步就是只能同一时间干同一件事。ajax异步操作，就不会阻塞页面的后续进程。最典型就是在网速很慢的时候，也不用担心等很久数据都出不来。</p>
+<h3 id="ajax-传送数据流程"><a href="#ajax-传送数据流程" class="headerlink" title="ajax 传送数据流程"></a>ajax 传送数据流程</h3><p>我们可以打个比方：</p>
+<p>这个我们可以形象地用定外卖的过程进行模拟。</p>
+<p>在我们利用外卖软件进行定外卖的时候，我们通常有几个步骤：</p>
+<p>1.手机一部</p>
+<p>2.外卖软件</p>
+<p>3.打开app， 寻找商家和食品。</p>
+<p>4.下单，添加各种备注。</p>
+<p>5.监控物流信息</p>
+<p>6.完成，验货即可。</p>
+<p>那么这个过程对于ajax传送数据来说，也是类似的。</p>
+<p>1.浏览器。</p>
+<p>2.一个ajax对象，ajax传送数据的基础。创建这个对象有个要注意的地方就是,IE浏览器需要用自己方法创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ajax = new XHLHttprequest();//主流浏览器的创建方法</span><br><span class="line">var ajax = new ActiveXObject(&apos;Micrrosoft.XMLHTTP&apos;);//IE</span><br></pre></td></tr></table></figure>
+<p>3.open(method, url, flag)：这个方法是用来建立对服务器的调用，method参数是以get，post或者put进行数据的传输；URL指的是传送的地址。flag就是指的是异步或同步方式进行数据传输，true就是异步，flase就是同步。</p>
+<p>4.send()，向服务器发送请求。要注意的是利用post和get方式传输数据的时候，send处理方式不一样，如果是post，我们需要把得到的数据传进send方法，如果是get就要进行URL拼接。</p>
+<p>5.检测状态，需要利用一些事件。onreadystatechange和readyState，这两个方法之前在js时间线的时候讲过，这里有需要用到。onreadystatechange，可以检测readyState的状态变化，每次readyState发生变化，都会触发onreadystatechange事件，这两个结合使用，就可以监控ajax数据变化。</p>
+<p>readyState：0代表未初始化状态，1，表示读取中，2表示已读取，3，表示交互中，4,表示已完成。我们需要的是检验readyState的值是否为4.</p>
+<p>6.检验数据，当我们检测完readyState是否等于4时。这个时候我们需要对获取的数据进行检测，这里有一些状态码需要了解。</p>
+<p>status：404表示文件未找到，200表示成功，500表示服务器内部错误。304表示资源未被修改。我们需要的是status为200的状态。</p>
+<p>当这个过程都成功，我们就可以对数据进行处理了。</p>
+<p>以下就是ajax的创建的过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var ajax = null;</span><br><span class="line">if(window.XMLHttpRequest)&#123;//非ie</span><br><span class="line">	ajax = new XMLHttpRequest();</span><br><span class="line">&#125;else&#123;//ie</span><br><span class="line">	ajax = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);</span><br><span class="line">&#125;//创建ajax对象，兼容IE</span><br><span class="line">ajax.open(&apos;GET&apos;,&apos;url&apos;,true);//建立连接</span><br><span class="line">ajax.send();//发送请求</span><br><span class="line">ajax.onreadyStatechange = function()&#123;</span><br><span class="line">	if(readyState == 4)&#123;//交互已完成</span><br><span class="line">		if(ajax.status == 200)&#123;//数据无误</span><br><span class="line">			console.log(ajax.responseText);//打印出所获取的数据</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是上面这个方法有很多不完善的方法，第一个就是规定了只能用get来进行数据传输并且只是获取，post并没有用到，利用get进行传值也没有。如果是利用get进行传值需要使用拼接。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ajax.open(&apos;GET&apos;,&apos;getNew.php?username=Steven&amp;age=18&apos;,true);</span><br></pre></td></tr></table></figure>
+<p>通过这个方式进行传值，但是我们前端是不知道数据的名字和值的例如，我们有时候就不知道数据是不是叫做username和age，而且我们也不知道传值方式是什么，所以我们还是要写一个更加完善的形式。</p>
+<p>第二个就是，很多时候在Ajax的get方法调用的时候由于缓存的原因无法及时获取正确的数据，(火车票验证码）我们需要利用一个实时的时间戳，将URL改变一下。</p>
+<p>另外要注意的是post传值需要把数据传到send方法里面，而get方法是直接拼接在URL后面。</p>
+<p>Ajax的封装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">function ajax(method, url,flag,data,callback) &#123;</span><br><span class="line">	var app = null;</span><br><span class="line">	//var data = data + &quot;&amp;date=&apos; + new Date().getDate();//拼接一个新的时间戳</span><br><span class="line">	if(window.XMLHttpRequest)&#123;</span><br><span class="line">		app = new XMLHttpRequest();</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		app = new ActiveXObject(&apos;Micosoft.XMLHttp&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	if(method == &apos;GET&apos;)&#123;//GET方式</span><br><span class="line">		app.open(method, url + &apos;?&apos; +data,flag);</span><br><span class="line">		app.send();</span><br><span class="line">	&#125;else&#123;//POST方式</span><br><span class="line">		app.open(method,url,flag);</span><br><span class="line">		app.setRequestHeader(&apos;content-type&apos;,&apos;applicateion/x-www-form-urlencoded&apos;);//告诉服务器，传输数据的类型</span><br><span class="line">		app.send(data);</span><br><span class="line">	&#125;</span><br><span class="line">	app.onreadystatechange = function () &#123;</span><br><span class="line">		if(app.readyState == 4)&#123;</span><br><span class="line">			if(app.status == 200)&#123;</span><br><span class="line">				callback(app.responseText);</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				alert(&apos;error&apos;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">function showList(ajaxData)&#123; //任意一个回调函数</span><br><span class="line">	var data = JSON.parse(ajasData);</span><br><span class="line">	var ul = document.getElementsById(&apos;ul1&apos;);</span><br><span class="line">	data.forEach(function(item,index)&#123;</span><br><span class="line">		var li = document.createElement(&apos;li&apos;);</span><br><span class="line">		var a1 = document.dreateElement(&apos;a&apos;);</span><br><span class="line">		var a2 = document.createElement(&apos;a&apos;);</span><br><span class="line">		a1.innerText = item.date;</span><br><span class="line">		a2.innerText = item.title;</span><br><span class="line">		li.appendChild(a1);</span><br><span class="line">		li.appendChild(a2);</span><br><span class="line">		ul.appendChild(li);</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的showList是一个回调函数，就是穿进去callback参数位里，是用来处理获取过来的数据的。将他一条一条插入到页面中。</p>
+<p>好了，今天的这篇blog就到这里结束了，下节课为大家讲解网络的同源策略和相关协议,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag"># -网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/30/js的终章/" rel="next" title="js的终章">
+                <i class="fa fa-chevron-left"></i> js的终章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/01/同源策略和协议/" rel="prev" title="同源策略和协议">
+                同源策略和协议 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复习一下form标签"><span class="nav-number">1.</span> <span class="nav-text">复习一下form标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">2.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax-传送数据流程"><span class="nav-number">2.1.</span> <span class="nav-text">ajax 传送数据流程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
