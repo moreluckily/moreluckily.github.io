@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-网络," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Iframe的一些知识。 iframe之间我们使用jsonp来进行跨域，iframe也能实现跨域。 iframe就是一个标签dom元素，可以在网页里面嵌入另一个网页。它里面有几个属性。 src: 新页面的地址，可以填其他网址，例如百度啦，淘宝啦之类的。 frameborder：新页面的边框大小。 width,height设置宽高">
+<meta name="keywords" content="-网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Iframe">
+<meta property="og:url" content="http://moreluckily.com/2018/10/02/Iframe/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Iframe的一些知识。 iframe之间我们使用jsonp来进行跨域，iframe也能实现跨域。 iframe就是一个标签dom元素，可以在网页里面嵌入另一个网页。它里面有几个属性。 src: 新页面的地址，可以填其他网址，例如百度啦，淘宝啦之类的。 frameborder：新页面的边框大小。 width,height设置宽高">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-02T08:44:34.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Iframe">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Iframe的一些知识。 iframe之间我们使用jsonp来进行跨域，iframe也能实现跨域。 iframe就是一个标签dom元素，可以在网页里面嵌入另一个网页。它里面有几个属性。 src: 新页面的地址，可以填其他网址，例如百度啦，淘宝啦之类的。 frameborder：新页面的边框大小。 width,height设置宽高">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/02/Iframe/"/>
+
+
+
+
+
+  <title>Iframe | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/02/Iframe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Iframe</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T13:01:37+08:00">
+                2018-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络/" itemprop="url" rel="index">
+                    <span itemprop="name">网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习网络。今天要讲一下网络中Iframe的一些知识。</p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><p>之间我们使用jsonp来进行跨域，iframe也能实现跨域。</p>
+<p>iframe就是一个标签dom元素，可以在网页里面嵌入另一个网页。它里面有几个属性。</p>
+<p>src: 新页面的地址，可以填其他网址，例如百度啦，淘宝啦之类的。</p>
+<p>frameborder：新页面的边框大小。</p>
+<p>width,height设置宽高等等。</p>
+<p>还有其他就不举例了，因为很少用。</p>
+<h3 id="iframe应用"><a href="#iframe应用" class="headerlink" title="iframe应用"></a>iframe应用</h3><p>1.iframe应用在一些tab页面，点击一个tab页，切换到该页面，但是并不会整个页面刷新。就是刷新点击的那部分即可。但是，缺点就是，这个iframe非常卡，用起来效率不高。因为他需要把所有的页面都加载过来才算整个页面加载完，换句话就是，必须要等到所有的iframe嵌入面加载完，window.onload事件才会触发。这样会使加载时间特别长，让我们看起来特别卡。</p>
+<p>iframe也有一个onload事件，看下面代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">widnow.onload = function ()&#123;</span><br><span class="line">	console.log(444);</span><br><span class="line">&#125;</span><br><span class="line">iframe.onload = function () &#123;</span><br><span class="line">	console.log(333);</span><br><span class="line">&#125;//先打印333后打印444</span><br></pre></td></tr></table></figure>
+<p>2.iframe还可以做一个在线实时的编辑器，通过获取我们输入的代码，直接前进iframe标签里，于是就可以显示出内容。</p>
+<h2 id="iframe-利弊"><a href="#iframe-利弊" class="headerlink" title="iframe 利弊"></a>iframe 利弊</h2><p>当我们利用iframe打开一个新窗口的时候，新窗口自然会有一个window对象，而本身父窗口也是有window对象的，于是这里就有一些关系了。</p>
+<h3 id="获取iframe内的window"><a href="#获取iframe内的window" class="headerlink" title="获取iframe内的window"></a>获取iframe内的window</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.document.getElementsByTagName(&apos;iframe&apos;)[0].contentWindow(子窗口)</span><br><span class="line">2.document.getElementsById(&apos;iFr&apos;).contentWindow</span><br></pre></td></tr></table></figure>
+<p>简易写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.iframeName (iframe的name)</span><br></pre></td></tr></table></figure>
+<p>IE专用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3.document.iframes[name].contentWindow</span><br><span class="line">4.document.iframes[i].contentWindow</span><br></pre></td></tr></table></figure>
+<p>来个例子，我们建立两个页面，第一个叫a页（父窗口），第二个叫b页（子窗体）。子窗口里面有一个b变量，我们要在a窗口中访问这个b变量，应该怎样做呢？请看下列代码：</p>
+<p>父窗口中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;b.html&quot; frameborder=&quot;1&quot; width=&quot;300&quot; height=&quot;300&quot; id=&quot;b&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">var a = 1;</span><br><span class="line">var bIframe = document.getElementById(&apos;b&apos;);//先获取到子窗口</span><br><span class="line">console.log(bIframe.contentWindow.b); //获取到子窗口中的window，在访问b变量</span><br></pre></td></tr></table></figure>
+<p>子窗口中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var b = 2;</span><br></pre></td></tr></table></figure>
+<p>但是这样访问是不成功的，最后是报出的undefined，这里有一个同步和异步的点，首先解析到iframe标签的时候，取src请求资源，接着不会阻塞页面，继续访问script标签，但是，在资源还没请求回来的时候，就要访问，所以是undefined。</p>
+<p>解决这个问题，我们需要的是，当iframe加载完再执行这个操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bIframe.onload = function () &#123;</span><br><span class="line">	console.log(bIframe.contentWindow.b)</span><br><span class="line">&#125;//这样就可以了</span><br><span class="line"></span><br><span class="line">iframe.onreadystatechange = function()&#123; </span><br><span class="line">	if (iframe.readyState == &quot;complete&quot;)&#123; </span><br><span class="line">		alert(&quot;Local iframe is now loaded.&quot;); //第二种判断方法</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们想反过来，在b里面打印a页的a变量。就需要这样写：</p>
+<p>在子窗体：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(window.parent.one)//这个跟前面的不一样，它是已经解析完毕再执行。</span><br></pre></td></tr></table></figure>
+<h2 id="窗口的其他属性"><a href="#窗口的其他属性" class="headerlink" title="窗口的其他属性"></a>窗口的其他属性</h2><p>window.self: 指的就是window</p>
+<p>window.parent: 父级窗口的对象</p>
+<p>window.top: 找的是该网页的顶级窗口。</p>
+<p>例如现在有三个页面分别是abc，a页里面有个变量a为1，b页里面也有个变量a为2，c页如果写这样的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(window.top.a)//打印出来的是1.因为找的是顶级窗口</span><br></pre></td></tr></table></figure>
+<h2 id="iframe-实现跨域"><a href="#iframe-实现跨域" class="headerlink" title="iframe 实现跨域"></a>iframe 实现跨域</h2><p>1.对于iframe，document.domain是最后的解决方法，他们的基础域名相同即可。</p>
+<p>2.利用window.location.hash，哈希值，决子页面访问父页面数据问题(window.location.href)。之前在最后的JavaScript那篇文章稍微提了一下，现在再说一下。</p>
+<p>现在我们在页面写这样一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#aa&quot;&gt;</span><br><span class="line">&lt;br&gt;*200</span><br><span class="line">&lt;div id=&quot;aa&quot;&gt;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 100px;</span><br><span class="line">background-color: red;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;bb&quot;&gt;</span><br><span class="line">width: 100px;</span><br><span class="line">height: 800px;</span><br><span class="line">background-color: green;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>那么当我们点击a标签的时候，就可以回到aa中。这个时候，我们观察输入框可以发现这个时候在URL后面添加了“#aa”，这个字符，这是一个简单的锚点功能</p>
+<p>这个时候，我们写这样的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.location.hash // &quot;#aa&quot;</span><br><span class="line">window.location.href // &quot;url#aa&quot;</span><br></pre></td></tr></table></figure>
+<p>可以看到，当我们使用hash的时候，返回的就是这个URL后面的部分，href就是整个URL地址。</p>
+<p>哈希值的特点就是，当它发生改变的时候，页面不会刷新，这样我们就可以利用这个进行传值。</p>
+<h2 id="父窗口箱子窗口传值"><a href="#父窗口箱子窗口传值" class="headerlink" title="父窗口箱子窗口传值"></a>父窗口箱子窗口传值</h2><p>例如，同样ab两个页面，我们在a里面设定值，传给b使用。</p>
+<p>a页中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;b.html&quot; width=&quot;300&quot; height=&quot;300&quot; id=&quot;b&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">var one = 1;</span><br><span class="line">var oneIframe = document.getElementsById(&apos;one&apos;);</span><br><span class="line">var oneSrc = oneIframe.src;</span><br><span class="line">oneIframe.src += &quot;#&quot; + one;</span><br></pre></td></tr></table></figure>
+<p>b页中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(window.location.hash);// “#1” 通过哈希获取值</span><br></pre></td></tr></table></figure></p>
+<p>这个时候，我们可以利用点击事件，点击某个地方之后，将哈希值传过去。但是这里有个先后顺序的问题，例如，点击事件之后，我们需要将a页设定的哈希传到b页，在b页打印出来。这个时候，我们需要在b打印之前，把a传过去，因为，如果b都打印了，即使传过去了，也不会再打印，这个时候，我们用一个很low的方法，就是用计时器。。。</p>
+<p>a页中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var bIframe = document.getElementById(&apos;one&apos;);</span><br><span class="line">var oneSrc = oneIframe.src;</span><br><span class="line">document.onclick = function ()&#123;</span><br><span class="line">	bIfram.src = oneSrc;</span><br><span class="line">	oneIframe.src += &quot;#&quot; + one;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>b页中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var twoHash = window.location.hash;</span><br><span class="line">setInterval(function ()&#123;</span><br><span class="line">	if(twoHash !== window.location.hash)&#123;</span><br><span class="line">		twoHash = window.location.hash;</span><br><span class="line">		console.log(window.locatio.hash);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,0)</span><br></pre></td></tr></table></figure>
+<p>这样就可以实现父窗口向子窗口传值了。哈希值传值也是很不安全的，而且传递数据量有限。</p>
+<h2 id="子窗口向父窗口传值"><a href="#子窗口向父窗口传值" class="headerlink" title="子窗口向父窗口传值"></a>子窗口向父窗口传值</h2><p>这个时候，我们就可以利用name属性进行传值了。在同一个窗口中，name值是会一直保持的，只要保持该窗口打开。于是我们就可以利用name进行传值了。</p>
+<p>例如：在淘宝中输入window.a = ‘a’;再在百度中打开，输入window.a并不会出现’a’;Console窗口不关闭,但在其中输入window.name = ‘a’;再在百度中打开，输入window.a会出现’a’。</p>
+<p>注意就是，在子窗口b中利用（window.contentWindow.name）来获取name的值是会报错的。因为子窗口是跟父窗口a不同源。</p>
+<p>于是我们需要引入一个中间人c，该中间人是和子窗口b同源的，这样c就可以获取b的name值了。</p>
+<p>a页中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var bIframe = document.getElementById(&apos;one&apos;);//获取子窗体</span><br><span class="line">var flag = 0;//锁，只如果没有锁，将会在b页c页之间来回刷新</span><br><span class="line">oneIframe.onload = function () &#123;</span><br><span class="line">	if(flag == 0);&#123;</span><br><span class="line">		flag = 1;</span><br><span class="line">		oneIframe.src = &quot;c.html&quot;;//three是与子窗体同源的一个中间人，通过它来获取b中的name。</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		console.log(oneIframe.contentWindow.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>b页中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.name = &quot;b&quot;;</span><br></pre></td></tr></table></figure>
+<p>通过name就可以通过子窗体传数据给父窗体，实现跨域。</p>
+<p>还有一点要注意的就是，中间人页面什么都不要需要写，因为它只起一个传递作用。</p>
+<p>好吧，那么关于Iframe的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag"># -网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/02/Cookie/" rel="next" title="Cookie">
+                <i class="fa fa-chevron-left"></i> Cookie
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe"><span class="nav-number">1.</span> <span class="nav-text">iframe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iframe应用"><span class="nav-number">1.1.</span> <span class="nav-text">iframe应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe-利弊"><span class="nav-number">2.</span> <span class="nav-text">iframe 利弊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取iframe内的window"><span class="nav-number">2.1.</span> <span class="nav-text">获取iframe内的window</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#窗口的其他属性"><span class="nav-number">3.</span> <span class="nav-text">窗口的其他属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe-实现跨域"><span class="nav-number">4.</span> <span class="nav-text">iframe 实现跨域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#父窗口箱子窗口传值"><span class="nav-number">5.</span> <span class="nav-text">父窗口箱子窗口传值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子窗口向父窗口传值"><span class="nav-number">6.</span> <span class="nav-text">子窗口向父窗口传值</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
