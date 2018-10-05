@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-jquery," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。 jQuery特点jQuery是一个非常优秀的js库，它jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Aja">
+<meta name="keywords" content="-jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery学习1">
+<meta property="og:url" content="http://moreluckily.com/2018/10/05/jquery学习1/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。 jQuery特点jQuery是一个非常优秀的js库，它jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Aja">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/05/jquery学习1/blog1.png">
+<meta property="og:updated_time" content="2018-10-05T11:47:34.386Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery学习1">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。 jQuery特点jQuery是一个非常优秀的js库，它jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Aja">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/05/jquery学习1/blog1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/05/jquery学习1/"/>
+
+
+
+
+
+  <title>jquery学习1 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/05/jquery学习1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery学习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T19:37:41+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jquery/" itemprop="url" rel="index">
+                    <span itemprop="name">jquery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。</p>
+<h2 id="jQuery特点"><a href="#jQuery特点" class="headerlink" title="jQuery特点"></a>jQuery特点</h2><p>jQuery是一个非常优秀的js库，它jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
+<p>jQuery的核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的css选择器，并且可对CSS选择器进行扩展；拥有便捷的插件扩展机制和丰富的插件。jQuery兼容各种主流浏览器，如IE 6.0+、FF 1.5+、Safari 2.0+、Opera 9.0+等</p>
+<p>在我们学习jQuery的时候，首先要明确，jQuery只是辅助工具，不能完全代替js，方法再全也是会有缺失的，我们主要是学习它的编程思想，把主要方法运用熟练，对于一些不常用的方法，我们先理解其用途，现用现查API。</p>
+<p>zepto是从jQuery演变过来的，zepto是移动端的开发库。</p>
+<h2 id="DOM对象和jQuery对象的区别"><a href="#DOM对象和jQuery对象的区别" class="headerlink" title="DOM对象和jQuery对象的区别"></a>DOM对象和jQuery对象的区别</h2><p>在正式讲jQuery的时候，我们必须要先分清楚，DOM对象和jQuery对象之间的区别。</p>
+<p>DOM对象之前已经讲过，它就是文档对象模型（Document Object Model）,它可以使用JavaScript的原生方法。</p>
+<p>jQuery对象是jQuery独有的对象，它是通过jQuery包装DOM对象后产生的对象。只有jQuery对象能够使用jQuery的方法，原生的DOM是不可以使用jQuery的方法的。而且，jQuery对象无法使用DOM对象的任何方法。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;#foo&apos;).html(); //获取id为foo的元素内的html代码，html()是jQuery的方法</span><br><span class="line">$(&apos;#foo&apos;).innerHTML //错误，因为jQuery 不能使用DOM的方法。</span><br></pre></td></tr></table></figure>
+<p>等价于:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.getElementByid(&apos;foo&apos;).innerHTML;//正确，原生的使用原生的方法</span><br><span class="line">document.getElementById(&apos;foo&apos;).html//错误,原生的不能使用jQuery的方法</span><br></pre></td></tr></table></figure>
+<p>另外还有一点就是关于jQuery和DOM对象的编码风格，如果是jQuery对象的变量需要在变量名之前加一个$符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var $aa = jQuery对象aa</span><br><span class="line">var aa = dom原生对象aa</span><br></pre></td></tr></table></figure>
+<p>还有最重要的就是jquery返回的是一个对象，而原生的东西返回的是一个类数组，这点不要弄错了哦。</p>
+<h2 id="下载jQuery库"><a href="#下载jQuery库" class="headerlink" title="下载jQuery库"></a>下载jQuery库</h2><p>在官网上下载jquery库文件，注意有两个文件，一个是压缩版的，还有一个就是为压缩的，上线的时候用压缩版本的，学习的时候当然是使用未压缩的咯，因为那样比较好理解。</p>
+<p>首先通过script标签将jquery.js文件引进去，然后我们就能使用jquery的方法去操作html和css了。</p>
+<p>要注意一点就是，为了防止污染全局变量，在进行编程时候，通常都会使用代码块进行编写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function () &#123;</span><br><span class="line">	window.jQuery = jQuery;</span><br><span class="line">	window.$ = window.jQuery;</span><br><span class="line">	function jQuery() &#123;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>这样写就可以在全局中使用jQuery函数，而不污染全局变量。</p>
+<p>jQuery选择DOM对象的时候，可以这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(dom) //一个函数执行的形式，将dom转化为jQuery对象</span><br><span class="line">jQuery(dom) //也是可以的</span><br></pre></td></tr></table></figure>
+<p>例如我们想选择li:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;li&apos;); // 他会把所有的li都返回给我们，是一个对象，是一个jQuery对象。</span><br><span class="line">如果想单独想选出某一个li，可以利用eq();</span><br><span class="line">$(&apos;li&apos;).eq(1) //选出索引为1的li。</span><br></pre></td></tr></table></figure>
+<p>在jquery里有一些必须提前讲的内容，就是jquery为什么能链式调用呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(selector, content)&#123;//（选择器，执行期上下文）。</span><br><span class="line">	return new Jquery.prototype.init(selector,content);</span><br><span class="line">&#125;</span><br><span class="line">jQuery.prototype.init = function (selector, content)&#123;</span><br><span class="line">	var dom = document.getElementsByTagName(selector);</span><br><span class="line">	for(var i = 0; i &lt; dom.length; i++)&#123;</span><br><span class="line">		this[i] = dom[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return this;//把jQuery对象返回出来实现链式调用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样的，eq函数也是挂在jQuery原型链上面的。因为选出来的jQuery对象，是利用init构造出来的对象，要再次调用eq方法的时候，如果init和eq不在同一个原型链上的话，就不能选中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery.prototype.eq = function () &#123;</span><br><span class="line">	console.log(&quot;eq function&quot;);</span><br><span class="line">&#125;</span><br><span class="line">jQuery.prototype.init.prototype = jQuery.prototype;//因为要使init和eq在同一个原型链</span><br></pre></td></tr></table></figure>
+<p>那么jQuery出来的对象就是有init构造出的。这个稍微在这提一下，在后面的源码博文会再次讲一下。</p>
+<p>$(null);这个是什么都选不到的，但是不会报错。</p>
+<h2 id="jQuery操作css"><a href="#jQuery操作css" class="headerlink" title="jQuery操作css"></a>jQuery操作css</h2><p>jQuery的选择器完全继承了css的风格，利用jQuery选择器，可以非常便捷和快速地找出指定的DOM元素，然后为它们添加相应的行为，而且不需要担心兼容性的问题。功能非常强大。</p>
+<p>jQuery选择器分为基本选择器层次选择器、过滤选择器、和表单选择器。</p>
+<h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><p>基本选择器是jQuery中最常用的选择器，也是最简单的选择器，通过id、class等查找DOM元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#id    : $(&apos;#test&apos;) ，选出id为test的元素。选出来的是一个元素</span><br><span class="line">.class : $(&apos;.test&apos;),选出所有类名为test的元素，注意是全部，所以说这返回的是一个集合。</span><br><span class="line">element: $(&apos;p&apos;),选出所有p标签，返回一个集合</span><br><span class="line">*      : $(&apos;*&apos;)选出所有元素</span><br><span class="line">$(组合) :$(p #id .class) 将所有匹配到的元素合并后一起返回。</span><br></pre></td></tr></table></figure>
+<p>DOM不能统一操作，要for循环,其实jquery里也是用了for循环的</p>
+<p>再举一个作为例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;#demo&apos;).css(&#123;</span><br><span class="line">			&quot;width: &quot;100px&quot;,</span><br><span class="line">			&quot;height&quot;: &quot;100px&quot;</span><br><span class="line">			&#125;) //将id为demo的元素宽高都设定为100px</span><br></pre></td></tr></table></figure>
+<h3 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h3><p>如果想通过DOM元素之间的层次关系来获取特定的元素，例如后代元素，子元素，兄弟元素等，那么层次选择器是一个很好的选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;father son(grandson)&apos;) : 选取父元素下面的所有子包括孙子辈的元素，返回的是一个集合。</span><br><span class="line">$(&apos;father son&apos;)           : 选取父元素下面的子元素，不包括孙子辈的，返回一个元素。</span><br><span class="line">$(&apos;prev + next&apos;)          : 这是一个css3的选择器，选取的是紧接在prev元素后的next元素。要注意的是，next是它的兄弟元素。</span><br><span class="line">$(&quot;prev~siblings&quot;)        : 选取prev元素之后的所有siblings，是一个集合元素，注意是所有兄弟元素。</span><br></pre></td></tr></table></figure>
+<p>来个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;div + li&apos;).css(&apos;display&apos;,&quot;inline-block&quot;) //将div后面的第一个li元素变为行级块元素</span><br><span class="line">$(&apos;div &gt; li&apos;).css(&apos;background&apos;,&apos;red&apos;)       //将div的所有子元素变为红色</span><br></pre></td></tr></table></figure>
+<p>在来个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;ul&gt;li:first&apos;);</span><br><span class="line">$(&apos;ul&gt;li:eq(2)&apos;);</span><br><span class="line">$(&apos;ul&gt;li:odd/even&apos;);</span><br><span class="line">$(&apos;ul&gt;li:odd&apos;)奇数</span><br><span class="line">$(&apos;ul&gt;li:even&apos;)偶数</span><br></pre></td></tr></table></figure>
+<p>另外就是，jQuery里有个方法就是nex(),它可以代替 $(‘prev + next’),nextAll()，可以代替 $(“prev~siblings”)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;prev&quot;).next(&apos;next&apos;);</span><br><span class="line">$(&apos;prev&apos;).nextAll(&apos;div&apos;);</span><br></pre></td></tr></table></figure>
+<p>另外还有一个siblings()方法，它也能选择出兄弟元素，但是没有前后位置的限制，只要是兄弟就行。</p>
+<h3 id="过滤选择器"><a href="#过滤选择器" class="headerlink" title="过滤选择器"></a>过滤选择器</h3><p>过滤选择器主要是通过特定的过滤规则选出所需要的DOM元素，过滤规则与css中的为类选择器语法相同，也是用一个冒号开头，按照过滤选择器的不同规则，又分为基本过滤 内容过滤 可见性过滤 属性过滤 子元素过滤等。</p>
+<h4 id="基本过滤选择器（没有声明的都是返回一个元素集合）"><a href="#基本过滤选择器（没有声明的都是返回一个元素集合）" class="headerlink" title="基本过滤选择器（没有声明的都是返回一个元素集合）"></a>基本过滤选择器（没有声明的都是返回一个元素集合）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:first   ： 选取出第一个元素，返回的是单个元素。</span><br><span class="line">:last    ： 选取出最后一个元素，返回的也是单个元素。</span><br><span class="line">:not     ： 去除所有的与给定选择器匹配的元素</span><br><span class="line">:even    ： 选取索引为偶数的所有元素，索引从0开始</span><br><span class="line">:odd	 ：选取索引是奇数的所有元素</span><br><span class="line">:eq(index)：选取索引等于index的元素，返回的是单个元素</span><br><span class="line">:gt(index)：选取索引大于index的元素</span><br><span class="line">:lt(index)：选取索引小于index的元素</span><br><span class="line">:animated ：选取当前正在执行动画的所有元素</span><br><span class="line">:focus	  ：选取当前获取焦点的元素</span><br></pre></td></tr></table></figure>
+<h4 id="内容过滤选择器"><a href="#内容过滤选择器" class="headerlink" title="内容过滤选择器"></a>内容过滤选择器</h4><p>内容过滤选择器规则主要体现在他所包含的子元素或文本内容上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:contains(text)：选取含有文本内容为text的元素</span><br><span class="line">:empty(text)   ：选取不包含子元素或文本为空的元素</span><br><span class="line">:has(selector) ：选取含有选择去所匹配到的元素的元素，$(&quot;div:has(p)&quot;)选取含有p标签的div元素</span><br><span class="line">:parent		   ：选取含有子元素或者文本元素的元素</span><br></pre></td></tr></table></figure>
+<h4 id="可见性过滤选择器"><a href="#可见性过滤选择器" class="headerlink" title="可见性过滤选择器"></a>可见性过滤选择器</h4><p>可见性过滤选择器是根据元素的可见和不可见状态来选择相应的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:hidden ： 选取所有不可见的元素，包括&lt;input type=&quot;hidden&quot;/&gt;&lt;div display=&quot;none&quot;&gt;和      	         &lt;div style=&quot;visvility:hidden;&quot;&gt;等元素，如果想只选择input，就可以这样$(&quot;input:hidden&quot;)</span><br><span class="line">:visible：选取所有的可见元素。$(&quot;div:visible&quot;)选取所有的可见的div元素。</span><br></pre></td></tr></table></figure>
+<h4 id="属性过滤选择器"><a href="#属性过滤选择器" class="headerlink" title="属性过滤选择器"></a>属性过滤选择器</h4><p>属性过滤选择器的过滤规则是通过元素的属性来获取相应的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[attr]	: 选取拥有此属性的元素</span><br><span class="line">[attr=value]	: 选取拥有attr属性并且值为value的元素</span><br><span class="line">[attr!=value]   : 选取attr属性不等于value的元素</span><br></pre></td></tr></table></figure>
+<p>这个属性过滤选择器还有很多，还有以value开头的，以value结尾的等等，这里就讲主要的几个。读者可以到jQuery中文网自行查阅。</p>
+<h4 id="子元素过滤选择器"><a href="#子元素过滤选择器" class="headerlink" title="子元素过滤选择器"></a>子元素过滤选择器</h4><p>:nth-child(index/even/odd) ： 选取所以为index/偶数/奇数的子元素，要注意的是这里的index是从1开始的。这个选择器很常用，主要讲一下，它还能按照倍数进行选择，例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;div:nth-child(2n)&quot;)能选出每个父元素下的索引值是3的倍数的元素，n从1开始</span><br></pre></td></tr></table></figure>
+<p>:last-child ：选取每一个父元素的最后一个子元素</p>
+<p>:first-child : 选取每一个父元素的第一个子元素</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>最后补充一些相关知识，还有就是为接下来的做铺垫。</p>
+<p>1、window.onload事件触发完之后，再触发$()函数的里面的东西。这个在旧版本是先完成$()在触发window.onload事件的，现在改过来了，先触发window.onload,在执行$()函数的。</p>
+<p>2、之前讲过的上下文，$(‘li’,’ul’) ，意思就是将ul下面的li选择出来。有点类似于子元素选择器。</p>
+<p>3.html()方法，如果我们没有传值的话，就会打印出调用该方法的对象的html内容，html()当取值时，是取第一个 赋值赋一组。如果传值，则会覆盖原来的内容。 text()函数也是一样的。</p>
+<p>4.在jQuery点击事件中， this指的是原生的DOM我们需要包装一下$(this)，才能在jQuery中使用。</p>
+<p>5.attr()设定属性，获取属性，主要依赖于原生的getAttribute和setAttribute，它可以操作的是特性，天生就有的。</p>
+<p>6.prop()，主要依赖的是js中的 element[property] 和 element[property] = value;它里面的属性是普通属性，直接通过js来设置元素的属性，这样的不会在页面html更新的。</p>
+<p>7.根据官方的建议：具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()，其他的使用 attr()</p>
+<p>8.index()方法可以查看当前兄弟节点的索引。</p>
+<p>9.filter()和not()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filter(&apos;.box/[title=hello]&apos;);</span><br><span class="line">过滤的意思</span><br><span class="line">$(&apos;li&apos;).filter(function (index) &#123;</span><br><span class="line">    return index%3 === 0;</span><br><span class="line">&#125;).css(&apos;background-color&apos;,&apos;red&apos;);</span><br><span class="line">//是true就返回出来，过滤的意思</span><br><span class="line">//not()就是选出来不要</span><br></pre></td></tr></table></figure></p>
+<p>10.has()和find()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;li&apos;).has(&apos;div&apos;);//选择的是li</span><br><span class="line">$(&apos;li&apos;).find(&apos;div&apos;)//选择的是div</span><br></pre></td></tr></table></figure></p>
+<p>11.is()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;li:eq(0)&apos;).is(&apos;.item&apos;);//判断是不是同一个东西</span><br><span class="line">是同一个就true,不是就是false</span><br></pre></td></tr></table></figure>
+<p>12.attr()和prop()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;.item&apos;).attr(&apos;draw&apos;,&apos;well&apos;);</span><br><span class="line">&lt;li class=&quot;item&quot; draw=&quot;well&quot;&gt;0&lt;/li&gt;</span><br><span class="line">//相当于 setattribute 或者 getattribute</span><br><span class="line">.prop()</span><br><span class="line">$(&apos;.item&apos;).prop(&apos;draw&apos;,&apos;well&apos;);</span><br><span class="line">相当于 oLi.draw = well;</span><br></pre></td></tr></table></figure>
+<h2 id="一个小demo"><a href="#一个小demo" class="headerlink" title="一个小demo"></a>一个小demo</h2><p>点击div，弹出div里的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">.wrapper&#123;</span><br><span class="line">    width: 500px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    border: 2px double red;</span><br><span class="line">    border-width: 5px;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .box1&#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .box1 button&#123;</span><br><span class="line">    width: 50px;</span><br><span class="line">    height: 50px;</span><br><span class="line">    background-color: #f40;</span><br><span class="line">    margin-right: 50px;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .content&#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    width: 500px;</span><br><span class="line">    height: 450px;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .content div&#123;</span><br><span class="line">    display: none;</span><br><span class="line">    font-size: 50px;</span><br><span class="line">    width: 500px;</span><br><span class="line">    height: 450px;</span><br><span class="line">    background-color: deepskyblue;</span><br><span class="line">    text-align: center;</span><br><span class="line">    line-height: 450px;</span><br><span class="line">    color: orangered</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .box1 .show&#123;</span><br><span class="line">    background-color: yellow;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .content .active&#123;</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;box1&quot;&gt;</span><br><span class="line">        &lt;button class = &quot;show&quot;&gt;1&lt;/button&gt;</span><br><span class="line">        &lt;button&gt;2&lt;/button&gt;</span><br><span class="line">        &lt;button&gt;3&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">        &lt;div class = &quot;active&quot;&gt;moreluck&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;morelucky&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;moreluckily&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>引入jquery.js文件，并用jquery的方法去写该代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src = &quot;./../jquery-3.2.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">        $(&apos;button&apos;).click(function()&#123;</span><br><span class="line">        $(&apos;.show&apos;).removeClass();</span><br><span class="line">        $(this).addClass(&apos;show&apos;);</span><br><span class="line">        var num = $(this).index();</span><br><span class="line">        $(&apos;.active&apos;).removeClass();</span><br><span class="line">        $(&apos;div&apos;,&apos;.content&apos;).eq(num).addClass(&apos;active&apos;);</span><br><span class="line">    &#125;)   </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>得到如下图所示的小demo：</p>
+<p><img src="/2018/10/05/jquery学习1/blog1.png" alt="小demo"></p>
+<p>当点击1时，会出现1中的内容，点击2时，出现2中的内容，点击3时，出现3中的内容。</p>
+<p>好吧，那么关于jquery第一节课的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># -jquery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/02/Iframe/" rel="next" title="Iframe">
+                <i class="fa fa-chevron-left"></i> Iframe
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/05/jquery学习2/" rel="prev" title="jquery学习2">
+                jquery学习2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery特点"><span class="nav-number">1.</span> <span class="nav-text">jQuery特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM对象和jQuery对象的区别"><span class="nav-number">2.</span> <span class="nav-text">DOM对象和jQuery对象的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载jQuery库"><span class="nav-number">3.</span> <span class="nav-text">下载jQuery库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery操作css"><span class="nav-number">4.</span> <span class="nav-text">jQuery操作css</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本选择器"><span class="nav-number">4.1.</span> <span class="nav-text">基本选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次选择器"><span class="nav-number">4.2.</span> <span class="nav-text">层次选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤选择器"><span class="nav-number">4.3.</span> <span class="nav-text">过滤选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本过滤选择器（没有声明的都是返回一个元素集合）"><span class="nav-number">4.3.1.</span> <span class="nav-text">基本过滤选择器（没有声明的都是返回一个元素集合）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容过滤选择器"><span class="nav-number">4.3.2.</span> <span class="nav-text">内容过滤选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可见性过滤选择器"><span class="nav-number">4.3.3.</span> <span class="nav-text">可见性过滤选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性过滤选择器"><span class="nav-number">4.3.4.</span> <span class="nav-text">属性过滤选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子元素过滤选择器"><span class="nav-number">4.3.5.</span> <span class="nav-text">子元素过滤选择器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个小demo"><span class="nav-number">6.</span> <span class="nav-text">一个小demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

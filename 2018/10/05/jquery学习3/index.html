@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-jquery," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。 遍历节点1.children() 方法 这个方法获得的是匹配元素的子元素。通过计算子元素长度，我们可以知道，该父级中有多少个子元素，注意的是不包含孙子辈的。 2.next()方法 该方法可以获得元素紧跟着的兄弟元素。 3.prev()方法 获得的是该方法前面的一个兄弟元素。 4.sibl">
+<meta name="keywords" content="-jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery学习3">
+<meta property="og:url" content="http://moreluckily.com/2018/10/05/jquery学习3/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。 遍历节点1.children() 方法 这个方法获得的是匹配元素的子元素。通过计算子元素长度，我们可以知道，该父级中有多少个子元素，注意的是不包含孙子辈的。 2.next()方法 该方法可以获得元素紧跟着的兄弟元素。 3.prev()方法 获得的是该方法前面的一个兄弟元素。 4.sibl">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-05T13:09:39.384Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery学习3">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。 遍历节点1.children() 方法 这个方法获得的是匹配元素的子元素。通过计算子元素长度，我们可以知道，该父级中有多少个子元素，注意的是不包含孙子辈的。 2.next()方法 该方法可以获得元素紧跟着的兄弟元素。 3.prev()方法 获得的是该方法前面的一个兄弟元素。 4.sibl">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/05/jquery学习3/"/>
+
+
+
+
+
+  <title>jquery学习3 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/05/jquery学习3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery学习3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T19:46:18+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jquery/" itemprop="url" rel="index">
+                    <span itemprop="name">jquery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery。这是一个很牛逼的js库。</p>
+<h2 id="遍历节点"><a href="#遍历节点" class="headerlink" title="遍历节点"></a>遍历节点</h2><p>1.children() 方法</p>
+<p>这个方法获得的是匹配元素的子元素。通过计算子元素长度，我们可以知道，该父级中有多少个子元素，注意的是不包含孙子辈的。</p>
+<p>2.next()方法</p>
+<p>该方法可以获得元素紧跟着的兄弟元素。</p>
+<p>3.prev()方法</p>
+<p>获得的是该方法前面的一个兄弟元素。</p>
+<p>4.siblings()方法，这个方法是用来取得匹配元素所有的兄弟元素。</p>
+<p>5.closest() 方法</p>
+<p>这个方法获取的是元素的最近的祖先元素，可以有参数，selector能把自己选中</p>
+<p>6.parent(),parents()与closest()区别</p>
+<p>parent()：获得每个匹配元素的父级原宿</p>
+<p>parents()：获得集合中每个元素的祖先元素</p>
+<p>closest()：从元素本身开始，逐级向上匹配，并返回最先匹配到的祖先元素。</p>
+<p>offsetParent()：寻找最近的有定位的父级。</p>
+<h2 id="加载DOM"><a href="#加载DOM" class="headerlink" title="加载DOM"></a>加载DOM</h2><p>1.$(document).ready()方法可以在解析完成dom结构之后，就已经把事件绑定在元素身上了。这样有很大的好处，例如，在一个大型的网站，我们给图片绑定了事件，那么不用等到整个文档解析完成才可以进行操作，只要图片解析完成就能进行操作</p>
+<p>新版本的API没有改变，但是操作起来是先触发了window.onload再触发ready事件函数。所以这一点有所保留，大家可以自行测试。 </p>
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>还记得事件冒泡吗？当我们触发一个子节点的事件的时候，它会自子元素向父级元素冒泡。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;father&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;son&quot;&gt;</span><br><span class="line">		&lt;div class=&quot;grandson&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(&quot;.father&quot;).on(&apos;click&apos;,function()&#123;</span><br><span class="line">	console.log(&apos;father&apos;);</span><br><span class="line">&#125;)</span><br><span class="line">$(&quot;.son&quot;).on(&apos;click&apos;,function()&#123;</span><br><span class="line">	console.log(&apos;son&apos;);</span><br><span class="line">&#125;)</span><br><span class="line">$(&quot;.grandson&quot;).on(&apos;click&apos;,function()&#123;</span><br><span class="line">	console.log(&apos;grandson&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>我们点击grandson，最后打印出来的是grandson,son.father.这就是冒泡，由子元素冒泡向父元素。</p>
+<p>那么这样会出现一个问题就是，本来我们只想触发grandson的事件，但是连同他父级都一起触发了，这不是我们要的，于是就有阻止冒泡事件了。</p>
+<h2 id="阻止冒泡"><a href="#阻止冒泡" class="headerlink" title="阻止冒泡"></a>阻止冒泡</h2><p>在jQuery我们可以使用事件对象里面的event.stopPorpagation()来阻止冒泡事件。这里有涉及到一个叫做事件对象的东西，就是我们在绑定事件处理函数的时候，系统会自动向事件处理函数传递一个参数“event”，它就是事件对象，上面有事件的各种方法属性。那么阻止冒泡就是上面的一个方法，jQuery的是经过包装的，兼容性很好，原生谷歌和IE的都不一样，这就不叙述了，可以看我之前的文章。那么现在在以上面的grandson为例，阻止冒泡。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.grandson&quot;).on(&apos;click&apos;,function()&#123;</span><br><span class="line">	console.log(&apos;grandson&apos;);</span><br><span class="line">	event.stopPropagation();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="阻止默认事件"><a href="#阻止默认事件" class="headerlink" title="阻止默认事件"></a>阻止默认事件</h2><p>各种标签有自己的默认的事件，例如a标签自带跳转功能，button自带刷新页面功能等，有时候，我们需要组织元素的默认行为。这也是一个在事件对象上的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.preventDefault();</span><br></pre></td></tr></table></figure>
+<p>另外一种就是子函数里面直接”return false”.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;botton&apos;).on(&apos;click&apos;, function () &#123;</span><br><span class="line">    var obj = &#123;&#125;;</span><br><span class="line">    $(&apos;input&apos;).each(function (index, ele) &#123;</span><br><span class="line">        obj[$(ele).prop(&apos;name&apos;)] = $(ele).val();</span><br><span class="line">    &#125;)</span><br><span class="line">    return false;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="事件对象的属性"><a href="#事件对象的属性" class="headerlink" title="事件对象的属性"></a>事件对象的属性</h2><p>1.event.type:该方法的作用就是可以获取事件的类型</p>
+<p>2.event.preventDefault()，阻止默认事件</p>
+<p>3.event.stopPropagation()，阻止冒泡事件</p>
+<p>4.event.target，寻找事件源对象，这个兼容性很好，用于事件委托。就是一百万个li，每次点击都输出对应的内容，绑定事件在ul上面，然后找他的事件源对象，之后在输出li的内容。</p>
+<p>5.event.pageX和event.pageY</p>
+<p>该方法是获取光标相对于页面的X坐标和Y坐标,如果没有用jQuery的话，在IE上面就是使用event.x/y而火狐上面就是使用event.pageX/Y。</p>
+<p>6.event.which,该方法作用是获取鼠标的左中右键，在键盘事件中获取键盘按键。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;a&apos;).mousedown(function(e)&#123;</span><br><span class="line">	console.log(e.which) //鼠标左中右分别打印出123.</span><br><span class="line">&#125;</span><br><span class="line">$(&apos;input&apos;).keyup(function(e)&#123;</span><br><span class="line">	console.log(e.which) //获取键盘按键</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="移除事件"><a href="#移除事件" class="headerlink" title="移除事件"></a>移除事件</h2><p>我们利用off()来进行事件移除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;btn1&quot; type=&quot;button&quot; value=&quot;点击1&quot; /&gt;</span><br><span class="line">function btnClick1()&#123;  &#125;</span><br><span class="line">$body.on(&quot;click&quot;, &quot;:button&quot;, btnClick1 );//为body中是button的input元素绑定click事件，处理函数是btnClick1.</span><br><span class="line">$body.off(&quot;click&quot;, &quot;:button&quot;, btnClick1);//接触函数，注意这里的选择器不能写&quot;#btn1&quot;,怎样绑定的就是怎样解绑的，形式要一样。另外如果帮了其他函数，之后解绑配对正确的那个函数.</span><br></pre></td></tr></table></figure>
+<p>利用类名来解绑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$btn1.on(&quot;click.foo.bar&quot;, function(event)&#123;</span><br><span class="line">	alert(&quot;click-1&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">$btn1.on(&quot;click.test&quot;, function(event)&#123;</span><br><span class="line">	alert(&quot;click-2&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">$btn1.on(&quot;click.test.foo&quot;, function(event)&#123;</span><br><span class="line">	alert(&quot;click-3&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">$btn1.off(&quot;click.foo&quot;);  // 移除click-1、click-3</span><br><span class="line"></span><br><span class="line">$btn1.off(&quot;click.foo.bar&quot;);  // 移除click-1</span><br><span class="line"></span><br><span class="line">$btn1.off(&quot;click&quot;);  // 移除所有click事件处理函数(click-1、click-2、click-3)</span><br><span class="line"></span><br><span class="line">$btn1.off(&quot;.foo&quot;);  // 移除所有包含命名空间foo的事件处理函数，不仅仅是click事件</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>1、serialize 串联表单数据 serializeArray 串联数据成数组<br>$(‘form’).serialize();<br>把数据拼接成表单的形式</p>
+<p>2、wrap  wrapInner循环包裹 参数 function<br>wrapAll 包裹选中的所有元素 会破坏结构<br>unWrap解除包装 结构化标签不能删除<br>删除离它最近的一层</p>
+<p>3、end() 回退操作<br>closest() 查找最近的祖先节点 可以有参数selector 能把自己选中<br>siblings() 当前元素节点的所有兄弟节点<br>prevAll() 当前元素上面的所有兄弟节点<br>nextAll() 当前元素下面的所有兄弟节点<br>prevUntil()  nextUntil —&gt;掐头去尾选中元素</p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>show()方法和hide()方法</p>
+<p>这两个方法是jQuery中最常用的动画方法。依赖于display的none。它们还可以穿进一个参数，可以是slow normal或者是false。也可以填写时间，单位是毫秒。</p>
+<p>animate(attr,speed,callback),自定义动画方法</p>
+<p>这个方法很强大，他有三个参数，第一个参数是包含样式和对应的值的对象，第二个参数是速度，单位毫秒，第三个参数是一个回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">	$(&apos;somethings&apos;).click(function()&#123;</span><br><span class="line">		$(this).animate(&#123;left:&quot;+500px&quot;&#125;,300,function()&#123;//累加变化，最后触发回调函数，改变宽高</span><br><span class="line">			$(this).css(&apos;border&apos;,&quot;5px solid blue&quot;);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>stop(clearqueue,gotoend)</p>
+<p>两个参数都是布尔值，第一个指的是，停止当前元素的当前动画，并在当前动画停止的位置开始当前元素的新动画。第二个参数指的是，停止当前元素的所有动画，直接到达动画的最后结束状态。</p>
+<p>如果不传参数，则会停止当前动画并且在当前位置执行接下来的动画。</p>
+<p>如果只传了一个true，那么表示清空当前元素的所有动画。</p>
+<p>如果第一个为false，第二个为true，这种方式来让当前的动画直接到达末状态。</p>
+<p>如果是两个都是true，那么表示停止当前动画并直接到达当前动画的末状态。</p>
+<p>要注意的是，jQuery只能设置正在执行的动画的最终状态。</p>
+<p>delay()方法</p>
+<p>这个是对动画进行延迟执行，传毫秒为单位的参数。</p>
+<p>好吧，那么关于jquery第三节课的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># -jquery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/05/jquery学习2/" rel="next" title="jquery学习2">
+                <i class="fa fa-chevron-left"></i> jquery学习2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历节点"><span class="nav-number">1.</span> <span class="nav-text">遍历节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载DOM"><span class="nav-number">2.</span> <span class="nav-text">加载DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件冒泡"><span class="nav-number">3.</span> <span class="nav-text">事件冒泡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阻止冒泡"><span class="nav-number">4.</span> <span class="nav-text">阻止冒泡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阻止默认事件"><span class="nav-number">5.</span> <span class="nav-text">阻止默认事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件对象的属性"><span class="nav-number">6.</span> <span class="nav-text">事件对象的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移除事件"><span class="nav-number">7.</span> <span class="nav-text">移除事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">9.</span> <span class="nav-text">动画</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
