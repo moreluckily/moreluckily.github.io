@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-jquery," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery的工具方法和它其中的Ajax trigger()事件trigger()事件，它的作用就是触发自定义的事件，第一个参数就是触发事件的名字，第二个及之后的参数就是传到该事件的参数，首先它可以出发自定义事件： 12345678$(&amp;apos;div&amp;apos;).on(&amp;apos;click&amp;apos;, functio">
+<meta name="keywords" content="-jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery工具方法">
+<meta property="og:url" content="http://moreluckily.com/2018/10/07/jquery工具方法/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery的工具方法和它其中的Ajax trigger()事件trigger()事件，它的作用就是触发自定义的事件，第一个参数就是触发事件的名字，第二个及之后的参数就是传到该事件的参数，首先它可以出发自定义事件： 12345678$(&amp;apos;div&amp;apos;).on(&amp;apos;click&amp;apos;, functio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-07T16:04:55.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery工具方法">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery的工具方法和它其中的Ajax trigger()事件trigger()事件，它的作用就是触发自定义的事件，第一个参数就是触发事件的名字，第二个及之后的参数就是传到该事件的参数，首先它可以出发自定义事件： 12345678$(&amp;apos;div&amp;apos;).on(&amp;apos;click&amp;apos;, functio">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/07/jquery工具方法/"/>
+
+
+
+
+
+  <title>jquery工具方法 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/07/jquery工具方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery工具方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T21:55:03+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jquery/" itemprop="url" rel="index">
+                    <span itemprop="name">jquery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jquery的工具方法和它其中的Ajax</p>
+<h2 id="trigger-事件"><a href="#trigger-事件" class="headerlink" title="trigger()事件"></a>trigger()事件</h2><p>trigger()事件，它的作用就是触发自定义的事件，第一个参数就是触发事件的名字，第二个及之后的参数就是传到该事件的参数，首先它可以出发自定义事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;div&apos;).on(&apos;click&apos;, function () &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">&#125;)//click是系统自带的</span><br><span class="line"></span><br><span class="line">$(&apos;div&apos;).on(&apos;eat&apos;, function () &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">&#125;)//eat是我们自定义的</span><br><span class="line">$(&apos;div&apos;).trigger(&apos;eat&apos;);//</span><br></pre></td></tr></table></figure>
+<p>eat使我们自定义的，刷新打印1，帮我们主动触发事件了。</p>
+<p>trigger触发事件是会冒泡的，就是触发子元素上的事件会冒泡到父级上面。<br>例如在ul结构下的li，触发li，ul也会被触发。在这里就举例了。</p>
+<p>我们可以利用第二个参数位来进行一些操作。可以利用trigger来进行数据的传输。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;div&apos;).on(&apos;body&apos;,function(e,tall,weight)&#123;</span><br><span class="line">	console.log(&apos;我的身高是&apos;+tall+&apos;我的体重是&apos;+weight);</span><br><span class="line">&#125;)</span><br><span class="line">$(&apos;div&apos;).trigger(&apos;body&apos;,[&apos;175cm&apos;,&apos;65kg&apos;]);</span><br></pre></td></tr></table></figure>
+<p>要注意的是，在trigger里面第一个是事件对象，第二个参数传的是数组！！！</p>
+<h2 id="jQuery-工具方法"><a href="#jQuery-工具方法" class="headerlink" title="jQuery 工具方法"></a>jQuery 工具方法</h2><p>之前的几篇博客讲的都是定义在jquery的原型链上的，也叫jquery实例方法。</p>
+<p>jQuery里定义的工具方法有很多，在调用它们的时候直接使用”$.”的形式即可，这类方法是定义在jQuery函数上面的，就是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.工具方法() = function ();</span><br></pre></td></tr></table></figure>
+<p>可以直接调用，而不需要像之前那样还需要调用对象。</p>
+<p>1、type( )判断参数的数据类型</p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.bb = function () &#123;</span><br><span class="line">    console.log(9999);</span><br><span class="line">&#125;</span><br><span class="line">$.bb();</span><br><span class="line">//就相当于工具方法</span><br></pre></td></tr></table></figure>
+<p>原生JS判断数组和对象三种方法</p>
+<p>1.arr instanceof Array 如果是数组 则返回true，如果是对象返回false。</p>
+<p>2.arr.constructor == Array ,对象就是Object。</p>
+<p>3.Object.prototype.toString.call(arr)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3];</span><br><span class="line">console.log(typeof arr); //object</span><br><span class="line">console.log(arr instanceof Array);//true</span><br><span class="line">console.log(arr instanceof Object);//true</span><br><span class="line">console.log(arr.constructor === Array);//true</span><br><span class="line">console.log(arr.constructor === Object);//false</span><br><span class="line">//这2种方法iframe 不好使,在子页面下不好使</span><br><span class="line"></span><br><span class="line">console.log(Object.prototype.toString.call(arr));//[object Array]</span><br><span class="line">//1,2两种有局限性 3比较通用</span><br><span class="line"></span><br><span class="line">//$.type() 判断 参数的数据类型</span><br><span class="line">console.log($.type(arr)) //array</span><br><span class="line">//简单清晰明了</span><br></pre></td></tr></table></figure>
+<p>type( )方法 ,针对不同窗口，它也能判断数据类型。以后利用它就可以了。</p>
+<p>2、trim( ) 去除空格，只能去除左边和右边的空格，如果是要去掉中间的空格，用正则表达式匹配即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> var str = &apos;   aaa    &apos;;</span><br><span class="line">console.log(&apos;|&apos; + str + &apos;|&apos;);//|   aaa    |</span><br><span class="line">console.log(&apos;|&apos; + $.trim(str) + &apos;|&apos;);//|aaa|</span><br></pre></td></tr></table></figure>
+<p>3、proxy( )，利用这个函数，可以改变this的指向。它可以将this指向改变为对象，或者是对象里面的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    name: &apos;fa&apos;,</span><br><span class="line">    age: 18,</span><br><span class="line">    techang: function() &#123;</span><br><span class="line">        console.log(&apos;dance&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">function  aa() &#123;</span><br><span class="line">    console.log(this);//指向window</span><br><span class="line">    &#125;</span><br><span class="line">aa();</span><br><span class="line"></span><br><span class="line">function  aa() &#123;</span><br><span class="line">    console.log(this);//指向window</span><br><span class="line">    &#125;</span><br><span class="line">var bb = $.proxy(aa, obj);</span><br><span class="line">bb();// this指向obj了</span><br><span class="line"></span><br><span class="line">//第二种写法</span><br><span class="line">// var cc = $.proxy(obj, &apos;techang&apos;);</span><br><span class="line">// cc();</span><br><span class="line">//后面的函数必须就是obj里的函数</span><br></pre></td></tr></table></figure>
+<p>这个方法是用来改变this指向，在我们之前写的那个拖拽，就是可以用这个来改变指向，就不用bind()方法了。</p>
+<p>4、noConflict( )防止变量冲突，例如当我们不想用jQuery的时候，引入其他库，那么其他库会有很多方法，可能会冲突，于是，我们把管理权限改一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var aa = $.noConflict();</span><br><span class="line">//这样aa就代替$</span><br><span class="line">//以后写$就会出错，其他的库用$好使</span><br></pre></td></tr></table></figure>
+<p>5、$.parseJSON(json),字符转换成json 要求非常严格 外部是单引号 内部属性是双引号 不需要回车符.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var json = &apos;&#123;&quot;name&quot;: &quot;fa&quot;,&quot;age&quot;: 18&#125;&apos;;</span><br><span class="line">console.log($.parseJSON(json));</span><br><span class="line"></span><br><span class="line">&#123;name: &quot;fa&quot;, age: 18&#125;</span><br></pre></td></tr></table></figure>
+<p>6、$.makeArray,把类数组转化为数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arrFalse = &#123;</span><br><span class="line">    length: 0</span><br><span class="line">&#125;</span><br><span class="line">console.log($.makeArray(arrFalse));//[]</span><br></pre></td></tr></table></figure>
+<h2 id="jQuery高级方法"><a href="#jQuery高级方法" class="headerlink" title="jQuery高级方法"></a>jQuery高级方法</h2><p>$.extent()插件扩展，用来添加扩展，工具（类）方法。</p>
+<p>$.fn.extent()，用来添加实例方法。记住是实例 不是工具方法</p>
+<p>类方法（静态方法）：通过类直接访问，不需要声明类的实例来访问</p>
+<p>实例方法（动态方法）：不能通过类直接访问，需要通过该类声明的实例才能访问。</p>
+<p>简单来说，类方法，你可以直接调用访问，实例方法，就必须使用new来构造出来才能使用。</p>
+<h3 id="extend"><a href="#extend" class="headerlink" title="$.extend( )"></a>$.extend( )</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">    aa: function () &#123;</span><br><span class="line">        console.log(11);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">$.aa();  //11</span><br><span class="line">//可以自己写一个工具方法</span><br></pre></td></tr></table></figure>
+<h3 id="fn-extent"><a href="#fn-extent" class="headerlink" title="$.fn.extent()"></a>$.fn.extent()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">	drag : function () &#123;</span><br><span class="line">		//this ---&gt; jquery object由jQuery对象触发的</span><br><span class="line">		this.on(&apos;mousedown&apos;,function(e)&#123;</span><br><span class="line">			//this -- &gt;dom，由DOM触发的事件</span><br><span class="line">			var disX = e.pageX - $(this).offset().left;</span><br><span class="line">			var disY = e.pageY - $(this).offset().top;</span><br><span class="line">			//this --&gt; div</span><br><span class="line">			$(document).on(&apos;mousemove&apos;,$.proxy(function (e)&#123;//如果没有proxy就是指向document，有proxy就是指向原生div</span><br><span class="line">				var newL = e.pageX - disX;</span><br><span class="line">				var newT = e.pageY - disY;</span><br><span class="line">				$(this).css(&#123;left: newL, top: newT&#125;);//</span><br><span class="line">			&#125;,this)</span><br><span class="line">		)</span><br><span class="line">			$(document).on(&apos;mouseup&apos;,function()&#123;</span><br><span class="line">				$(document).off();</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">$(&apos;div&apos;).drag();</span><br></pre></td></tr></table></figure>
+<p>实例方法：就是之前写的拖拽。</p>
+<h2 id="Callbacks"><a href="#Callbacks" class="headerlink" title="$.Callbacks()"></a>$.Callbacks()</h2><p>看例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function aa() &#123;</span><br><span class="line">    console.log(&apos;aa&apos;);</span><br><span class="line">&#125;</span><br><span class="line">function bb() &#123;</span><br><span class="line">    console.log(&apos;bb&apos;);</span><br><span class="line">&#125;</span><br><span class="line">function cc() &#123;</span><br><span class="line">    console.log(&apos;cc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">var oCb = $.Callbacks();</span><br><span class="line"></span><br><span class="line">oCb.add(aa);//aa函数加到Callbacks中</span><br><span class="line">oCb.fire();//执行Callbacks函数, aa</span><br><span class="line"></span><br><span class="line">oCb.add(aa, bb);</span><br><span class="line">oCb.fire();//执行Callbacks函数, aa bb</span><br><span class="line"></span><br><span class="line">oCb.add(aa);</span><br><span class="line">oCb.add(aa);</span><br><span class="line">oCb.fire();//执行Callbacks函数, aa aa</span><br></pre></td></tr></table></figure>
+<p>加入once方法，只执行该方法一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var oCb = $.Callbacks(&apos;once&apos;);</span><br><span class="line">oCb.add(aa);</span><br><span class="line">oCb.fire();</span><br><span class="line">oCb.fire();// aa ,只执行一次fire()方法</span><br></pre></td></tr></table></figure>
+<p>加入memory方法，将函数提前</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var oCb = $.Callbacks(&apos;memory&apos;);</span><br><span class="line">oCb.add(aa);</span><br><span class="line">oCb.fire();</span><br><span class="line">oCb.add(bb);//aa bb ,后面的bb肯定提升了</span><br></pre></td></tr></table></figure>
+<p>加入unique方法，相同的函数只执行一次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">oCb.add(aa,aa,aa);只执行一次aa</span><br><span class="line"></span><br><span class="line">var oCb = $.Callbacks(&apos;memory&apos;);</span><br><span class="line">oCb.add(aa, bb , aa, cc);</span><br><span class="line">oCb.fire();//aa bb cc ,相同的只执行一次</span><br></pre></td></tr></table></figure>
+<p>加入stopOnFalse方法，来进行混合使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function aa() &#123;</span><br><span class="line">    console.log(&apos;aa&apos;);</span><br><span class="line">&#125;</span><br><span class="line">function bb() &#123;</span><br><span class="line">    console.log(&apos;bb&apos;);</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">function cc() &#123;</span><br><span class="line">    console.log(&apos;cc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">var oCb = $.Callbacks(&apos;stopOnFalse&apos;);</span><br><span class="line">oCb.add(aa, bb , aa, cc);</span><br><span class="line">oCb.fire(); // aa bb 有ruturn false就截止了</span><br></pre></td></tr></table></figure>
+<h2 id="jquery中的ajax"><a href="#jquery中的ajax" class="headerlink" title="jquery中的ajax( )"></a>jquery中的ajax( )</h2><p>jQuery里面的ajax方法非常厉害，它可以实现跨域还能实现使用jsonp来进行数据传输。它有以下几个参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.type:GET POST 访问形式</span><br><span class="line">2.url：访问路径，获取资源的路径</span><br><span class="line">3.data:传输数据 json格式，然后拼接成字符串 </span><br><span class="line">4.context：回调函数的作用域</span><br><span class="line">5.aync：是否异步 默认true</span><br><span class="line">6.cache：是否缓存 默认true 数据分分钟更新的时候比如说获取图片验证码此时我们就要添加false 事件上就是添加时间戳</span><br><span class="line">7.dataType：一般请求不予填写 jsonp请求是需要填写为jsonp</span><br><span class="line">8.success：访问成功是触发的函数 参数 是返回数据</span><br><span class="line">9.error：返回失败的时候触发的函数</span><br><span class="line">10.crossDomain：true跨域 默认false</span><br><span class="line">11.jsonp：在一个jsonp请求重写回调函数的名字，这个值用来替代在“callback=？”这种GET或POST请求中URL参数里的“callback”部分，比如&#123;jsonp：’onJsonPLoad’&#125;会导致“onJsonPLoad=？”传给服务器。</span><br><span class="line">12.jsonCallback:为jsonp请求指定的一个回调函数名。这只将用来取代jQuery自动生成的随机函数名。这主要用来让jquery生成独特的函数名，这样管理请求更容易，也能方便地提供回调函数和错误处理。你也可以在想让浏览器缓存GET请求的时候，指定这个回调函数名</span><br></pre></td></tr></table></figure>
+<p>可以举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">var input = document.getElementsByTagName(&apos;input&apos;)[0];</span><br><span class="line">input.onkeyup = function()&#123;         </span><br><span class="line">var data2 = input.value;//获取输入框的输入信息进行搜索</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">		type:&quot;GET&quot;,</span><br><span class="line">		url: &quot;https://api.douban.com/v2/music/search?q=&quot; + data2,</span><br><span class="line">		data:data2,</span><br><span class="line">		dataType:&apos;jsonp&apos;,</span><br><span class="line">		success: function(data)&#123;</span><br><span class="line">			console.log(data);</span><br><span class="line">		&#125;,</span><br><span class="line">		error:function(error)&#123;</span><br><span class="line">			console.log(error);</span><br><span class="line">		&#125;,</span><br><span class="line">        //上面是ajax跨域</span><br><span class="line">        //下面是jsonp跨域必须要写的</span><br><span class="line">        //dataTppe: &apos;jsonp&apos;,</span><br><span class="line"></span><br><span class="line">        //jsonp: &apos;cb&apos;,</span><br><span class="line">        //jsonpCallback: &quot;doJson&quot;</span><br><span class="line">        //可写可不写，有</span><br><span class="line">        </span><br><span class="line">		// jsonp:&#123;&quot;start&quot;:0,&quot;count&quot;:10,&quot;total&quot;:20&#125;,</span><br><span class="line">		crossDomain:true,//这个其实可以不用写</span><br><span class="line">		jsonpCallback: &quot;doJson&quot;</span><br><span class="line">    &#125;)    </span><br><span class="line">    function doJson(data)&#123;</span><br><span class="line">    console.log(data);        </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="deferred-延迟对象-相当于有状态的Callback"><a href="#deferred-延迟对象-相当于有状态的Callback" class="headerlink" title="$.deferred ()延迟对象 相当于有状态的Callback();"></a>$.deferred ()延迟对象 相当于有状态的Callback();</h2><p>拿上面的ajax( )方法举例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;type:&apos;GET&apos;,url:&apos;getNews.php&apos;&#125;)</span><br><span class="line">.done(function () &#123;</span><br><span class="line">    console.log(&apos;done&apos;);</span><br><span class="line">&#125;)//成功了就触发这个函数</span><br><span class="line">.fail(function () &#123;</span><br><span class="line">    console.log(&apos;fail&apos;);</span><br><span class="line">&#125;)//失败了就是这个函数</span><br><span class="line">//ajax是典型的$.deferred() 延迟对象</span><br></pre></td></tr></table></figure></p>
+<p>添加函数：done               fail              progress<br>第一个是成功，第二个是失败，第三个是正在进行中。</p>
+<p>触发函数： resolve            reject           notify<br>即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oDf.resolve() -&gt; done(function()&#123;&#125;)</span><br><span class="line">oDf.reject() -&gt; fail(function()&#123;&#125;)</span><br><span class="line">oDf.notify() -&gt; progress(function() &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var oCf = $.Deferred();</span><br><span class="line">oCf.done(function () &#123;</span><br><span class="line">    console.log(&apos;done&apos;);</span><br><span class="line">&#125;)//成功了就触发这个函数</span><br><span class="line">.fail(function () &#123;</span><br><span class="line">    console.log(&apos;fail&apos;);</span><br><span class="line">&#125;)</span><br><span class="line">.progress(function () &#123;</span><br><span class="line">    console.log(&apos;progress&apos;);</span><br><span class="line">&#125;)</span><br><span class="line">// function getDate() &#123;</span><br><span class="line">//     oCf.resolve();</span><br><span class="line">// &#125;</span><br><span class="line">// getDate();//done，成功的状态</span><br><span class="line"></span><br><span class="line">// function getDate() &#123;</span><br><span class="line">//     oCf.reject();</span><br><span class="line">// &#125;</span><br><span class="line">// getDate();//fail</span><br><span class="line"></span><br><span class="line">function getDate() &#123;</span><br><span class="line">    oCf.notify();</span><br><span class="line">&#125;</span><br><span class="line">getDate();//progress</span><br></pre></td></tr></table></figure>
+<h2 id="when"><a href="#when" class="headerlink" title="when()"></a>when()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.when($.ajax(&#123;type:&apos;GET&apos;,url:&apos;getNews.php&apos;&#125;), $.ajax(&#123;type:&apos;POST&apos;,url:&apos;getNews.php&apos;&#125;)</span><br></pre></td></tr></table></figure>
+<p>传2个延迟对象，全部是成功的状态，才会触发done，其中一个失败就是失败。</p>
+<p>好吧，那么关于jquery第四节课的知识就讲到这，希望大家能有所收获。</p>
+<p>后面为大家讲一下jquery中的源码，一起加油吧。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># -jquery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/05/jquery学习3/" rel="next" title="jquery学习3">
+                <i class="fa fa-chevron-left"></i> jquery学习3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#trigger-事件"><span class="nav-number">1.</span> <span class="nav-text">trigger()事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-工具方法"><span class="nav-number">2.</span> <span class="nav-text">jQuery 工具方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery高级方法"><span class="nav-number">3.</span> <span class="nav-text">jQuery高级方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#extend"><span class="nav-number">3.1.</span> <span class="nav-text">$.extend( )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fn-extent"><span class="nav-number">3.2.</span> <span class="nav-text">$.fn.extent()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Callbacks"><span class="nav-number">4.</span> <span class="nav-text">$.Callbacks()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jquery中的ajax"><span class="nav-number">5.</span> <span class="nav-text">jquery中的ajax( )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deferred-延迟对象-相当于有状态的Callback"><span class="nav-number">6.</span> <span class="nav-text">$.deferred ()延迟对象 相当于有状态的Callback();</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#when"><span class="nav-number">7.</span> <span class="nav-text">when()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
