@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-jquery," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jQuery源码中的一小部分。 jQuery整体的想法首先如果自己写一个库方法，因该怎么写呢？ 1234567(function (global) &amp;#123;    function a() &amp;#123;    &amp;#125;    global.a = a; //global.a就是全局的a&amp;#125;(window))a(">
+<meta name="keywords" content="-jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery源码学习1">
+<meta property="og:url" content="http://moreluckily.com/2018/10/08/jQuery源码学习1/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jQuery源码中的一小部分。 jQuery整体的想法首先如果自己写一个库方法，因该怎么写呢？ 1234567(function (global) &amp;#123;    function a() &amp;#123;    &amp;#125;    global.a = a; //global.a就是全局的a&amp;#125;(window))a(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/08/jQuery源码学习1/blog1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/08/jQuery源码学习1/blog2.png">
+<meta property="og:updated_time" content="2018-10-08T16:12:30.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery源码学习1">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jQuery源码中的一小部分。 jQuery整体的想法首先如果自己写一个库方法，因该怎么写呢？ 1234567(function (global) &amp;#123;    function a() &amp;#123;    &amp;#125;    global.a = a; //global.a就是全局的a&amp;#125;(window))a(">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/08/jQuery源码学习1/blog1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/08/jQuery源码学习1/"/>
+
+
+
+
+
+  <title>jQuery源码学习1 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/08/jQuery源码学习1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery源码学习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-08T17:18:40+08:00">
+                2018-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jquery/" itemprop="url" rel="index">
+                    <span itemprop="name">jquery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习jquery。今天要讲一下jQuery源码中的一小部分。</p>
+<h2 id="jQuery整体的想法"><a href="#jQuery整体的想法" class="headerlink" title="jQuery整体的想法"></a>jQuery整体的想法</h2><p>首先如果自己写一个库方法，因该怎么写呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(function (global) &#123;</span><br><span class="line">    function a() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    global.a = a; //global.a就是全局的a</span><br><span class="line">&#125;(window))</span><br><span class="line">a();//这样就能用了</span><br></pre></td></tr></table></figure>
+<p>先为了避免全局污染，写一个立即执行函数，将window作为参数传进去，用global代替window，将立即执行函数中的函数方法能拿到全局中执行，最后在全局中也能使用该方法。</p>
+<p>用这个概念我们就可以知道jQuery中是怎么写的了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(function (global) &#123;</span><br><span class="line">    function jQuery() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    global.$ = global.jQuery = jQuery; </span><br><span class="line">&#125;(window))</span><br><span class="line">$();</span><br><span class="line">jQuery(); //这样就能用该方法了</span><br></pre></td></tr></table></figure>
+<p>我们引入jQuery库文件，我们知道可以这样去写：$(‘div’)，那我们将它打印出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">console.log($(&apos;div&apos;)) //返回的是一个对象，</span><br><span class="line"></span><br><span class="line">0: div</span><br><span class="line">length: 1</span><br><span class="line">prevObject: jQuery.fn.init [document]</span><br><span class="line">__proto__: Object(0)</span><br><span class="line"></span><br><span class="line">// __proto__ 上有一堆的方法，就可以调用其上的方法</span><br><span class="line">// 例如：console.log($(&apos;div&apos;).html())</span><br></pre></td></tr></table></figure>
+<p>那jQuery是如何写这部分内容的呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">(function (global) &#123;</span><br><span class="line">    // function jQuery() &#123;</span><br><span class="line">    //     // var this = &#123;&#125;; //隐式的生成原型</span><br><span class="line">    //     // this.__proto__ = jQuery.prototype;</span><br><span class="line">    //     // return this;</span><br><span class="line">    // &#125;</span><br><span class="line">    function jQuery(selector, context) &#123;</span><br><span class="line">        return new jQuery.prototype.init(selector, context)</span><br><span class="line">        //这样用户就不需要在外面new了，直接就可以得到</span><br><span class="line">    &#125;</span><br><span class="line">    jQuery.prototype.init = function(selector, context) &#123;</span><br><span class="line">        var oDiv = document.getElementById(selector.slice(1</span><br><span class="line">        ));</span><br><span class="line">        this[0] = oDiv;</span><br><span class="line">        this.length = 1;</span><br><span class="line">        this.selector = selector;</span><br><span class="line">        this.context = context;</span><br><span class="line">    &#125;//初始化的方法</span><br><span class="line">    jQuery.prototype.css = function () &#123;</span><br><span class="line">        this[0].style.height = &quot;100px&quot;;</span><br><span class="line">        this[0].style.width = &quot;100px&quot;;</span><br><span class="line">        this[0].style.backgroundColor = &quot;red&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        jQuery.prototype.init.prototype=jQuery.prototype;</span><br><span class="line">        global.$ = global.jQuery = jQuery; </span><br><span class="line">&#125;(window))</span><br><span class="line">$(&quot;#demo&quot;).css();</span><br><span class="line">//自己写了一个类似jQuery库的方法</span><br></pre></td></tr></table></figure>
+<h3 id="jQuery内部是如何去写的"><a href="#jQuery内部是如何去写的" class="headerlink" title="jQuery内部是如何去写的"></a>jQuery内部是如何去写的</h3><p>打开jQuery文件：（整体是这样的）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> (function(global,factory)&#123;</span><br><span class="line">&quot;use strict</span><br><span class="line">factory(global);</span><br><span class="line"> ......</span><br><span class="line"> &#125;((typeof window !== &quot;undefined&quot; ? window : this,function()&#123;</span><br><span class="line"> 	..........................直接翻到最后面</span><br><span class="line"> &#125;))</span><br></pre></td></tr></table></figure>
+<p>利用立即执行函数，整个jQuery核心部分是一个function，是个参数。而且利用的是严格模式.</p>
+<p>然后，typeof window ！== “undefined” ，因为在低版本浏览器，window是可以赋值为undefined的，如果是undefined，就把this传进去，实际上就是把window传进去jQuery里面。这样才可以把立即执行函数里面的东西给暴露出来。相当于一个接口。</p>
+<p>因为外面是可以使用$符号进行引用的，所以，肯定会在函数里面把该符号做操作。</p>
+<p>在上面已经说过了，$和jQuery是等价的。</p>
+<p>$(“div”) 得到的是 return new jQuery.fn.init(“div”)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">init = jQuery.fn.init = function(selector,context,root)&#123;</span><br><span class="line">	.......//root是jQuery内部操作的</span><br><span class="line">&#125;</span><br><span class="line">init.prototype = jQuery.fn;</span><br><span class="line">jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>init就是一个初始化的方法，传两个参数，选择器和上下文。</p>
+<p>$()使用的时候，return的东西出来，这是个对象，上面的方法存在于原型上。那么最后的原型链就落在了jQuery.prototype上面。又因为，jQuery.fn = jQuery.prototype.</p>
+<p>那么再回头再看 ，整圈循环出来实现了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.prototype.init.prototype = jQuery.prototype</span><br></pre></td></tr></table></figure>
+<p>jQuery可以把一切的东西都定义在原型上面。这样很方便。这样循环往复的prototype互相赋值，你会发现，在init方法下面的prototype里还有init方法，循环嵌套在里面。这就是它的模式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(function (target)&#123;</span><br><span class="line">	target();</span><br><span class="line">&#125;(function()&#123;</span><br><span class="line">	var jq = function ()&#123;</span><br><span class="line">		...</span><br><span class="line">		return new jq.prototype.init();</span><br><span class="line">	&#125;</span><br><span class="line">	jq.prototype = &#123;</span><br><span class="line">		xxx : function()&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	jq.prototype.init = function()&#123;</span><br><span class="line">	......</span><br><span class="line">	&#125;</span><br><span class="line">	jq.prototype.init.prototype = jq.prototype =&#123;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">	window.$ = window.jq = jq;	</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p>这样通过$().xxx(),就能够调用对象上面的属性和方法了。先定义原型，在定义构造方法，在让构造方法的原型等于原来的原型，顺序不能换。不能使用连等。防止出bug。</p>
+<p>原型的嵌套主要是实现链式调用。</p>
+<h2 id="jQuery的init-函数"><a href="#jQuery的init-函数" class="headerlink" title="jQuery的init( )函数"></a>jQuery的init( )函数</h2><p>当我们传进去选择器之后，初始化函数是会对这个选择器进行一些操作的。用来选择出用户想要的DOM元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">jQuery.prototype.init = function (selector, context,root)&#123;//root参数是用来jQuery自己使用的，不用我们传，是一个doucment(jQuery对象）</span><br><span class="line">	var oDiv = document.getElememntById(selector.slice(1));</span><br><span class="line">	this[0] = oDiv;</span><br><span class="line">	this.length = 1;</span><br><span class="line">	this.selector = selector ;</span><br><span class="line">	this.context = context;</span><br><span class="line">&#125;</span><br><span class="line">$(&quot;#demo&quot;);</span><br></pre></td></tr></table></figure>
+<p>这样当我们调用$()来进行方法的调用的时候，就相当于通过构造函数来构造出来一个jQuery对象，并将它返回出来。</p>
+<p>之后，jQuery的选择器可以兼容多种参数，如下形式都是符合的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//单参数</span><br><span class="line">1、$(&apos;div&apos;)</span><br><span class="line">2、$(&quot;.class&quot;)</span><br><span class="line">3、$(&quot;#id&quot;)</span><br><span class="line">4、$(&quot;*&quot;)</span><br><span class="line">5、$(&quot;&lt;div&gt;&quot;)</span><br><span class="line">6、$(&quot;&lt;div&gt;&lt;/div&gt;&quot;)</span><br><span class="line">7、$(&quot;&lt;div/&gt;&quot;)</span><br><span class="line">8、$(&quot;&lt;div&gt;sdagfagfasdgasdgsag&quot;)</span><br><span class="line">9、$(null/undefined/false/&quot;&quot;)</span><br><span class="line">10、$(function() &#123;&#125;)</span><br><span class="line">11、$(dom/&amp;())</span><br><span class="line"></span><br><span class="line">// //多参数</span><br><span class="line">1、$(&quot;&lt;div&gt;&quot;,&#123;html:123,class:&quot;demo&quot;&#125;)</span><br><span class="line">//就变成了 //&lt;div class=&quot;demo&quot;&gt;123&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">2、$(&quot;li&quot;,&quot;ul&quot;)</span><br><span class="line">3、$(&quot;li&quot;,dom/$())</span><br></pre></td></tr></table></figure>
+<p>然后看jQuery中是如何处理的呢？</p>
+<p>首先介绍一些知识：</p>
+<p>正则表达式 exce方法，merge方法合并数组，jQuery自带的工具方法内部使用。</p>
+<p>这是exec返回的内容的例子，复习一下：</p>
+<p><img src="/2018/10/08/jQuery源码学习1/blog1.png" alt="exec方法"></p>
+<p>这是选择器匹配，jQuery中用的就是这种方法：</p>
+<p><img src="/2018/10/08/jQuery源码学习1/blog2.png" alt="选择器匹配"></p>
+<p>接下里就是jQuery中完整的代码了。其详细的介绍了各种情况的创建过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">init = jQuery.fn.init = function( selector, context, root ) &#123;</span><br><span class="line">	var match, elem;</span><br><span class="line">	if ( !selector ) &#123;</span><br><span class="line">		return this;</span><br><span class="line">	&#125;</span><br><span class="line">	root = root || rootjQuery;</span><br><span class="line">	if ( typeof selector === &quot;string&quot; ) &#123;</span><br><span class="line">		if ( selector[ 0 ] === &quot;&lt;&quot; &amp;&amp; selector[ selector.length - 1 ] === &quot;&gt;&quot; &amp;&amp; selector.length &gt;= 3 ) &#123;</span><br><span class="line">			match = [ null, selector, null ]; //为了跟接下来操作的match一致，只保留中间的selector</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			match = rquickExpr.exec( selector );//正则匹配，返回一个数组，</span><br><span class="line">			//第一位是匹配到的东西，第二位是匹配到的第一个内容，第三位是匹配到的第二个内容。</span><br><span class="line">			//rquickExpr = /^(?&quot;\s*(&lt;[\w\W] +&gt;)[^&gt;]* | #([\w-]+))$/,  </span><br><span class="line">			// 左边匹配出来的是情况6，右边匹配出来的是情况3</span><br><span class="line">		&#125;</span><br><span class="line">		if ( match &amp;&amp; ( match[ 1 ] || !context ) ) &#123;	</span><br><span class="line">			if ( match[ 1 ] ) &#123;//匹配创建标签</span><br><span class="line">				context = context instanceof jQuery ? context[ 0 ] : context;</span><br><span class="line">				jQuery.merge( this, jQuery.parseHTML(match[ 1 ],context </span><br><span class="line">				&amp;&amp; context.nodeType /*判断nodeType来判断是否是原生dom*/ ?</span><br><span class="line">				context.ownerDocument || context  //实在太特么长了，这里是一个三目运算符，把它分隔一下</span><br><span class="line">				: document,true) );//最后都是要把document返回出去</span><br><span class="line">				if ( rsingleTag.test( match[ 1 ] ) &amp;&amp; jQuery.isPlainObject( context ) ) &#123;</span><br><span class="line">				//rsingleTag用来判断是否是单标签，第二对象是否为对象，用来匹配case 10；单标签+字面量对象</span><br><span class="line">					for ( match in context ) &#123;	//遍历上下文。就是第二个参数					</span><br><span class="line">						if ( jQuery.isFunction( this[ match ] ) ) &#123;</span><br><span class="line">							this[ match ]( context[ match ] );</span><br><span class="line">						&#125; else &#123;</span><br><span class="line">							this.attr( match, context[ match ] );</span><br><span class="line">							//把match当做属性添加到标签上面，最后返回，注意这里的match是废物利用，跟之前的match不一样</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				return this;</span><br><span class="line">			&#125; else &#123;//匹配id选择</span><br><span class="line">				elem = document.getElementById( match[ 2 ] );</span><br><span class="line">				if ( elem ) &#123;</span><br><span class="line">					this[ 0 ] = elem;</span><br><span class="line">					this.length = 1;</span><br><span class="line">				&#125;</span><br><span class="line">				return this;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else if ( !context || context.jquery ) &#123;//处理类名和标签名和通配符即1,2,3（id已经匹配）</span><br><span class="line">			return ( context || root ).find( selector );//通过上下文，没有上下文就上document来寻找selector，类似父子关系的选择器</span><br><span class="line">		&#125; else &#123;//原生dom</span><br><span class="line">			return this.constructor( context ).find( selector );//直接调用init，创建jQuery对象</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else if ( selector.nodeType ) &#123;//原生dom节点 直接封装称为类数组，jQuery对象</span><br><span class="line">		this[ 0 ] = selector;</span><br><span class="line">		this.length = 1;</span><br><span class="line">		return this;</span><br><span class="line">	&#125; else if ( jQuery.isFunction( selector ) ) &#123;//传函数的形式，类型8</span><br><span class="line">		return root.ready !== undefined ? //root 就是document 目的执行isFunction </span><br><span class="line">			root.ready( selector ) : //当所有的dom加载完，触发ready，然后执行selector，就是传进来的函数</span><br><span class="line">			selector( jQuery ); //如果没有加载完就直接手动加载这个方法</span><br><span class="line">	&#125;</span><br><span class="line">	return jQuery.makeArray( selector, this );//胡乱写的东西做兼容</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>最后，init这个函数通过很多的if和else来进行匹配selector。有很多正则表达式。</p>
+<p>好吧，那么关于jquery源码的第一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>后面为大家讲的还是jquery中的源码部分，一起加油吧。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># -jquery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/07/jquery工具方法/" rel="next" title="jquery工具方法">
+                <i class="fa fa-chevron-left"></i> jquery工具方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/08/jQuery源码学习2/" rel="prev" title="jQuery源码学习2">
+                jQuery源码学习2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery整体的想法"><span class="nav-number">1.</span> <span class="nav-text">jQuery整体的想法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery内部是如何去写的"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery内部是如何去写的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery的init-函数"><span class="nav-number">2.</span> <span class="nav-text">jQuery的init( )函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
