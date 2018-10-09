@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-CSS3," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习CSS3，今天要讲一下CSS3中的一部分。 CSS3 简介我们之前用的css版本是2.0的版本，那么css3就是它的升级版，是css3.0的版本，它在css2.1的基础上增加了很多强大的新功能。目前主流浏览器chrome、safari、firefox、opera、甚至360都已经支持了CSS3大部分功能了，IE10以后也开始全面支持CSS3了。 css">
+<meta name="keywords" content="-CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3学习1">
+<meta property="og:url" content="http://moreluckily.com/2018/10/09/CSS3学习1/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习CSS3，今天要讲一下CSS3中的一部分。 CSS3 简介我们之前用的css版本是2.0的版本，那么css3就是它的升级版，是css3.0的版本，它在css2.1的基础上增加了很多强大的新功能。目前主流浏览器chrome、safari、firefox、opera、甚至360都已经支持了CSS3大部分功能了，IE10以后也开始全面支持CSS3了。 css">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/blog1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/blog2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/blog3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/blog4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/blog5.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/CSS1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/CSS2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/CSS3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/CSS4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/CSS5.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/CSS6.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/a2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/a3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/a4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/b1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/b2.png">
+<meta property="og:updated_time" content="2018-10-09T15:57:54.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3学习1">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习CSS3，今天要讲一下CSS3中的一部分。 CSS3 简介我们之前用的css版本是2.0的版本，那么css3就是它的升级版，是css3.0的版本，它在css2.1的基础上增加了很多强大的新功能。目前主流浏览器chrome、safari、firefox、opera、甚至360都已经支持了CSS3大部分功能了，IE10以后也开始全面支持CSS3了。 css">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/09/CSS3学习1/blog1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/09/CSS3学习1/"/>
+
+
+
+
+
+  <title>CSS3学习1 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/09/CSS3学习1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS3学习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T22:42:08+08:00">
+                2018-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS3/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习CSS3，今天要讲一下CSS3中的一部分。</p>
+<h2 id="CSS3-简介"><a href="#CSS3-简介" class="headerlink" title="CSS3 简介"></a>CSS3 简介</h2><p>我们之前用的css版本是2.0的版本，那么css3就是它的升级版，是css3.0的版本，它在css2.1的基础上增加了很多强大的新功能。目前主流浏览器chrome、safari、firefox、opera、甚至360都已经支持了CSS3大部分功能了，IE10以后也开始全面支持CSS3了。</p>
+<h2 id="css3前缀"><a href="#css3前缀" class="headerlink" title="css3前缀"></a>css3前缀</h2><p>在编写CSS3样式时，不同的浏览器可能需要不同的前缀。它表示该CSS属性或规则尚未成为W3C标准的一部分，是浏览器的私有属性，虽然目前较新版本的浏览器都是不需要前缀的，但为了更好的向前兼容前缀还是少不了的。</p>
+<p>标准写法如表顺序，再在后面添加无前缀的：</p>
+<p><img src="/2018/10/09/CSS3学习1/blog1.png" alt="前缀表"></p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: red;</span><br><span class="line">    border-radius: 30px;</span><br><span class="line">    -webkit-border-radius: 30px;</span><br><span class="line">    -moz-border-radius: 30px;</span><br><span class="line">    -ms-border-radius: 30px;</span><br><span class="line">    -o-border-radius: 30px; //w3c标准之前</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看是否需要实现兼容，我们可以使用‘<a href="http://www.caniuse.com’,来进行查找，如果不兼容就要进行兼容。" target="_blank" rel="noopener">www.caniuse.com’,来进行查找，如果不兼容就要进行兼容。</a></p>
+<h2 id="CSS3-初级功能"><a href="#CSS3-初级功能" class="headerlink" title="CSS3 初级功能"></a>CSS3 初级功能</h2><p>提供了更加强大且精准的选择器，提供多种背景填充方案，可以实现渐变颜色，可以改变元素的形状、角度等，可以加阴影效果，报纸布局，弹性盒子，ie6混杂模式的盒模型，新的计量单位，动画效果等等等…</p>
+<p>但是css3的兼容性问题也是同样的重要，并不是所有的css3属性都通过W3C标准，所以我们可以在这个网站查询：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.runoob.com/cssref/css3-browsersupport.html </span><br><span class="line">//兼容性参考手册</span><br></pre></td></tr></table></figure>
+<p>又例如：</p>
+<p>IE6混杂模式盒模型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">width=(border+padding+content)的宽度</span><br><span class="line">height=(border+padding+content)的高度</span><br></pre></td></tr></table></figure>
+<p>标准模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">width=content的宽度</span><br><span class="line">height=content的高度</span><br></pre></td></tr></table></figure>
+<p>也就是说，如果：<br>width: 100px,height: 100px,padding:10px,border:10px,margin:10px;<br>则在标准模式下：盒子长度为140px,<br>在混杂模式下，盒子长度为100px,contend区为60px。</p>
+<p>如果现在有个需求，部分盒子需要混杂模式的，部分符合标准模式的。这个时候需要进行一些操作。我们后面再说。</p>
+<h2 id="border-radius-——-圆角"><a href="#border-radius-——-圆角" class="headerlink" title="border-radius —— 圆角"></a>border-radius —— 圆角</h2><p>border-radius是一个复合属性，他复合了上下左右四个角属性值。因此我们可以拆成四个角进行设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 20px 30px 40px 50px;</span><br><span class="line">//相当于：</span><br><span class="line">border-top-left-radius: 20;</span><br><span class="line">border-top-right-radius: 30px;</span><br><span class="line">border-bottom-right-radius: 40px;</span><br><span class="line">border-bottom-left-radius: 50px;</span><br></pre></td></tr></table></figure>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>如图：<br><img src="/2018/10/09/CSS3学习1/blog2.png" alt="圆角原理图"></p>
+<p>出现圆的原理是，例如，我们画了一个正方形，宽高一百，设定border-radius为50px，那么浏览器会在页面中以50px为半径，以小正方形（左上角那个）的右下角为圆心画出一个半径为50的1/4圆弧，那么每个角都是如此类推，就出现了圆的效果了。如果是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 20px 30px 40px 50px;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/blog3.png" alt="原理图"></p>
+<p>之前说个，它们是复合属性，bottom-top-left-radius也是有两部分构成的，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bottom-top-left-radius：20px 50px;</span><br></pre></td></tr></table></figure>
+<p>这个表示的是，上边20px，左边50px为长轴或短轴画一个椭圆，以他们焦点做1/4弧。</p>
+<p>再来举几个小例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 50px;</span><br><span class="line">    background-color: red;</span><br><span class="line">    border-radius: 50px 50px 0 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/blog4.png" alt="原理图"></p>
+<p>得到一个半圆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color: red;</span><br><span class="line">    border-radius: 50px 0 50px 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/blog5.png" alt="原理图"><br>得到一个类似叶子的形状。</p>
+<p>还有一种写法就是使用相对单位：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 1em 2em 1em 2e/2em 1em 2m 1em //x轴上的Y轴上的</span><br></pre></td></tr></table></figure>
+<p>这种方法很少用，了解即可。</p>
+<h2 id="box-shadow-盒子阴影"><a href="#box-shadow-盒子阴影" class="headerlink" title="box-shadow 盒子阴影"></a>box-shadow 盒子阴影</h2><p>box-shadow，有几个属性，分别是x轴的偏移，和y轴偏移，模糊半径（越大越模糊，会有临界值），扩展半径（阴影大小，放大缩小效果，）阴影颜色还投影方向，一共六个参数投影方向默认值是outset但是不能填写，写了反而错，还有就是inset，从里往外投。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	width:100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background:red;</span><br><span class="line">	border-radius: 20px 30px 40px 50px;</span><br><span class="line">	box-shadow: 10px 10px 5px 5px #ccc inset/outset;</span><br><span class="line">	//outset是不能设置的，这里只作展示来用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个是inset的。<br><img src="/2018/10/09/CSS3学习1/CSS1.png" alt="原理图"></p>
+<p>这个是outset的。<br><img src="/2018/10/09/CSS3学习1/CSS2.png" alt="原理图"></p>
+<h2 id="文字投影"><a href="#文字投影" class="headerlink" title="文字投影"></a>文字投影</h2><p>文本阴影text-shadow，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow:X-Offset Y-Offset blur color;</span><br></pre></td></tr></table></figure>
+<p>X-Offset：表示阴影的水平偏移距离，其值为正值时阴影向右偏移，反之向左偏移；</p>
+<p>Y-Offset：是指阴影的垂直偏移距离，如果其值是正值时，阴影向下偏移，反之向上偏移；</p>
+<p>Blur：是指阴影的模糊程度，其值不能是负值，如果值越大，阴影越模糊，反之阴影越清晰，如果不需要阴影模糊可以将Blur值设置为0；</p>
+<p>Color：是指阴影的颜色，其可以使用rgba色。</p>
+<p>比如，我们可以用下面代码实现设置阴影效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: 5px 1px 1px #fff;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/CSS3.png" alt="原理图"></p>
+<h2 id="rgba-颜色函数"><a href="#rgba-颜色函数" class="headerlink" title="rgba 颜色函数"></a>rgba 颜色函数</h2><p>这是一种设定颜色的另一张方式，rgb分别表示红绿蓝的成分，最多是255，a表示透明度1为不透明，0为全透明。</p>
+<p>RGB是一种色彩标准，是由红(R)、绿(G)、蓝(B)的变化以及相互叠加来得到各式各样的颜色。RGBA是在RGB的基础上增加了控制alpha透明度的参数。 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color：rgba(R,G,B,A)</span><br></pre></td></tr></table></figure>
+<p>以上R、G、B三个参数，正整数值的取值范围为：0 - 255。百分数值的取值范围为：0.0% - 100.0%。超出范围的数值将被截至其最接近的取值极限。并非所有浏览器都支持使用百分数值。A为透明度参数，取值在0~1之间，不可为负值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rgba(255,0,0,1) //红色</span><br><span class="line">rgab(0,0,0,1) //全黑色</span><br></pre></td></tr></table></figure>
+<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>CSS3的渐变分为两种，线性渐变和径向渐变。接下来给大家分别介绍一下：</p>
+<p>1）线性渐变（linear - to），就是按照一条线来渐变语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear-gradient([direction], color [percent], color [percent], …)</span><br></pre></td></tr></table></figure>
+<p>direction为方向，从左到右，从上到下之类的，color指的从什么颜色变成什么颜色。liru例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">background:linear-gradient(to top,#fff,#000) //从下往上渐变，从白色变为黑色</span><br><span class="line">background:linear-gradient(to top right,#fff,#000) //从左下角渐变到右上角</span><br><span class="line">background:linear-gradient(0deg, #fff,red,green,yellow,blue,black);从零度角开始渐变，各种颜色变为黑色。如图一</span><br><span class="line">background:linear-gradient(0deg, #fff,red 20%,green 30%,yellow 20%,blue 20%,black) 控制颜色渐变的位置</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/CSS4.png" alt="原理图"></p>
+<p>2）径向渐变（radial - at），就是按照圆的路径进行渐变。语法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radial-gradient(shape at position, color [percent] , color, …)</span><br></pre></td></tr></table></figure>
+<p>shape:放射的形状，可以为原型circle，可以为椭圆ellipse，后面跟着的相当于渐变的大小。如果是椭圆的话需要填长短轴。</p>
+<p>position: 圆心位置，可以两个值，也可以一个，如果为一个时，第二个值默认center 即 50%。值类型可以为，百分数，距离像素，也可以是方位值(left,top…); /x 轴主半径 y轴次半径/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(circle 50px at 50px 50px, #faf, #ff4400, yellow,transparent);</span><br><span class="line">//效果如下图</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/CSS5.png" alt="原理图"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> div&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background: radial-gradient(ellipse 50px 30px at 50px 50px, #faf, #ff4400, yellow);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/CSS6.png" alt="原理图"></p>
+<p>也可以得到一个椭圆</p>
+<h2 id="word-wrap-normal-break-word"><a href="#word-wrap-normal-break-word" class="headerlink" title="word-wrap:normal|break-word;"></a>word-wrap:normal|break-word;</h2><p>当写一堆英文不空格时，会超出规定的区域。</p>
+<p>这就有一个属性叫做强制换行，“word-wrap:break-word”,这样溢出之后，会换行。</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>我们可以自定义一些字体，从网上选取喜欢的下载，然后使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@font-face&#123;</span><br><span class="line">	font-family:”myFirstFont”;</span><br><span class="line">	src:url(&apos;Sansation_Light.ttf&apos;),</span><br><span class="line">	url(‘Sansation_Light.eot&apos;) format(‘eot’)；</span><br><span class="line">&#125;//format: 此值指的是你自定义的字体的格式，主要用来帮助浏览器识别浏览器对@font-face的兼容问题，这里涉及到一个字体format的问题，因为不同的浏览器对字体格式支持是不一致的，浏览器自身也无法通过路径后缀来判断字体</span><br><span class="line"></span><br><span class="line">#demo&#123;</span><br><span class="line">	font-family: &quot;myFirstFont&quot;;</span><br><span class="line">&#125;//使用定义好的字体</span><br></pre></td></tr></table></figure>
+<h2 id="border-image-——边框应用背景"><a href="#border-image-——边框应用背景" class="headerlink" title="border-image ——边框应用背景"></a>border-image ——边框应用背景</h2><p>之前我们的border都是只用实线或者虚线，没有其他的内容了。我们在css3可以自定义border，使用图片来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-image: url(xxx.png)  number strech repeat</span><br></pre></td></tr></table></figure>
+<p>举个例子如下图：</p>
+<p><img src="/2018/10/09/CSS3学习1/a1.png" alt="原理图"></p>
+<p>第一个参数是Number，它会按照你给的值，例如是30px，它会在从左边，右边，下边，上边开始30px，分别剪一下。得到四个角，然后对应的放到border对应的四个角。 第二个参数是strench就是拉伸，把剩下的部分铺满边框剩下的部分。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border:url(border.png) 27px strentch;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/a2.png" alt="原理图"></p>
+<p>可以看出，四个角分别是剪下来的四个角，中间是剩下部分的拉伸展示。除了拉伸还有平铺效果（repeat）和铺满效果（round）（主要在于，剩下的部分如果填充不了，是否会发生裁剪，还是按比例伸缩，平铺是切割，铺满是不切割），就是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border:url(border.png) 27px repeat;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/a3.png" alt="原理图"></p>
+<p>发生裁剪 从中间开始裁剪</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border:url(border.png) 27px round;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/09/CSS3学习1/a4.png" alt="原理图"></p>
+<p>不发生裁剪</p>
+<p>对于round来说，如果width太小，它会发生裁剪合并，判断是，拉伸范围是否大于自身的1.5倍，如果是，那么就会进行合并。</p>
+<h2 id="背景图片起始位置background-origin"><a href="#背景图片起始位置background-origin" class="headerlink" title="背景图片起始位置background-origin"></a>背景图片起始位置background-origin</h2><p>图片默认从padding区开始展示，我们可以对它进行设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-orgin: border-box | padding-box | content-box;</span><br></pre></td></tr></table></figure>
+<p>参数分别表示背景图片是从边框，还是内边距（默认值），或者是内容区域开始显示。</p>
+<h2 id="裁剪背景图片-background-clip"><a href="#裁剪背景图片-background-clip" class="headerlink" title="裁剪背景图片 background-clip"></a>裁剪背景图片 background-clip</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-clip ： border-box | padding-box | content-box | no-clip</span><br></pre></td></tr></table></figure>
+<p>参数分别表示从边框、或内填充，或者内容区域向外裁剪背景。no-clip表示不裁切，和参数border-box显示同样的效果。background-clip默认值为border-box。</p>
+<p>background-position,利用这个可以进行定位，确定要展示哪一个部分的内容。（豆瓣评分，星图,雪碧图）</p>
+<p><img src="/2018/10/09/CSS3学习1/b1.png" alt="原理图"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.start&#123;</span><br><span class="line">	width:100px;</span><br><span class="line">	border: 1px solid #000 ;</span><br><span class="line">	background: url(&apos;star.png;) no-repeat;</span><br><span class="line">	background-position: 0 -45px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以得到：</p>
+<p><img src="/2018/10/09/CSS3学习1/b2.png" alt="原理图"></p>
+<h2 id="背景图片尺寸background-size"><a href="#背景图片尺寸background-size" class="headerlink" title="背景图片尺寸background-size"></a>背景图片尺寸background-size</h2><p>设置背景图片的大小，以长度值或百分比显示，还可以通过cover和contain来对图片进行伸缩。语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-size: auto/&lt;长度值&gt;/&lt;百分比&gt;/cover/contain</span><br></pre></td></tr></table></figure>
+<p> 取值说明：</p>
+<p>1、auto：默认值，不改变背景图片的原始高度和宽度；</p>
+<p>2、&lt;长度值&gt;：成对出现如200px 50px，将背景图片宽高依次设置为前面两个值，当设置一个值时，将其作为图片宽度值来等比缩放；</p>
+<p>3、&lt;百分比&gt;：0％~100％之间的任何值，将背景图片宽高依次设置为所在元素宽高乘以前面百分比得出的数值，当设置一个值时同上；</p>
+<p>4、cover：用一张图片铺满整个背景，如果比例不符，则截断图片</p>
+<p>5、contain：尽量让背景内，存在一整张图片</p>
+<p>好吧，那么关于CSS3学习的第一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS3/" rel="tag"># -CSS3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/08/雅虎35条优化/" rel="next" title="雅虎35条优化">
+                <i class="fa fa-chevron-left"></i> 雅虎35条优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3-简介"><span class="nav-number">1.</span> <span class="nav-text">CSS3 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3前缀"><span class="nav-number">2.</span> <span class="nav-text">css3前缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3-初级功能"><span class="nav-number">3.</span> <span class="nav-text">CSS3 初级功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border-radius-——-圆角"><span class="nav-number">4.</span> <span class="nav-text">border-radius —— 圆角</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">4.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#box-shadow-盒子阴影"><span class="nav-number">5.</span> <span class="nav-text">box-shadow 盒子阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字投影"><span class="nav-number">6.</span> <span class="nav-text">文字投影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rgba-颜色函数"><span class="nav-number">7.</span> <span class="nav-text">rgba 颜色函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渐变"><span class="nav-number">8.</span> <span class="nav-text">渐变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#word-wrap-normal-break-word"><span class="nav-number">9.</span> <span class="nav-text">word-wrap:normal|break-word;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体"><span class="nav-number">10.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border-image-——边框应用背景"><span class="nav-number">11.</span> <span class="nav-text">border-image ——边框应用背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景图片起始位置background-origin"><span class="nav-number">12.</span> <span class="nav-text">背景图片起始位置background-origin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#裁剪背景图片-background-clip"><span class="nav-number">13.</span> <span class="nav-text">裁剪背景图片 background-clip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景图片尺寸background-size"><span class="nav-number">14.</span> <span class="nav-text">背景图片尺寸background-size</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
