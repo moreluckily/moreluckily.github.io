@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-CSS3," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起继续学习CSS3，今天要讲一下CSS3中的下一部分。 首先讲一下CSS3中的属性选择器： 属性选择器jQuery库里面有很多选择器都是从css3里面来的。那我们现在开始学习吧。 E[att^=“val”]{…}，选择匹配元素E, 且E元素定义了属性att, 其属性值以val开头的任何字符串。 E[att$=“val”]{…}，选择匹配元素E, 且E元素定义">
+<meta name="keywords" content="-CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3学习2">
+<meta property="og:url" content="http://moreluckily.com/2018/10/10/CSS3学习2/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起继续学习CSS3，今天要讲一下CSS3中的下一部分。 首先讲一下CSS3中的属性选择器： 属性选择器jQuery库里面有很多选择器都是从css3里面来的。那我们现在开始学习吧。 E[att^=“val”]{…}，选择匹配元素E, 且E元素定义了属性att, 其属性值以val开头的任何字符串。 E[att$=“val”]{…}，选择匹配元素E, 且E元素定义">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习2/a1.jpg">
+<meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习2/a2.jpg">
+<meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习2/b1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习2/b2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习2/b3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习2/b4.png">
+<meta property="og:updated_time" content="2018-10-10T10:36:42.453Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3学习2">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习CSS3，今天要讲一下CSS3中的下一部分。 首先讲一下CSS3中的属性选择器： 属性选择器jQuery库里面有很多选择器都是从css3里面来的。那我们现在开始学习吧。 E[att^=“val”]{…}，选择匹配元素E, 且E元素定义了属性att, 其属性值以val开头的任何字符串。 E[att$=“val”]{…}，选择匹配元素E, 且E元素定义">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/10/CSS3学习2/a1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/10/CSS3学习2/"/>
+
+
+
+
+
+  <title>CSS3学习2 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/10/CSS3学习2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS3学习2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T17:07:02+08:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS3/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起继续学习CSS3，今天要讲一下CSS3中的下一部分。</p>
+<p>首先讲一下CSS3中的属性选择器：</p>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>jQuery库里面有很多选择器都是从css3里面来的。那我们现在开始学习吧。</p>
+<p>E[att^=“val”]{…}，选择匹配元素E, 且E元素定义了属性att, 其属性值以val开头的任何字符串。</p>
+<p>E[att$=“val”]{…}，选择匹配元素E, 且E元素定义了属性att, 其属性值以val结尾的任何字符串。</p>
+<p>E[att*=“val”]{…}，选择匹配元素E, 且E元素定义了属性att, 其属性值任意位置出现了“val”。即属性值包含了“val”，位置不限。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;demoaaa&quot;&gt;1&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;aaademo&quot;&gt;2&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;demoaa&quot;&gt;3&lt;/div&gt;</span><br><span class="line">div[class*=&quot;aaa&quot;]&#123;</span><br><span class="line">	color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，1和2都变色了，3没有变色，因为它其中并没有含有aaa。</p>
+<h2 id="伪类选择器和伪元素选择器"><a href="#伪类选择器和伪元素选择器" class="headerlink" title="伪类选择器和伪元素选择器"></a>伪类选择器和伪元素选择器</h2><p>什么是伪类选择器和伪元素选择器呢？</p>
+<p>简单的说就是：伪类选择器向某些选择器添加特殊的效果，用一个” : “<br>而伪元素选择器需要添加一个实际的元素才能达到，用“ : : ”</p>
+<p>伪类：<br><img src="/2018/10/10/CSS3学习2/a1.jpg" alt="伪类"></p>
+<p>伪元素：</p>
+<p><img src="/2018/10/10/CSS3学习2/a2.jpg" alt="伪元素"></p>
+<p>简单理解一下，hover我们都用过，只有我们的鼠标放在目标元素上面才会出现效果。只有我们激活它它才会有效果。这就是伪类。</p>
+<p>关于伪元素，记得after吗？我们是利用它来清除浮动的，它没有标签结构，但是只要给他内容，并不需要我们激活，它就会有效，这就是伪元素。当然这个是我自己的理解，方便记忆，如果大家有不同的意见，可以按照你们的认为去记忆即可。</p>
+<p>伪元素和伪类之所以这么容易混淆，是因为他们的效果类似而且写法相仿，但实际上 css3 为了区分两者，已经明确规定了伪类用一个冒号来表示，而伪元素则用两个冒号来表示。</p>
+<h2 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h2><p>伪类用于向某些选择器添加特殊的效果。</p>
+<p>1.root 根标签选择器</p>
+<p>“:root”选择器等同于html元素，简单点说：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;background:orange&#125;</span><br><span class="line">html&#123;background:orange&#125;//得到的效果等同</span><br></pre></td></tr></table></figure>
+<p>建议使用:root（xml等）</p>
+<p>2.:not 否定选择器</p>
+<p>用法和jQuery 中的not类似，可以排除某些特定条件的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div:not([class=“demo”])&#123;</span><br><span class="line">background-color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>意思为除了class为demo的div以外，所有的div的背景颜色都变红,</p>
+<p>伪类的效果可以通过添加一个实际的类来达到。</p>
+<p>伪元素的效果则需要通过添加一个实际的元素才能达到。</p>
+<p>就上述例子，我们可以为div添加一个类，然后为这个类名设置样式。也是可以达到同样的效果。</p>
+<p>3.empty 空标签选择器</p>
+<p>用来选择没有内容的元素、不在文档树中的元素，这里的没有内容指的是一点内容都没有，哪怕是一个空格。</p>
+<p>4.target 目标元素选择器</p>
+<p>用来匹配被location.hash 选中的元素(即锚点元素),选择器可用于选取当前活动的目标元素.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#item&quot;&gt;&lt;/a&gt;	</span><br><span class="line">&lt;div id=&quot;item&quot;&gt;&lt;/div&gt;</span><br><span class="line">div:target&#123;</span><br><span class="line">	background:orange;</span><br><span class="line">&#125;//当a标签被点击之后就会变成橙色</span><br></pre></td></tr></table></figure>
+<p>5.子元素选择器</p>
+<p>:first-child 第一个子元素</p>
+<p>:last-child 最后一个子元素</p>
+<p>:nth-child(){} 第xxx个子元素，n代表变量自然数，从数字1开始，如果是表达式就是从0开始。例如：3n+1，n从0开始</p>
+<p>:nth-last-child(){} 从后往前数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;li&gt;1&lt;/li&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;2&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;3&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;4&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;5&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">li:first-child&#123;</span><br><span class="line">	background: red;</span><br><span class="line">&#125;//只有1和2被选中，父元素的第一个子元素，而且是li的子元素。</span><br></pre></td></tr></table></figure>
+<p>6.子元素选择器第二部分···</p>
+<p>:first-of-type 第一个子元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;1&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;2&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;3&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;4&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;5&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">li:first-of-type&#123;</span><br><span class="line">	background: red;</span><br><span class="line">&#125;//把所有的li、选出来之后在选择第一个li，并不是第一个子元素，并且是li的元素，跟first-child区别。</span><br></pre></td></tr></table></figure>
+<p>:last-of-type 最后一个子元素</p>
+<p>:nth-of-type(){} 第xxx个子元素，n代表变量自然数，这个可以选出一些特定的元素，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;p&gt;0&lt;/p&gt;		</span><br><span class="line">		&lt;li&gt;1&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;2&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;3&lt;/li&gt;</span><br><span class="line">		&lt;span&gt;3-4&lt;/span&gt;</span><br><span class="line">		&lt;li&gt;4&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;5&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">li:nth-of-type(4)&#123;</span><br><span class="line">	</span><br><span class="line">	background:red;</span><br><span class="line">&#125;//把4选出来，同样的是把所有的li拿出来在选第四个。</span><br></pre></td></tr></table></figure>
+<p>:nth-last-of-type(){} 从后往前数</p>
+<p>7，only各种选择器。</p>
+<p>:only-child 唯一子元素选择器</p>
+<p>选择是独生子的子元素，即该子元素不能有兄弟元素，它的父元素只有他一个直接子元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;							&lt;div&gt;</span><br><span class="line">	&lt;p&gt;&lt;/p&gt;							&lt;p&gt;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;								&lt;ul&gt;&lt;/ul&gt;</span><br><span class="line">								&lt;/div&gt;</span><br><span class="line">				</span><br><span class="line">				p:only-child&#123;</span><br><span class="line">					background:red;</span><br><span class="line">				&#125;//左边代码块能选上，右边不能</span><br></pre></td></tr></table></figure>
+<p>注意：选择的元素是独生子子元素，而非有唯一子元素的父元素。</p>
+<p>:only-of-type</p>
+<p>如果要选择第某类特定的子元素(p) 在兄弟节点中是此类元素唯一个的话 就需要用到这个属性了</p>
+<p>8.可用与否选择器（这个名字····呵呵，我自己起的，凑个格式）</p>
+<p>:enabled 可用的元素</p>
+<p>:disabled 不可用的元素</p>
+<p>在web的表单中，有些表单元素有可用（“enabled”）和不可用（“disabled”）状态，比如输入框，密码框，复选框等。在默认情况下，这些表单元素都处在可用状态。那么我们可以通过伪类选择器 enabled 进行选择，disabled则相反。</p>
+<p>9.input checkbox</p>
+<p>:checked，选择框的被选中状态，之后触发。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">input:checked&#123;</span><br><span class="line">	width:400px;</span><br><span class="line">	height:200px;</span><br><span class="line">	background:red;</span><br><span class="line">&#125;//选中之后，改变样式</span><br></pre></td></tr></table></figure>
+<p>还可以结合一些其他选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;checkbox&quot;&gt;</span><br><span class="line">&lt;span&gt;hahahahahah&lt;/span&gt;</span><br><span class="line">span&#123;</span><br><span class="line">	display:none;</span><br><span class="line">&#125;</span><br><span class="line">input:checked + span&#123;</span><br><span class="line">	display: inline;</span><br><span class="line">&#125;//当input被选中之后，它后面紧接着的兄弟节点span标签display改变为inline。</span><br></pre></td></tr></table></figure>
+<p>注：checkbox, radio 的一些默认状态不可用属性进行改变，如边框颜色。</p>
+<p>10,读写选择器~~~</p>
+<p>:read-only 选中只读的元素。eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=“text” readonly=“readonly”/&gt;</span><br></pre></td></tr></table></figure>
+<p>:read-write 选中非只读的元素eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=“text”/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h2><p>伪元素的效果是需要通过添加一个实际的元素才能达到的。</p>
+<p>CSS3对伪元素进行了一定的调整，在以前的基础上增加了一个:也就是现在变成了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::first-letter,::first-line,::before,::after</span><br></pre></td></tr></table></figure>
+<p>1.选中选择器</p>
+<p>::selection</p>
+<p>“::selection” 选择器是用来匹配突出显示的文本（用鼠标选择文本的时候）。浏览器默认情况下，用鼠标选择网页文本是以“蓝色的背景，白色的字体”显示的。属性：user-select: none;表示不能选中，在一些版权文章中，经常就是不能选中的，这个时候，就是用了这个属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">::selection&#123;</span><br><span class="line">	user-select: none;</span><br><span class="line">	color: red;//选中之后，颜色变为红色</span><br></pre></td></tr></table></figure>
+<p>注：火狐下必须加-moz- -moz-::selection。</p>
+<p>2.条件选择。</p>
+<p>E &gt; F ： an F element child of an E element 直接子元素</p>
+<p>E + F ： an F element immediately preceded by an E element 后面的紧挨着的兄弟节点</p>
+<p>E ~ F ： an F element preceded by an E element 后面的兄弟节点</p>
+<p>写一个小例子：每次选中一个input，对应的div展示出来，其他消失:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">input&#123;</span><br><span class="line">            width: 50px;</span><br><span class="line">            height: 50px;</span><br><span class="line">        &#125;</span><br><span class="line">.wrapper&#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    left: 50%;</span><br><span class="line">    margin-left: -100px;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 255px;</span><br><span class="line">    border: 1px solid black;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper div&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 55px;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper div:nth-of-type(1)&#123;</span><br><span class="line">    background: red;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper div:nth-of-type(2)&#123;</span><br><span class="line">    background: deepskyblue;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper div:nth-of-type(3)&#123;</span><br><span class="line">    background: #f40;</span><br><span class="line">&#125;</span><br><span class="line">input:checked + div &#123;</span><br><span class="line">    display:block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;radio&quot; name=&quot;group&quot; checked&gt;</span><br><span class="line">    &lt;!-- name相同，就变成了单选框 --&gt;</span><br><span class="line">    &lt;div&gt;moreluck&lt;/div&gt;</span><br><span class="line">     &lt;input type=&quot;radio&quot; name=&quot;group&quot;&gt;</span><br><span class="line">     &lt;div&gt;morelucky&lt;/div&gt; </span><br><span class="line">     &lt;input type=&quot;radio&quot; name=&quot;group&quot;&gt;</span><br><span class="line">     &lt;div&gt;moreluckily&lt;/div&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/10/CSS3学习2/b1.png" alt="小demo"></p>
+<p>就能得到如上图所示的效果。</p>
+<h2 id="形状变换—高级动画基础"><a href="#形状变换—高级动画基础" class="headerlink" title="形状变换—高级动画基础"></a>形状变换—高级动画基础</h2><p>transform 可以实现元素的形状、角度、位置等的变化。属性值：</p>
+<p>1.rotate(); 以x/y/z为轴进行旋转，默认为z</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rotatex(), rotatey(), rotatez(), rotate3d(x, y, z, angle) x, y, z ---&gt;</span><br></pre></td></tr></table></figure>
+<p>rotateZ()：正值顺时针转，rotateY: 绕着Y轴开始旋转，rotateX():绕着X轴开始旋转。</p>
+<p>rotate3D(x,y,z.angle),三个轴一起转。对应轴上可填写1或0，表示是否参与旋转。</p>
+<p>2.scale(); 以x/y为轴进行缩放</p>
+<p>scale(x, y) 接受两个值，如果第二参数未提供，则第二个参数使用第一个参数的值</p>
+<p>scalex(),scaley() 值是数字表示倍数，不加任何单位，如果是赋值会发生倒立或反转。（x轴倒立，y轴翻转）</p>
+<p>scalez()</p>
+<p>scale3d()  scale3d(sx,sy,sz)。</p>
+<p>3.skew(); 对元素进行倾斜扭曲</p>
+<p>skew(x, y);接受两个值，第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认值为0</p>
+<p>skewx(), skewy()</p>
+<p>4.translate(); 可以移动距离,相对于自身位置。</p>
+<p>translate(x, [y])</p>
+<p>translatex(),translatey(),translatez(),translate3d(x, y, z)。利用这个可以实现居中展示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;	</span><br><span class="line">	position:absolute;</span><br><span class="line">	left:50%;</span><br><span class="line">	top:50%;</span><br><span class="line">	background: orange;</span><br><span class="line">	transform: translate(-50%,-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.transform-orgin 变换旋转原点</p>
+<p>任何一个元素都有一个中心点，默认情况下，其中心点是居于元素x轴和y轴的50%处，如图为</p>
+<p><img src="/2018/10/10/CSS3学习2/b2.png" alt="小demo"></p>
+<p>关键字：</p>
+<p><img src="/2018/10/10/CSS3学习2/b3.png" alt="小demo"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-origin：top;//以顶部50%的位置作为旋转原点。</span><br></pre></td></tr></table></figure>
+<h2 id="transition-过渡动画"><a href="#transition-过渡动画" class="headerlink" title="transition 过渡动画"></a>transition 过渡动画</h2><h3 id="hover"><a href="#hover" class="headerlink" title="hover"></a>hover</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background: red;</span><br><span class="line">&#125;</span><br><span class="line">div:hover&#123;</span><br><span class="line">	width: 400px;</span><br><span class="line">	height: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们使用这个的时候，是发生的突变，变化很快，给人感觉很不好，于是就出来了一个叫过渡动画的概念，我们可以实现让div hover的时候慢慢变化。</p>
+<h3 id="过渡动画"><a href="#过渡动画" class="headerlink" title="过渡动画"></a>过渡动画</h3><p>transition 属性是css3的一个复合属性，主要包括一下几个子属性</p>
+<p>transition-property:指定过渡或动态模拟的css属性</p>
+<p>transition-duration:指定过渡所需要的时间</p>
+<p>transition-timing-function:指定过渡函数</p>
+<p>transition-delay:指定开始出现的延迟时间</p>
+<p>transition: width(如果高度也要实现渐变需要写all) 3000ms linear 20;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background: red;</span><br><span class="line">    transition: width 3000ms linear 1s;</span><br><span class="line">    /* 改变宽度，持续时间为3000ms,直线运动, 延迟时间1s*/</span><br><span class="line">    /* transition: all 3000ms linear 1s; 全部发生变化*/</span><br><span class="line">&#125;</span><br><span class="line">div:hover&#123;</span><br><span class="line">	width: 400px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是有些内容不能使用过度，如下图：</p>
+<p>能参与过渡的属性：</p>
+<p><img src="/2018/10/10/CSS3学习2/b4.png" alt="小demo"></p>
+<p>好吧，那么关于CSS3学习的第二部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS3/" rel="tag"># -CSS3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/09/CSS3学习1/" rel="next" title="CSS3学习1">
+                <i class="fa fa-chevron-left"></i> CSS3学习1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/10/CSS3学习3/" rel="prev" title="CSS3学习3">
+                CSS3学习3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性选择器"><span class="nav-number">1.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类选择器和伪元素选择器"><span class="nav-number">2.</span> <span class="nav-text">伪类选择器和伪元素选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类选择器"><span class="nav-number">3.</span> <span class="nav-text">伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪元素选择器"><span class="nav-number">4.</span> <span class="nav-text">伪元素选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#形状变换—高级动画基础"><span class="nav-number">5.</span> <span class="nav-text">形状变换—高级动画基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-过渡动画"><span class="nav-number">6.</span> <span class="nav-text">transition 过渡动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hover"><span class="nav-number">6.1.</span> <span class="nav-text">hover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过渡动画"><span class="nav-number">6.2.</span> <span class="nav-text">过渡动画</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
