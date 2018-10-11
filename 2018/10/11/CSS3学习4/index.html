@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-CSS3," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起继续学习CSS3。 今天首先要讲一下CSS3中的多列布局。 clumns 多列布局为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面，这种布局在报纸和杂志上都使用了几十年了，但要在Web页面上实现这样的效果还">
+<meta name="keywords" content="-CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3学习4">
+<meta property="og:url" content="http://moreluckily.com/2018/10/11/CSS3学习4/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起继续学习CSS3。 今天首先要讲一下CSS3中的多列布局。 clumns 多列布局为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面，这种布局在报纸和杂志上都使用了几十年了，但要在Web页面上实现这样的效果还">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/a2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/a4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/a5.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/a6.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/a7.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/b1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/b2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/c1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/c2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/c3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/c4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/c5.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/d1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/d2.png">
+<meta property="og:updated_time" content="2018-10-11T09:29:06.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3学习4">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习CSS3。 今天首先要讲一下CSS3中的多列布局。 clumns 多列布局为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面，这种布局在报纸和杂志上都使用了几十年了，但要在Web页面上实现这样的效果还">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/11/CSS3学习4/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/11/CSS3学习4/"/>
+
+
+
+
+
+  <title>CSS3学习4 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/11/CSS3学习4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS3学习4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T00:02:00+08:00">
+                2018-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS3/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起继续学习CSS3。</p>
+<p>今天首先要讲一下CSS3中的多列布局。</p>
+<h2 id="clumns-多列布局"><a href="#clumns-多列布局" class="headerlink" title="clumns 多列布局"></a>clumns 多列布局</h2><p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面，这种布局在报纸和杂志上都使用了几十年了，但要在Web页面上实现这样的效果还是有相当大的难度，庆幸的是，CSS3的多列布局可以轻松实现。</p>
+<p>语法：</p>
+<p>1.columns:  column-width 或者 column-count;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">column-width: //指每一列的宽度 根据容器宽度自适应 （最小宽度） </span><br><span class="line">column-count: //指规定的列数 唯一精准的是列数，但是不要两一起使用 会乱</span><br></pre></td></tr></table></figure>
+<p>来个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	width: 600px;</span><br><span class="line">	height: 300px;</span><br><span class="line">	border: 1px solid #000;</span><br><span class="line">	column-count: 3;</span><br><span class="line">&#125;</span><br><span class="line">第二种：</span><br><span class="line">div&#123;</span><br><span class="line">	width: 600px;</span><br><span class="line">	border: 1px solid #000;</span><br><span class="line">	colum-width:200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一种：</p>
+<p><img src="/2018/10/11/CSS3学习4/a1.png" alt="小demo"></p>
+<p>第二种：</p>
+<p><img src="/2018/10/11/CSS3学习4/a2.png" alt="小demo"></p>
+<p>可以看到，第二种使用width来分列的，column-width指的是最小值，只要不小于设定值即可。</p>
+<p>这两个值不要设定在一起使用，会发生混乱。</p>
+<p>3.column-gap: 设置列与列之间的宽度，直接用数值表示。默认列宽跟字体大小是一样的。设置为0也是会有宽度，但是很小。</p>
+<p>4.column-rule: 列宽缝间添加一条分解析。不占列宽。如果太大会把字体覆盖。</p>
+<p>column-rule-width: 类似于borde-width属性，主要来定义列边框的宽度，默认为‘medium’， column-rule-width属性接受任意浮点数，但不接收负值。但也像border-width属性一样，可以使用关键词：medium、thick和thin</p>
+<p>column-rule-style: 类似于border-style属性，主要用来定义列边框样式，其默认值为“none”。column-rule-style属性值与border-style属值相同，包括none、hidden、dotted、dashed、solid、double、groove、ridge、inset、outset。</p>
+<p>column-rule-color: 分界线的颜色</p>
+<p>5.column-span: 1/all</p>
+<p>设置多列布局元素内的子元素，可以跨列，类似标题效果。即一个新闻标题要横跨所有内容列。注：此属性要在子元素上设置。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.newspaper&#123;</span><br><span class="line">	-moz-column-count:3; /* Firefox */</span><br><span class="line">	-webkit-column-count:3; /* Safari and Chrome */</span><br><span class="line">	column-count:3;</span><br><span class="line">&#125;</span><br><span class="line">h2&#123;</span><br><span class="line">	-webkit-column-span:all; /* Chrome */</span><br><span class="line">	column-span:all;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=&quot;newspaper&quot;&gt;</span><br><span class="line">	&lt;h2&gt;成品油价格25日凌晨上调 汽柴油涨300、290元/吨&lt;/h2&gt;省略新闻内容。。。。。。</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>效果如图：</p>
+<p><img src="/2018/10/11/CSS3学习4/a4.png" alt="小demo"></p>
+<h2 id="css-hack"><a href="#css-hack" class="headerlink" title="css hack"></a>css hack</h2><p>首先介绍一下什么是css hack，由于不同厂商的浏览器，比如Internet Explorer,Safari,Mozilla Firefox,Chrome等，或者是同一厂商的浏览器的不同版本，如IE6和IE7，对CSS的解析认识不完全一样，因此会导致生成的页面效果不一样，得不到我们所需要的页面效果。 这个时候我们就需要针对不同的浏览器去写不同的CSS，让它能够同时兼容不同的浏览器，能在不同的浏览器中也能得到我们想要的页面效果。</p>
+<p>那么，再讲这里涉及到的hack问题。</p>
+<p>存在这么一种情况，看一下代码（内容省略）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;aaa&quot;&gt;内容省略&lt;/div&gt;	</span><br><span class="line">div[class*=&quot;aaa&quot;]&#123;</span><br><span class="line">	width:400px;</span><br><span class="line">	height: 600px;</span><br><span class="line">	column-width:200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/11/CSS3学习4/a5.png" alt="小demo"></p>
+<p>我们设定了200的列宽，但是因为列缝的存在，使得，在400的容器内装不下两列的文字，于是它就自动设定为一列的宽度，并沾满整个容器。</p>
+<p>解决办法:</p>
+<p>column-width = (width-(n-1)font-size)/n /其中n大于或等于2;并且其他值为默认值</p>
+<p>如当n为2 时 所设置的column-width 大于上面公式算出的值 那么 就会变成1列</p>
+<p>（Opera下最好再减1个px，当然如果你是中文的话也最好这样做，减1-2px，至于为什么，我也说不清楚。）</p>
+<p>第二种情况就是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">div[class*=&quot;aaa&quot;]&#123;</span><br><span class="line">	width: 400px;</span><br><span class="line">	border: 1px solid #008000;</span><br><span class="line">	-moz-column-width: 195px;</span><br><span class="line">	-webkit-column-width: 195px;</span><br><span class="line">	column-width: 195px;</span><br><span class="line">	-moz-column-gap: 0;</span><br><span class="line">	-webkit-column-gap: 0;</span><br><span class="line">	column-gap: 0;</span><br><span class="line">	-moz-column-rule: 0 none; </span><br><span class="line">	-webkit-column-rule: 0 none;</span><br><span class="line">	column-rule: 0 none;			 </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/11/CSS3学习4/a6.png" alt="小demo"></p>
+<p>可以看出，文字部分为了填补gap的空隙，自动撑开到200px了。这个时候，解决方式还是需要通过计算，确定适合的值。</p>
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>在css中盒模型被分为两种，第一种是w3c的标准盒模型，另一种是IE6混杂模式的传统模型。他们都是对元素计算尺寸的模型。但他们的不同是计算的方式不同。</p>
+<p>1.W3C标准盒模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">element空间高度（盒子） = width + padding + border;</span><br><span class="line">width 为内容高度。即width不包括padding 和 border</span><br></pre></td></tr></table></figure>
+<p>2.IE6混杂模式盒模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">内容高度 （盒子）= width - padding - border</span><br><span class="line">即 设置width的数值就是element 的空间高度，width包含padding 和border</span><br></pre></td></tr></table></figure>
+<p>这个时候，如果我们想将这两个盒子模型，一个用混杂模式，一个用标准模式，就需要用到一下这个方法了。</p>
+<p>css3中有一个可以选择盒模型的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">box-sizing : border-box/content-box</span><br><span class="line"></span><br><span class="line">content-box为W3C标准盒子</span><br><span class="line">border-box为IE6混杂模式的盒子</span><br></pre></td></tr></table></figure>
+<p>来个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	width:100px;</span><br><span class="line">	height:100px;</span><br><span class="line">	padding: 10px;</span><br><span class="line">	border: 10px solid #000;</span><br><span class="line">&#125;</span><br><span class="line">div1&#123;</span><br><span class="line">	box-sizing:border-box;</span><br><span class="line">&#125;</span><br><span class="line">div2&#123;</span><br><span class="line">	box-sizing:content-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/11/CSS3学习4/a7.png" alt="小demo"></p>
+<h2 id="弹性盒子"><a href="#弹性盒子" class="headerlink" title="弹性盒子"></a>弹性盒子</h2><p>先声明一下，在弹性盒子中成父级为容器，子级为项目。横轴为主轴，纵轴为侧轴。</p>
+<h2 id="设定属性"><a href="#设定属性" class="headerlink" title="设定属性"></a>设定属性</h2><p>flex为复核属性，且必须配合父元素display:flex使用。把flex设定在父级上面</p>
+<h2 id="设定在子级（项目）"><a href="#设定在子级（项目）" class="headerlink" title="设定在子级（项目）"></a>设定在子级（项目）</h2><p>现在有这么一个需求就是，有一个父级宽度为500，然后呢，有三个子级，要求，把父级平均非配给每个子级，抛开手动设置宽度的方法，我们可以使用这个弹性盒子。例如：</p>
+<p>1.flex-grow: 把剩下部分按比例分配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.wrapper&#123;</span><br><span class="line">	width: 500px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background: #eee;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper div&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	flex-grow: 1;//表示把剩下的每部分，按比例分配，每个div都占1分。</span><br><span class="line">&#125;</span><br><span class="line">........省略子元素样式</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/11/CSS3学习4/b1.png" alt="小demo"></p>
+<p>2.flex-shrink，按比例缩小</p>
+<p>这个，适用于，如果子级的和超过父级，那么就会按照比例，按比例缩小。具体这样算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.div1&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	flex-shrink:3;</span><br><span class="line">&#125;</span><br><span class="line">.div2&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	flex-shrink:2;</span><br><span class="line">&#125;</span><br><span class="line">.div3&#123;</span><br><span class="line">	width:300px;</span><br><span class="line">	flex-shrink:1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求div3的缩小部分：1乘300/(3乘100 + 2乘200 + 1乘300) <em> (超出的部分) 100 = 30。<br>(shrink值盒子宽度/（所有盒子shrink的和）</em> 超出部分。</p>
+<p>那么div3设置实际宽度就是300-30 = 270；<br>同理div1设置实际宽度就是100-30 = 70；<br>同理div2设置实际宽度就是200-40 = 160；</p>
+<p><img src="/2018/10/11/CSS3学习4/b2.png" alt="小demo"></p>
+<p>3.flex-basis:伸缩基准值.</p>
+<p>该属性设置元素的宽度当然width也可以用来设置元素宽度，如果元素上同时出现了width 和flex-basis,那么flex-basis会覆盖width的值 子元素宽度尽可能按照basis来如果基准值相加大于容器宽度那么 下面由下面公式分配宽度给子元素</p>
+<p>( flex-basis/(flex-basis相加) ) * 容器的宽度</p>
+<p>常用简化写法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex:1 —&gt;  flex:1 1 0%;</span><br><span class="line">flex:3 —&gt; flex:3 1 0%;</span><br></pre></td></tr></table></figure>
+<p>注意:flexbox布局和原来的布局是两个概念，部分css属性在flexbox盒子里面不起作用，eg：float， clear， column,vertical-align 等等 真实情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">son1 = (flex-shrink) * flex-basis；</span><br><span class="line">son2 = (flex-shrink) * flex-basis；</span><br><span class="line">…..</span><br><span class="line">sonN = (flex-shrink) * flex-basis；</span><br><span class="line"></span><br><span class="line">加权值 = son1 + son2 + …. + sonN；</span><br><span class="line">压缩的宽度 w = (子元素flex-basis值 * (flex-shrink)/加权值) * 溢出值</span><br><span class="line">缩减值1：(flex-basis1 * 1/ 加权值) * 溢出值</span><br><span class="line">缩减值2：(flex-basis2 * 2/ 加权值) * 溢出值</span><br><span class="line">缩减值3：(flex-basis3 * 3/ 加权值) * 溢出值</span><br><span class="line">最后son1、son2、son3，的实际宽度为：</span><br><span class="line">flex-basisn– 缩减值n  = son n 真实宽度；</span><br></pre></td></tr></table></figure>
+<p>flex: 就是复合了上面三个属性。</p>
+<p>4.order: number，定义项目的排列顺序。数值越小，排列越靠前，默认为0</p>
+<p>5.align-self: auto/ flex-start(从父级头部开始排序）/ flex-end(从后往前排)/ center(中间开始)/baseline(以第一行文字为基准值对齐)/stretch(拉伸充满整个父级，设高度的话，stretch无效);</p>
+<p>我们来试一下baseline：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.wrapper div&#123;</span><br><span class="line">	width:200px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	align-self: baseline;</span><br><span class="line">&#125;</span><br><span class="line">.div3&#123;</span><br><span class="line">	width:300px;</span><br><span class="line">	padding: 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/11/CSS3学习4/c1.png" alt="小demo"></p>
+<p>如果其中一个没有文字的话就会以底部对齐文字：</p>
+<p><img src="/2018/10/11/CSS3学习4/c2.png" alt="小demo"></p>
+<p>6.align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<p>7.align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<h2 id="设定在父级上的属性（容器）"><a href="#设定在父级上的属性（容器）" class="headerlink" title="设定在父级上的属性（容器）"></a>设定在父级上的属性（容器）</h2><p>1.flex-flow：flex-direction/flex-wrap，</p>
+<p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
+<p>2.flex-direction: row/row-reverse/column/column-reverse</p>
+<p>row表示横排，column表示竖着排。</p>
+<p>3.flex-wrap:nowrap（默认)/ wrap/wrap-reverse</p>
+<p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）nowrap（默认）：不换行。</span><br><span class="line">（2）wrap：换行，第一行在上方。</span><br><span class="line">（3）wrap-reverse：换行，第一行在下方。</span><br></pre></td></tr></table></figure>
+<p>当设置flex-grow属性的时候wrap失效，flex-basis尽可能按basis值往大了去从而达到折行的目的， flex-shrink会失效 (根据子元素实际的宽度判断是否折行</p>
+<p>4.justify-content:center;</p>
+<p>justify-content属性定义了项目在主轴上的对齐方式。</p>
+<p>.box { justify-content: flex-start | flex-end | center | space-between | space-around; }</p>
+<p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flex-start（默认值）：左对齐</span><br><span class="line">flex-end：右对齐</span><br><span class="line">center： 居中</span><br><span class="line">space-between：两端对齐，项目之间的间隔都相等。</span><br><span class="line">space-around：每个项目两侧的间隔相等。</span><br><span class="line">所以，项目之间的间隔比项目与边框的间隔大一倍。</span><br></pre></td></tr></table></figure>
+<p>这个是space-between的效果：</p>
+<p><img src="/2018/10/11/CSS3学习4/c3.png" alt="小demo"></p>
+<p>这个是space-round的效果：</p>
+<p><img src="/2018/10/11/CSS3学习4/c4.png" alt="小demo"></p>
+<p>5.align-items:center;</p>
+<p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flex-start：交叉轴的起点对齐。</span><br><span class="line">flex-end：交叉轴的终点对齐。</span><br><span class="line">center：交叉轴的中点对齐。</span><br><span class="line">baseline: 项目的第一行文字的基线对齐。</span><br><span class="line">stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</span><br></pre></td></tr></table></figure>
+<p>这就相当于，在哪里设置就听谁的，没有就听自己的，因为子级也能设定，子级默认继承父级的。</p>
+<p>6.align-content:center;</p>
+<p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该属性可能取6个值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flex-start：与交叉轴的起点对齐。</span><br><span class="line">flex-end：与交叉轴的终点对齐。</span><br><span class="line">center：与交叉轴的中点对齐。</span><br><span class="line">space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</span><br><span class="line">space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</span><br><span class="line">stretch（默认值）：轴线占满整个交叉轴。</span><br></pre></td></tr></table></figure>
+<p>例如：现在有多个项目，就是有很多div，在父级上设置样式，使他们不在一行展示，产生换行。这样就出现两条轴线了。（父级宽设为500，子级每个div为100，flex-direction为wrap即可产生换行）</p>
+<p>space-around: </p>
+<p><img src="/2018/10/11/CSS3学习4/c5.png" alt="小demo"></p>
+<p>注此方法在盒子里只有一行元素时，不生效。定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。</p>
+<h2 id="画三角形"><a href="#画三角形" class="headerlink" title="画三角形"></a>画三角形</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.wrapper&#123;</span><br><span class="line">    width: 30px;</span><br><span class="line">    height: 30px;</span><br><span class="line">    border: 50px solid #000;</span><br><span class="line">    border-top-color: red;</span><br><span class="line">    border-right-color: green;</span><br><span class="line">    border-bottom-color: yellow;</span><br><span class="line">    border-left-color: deeppink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/11/CSS3学习4/d1.png" alt="小demo"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.wrapper&#123;</span><br><span class="line">    width: 0px;</span><br><span class="line">    height: 0px;</span><br><span class="line">    border: 50px solid #000;</span><br><span class="line">    border-top-color: transparent;</span><br><span class="line">    border-right-color: green;</span><br><span class="line">    border-bottom-color: transparent;</span><br><span class="line">    border-left-color: transparent;</span><br><span class="line">&#125;</span><br><span class="line">// transparent 渐变色</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/11/CSS3学习4/d2.png" alt="小demo"></p>
+<p>好吧，那么关于CSS3学习的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS3/" rel="tag"># -CSS3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/CSS3学习3/" rel="next" title="CSS3学习3">
+                <i class="fa fa-chevron-left"></i> CSS3学习3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/11/CSS3学习5/" rel="prev" title="CSS3学习5">
+                CSS3学习5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#clumns-多列布局"><span class="nav-number">1.</span> <span class="nav-text">clumns 多列布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css-hack"><span class="nav-number">2.</span> <span class="nav-text">css hack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒模型"><span class="nav-number">3.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹性盒子"><span class="nav-number">4.</span> <span class="nav-text">弹性盒子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设定属性"><span class="nav-number">5.</span> <span class="nav-text">设定属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设定在子级（项目）"><span class="nav-number">6.</span> <span class="nav-text">设定在子级（项目）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设定在父级上的属性（容器）"><span class="nav-number">7.</span> <span class="nav-text">设定在父级上的属性（容器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画三角形"><span class="nav-number">8.</span> <span class="nav-text">画三角形</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -96,7 +96,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习3/a1.png">
 <meta property="og:image" content="http://moreluckily.com/2018/10/10/CSS3学习3/a2.png">
-<meta property="og:updated_time" content="2018-10-10T14:08:06.069Z">
+<meta property="og:updated_time" content="2018-10-10T14:23:31.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3学习3">
 <meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习CSS3，今天要讲一下CSS3中的动画特性。 animation 动画关键帧 @keyframes这个是在使用animation之前设定的，它会按照定义的状态发生相应的改变，例如： 1234567@keyframes demoMove&amp;#123;//每一个keyframes都要设定一个关键帧，用来以后调用	0%&amp;#123; background-c">
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  949
+                  995
                 </span>
               
 
@@ -411,6 +411,7 @@
 <p>利用JavaScript动态改变animation-play-state的值，可以实现动画的动态变化。</p>
 <p>9.animation-fill-mode:属性定义在动画开始之前和结束之后发生的操作。主要具有四个属性值：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">none:</span><br><span class="line">	默认值，表示动画将按预期进行和结束，在动画完成其最后一帧时，动画会反转到初始帧处</span><br><span class="line">	</span><br><span class="line">forwards:</span><br><span class="line">    表示动画在结束后继续应用最后的关键帧的位置，不会回到动画一开始的位置。</span><br><span class="line">	</span><br><span class="line">backwards:</span><br><span class="line">    会在向元素应用动画样式时迅速应用动画的初始帧，例如初始位置是在0，初始帧是在150px，那么使用了backwards，会在150px处开始动画。</span><br><span class="line">	</span><br><span class="line">both:</span><br><span class="line">    元素动画同时具有forwards和backwards效果</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">animation: move 2s linear  infinite  alternate backwards;</span><br><span class="line">//选取move关键帧，总时长2秒，正常速率，运动无数次，奇数次正向，偶数次反向，开始在初始帧的位置</span><br></pre></td></tr></table></figure>
 <p>最后来个网易云音乐的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">background-color: gray;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper&#123;</span><br><span class="line">position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .turn-table&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 300px;</span><br><span class="line">    top: 300px;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    text-align: center;</span><br><span class="line">    line-height: 100px;</span><br><span class="line">    border: 60px solid #333;</span><br><span class="line">    background: green;</span><br><span class="line">    animation: run 5s linear infinite;</span><br><span class="line">    animation-play-state: paused;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .turn-table span&#123;</span><br><span class="line">    color: #fff;</span><br><span class="line">    font-size: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .pin&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 420px;</span><br><span class="line">    top: 140px;</span><br><span class="line">    display: block;</span><br><span class="line">    width: 15px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background: #fff;</span><br><span class="line">    border-bottom-left-radius: 7px 30px;</span><br><span class="line">    border-bottom-right-radius: 7px 30px;</span><br><span class="line">    transform-origin: top;</span><br><span class="line">    transform: rotateZ(-30deg);</span><br><span class="line">    transition: all 1s linear;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes run&#123;</span><br><span class="line">    0%&#123;</span><br><span class="line">        transform: rotateZ(0deg);</span><br><span class="line">    &#125;</span><br><span class="line">    100%&#123;</span><br><span class="line">        transform: rotateZ(360deg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">.wrapper .pin-turn&#123;</span><br><span class="line">    transform: rotateZ(0deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;turn-table&quot;&gt;</span><br><span class="line">        &lt;span&gt;网易云音乐转盘&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;span class=&quot;pin&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;button&gt;play/paused&lt;/button&gt;</span><br></pre></td></tr></table></figure>
@@ -467,6 +468,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/11/CSS3学习4/" rel="prev" title="CSS3学习4">
+                CSS3学习4 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -547,7 +552,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
