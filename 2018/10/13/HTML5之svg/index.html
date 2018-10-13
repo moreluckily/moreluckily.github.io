@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-HTML5," />
 
 
 
@@ -86,14 +86,24 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天介绍一下HTML5中的svg。 SVG首先svg这个标签有什么用呢？ svg的全称是Scalable Vector Graphics —— 可缩放矢量图形。 我们之前介绍的html5中的canvas是一个位图，当它放大的时候，是会出现失真的，它也称作为栅格图形。 而svg就不一样了，它可以实现缩放的时候不失真，图形质量不会下降，称">
+<meta name="keywords" content="-HTML5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML5之svg">
 <meta property="og:url" content="http://moreluckily.com/2018/10/13/HTML5之svg/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天介绍一下HTML5中的svg。 SVG首先svg这个标签有什么用呢？ svg的全称是Scalable Vector Graphics —— 可缩放矢量图形。 我们之前介绍的html5中的canvas是一个位图，当它放大的时候，是会出现失真的，它也称作为栅格图形。 而svg就不一样了，它可以实现缩放的时候不失真，图形质量不会下降，称">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-13T05:04:52.523Z">
+<meta property="og:image" content="http://moreluckily.com/2018/10/13/HTML5之svg/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/13/HTML5之svg/a2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/13/HTML5之svg/b1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/13/HTML5之svg/b2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/13/HTML5之svg/c1.png">
+<meta property="og:updated_time" content="2018-10-13T16:35:08.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5之svg">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天介绍一下HTML5中的svg。 SVG首先svg这个标签有什么用呢？ svg的全称是Scalable Vector Graphics —— 可缩放矢量图形。 我们之前介绍的html5中的canvas是一个位图，当它放大的时候，是会出现失真的，它也称作为栅格图形。 而svg就不一样了，它可以实现缩放的时候不失真，图形质量不会下降，称">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/13/HTML5之svg/a1.png">
 
 
 
@@ -306,6 +316,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -327,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  4k
                 </span>
               
 
@@ -343,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  19
                 </span>
               
             </div>
@@ -364,7 +396,85 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天我将和大家一起继续学习HTML5。</p>
+<p>今天介绍一下HTML5中的svg。</p>
+<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><p>首先svg这个标签有什么用呢？</p>
+<p>svg的全称是Scalable Vector Graphics —— 可缩放矢量图形。</p>
+<p>我们之前介绍的html5中的canvas是一个位图，当它放大的时候，是会出现失真的，它也称作为栅格图形。</p>
+<p>而svg就不一样了，它可以实现缩放的时候不失真，图形质量不会下降，称之为矢量图形。</p>
+<p>canvas和svg失真与否的根本原因：</p>
+<p>放大、旋转或者用其他手段变换svg内容的时候，渲染程序会立即重绘构成图像的线条。缩放svg不会导致其质量下降，svg文档在呈现时会保留构成它的矢量信息。这与位图截然不同，放大canvas和图像这样的位图后，图像变得模糊，是in为图像由像素组成，且只能在更高的分辨率下重新采样，它的机制“基础信息——构成图像和路径——在图像完成绘制之后便丢失”，所以canvas会失真。</p>
+<p>场景：图表，图标icon，动效，矢量图；</p>
+<p>在这里介绍一个小图标的网站，flagicon网站。</p>
+<p>由于，svg是使用标签进行绘制的，标签太多会影响页面质量。所以，只用在要求较高的高精度场景，或者简单的，不复杂的小icon。</p>
+<h2 id="svg的基本操作"><a href="#svg的基本操作" class="headerlink" title="svg的基本操作"></a>svg的基本操作</h2><p>首先创建一个svg标签;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  &lt;svg width=500 height=500&gt;&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line">1. 直线</span><br><span class="line">&lt;line x1=&quot;100&quot; y1=&quot;100&quot; x2=&quot;200&quot; y2=”100”&gt;&lt;/line&gt;，起始位置，结束位置的坐标</span><br><span class="line">2. 矩形</span><br><span class="line">&lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; rx=&quot;10&quot;ry=&quot;20&quot;&gt;&lt;/rect&gt; 起笔点，宽高，长度,圆角</span><br><span class="line">3. 圆形</span><br><span class="line">&lt;circle r=&quot;50&quot; cx=&quot;220&quot; cy=&quot;100&quot;&gt;&lt;/circle&gt;，cx和cy是圆心</span><br><span class="line">4. 椭圆</span><br><span class="line">&lt;ellipse rx=&quot;100&quot; ry=&quot;50&quot; cx=&quot;100&quot; cy=&quot;200&quot;&gt;&lt;/ellipse&gt; 长轴，短轴（X方向，y方向），圆心</span><br><span class="line">5. 折线</span><br><span class="line">&lt;polyline points=&quot;60 50, 75 35, 100 50, 125 35, 150 50,175 35, 190 50&quot;&gt;&lt;/polyline&gt;,折线每个点的坐标</span><br><span class="line">6. 多边形</span><br><span class="line">&lt;polygon points=&quot;125 125,130 140,120 140&quot;&gt;&lt;/polygon&gt;</span><br><span class="line">7. ⽂本</span><br><span class="line">&lt;text x=&quot;125&quot; y=&quot;220&quot;&gt;hello,world&lt;/text&gt;</span><br></pre></td></tr></table></figure>
+<p>之后要给他们添加css属性才可以看到效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fill：填充，默认填充黑色，如果不想要颜色，可以填transparent。</span><br><span class="line">stroke：描边，默认黑色边。</span><br><span class="line">stroke-width：边框宽度</span><br><span class="line">stroke-opacity/fill-opacity：边框/内容透明度</span><br></pre></td></tr></table></figure>
+<p>那我们来举个例子吧，画下面这个图：</p>
+<p><img src="/2018/10/13/HTML5之svg/a1.png" alt="小demo"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width = &quot;500px&quot; height = &quot;500px&quot;style = &quot;border:1px solid black&quot;&gt;</span><br><span class="line">    &lt;polyline points=&quot;160 50, 175 35, 200 50, 225 35, 250 50,275 35, 290 50&quot;&gt;&lt;/polyline&gt;</span><br><span class="line">    &lt;rect x=&quot;150&quot; y=&quot;50&quot; width=&quot;150&quot; height=&quot;150&quot; rx=&quot;10&quot;ry=&quot;10&quot; style = &quot;fill:transparent;stroke:black;stroke-width:2;&quot;&gt;&lt;/rect&gt;</span><br><span class="line">    &lt;circle r=&quot;15&quot; cx=&quot;190&quot; cy=&quot;100&quot;style = &quot;fill:transparent;stroke:black;stroke-width:2;&quot;&gt;&lt;/circle&gt;;</span><br><span class="line">    &lt;circle r=&quot;15&quot; cx=&quot;260&quot; cy=&quot;100&quot;style = &quot;fill:transparent;stroke:black;stroke-width:2;&quot;&gt;&lt;/circle&gt;;</span><br><span class="line">    &lt;circle r=&quot;5&quot; cx=&quot;195&quot; cy=&quot;105&quot;&gt;&lt;/circle&gt;</span><br><span class="line">    &lt;circle r=&quot;5&quot; cx=&quot;265&quot; cy=&quot;105&quot;&gt;&lt;/circle&gt;</span><br><span class="line">    &lt;polygon points=&quot;225 120,230 140,220 140&quot;style = &quot;fill:transparent;stroke:black;stroke-width:2;&quot;&gt;&lt;/polygon&gt;</span><br><span class="line">    &lt;ellipse rx=&quot;30&quot; ry=&quot;10&quot; cx=&quot;225&quot; cy=&quot;160&quot;style = &quot;fill:transparent;stroke:black;stroke-width:2;&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">    &lt;text x=&quot;200&quot; y=&quot;220&quot;style =&quot;fill:transparent;stroke:deepskyblue;stroke-width:2;font-size:10px;&quot;&gt;hello,world&lt;/text&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="path标签"><a href="#path标签" class="headerlink" title="path标签"></a>path标签</h2><p>这个是svg中的路径标签，类似于canvas的beginpath一类的属性和方法。svg有个属性d（data缩写）下面介绍一下它的命令。</p>
+<p>1、M指令和L指令 M相当于moveTo L相当于lineTo;</p>
+<p>2、m指令和l指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d = &quot;m 10 10 l （相对于第一个点）20 10&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>M和m的区别 绝对坐标和相对坐标</p>
+<p>3、H和V命令 （H高 V宽）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d=&quot;M 100 100 H 200 V 200&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>4、Z命令，闭合路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d=&quot;M 100 100 H 200 V 200 z&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>注：Z不区分大小写</p>
+<p>5、A命令（用来画圆弧）</p>
+<p>A命令，用来获取圆弧。七个参数（rx ry x-axis-rotation large-arc-flag sweep-flag x y）</p>
+<p>• rx ry 圆弧的x轴半径和y轴半径 • x-axis-rotation 圆弧相对x轴的旋转角度，默认是顺时针，可以 设置负值 • large-arc-flag 表示圆弧路路径是大圆弧还是小圆弧 1大圆弧 • sweep-flag 表示从起点到终点是顺时针还是逆时针，1表示顺 时针，0表示逆时针 • x y 表示终点坐标，绝对或相对。</p>
+<p><img src="/2018/10/13/HTML5之svg/a2.png" alt="小demo"></p>
+<p>由图可得，每个组合能获取4个弧度，通过大弧小弧，顺时针逆时针来进行获取确定的一段弧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d=&quot;M 100 100 A 70 70 90 1 1 150 200&quot;&gt;&lt;/path&gt;</span><br></pre></td></tr></table></figure>
+<p>圆心为70，70，旋转角的为90度，选的是大圆弧，顺时针，另一个圆是150,200为圆心的圆。</p>
+<p>当然这里还有贝塞尔曲线的方法，在这里就不多介绍了。</p>
+<h2 id="SVG渐变"><a href="#SVG渐变" class="headerlink" title="SVG渐变"></a>SVG渐变</h2><p>svg中有个defs标签，用预定义留待将来使用的内容，其中又有use元素用于连接到defs元素定义的内容。借助这两个元素，可以重复用同一个元素，减少代码冗余。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&apos;200&apos; height=&apos;200&apos;&gt;	</span><br><span class="line">	&lt;defs&gt;</span><br><span class="line">		&lt;g id=&quot;shapeGroup&quot;&gt;</span><br><span class="line">			&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;500&quot; height=&quot;500&quot;style=&quot;fill:url(#bg1)&quot;/&gt;</span><br><span class="line">			&lt;circle cx=&quot;200&quot; cy=&quot;80&quot; r=&quot;40&quot; stroke=&quot;aaa&quot; fill=&quot;none&quot; stroke-width=&quot;8&quot;/&gt;</span><br><span class="line">		&lt;/g&gt;</span><br><span class="line">	&lt;/defs&gt;</span><br><span class="line">	&lt;use xlink:href=&quot;#shakeGroup&quot; transform=&quot;translate(60,0) scale(0.5)&quot;/&gt;</span><br><span class="line">	&lt;use xlink:href=&quot;#shakeGroup&quot; transform=&quot;translate(160,80) scale(0.5)&quot;/&gt;</span><br><span class="line">	&lt;use xlink:href=&quot;#shakeGroup&quot; transform=&quot;translate(20,60) scale(0.25)&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>这样就相当高于复制三次，但是定义组不可见，所以页面展示为三个图形。</p>
+<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p>linearGradient ：线性渐变，其中有个stop标签，其中有offset属性表示变到这个位置的百分数。style为颜色的变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;defs&gt;</span><br><span class="line">	&lt;linearGradient id=&quot;bg1&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;100%&quot;&gt;//使用id来直接修改</span><br><span class="line">				&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:rgb(255,255,0);&quot;/&gt;//表示0的位置的颜色为（255,255,0）</span><br><span class="line">				&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:rgb(255,0,0);&quot;/&gt;//表示100的位置颜色为（255,0,0）</span><br><span class="line">	&lt;/linearGradient&gt;</span><br><span class="line">&lt;/defs&gt;</span><br><span class="line">&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;500&quot; height=&quot;500&quot;style=&quot;fill:url(#bg1)&quot;/&gt;//style 修改渐变样式</span><br></pre></td></tr></table></figure>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p>radialGradient，这个是圆的渐变，格式都跟上面的差不多。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;defs&gt;</span><br><span class="line">	&lt;radialGradient id=&quot;bg2&quot; cx=&quot;50%&quot; cy=&quot;50%&quot; r=&quot;50%&quot; fx=&quot;50%&quot; fy=&quot;50%&quot;&gt;</span><br><span class="line">		&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:green;&quot;/&gt;</span><br><span class="line">		&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:red;&quot;/&gt;</span><br><span class="line">	&lt;/radialGradient&gt;</span><br><span class="line">&lt;/defs&gt;</span><br><span class="line">&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;500&quot; height=&quot;500&quot; style=“fill:url(#bg2)&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="滤镜效果"><a href="#滤镜效果" class="headerlink" title="滤镜效果"></a>滤镜效果</h2><h3 id="高斯滤镜"><a href="#高斯滤镜" class="headerlink" title="高斯滤镜"></a>高斯滤镜</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;defs&gt;</span><br><span class="line">	&lt;filter id=&quot;Gaussian_Blur&quot;&gt;</span><br><span class="line">		&lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;20&quot;/&gt;</span><br><span class="line">	&lt;/filter&gt;</span><br><span class="line">&lt;/defs&gt;</span><br><span class="line">&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;500&quot; height=&quot;500&quot; fill=”yellow” style=&quot;filter:url(#Gaussian_Blur)&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="其他滤镜"><a href="#其他滤镜" class="headerlink" title="其他滤镜"></a>其他滤镜</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.w3school.com.cn/svg/svg_filters_intro.asp</span><br></pre></td></tr></table></figure>
+<h2 id="svg-路径动画"><a href="#svg-路径动画" class="headerlink" title="svg 路径动画"></a>svg 路径动画</h2><p>1、stroke-dasharray：这个是用来设置虚线的，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stroke-dasharray: 100px            //虚线 和间隔都是100px</span><br><span class="line">stroke-dasharray: 100px 50px       // 虚线100 间隔 50 </span><br><span class="line">stroke-dasharray: 100px  50px 30px //虚线100 间隔50 虚线30 间隔100 。。。一直循环下去</span><br></pre></td></tr></table></figure>
+<p>2、stroke-dashoffset:   X轴偏移，第一部分。</p>
+<p>通常两个属性结合使用，如果整条线为200px，然后，我们把stroke-dasharray为200，然后又让stroke-dashoffset为200；那么效果就是白色的，因为，一开始是全部黑色，然后设定了dashoffset之后，黑色部分往x轴负方向移动200px。于是就消失了。于是我们可以做一个动态效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">svg&#123;</span><br><span class="line">	border:1px solid #000;</span><br><span class="line">&#125;</span><br><span class="line">path&#123;</span><br><span class="line">	stroke-width:10px;</span><br><span class="line">	stroke:#000;</span><br><span class="line">	fill:transparent;</span><br><span class="line">	stroke-dasharray:500px;</span><br><span class="line">	stroke-dashoffset:500px;</span><br><span class="line">	animation:move 1s linear infinite alternate;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes move&#123;</span><br><span class="line">	0%&#123;</span><br><span class="line">		stroke-dashoffset: 500px;</span><br><span class="line">	&#125;</span><br><span class="line">	100%&#123;</span><br><span class="line">		stroke-dashoffset: 0px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;svg width=500 height=500&gt;</span><br><span class="line">	&lt;path d=&quot;M 0 100 L 500 100&quot;&gt;&lt;/path&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>这个就是抽风的路径，就是一根线和另一根白色的线在循环移动。</p>
+<p>1.getTotalLength:获取路径总长度</p>
+<p>2.getPointAtLength(x) :获取路径上距离起始点距离x的点的坐标.例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path.getPointAtLength(100)//获取path路径上距离起笔点为100的左边。</span><br></pre></td></tr></table></figure>
+<p>要注意的是，严格来说上面两方法只适用于path元素，但各个浏览器实现起来都会有一点区别。例如谷歌浏览器也能获取到line元素的路径长度。</p>
+<h2 id="写一个例子"><a href="#写一个例子" class="headerlink" title="写一个例子"></a>写一个例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">svg&#123;</span><br><span class="line">    border: 1px solid #000;</span><br><span class="line">&#125;</span><br><span class="line">#innder&#123;</span><br><span class="line">stroke-width:10px;</span><br><span class="line">fill: transparent;</span><br><span class="line">stroke: #000;</span><br><span class="line">stroke-dasharray: 1000px;</span><br><span class="line">stroke-dashoffset: 1000px;</span><br><span class="line">stroke-linecap: round;</span><br><span class="line">transition: all 1s linear;</span><br><span class="line">&#125;</span><br><span class="line">#bg&#123;</span><br><span class="line">stroke-width:30px;</span><br><span class="line">fill: transparent;</span><br><span class="line">stroke: rgba(255, 0, 0, 0.5);</span><br><span class="line">stroke-linecap: round;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    &lt;input id=&quot;put&quot; type=&quot;text&quot;&gt;</span><br><span class="line">&lt;svg width=500 height=500&gt;</span><br><span class="line">    &lt;path id=&quot;bg&quot; d=&quot;M 200 300 A 100 100 0 1 1 300 300&quot;&gt;&lt;/path&gt;</span><br><span class="line">    &lt;path id=&quot;innder&quot; d=&quot;M 200 300 A 100 100 0 1 1 300 300&quot;&gt;&lt;/path&gt;</span><br><span class="line">&lt;/svg&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">var oInput = document.getElementById(&apos;put&apos;);</span><br><span class="line">var oPath = document.getElementById(&apos;innder&apos;);</span><br><span class="line">var allLen = oPath.getTotalLength();</span><br><span class="line"></span><br><span class="line">oInput.onblur = function () &#123;</span><br><span class="line">    var num = oInput.value;</span><br><span class="line">    oPath.style.strokeDashoffset = 1000 - allLen*num/100;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>得到下面这个图的效果，就是有一个仪表盘，输入多少，转化为百分数，在仪表盘中显示对应的百分条。</p>
+<p><img src="/2018/10/13/HTML5之svg/b1.png" alt="小demo"></p>
+<h2 id="ViewBox"><a href="#ViewBox" class="headerlink" title="ViewBox"></a>ViewBox</h2><p>view设定一个视野区。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;400&quot; height=&quot;300&quot; viewBox=&quot;0,0,40,30&quot; &gt;</span><br><span class="line">	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;10&quot;ry=&quot;20&quot;&gt;&lt;/rect&gt;//充满矩形区域，</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>2、preserveAspectRatio</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xMin xMid xMax -&gt; x轴 左中右对齐</span><br><span class="line">yMin yMid yMax -&gt; y轴 左中右对齐</span><br><span class="line">meet/slice/none -&gt; 设置填充方式，按比例撑开/截断</span><br></pre></td></tr></table></figure>
+<p>可以通过，svg.setAttribute(“preserveAspectRatio”, “xMinYMin meet”);来设定属性。</p>
+<h2 id="js生成svg元素"><a href="#js生成svg元素" class="headerlink" title="js生成svg元素"></a>js生成svg元素</h2><p>1、创建SVG元素需要指定命名空间，命名空间声明由xmlns属性提供。此属性表示svg标记及其子标记属于的名称空间为 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;http://www.w3.org/2000/svg&quot; （XML方言，）</span><br></pre></td></tr></table></figure>
+<p>当然，它是SVG。注意，命名空间声明只需要在根标记上提供一次。声明定义了默认命名空间，因此用户代理知道所有svg标签的后代标签也属于同一命名空间。用户代理检查他们是否属于同一个命名空间，如果是的话才去如何处理命名空间下的标签标记。</p>
+<p>注意，命名空间名称只是字符串，尽管SVG命名空间名称看起来像URI，但这并不重要。URI通常被使用，因为它们是唯一的，目的不是“链接”某处。（事实上​​，URI经常使用，通常使用术语“命名空间URI”而不是“命名空间名称”。）</p>
+<p>2、SVG元素对象一般通过调用setAttribute()方法来设定属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var char = “http://www.w3.org/2000/svg”;</span><br><span class="line">	svg = document.createElementNS(char,&apos;svg&apos;);</span><br><span class="line">svg.setAttribute(&apos;width&apos;,500);</span><br><span class="line">svg.setAttribute(&apos;height&apos;,500);	</span><br><span class="line">svg.setAttribute(&apos;viewBox&apos;,&apos;0 0 500 500&apos;);</span><br><span class="line"></span><br><span class="line">var rect = document.createElementNS(char,&apos;rect&apos;);</span><br><span class="line">rect.setAttribute(&apos;x&apos;,100);</span><br><span class="line">rect.setAttribute(&apos;y&apos;,100);</span><br><span class="line">rect.setAttribute(&apos;width&apos;,500);</span><br><span class="line">rect.setAttribute(&apos;height&apos;,500);</span><br><span class="line">rect.setAttribute(&apos;fill&apos;,&quot;#fc&quot;);</span><br><span class="line">svg.appendChild(rect);</span><br><span class="line">document.body.appendChild(svg);</span><br></pre></td></tr></table></figure>
+<h2 id="画一个叮当猫"><a href="#画一个叮当猫" class="headerlink" title="画一个叮当猫"></a>画一个叮当猫</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width = &quot;500px&quot; height = &quot;500px&quot; style = &quot;border:1px solid black&quot;&gt;</span><br><span class="line">        &lt;path d = &quot;M 200 200 A 100 100 0 1 1 300 200&quot;style = &quot;fill:deepskyblue;stroke:gray&quot;&gt;&lt;/path&gt;</span><br><span class="line">        &lt;ellipse rx=&quot;80&quot; ry=&quot;75&quot; cx=&quot;250&quot; cy=&quot;135&quot;style = &quot;fill:white;stroke:gray&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">        &lt;line x1 = &quot;200&quot; y1 = &quot;205&quot; x2 = &quot;300&quot; y2 = &quot;205&quot;style = &quot;stroke:red;stroke-width:14px;stroke-linecap:round&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;polygon points=&quot;195 212, 155 192, 145 215,193 237,193 307,240 307,250 300,260 307,307 307,307 237,355 259,365 236,307 212&quot;style = &quot;fill:deepskyblue;stroke:gray;&quot;&gt;&lt;/polygon&gt;</span><br><span class="line">        &lt;circle r=&quot;20&quot; cx=&quot;140&quot; cy=&quot;200&quot;style = &quot;fill:white;stroke:gray;&quot;&gt;&lt;/circle&gt;</span><br><span class="line">        &lt;circle r=&quot;20&quot; cx=&quot;370&quot; cy=&quot;250&quot;style = &quot;fill:white;stroke:gray;&quot;&gt;&lt;/circle&gt;</span><br><span class="line">        &lt;ellipse rx=&quot;32&quot; ry=&quot;10&quot; cx=&quot;283&quot; cy=&quot;310&quot;style = &quot;fill:white;stroke:gray&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">        &lt;ellipse rx=&quot;32&quot; ry=&quot;10&quot; cx=&quot;217&quot; cy=&quot;310&quot;style = &quot;fill:white;stroke:gray&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">        &lt;path d = &quot;M 210 212 A 50 50 0 1 0 290 212&quot;style = &quot;fill:white;stroke:gray&quot;&gt;&lt;/path&gt;</span><br><span class="line">        &lt;path d = &quot;M 215 245 A 30 30 0 1 0 285 245&quot;style = &quot;fill:white;stroke:gray&quot;&gt;&lt;/path&gt;</span><br><span class="line">        &lt;line x1 = &quot;215&quot; y1 = &quot;245&quot; x2 = &quot;285&quot; y2 = &quot;245&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;circle r=&quot;10&quot; cx=&quot;250&quot; cy=&quot;215&quot;style = &quot;fill:yellow;stroke:gray;&quot;&gt;&lt;/circle&gt;</span><br><span class="line">        &lt;circle r=&quot;3&quot; cx=&quot;250&quot; cy=&quot;220&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/circle&gt;</span><br><span class="line">        &lt;ellipse rx=&quot;22&quot; ry=&quot;28&quot; cx=&quot;228&quot; cy=&quot;68&quot;style = &quot;fill:white;stroke:gray&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">        &lt;ellipse rx=&quot;22&quot; ry=&quot;28&quot; cx=&quot;272&quot; cy=&quot;68&quot;style = &quot;fill:white;stroke:gray&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">        &lt;ellipse rx=&quot;3&quot; ry=&quot;5&quot; cx=&quot;238&quot; cy=&quot;75&quot;style = &quot;;stroke:gray&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">        &lt;ellipse rx=&quot;3&quot; ry=&quot;5&quot; cx=&quot;262&quot; cy=&quot;75&quot;style = &quot;stroke:gray&quot;&gt;&lt;/ellipse&gt;</span><br><span class="line">        &lt;circle r=&quot;9&quot; cx=&quot;250&quot; cy=&quot;95&quot;style = &quot;fill:red;stroke:gray;&quot;&gt;&lt;/circle&gt;</span><br><span class="line">        &lt;path d = &quot;M 200 160 A 80 80 0 0 0 300 160&quot;style = &quot;fill:transparent;stroke:gray&quot;&gt;&lt;/path&gt;</span><br><span class="line">        &lt;line x1 = &quot;230&quot; y1 = &quot;130&quot; x2 = &quot;180&quot; y2 = &quot;130&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;line x1 = &quot;270&quot; y1 = &quot;130&quot; x2 = &quot;320&quot; y2 = &quot;130&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;line x1 = &quot;230&quot; y1 = &quot;120&quot; x2 = &quot;185&quot; y2 = &quot;110&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;line x1 = &quot;230&quot; y1 = &quot;140&quot; x2 = &quot;185&quot; y2 = &quot;150&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;line x1 = &quot;270&quot; y1 = &quot;120&quot; x2 = &quot;325&quot; y2 = &quot;110&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;line x1 = &quot;270&quot; y1 = &quot;140&quot; x2 = &quot;325&quot; y2 = &quot;150&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;line x1 = &quot;215&quot; y1 = &quot;245&quot; x2 = &quot;285&quot; y2 = &quot;245&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">        &lt;line x1 = &quot;250&quot; y1 = &quot;104&quot; x2 = &quot;250&quot; y2 = &quot;178&quot;style = &quot;stroke:gray;&quot;&gt;&lt;/line&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/13/HTML5之svg/b2.png" alt="小demo"></p>
+<h2 id="动态的签名"><a href="#动态的签名" class="headerlink" title="动态的签名"></a>动态的签名</h2><p>首先是在editor.method.ac网站上面写下想要的签名，然后得到svg代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">   text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes show &#123;</span><br><span class="line">   to &#123;</span><br><span class="line">       stroke-dashoffset: 0;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">@-webkit-keyframes show &#123;</span><br><span class="line">    to &#123;</span><br><span class="line">        stroke-dashoffset: 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pre &#123;</span><br><span class="line">   font-size: 20px;</span><br><span class="line">   color: #999;</span><br><span class="line">   background: #000;</span><br><span class="line">   text-align: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var pathList = document.getElementsByTagName(&apos;path&apos;);</span><br><span class="line">var l = pathList.length;</span><br><span class="line">var delay = 0;</span><br><span class="line">for(var i = 0; i &lt; l; i++) &#123;</span><br><span class="line">    var curLen = Math.round(pathList[i].getTotalLength());</span><br><span class="line">    pathList[i].style.strokeDasharray = curLen;</span><br><span class="line">    pathList[i].style.strokeDashoffset = curLen;</span><br><span class="line">    pathList[i].style.webkitAnimation = &apos;show &apos; + 4 * curLen + &apos;ms linear &apos; + delay + &apos;ms forwards&apos;;</span><br><span class="line">    delay += 4 * curLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就能得到一个动态的签名。</p>
+<p><img src="/2018/10/13/HTML5之svg/c1.png" alt="小demo"></p>
+<p>好吧，那么关于HTML5中的svg的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -386,6 +496,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"># -HTML5</a>
+          
+        </div>
       
 
       
@@ -456,8 +572,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -555,6 +680,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG"><span class="nav-number">1.</span> <span class="nav-text">SVG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svg的基本操作"><span class="nav-number">2.</span> <span class="nav-text">svg的基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path标签"><span class="nav-number">3.</span> <span class="nav-text">path标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG渐变"><span class="nav-number">4.</span> <span class="nav-text">SVG渐变</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性渐变"><span class="nav-number">4.1.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#径向渐变"><span class="nav-number">4.2.</span> <span class="nav-text">径向渐变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滤镜效果"><span class="nav-number">5.</span> <span class="nav-text">滤镜效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯滤镜"><span class="nav-number">5.1.</span> <span class="nav-text">高斯滤镜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他滤镜"><span class="nav-number">5.2.</span> <span class="nav-text">其他滤镜</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svg-路径动画"><span class="nav-number">6.</span> <span class="nav-text">svg 路径动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写一个例子"><span class="nav-number">7.</span> <span class="nav-text">写一个例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewBox"><span class="nav-number">8.</span> <span class="nav-text">ViewBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js生成svg元素"><span class="nav-number">9.</span> <span class="nav-text">js生成svg元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画一个叮当猫"><span class="nav-number">10.</span> <span class="nav-text">画一个叮当猫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态的签名"><span class="nav-number">11.</span> <span class="nav-text">动态的签名</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
