@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-HTML5," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 首先介绍一下HTML5的新功能。 HTML5新功能新的DOCTYPE和字符集以前写DOCTYPE的时候，要写一长串内容，现在只需要写&amp;lt;!DOCTYPE&amp;gt;即可，还有字符集： 12&amp;lt;meta http-equiv=&amp;quot;Content-Type: content=&amp;quot;text/html&amp;quot;;char">
+<meta name="keywords" content="-HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5之canvas">
+<meta property="og:url" content="http://moreluckily.com/2018/10/12/HTML5之canvas/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 首先介绍一下HTML5的新功能。 HTML5新功能新的DOCTYPE和字符集以前写DOCTYPE的时候，要写一长串内容，现在只需要写&amp;lt;!DOCTYPE&amp;gt;即可，还有字符集： 12&amp;lt;meta http-equiv=&amp;quot;Content-Type: content=&amp;quot;text/html&amp;quot;;char">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/a2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/c1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/a3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/a4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/a5.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/a6.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/b1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/b2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/b3.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/b4.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/b5.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/f2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/f1.png">
+<meta property="og:updated_time" content="2018-10-13T05:03:20.330Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5之canvas">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 首先介绍一下HTML5的新功能。 HTML5新功能新的DOCTYPE和字符集以前写DOCTYPE的时候，要写一长串内容，现在只需要写&amp;lt;!DOCTYPE&amp;gt;即可，还有字符集： 12&amp;lt;meta http-equiv=&amp;quot;Content-Type: content=&amp;quot;text/html&amp;quot;;char">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/12/HTML5之canvas/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/12/HTML5之canvas/"/>
+
+
+
+
+
+  <title>HTML5之canvas | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/12/HTML5之canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML5之canvas</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T23:33:05+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起继续学习HTML5。</p>
+<p>首先介绍一下HTML5的新功能。</p>
+<h2 id="HTML5新功能"><a href="#HTML5新功能" class="headerlink" title="HTML5新功能"></a>HTML5新功能</h2><h3 id="新的DOCTYPE和字符集"><a href="#新的DOCTYPE和字符集" class="headerlink" title="新的DOCTYPE和字符集"></a>新的DOCTYPE和字符集</h3><p>以前写DOCTYPE的时候，要写一长串内容，现在只需要写&lt;!DOCTYPE&gt;即可，还有字符集：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Type: content=&quot;text/html&quot;;charset=&quot;utf-8&quot;&gt;//过去的写法</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;//现在的写法</span><br></pre></td></tr></table></figure>
+<h3 id="新的元素"><a href="#新的元素" class="headerlink" title="新的元素"></a>新的元素</h3><p>内嵌元素：audio、video、canvas等</p>
+<p>语义化元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;article&gt;、&lt;header&gt;、&lt;title&gt;、&lt;footer&gt;、&lt;nav&gt;</span><br></pre></td></tr></table></figure>
+<p>还有其他一些强大的操作，以后会介绍到。</p>
+<h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>html5中的一个很强大的功能就是canvas，我们称它为画布，它主要应用在有些，图标，动画等。在网页中使用canvas元素的时候它会创建出一块矩形区域，默认宽为300像素，高为150像素。</p>
+<p>它能用来做：</p>
+<p>1、游戏的场景</p>
+<p>2、图表，散点图，柱状图，扇形图等等。例如：echarts 官网, 百度自己封装的。</p>
+<p>3、动画的效果，例如：codepen 网站。搜canvas , 用canvas画的很多小demo。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<p>这样就创建出一个画布了，之后，我们需要使用JavaScript来控制它，如果要做后续的操作还需要获取它的上下文(相当于获取该画布的画笔），之后才可以在其中添加图片线条文字等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">canvas&#123;</span><br><span class="line">    border: 1px solid #000;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;canvas id=&quot;myCanvas&quot; width=500 height=500&gt;&lt;/canvas&gt;</span><br><span class="line"></span><br><span class="line">//js中的代码</span><br><span class="line">var canvas = document.getElementById(&apos;myCanvas&apos;);</span><br><span class="line">var ctx = canvas.getContext(&apos;2d&apos;);//没有3d的参数，如果要画3d图要穿webgl。</span><br></pre></td></tr></table></figure>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>获取了画笔之后，我们就可以真正的开始操作了。</p>
+<p>添加线段，描边，填充:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(100,100);//起笔位置</span><br><span class="line">ctx.lineTo(100,100);</span><br><span class="line">ctx.lineTo(200,200);//划线，但是没有描边，就看不到</span><br><span class="line">ctx.stroke(); //描边，之后就能看出来了</span><br><span class="line">ctx.fill(); //填充，首尾连接进行填充颜色，闭合。</span><br></pre></td></tr></table></figure>
+<p>来介绍几个属性值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineWidth = 20 ;//线宽</span><br><span class="line">ctx.strokeStyle = &apos;red&apos;; //描边的颜色</span><br><span class="line">ctx.stroke() // 闭合路径</span><br></pre></td></tr></table></figure>
+<p>这里有个要注意的点就是，填充颜色是从边框的中间开始计算的，例如下图：</p>
+<p><img src="/2018/10/12/HTML5之canvas/a1.png" alt="小demo"></p>
+<p>看上图，三角形左边的顶点，是从中间开始的，左边顶点是100,100，换过来说，就是stroke的左边中间就是100,100.同理可以得到就是下边顶点也是一样的，从中间开始。这里也有一个问题就是，当利用三条边进行描边的时候，会出现缺口的情况，如下图：</p>
+<p><img src="/2018/10/12/HTML5之canvas/a2.png" alt="小demo"></p>
+<p>这个就是由于，当闭合路径的时候，两边都是从中间的点开始闭合，这样就会出现一个缺口。这样可以使用另一个属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.closePath();</span><br></pre></td></tr></table></figure>
+<p>它表示从初始点到结束点闭合，这样就不会出现这个情况了。这个图形会闭合。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>无论是fill和stroke方法都是作用在当前的所有子路径，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(100,100);</span><br><span class="line">ctx.lineTo(100,100);</span><br><span class="line">ctx.lineTo(200,200);</span><br><span class="line">ctx.strokeWidth = &quot;red&quot;;  //第一个三角形为红色</span><br><span class="line">ctx.moveTo(300,100);</span><br><span class="line">ctx.lineTo(400,100);</span><br><span class="line">ctx.lineTo(400,200);</span><br><span class="line">ctx.closePath();</span><br><span class="line">ctx.strokeStyoe = &quot;green&quot;; //第二个三角形为绿色</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
+<p>最后发现最后两个都是绿色的，后面的stroke把前面的覆盖了，更官方的就是，下面的strokeStyle，和fill都是作用在同一个路径下的，它们会使用同一个stroke和fill，所以就是都是绿色的。</p>
+<p>于是，我们需要将它们变成不一样的路径，从新开辟一个路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath() ;</span><br></pre></td></tr></table></figure>
+<p>在下一个操作之前，开一个新的路径，就可以了，为了养成良好的编程习惯，每次操作之前，都需要开一个新的路径。</p>
+<h2 id="矩形，圆形等"><a href="#矩形，圆形等" class="headerlink" title="矩形，圆形等"></a>矩形，圆形等</h2><p>1、iObject.rect(起始点x，起始点y，矩形宽度，矩形长度)，最后要使用闭合stroke。</p>
+<p>2.iObject.fillRect(起始点x，起始点y，矩形宽度，矩形长度)// 实心的 不用stroke</p>
+<p>3.iObject.strokeRect(起始点x，起始点y，矩形宽度，矩形长度y) //空心的 不用stroke</p>
+<p>另外还有一点就是，利用fillRect和strokeRect画出来的自带新路径，即与之前的路径都是不一样的。</p>
+<h2 id="擦除当前区域"><a href="#擦除当前区域" class="headerlink" title="擦除当前区域"></a>擦除当前区域</h2><p>1.使用iObject.clearRect(开始清除x,开始清除y,要清除的宽度,要清除的长度)</p>
+<p>如果想擦除整个画布，那么就可以以画布的开始点，然后以画布的长宽为参数，那么就可以实现清除画布了。</p>
+<p>实现一个矩形落地的效果。画布长宽都是500。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var canvas = document.getElementById(&apos;mycanvas&apos;);</span><br><span class="line">var ctx = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">var w = canvas.width,</span><br><span class="line">    h = canvas.height;</span><br><span class="line">    var y = 100;</span><br><span class="line">    ctx.fillStyle = &quot;#f40&quot;;</span><br><span class="line">function move(y)&#123;</span><br><span class="line">    ctx.fillRect(100,y,50,50);       </span><br><span class="line">&#125;</span><br><span class="line">//其实就是画一个矩形，然后清除，再画，再清除</span><br><span class="line">var timer = setInterval(function()&#123;</span><br><span class="line">    ctx.clearRect(0,0,w,h);</span><br><span class="line">    move(y);</span><br><span class="line">    y += 20;</span><br><span class="line">    if(y &gt;= 470)&#123;</span><br><span class="line">        move(450);</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,500);</span><br></pre></td></tr></table></figure>
+<p>就可以得到矩形块下落的效果图。</p>
+<p><img src="/2018/10/12/HTML5之canvas/c1.png" alt="小demo"></p>
+<h2 id="弧形"><a href="#弧形" class="headerlink" title="弧形"></a>弧形</h2><p>1.arc(x,y,r,起始弧度，结束弧度，弧形方向) 注意单位是弧度，弧度方向，0表示顺时针，1表示逆时针。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iObject.arc(250,250,100,Math.PI/100 * 270,0);</span><br><span class="line">iObject.stroke()</span><br></pre></td></tr></table></figure>
+<p>然后我们来画一个扇形来试试。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(250,250);</span><br><span class="line">ctx.arc(250,250,100,Math.PI/180*0 ,Math.PI/180*300 , 0/1);//0是顺时针，1是逆时针</span><br><span class="line">ctx.closePath();</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
+<p>当是顺时针的时候.</p>
+<p><img src="/2018/10/12/HTML5之canvas/a3.png" alt="小demo"></p>
+<p>当时逆时针的时候：</p>
+<p><img src="/2018/10/12/HTML5之canvas/a4.png" alt="小demo"></p>
+<h2 id="圆角"><a href="#圆角" class="headerlink" title="圆角"></a>圆角</h2><p> ctx.arcTo(x1,y1,x2,y2,r)，这个方法可以绘制一段圆弧，首先，起始点到第一个点（x1，y1），确定一条线段，这条线段可以得到一个圆该圆与改线段相切，之后，第一个点和第二个点（x2，y2）之间确定另外一条线段，于是又能得到一个圆与之相切，于是两条线段和额外一个半径就能确定一个圆，并且是唯一的，于是在两个切点之间能得到一段圆弧，于是圆弧末端跟起始点连城线段就是所求。</p>
+<p><img src="/2018/10/12/HTML5之canvas/a5.png" alt="小demo"></p>
+<p>起始点（x,y）和第一个点与第二个点之间的切点所连成的曲线段就是所求。</p>
+<p>绘制一个圆角矩形：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();</span><br><span class="line">ctx.moveTo(300, 250);</span><br><span class="line">ctx.arcTo(350, 250, 350, 350, 20);</span><br><span class="line">ctx.arcTo(350, 350, 250, 350, 20);</span><br><span class="line">ctx.arcTo(250, 350, 250, 250, 20);</span><br><span class="line">ctx.arcTo(250, 250, 350, 250, 20);</span><br><span class="line">ctx.closePath();</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/12/HTML5之canvas/a6.png" alt="小demo"></p>
+<p>canvas和svg能开启GPU加速。</p>
+<h2 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//二次贝塞尔曲线</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.moveTo(250, 250);</span><br><span class="line">ctx.quadraticCurveTo(300, 200, 400, 400);</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
+<p>这个到时候用到了再去查</p>
+<h2 id="坐标轴转换"><a href="#坐标轴转换" class="headerlink" title="坐标轴转换"></a>坐标轴转换</h2><p>1.translate(dx, dy)   重新映射画布上的 (0,0) 位置,往x轴方向或者y方向平移。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.translate(200,200)//坐标系的零点就变成原来的200，200点</span><br></pre></td></tr></table></figure>
+<p>2.scale(sx, sy)   缩放当前绘图 整个轴都放大缩小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scale(2,0.5)//x轴变成原来的2倍，y轴变成原来的0.5倍</span><br><span class="line">ctx.rect(100,100,100,100) //编程时长方形的，因为y轴变为原来的0.5倍，高也缩小了。整个轴都缩小了</span><br></pre></td></tr></table></figure>
+<p>3.rotate(Math.PI)   旋转当前的绘图//传进的是弧度制，以零点为旋转中心。</p>
+<p>4.save() restore()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">保存当前图像状态的一份拷贝 （保存的是坐标系）</span><br><span class="line">从栈中弹出存储的图形状态并恢复</span><br><span class="line">什么时候要开始新的坐标轴，就在开始之前保存，然后在用的时候在拿出来。</span><br><span class="line"></span><br><span class="line">ctx.save()//保存一个正常的坐标系</span><br><span class="line">ctx.rotate(Mate.PI/180 *30);//变换</span><br><span class="line">ctx.rect(100,100,100,100); //变换之后的坐标</span><br><span class="line">ctx.restore() //重新取回坐标系</span><br><span class="line">ctx.rect(100,100,100,100) //正常矩形</span><br></pre></td></tr></table></figure>
+<p>5、setTransform(a, b, c, d, e, f) 先重置再变换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参数：水平旋转、水平倾斜、垂直倾斜、垂直缩放、水平移动、垂直移动</span><br></pre></td></tr></table></figure>
+<p>  transform(a, b, c, d, e, f) 在之前的基础上变换，不进行重置，直接在原来的基础上进行转换。</p>
+<h2 id="Canvas-操作"><a href="#Canvas-操作" class="headerlink" title="Canvas 操作"></a>Canvas 操作</h2><h3 id="填充图案"><a href="#填充图案" class="headerlink" title="填充图案"></a>填充图案</h3><p>createPattern(image,”repeat/repeat-x/repeat-y/no-repeat”) ，利用这个方法可以对canvas进行填充，第一个参数表示的是填充图片，第二个表示是否充分，（x，y分别表示对应方向上是否单方向重复，类似于css上的背景图重复属性）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var canvas = document.getElementById(&apos;myCanvas&quot;);</span><br><span class="line">var ctx = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">var oImag = document.getElementsByTagName(&apos;img&apos;)[0];</span><br><span class="line">ctx.fillStyle = ctx.createPattern(oImag,&apos;no-repeat&apos;);</span><br><span class="line">ctx.fillRect(100,100,100,100);</span><br></pre></td></tr></table></figure>
+<p>通过这个代码，我们可以发现，最后没有呈现冲填充的图片，因为当我们请求图片的时候，图片返回过来的时候，已经执行完了，所以这个时候会是一个矩形，默认的是黑色，我们需要把图片加载完过来再进行填充。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">oImag.onload = function()&#123;</span><br><span class="line">	ctx.fillStyle = ctx.createPattern(oImag,&apos;no-repeat&apos;);</span><br><span class="line">	ctx.fillRect(0,0,500,500);</span><br><span class="line">&#125;//这样就可以正常显示了</span><br></pre></td></tr></table></figure>
+<p>第一个参数除了可以传图片，还能传另一个canvas，或者是video（视频播放标签，里面有一个海报标签）</p>
+<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>1.createLinearGradient(x1, y1, x2, y2)（起点左边，终点左边）; 线性渐变 必须在填充渐变的区域里定义渐变, 否则 没有效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillStyle = ctx.createLinearGradient(0,0,0,500)//表示从上往下渐变</span><br></pre></td></tr></table></figure>
+<p>2.addColorStop(p, color);利用这个可以进行颜色的渐变，类似于css3的渐变。</p>
+<p>(0,yellow)到&gt;(0.5,red)到&gt;(1,green)例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var bg = ctx.createRadialGradient(250,250,200,250,250,100);</span><br><span class="line">bg.addColorStop(0,&apos;yellow&apos;);</span><br><span class="line">bg.addColorStop(0.5,&apos;red&apos;);</span><br><span class="line">bg.addColorStop(1,&apos;green&apos;);</span><br></pre></td></tr></table></figure>
+<p>表示，开始为yellow，中间状态为red，末状态是绿色。</p>
+<p>3.createRadialGradient(x1, y1, r1, x2, y2, r2);（开始渐变的圆心，开始渐变的半径，解说状态的圆心，结束状态的半径） 径向渐变（圆的渐变），只能做圆的渐变，css3可以进行椭圆的径向渐变。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var bg = ctx.createRadialGradient(250,250,200,250,250,100);</span><br><span class="line">bg.addColorStop(0,&apos;yellow&apos;);</span><br><span class="line">bg.addColorStop(0.5,&apos;red&apos;);</span><br><span class="line">bg.addColorStop(1,&apos;green&apos;);</span><br><span class="line">ctx.fillStyle = bg;//这个是从外向里开始渐变的，因为开始的时候，半径比末状态的半径大。圆心是一样的。</span><br><span class="line">ctx.fillRect(0,0,500,500);</span><br></pre></td></tr></table></figure>
+<p>效果如下图：</p>
+<p><img src="/2018/10/12/HTML5之canvas/b1.png" alt="小demo"></p>
+<h2 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h2><p>1.ctx.shadowColor（阴影颜色）</p>
+<p>2.ctx.shadowOffsetX （x轴偏移）</p>
+<p>3.ctx.shadowOffsetyY（y轴偏移）</p>
+<p>4.ctx.shadowBlur（阴影模糊）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ctx.shadowColor = &apos;red&apos;;</span><br><span class="line">ctx.shadowOffsetX = 20;</span><br><span class="line">ctx.shadowOffsetY = 20;</span><br><span class="line">ctx.shadowBlur = 0.5;</span><br><span class="line">ctx.strokeRect(0,0,500,500);//画出来的是空心的阴影，如果用fillRect，就是实心的。</span><br></pre></td></tr></table></figure>
+<p>这里的阴影不受坐标轴的变换而改变。阴影参照的是canvas对象本身，而不是坐标轴。</p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><p>1、fillText()，实心文本 三个参数，文字，开始绘制的x坐标，开始绘制的y左边</p>
+<p>2、strokeText()，空心文本</p>
+<p>3、measureText(‘hello world’) ,返回一个对象，该对象是以像素计的指定字体宽度。</p>
+<p>4、ctx.textAlign();选择文字起始位置。（对齐方式）</p>
+<h2 id="线段样式"><a href="#线段样式" class="headerlink" title="线段样式"></a>线段样式</h2><p>1.lineCap 延伸线段 线宽的一半，lineCap = round;圆角</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(100,100);</span><br><span class="line">ctx.lineTo(200,100);</span><br><span class="line">ctx.lineWidth = 30;</span><br><span class="line">ctx.lineCap = &apos;round&apos;; //让线段伸长现宽的一半，然后变成圆角</span><br></pre></td></tr></table></figure>
+<p>2.lineJoin 线段尖角，对于上面的一种情况就是， 两条线结合的时候，如果角度很小，那么他们将会形成一个角度，当角度很小，尖叫就会伸到很长例如下图：</p>
+<p><img src="/2018/10/12/HTML5之canvas/b2.png" alt="小demo"></p>
+<p>这个时候，浏览器可以使用lineJoin来尖角转化为圆角。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineJoin = &quot;round&quot;;//还有bevel截断） miter尖角）属性值</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/12/HTML5之canvas/b3.png" alt="小demo"></p>
+<p>我们还可以对控制尖角长度控制（lineJoin为miter）用于控制斜街部分的长度。如果斜接部分长度超过miterLimit的值，就会变成bevel.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.miterLimit = 20;//实际运算是大于limit*lineWidth/2的值，了解就好</span><br></pre></td></tr></table></figure>
+<h2 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h2><p>ctx.clip()；当前路径外的区域不再绘制。比如说，我现在在画布上面画了一个圆，以后画的所有东西，只能在圆的那部分才能展示出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.arc(250,250,100,0,Math.PI*2,1);//先画一个圆</span><br><span class="line">ctx.clip();//裁剪</span><br><span class="line">ctx.fillRect(0,0,250,250);//画一个250的正方形</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/12/HTML5之canvas/b4.png" alt="小demo"></p>
+<p>能看到，只用与圆重合的那部分才能显示出来。</p>
+<p>这个还能在clip()之前使用save()来进行状态的保存，然后来restore来恢复状态。</p>
+<h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><p> ctx.globalCompositeOperation = ‘source-over’ ;新像素和原像素的合并⽅方式 （层级类似）,以下是它的层叠方式：默认是source-over（根据画的顺序来显示层叠关系）；</p>
+<p><img src="/2018/10/12/HTML5之canvas/b5.png" alt="小demo"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">ctx.globalCompositeOperation = &apos;source-over&apos; ;//先画的在下面</span><br><span class="line">ctx.globalCompositeOperation = &apos;destination-over&apos; ;//先的在上面</span><br><span class="line">ctx.globalCompositeOperation = &apos;destination-out&apos; ;//显示出第一画的减去重合的部分</span><br><span class="line">//做刮刮乐，利用获得鼠标的位置，然后动态的改变第二个图形的圆心位置，每移动一下，显示一个新的画面。</span><br></pre></td></tr></table></figure>
+<h2 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h2><p>全局透明度：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.globalAlpha = &quot;0.5&quot;;</span><br></pre></td></tr></table></figure>
+<p>无论开启多少个新路径，这个属性都会存在。</p>
+<p>1.ctx.drawImage();</p>
+<p>第一个参数是img（图片，canvas，video）,注意的是，它也是要等到onload完之后才能进行下一步操作。</p>
+<p>第二个参数是图片的起始点坐标，理解为图片摆放位置</p>
+<p>第三个参数是想获取的宽高，分别是想获取的起点，终点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">oImg.onload = function()&#123;</span><br><span class="line">	ctx.drawImage(imgae,100,100,200,200,100,100,50,50);</span><br><span class="line">	//从100,100点开始，划到200，200位置，从图片的100,100位置获取50高，50宽	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="导出canvas内容"><a href="#导出canvas内容" class="headerlink" title="导出canvas内容"></a>导出canvas内容</h3><p>1.canvas.toDataURL() ; 是canvas自身的方法不是上下文对象</p>
+<p>2、将canvas的内容抽取成一张图片, base64编码格式，通过绘制每一个点的rega，直接画出图片，不需要联网也可以。如果想得到这些编码，是需要在服务器中获取的，因为它会认为你是在获取别人的数据，所以要走服务器。</p>
+<p>3、oImg.onload = function(){ ctx.drawImage(oImg,100,100,200,200); console.log(canvas.toDataURL()) //报错，同源策略限制</p>
+<p>4、将canvas的内容放入img元素里（不走浏览器请求，直接渲染）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var base64 = canvas.toDataURL(); oImg.src = base64; //将canvas转换为图片</span><br></pre></td></tr></table></figure>
+<p>通过这个步骤可以对图片进行操作。拿到一张图，通过drawImage的方式，放到canvas里面去，然后获取这张图片上面的每一像素点的信息，然后再将整个抽出来。</p>
+<p>ctx.getImageData(0，0,500,500)，获取每一个点的像素信息。里面有个data对象，获取了250000个像素点，每个像素的有四个信息，于是就有1000000个信息。</p>
+<p>ctx.createImageData(),创建新的空白 ImageData 对象，用来放置处理过的data。</p>
+<p>ctx.putImageData(imgData, x, y) 将图像数据放回画布上</p>
+<p>利用这些方法，处理出高斯模糊。</p>
+<p>思路：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1，通过drawImage，画出图画</span><br><span class="line">2，得到图像数据，getImageData()</span><br><span class="line">3, 将得出来的data放到高斯函数，得到返还结果data</span><br><span class="line">4，将处理的结果利用putImageData重新放到canvas里面</span><br><span class="line">5，toDataURL() ,抽出来64。最后获得canvas代码</span><br></pre></td></tr></table></figure>
+<p>例如，将一个黑色的方块变成灰色的方块图形：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//将黑色变成灰色</span><br><span class="line">ctx.fillRect(0, 0, 100, 100);</span><br><span class="line">var pixel = ctx.getImageData(0, 0, 100, 100);</span><br><span class="line">var row = pixel.width;</span><br><span class="line">var col = pixel.height;</span><br><span class="line">var d = pixel.data;</span><br><span class="line"></span><br><span class="line">//对数据进行处理，变成灰色</span><br><span class="line"></span><br><span class="line">for(var i = 0; i &lt; row; i++) &#123;</span><br><span class="line">    var c = i * col * 4;</span><br><span class="line"></span><br><span class="line">    for(var j = 0; j &lt; col; j++) &#123;</span><br><span class="line">        d[c + j * 4 + 3] = 100;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ctx.putImageData(pixel, 100, 100);</span><br></pre></td></tr></table></figure>
+<p>得到如下图所示：</p>
+<p><img src="/2018/10/12/HTML5之canvas/f2.png" alt="小demo"></p>
+<h2 id="命中检测"><a href="#命中检测" class="headerlink" title="命中检测"></a>命中检测</h2><p>1.ctx.isPointInPath(x, y)；检测是否在区域内,在就返回true，不在返回false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();</span><br><span class="line">ctx.moveTo(100,100);</span><br><span class="line">ctx.lineTo(200,100);</span><br><span class="line">ctx.lineTo(200,200);</span><br><span class="line">ctx.closePath();</span><br><span class="line">ctx.stroke();</span><br><span class="line">console.log(ctx.isPointInPath(150,150));  //true</span><br><span class="line">console.log(ctx.isPointInPath(148,159)); // false;</span><br></pre></td></tr></table></figure>
+<p>2.ctx.isPointInStroke(x, y)；检测是否在线上</p>
+<p>3、还可以通过检测当前点的像素值，如果为透明，则该点不再路径上。</p>
+<h2 id="非零绕数准则"><a href="#非零绕数准则" class="headerlink" title="非零绕数准则"></a>非零绕数准则</h2><p>判断点p是否在多边形内，从点p向外做一条射线（可以任意方向），多边形的边从左到右经过射线时环绕数减1，多边形的边从右往左经过射线时环绕数加1，最后环数不为0，即表示在多边形内部。</p>
+<p><img src="/2018/10/12/HTML5之canvas/f1.png" alt="小demo"></p>
+<h2 id="解决canvas放大模糊问题"><a href="#解决canvas放大模糊问题" class="headerlink" title="解决canvas放大模糊问题"></a>解决canvas放大模糊问题</h2><p>在分辨率比较高的屏幕，例如ip6/6s/mac等机器上，因为canvas绘制的是位图，所以会导致模糊，解决方法是根据屏幕分辨率修改canvas样式代码中的宽和高与canvas的width和height属性的比例。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">canvas&#123;</span><br><span class="line">	border: 1px solid #000;</span><br><span class="line">	width：300px;</span><br><span class="line">	height: 300px;</span><br><span class="line">&#125;//在style里面写的canvas相当于相框</span><br><span class="line">&lt;canvas id=&quot;myCanvas&quot; width=500 height=500&gt;&lt;/canvas&gt;</span><br><span class="line">//这里的是相对值，如果style没有设定canvas的宽高</span><br><span class="line">//默认是像素作单位，现在已经style设定了width和height，那么，就是500指的就这个框为500个单位，相对的</span><br><span class="line">//小相框，大画布</span><br></pre></td></tr></table></figure>
+<p>那么，当我们把这个画布放进去之后就是清晰的。如果相反，我们使用大相框，小画布，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas width=100 height=100&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<p>那么就会显得非常模糊，因为这就相当于把100放大到300之后放进相框里面，导致失真。</p>
+<p>好吧，那么关于HTML5中的canvas的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"># -HTML5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/12/CSS3学习6/" rel="next" title="CSS3学习6">
+                <i class="fa fa-chevron-left"></i> CSS3学习6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/13/HTML5之svg/" rel="prev" title="HTML5之svg">
+                HTML5之svg <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5新功能"><span class="nav-number">1.</span> <span class="nav-text">HTML5新功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新的DOCTYPE和字符集"><span class="nav-number">1.1.</span> <span class="nav-text">新的DOCTYPE和字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新的元素"><span class="nav-number">1.2.</span> <span class="nav-text">新的元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas"><span class="nav-number">2.</span> <span class="nav-text">Canvas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">3.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩形，圆形等"><span class="nav-number">4.</span> <span class="nav-text">矩形，圆形等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#擦除当前区域"><span class="nav-number">5.</span> <span class="nav-text">擦除当前区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弧形"><span class="nav-number">6.</span> <span class="nav-text">弧形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆角"><span class="nav-number">7.</span> <span class="nav-text">圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝塞尔曲线"><span class="nav-number">8.</span> <span class="nav-text">贝塞尔曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标轴转换"><span class="nav-number">9.</span> <span class="nav-text">坐标轴转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas-操作"><span class="nav-number">10.</span> <span class="nav-text">Canvas 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#填充图案"><span class="nav-number">10.1.</span> <span class="nav-text">填充图案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渐变"><span class="nav-number">11.</span> <span class="nav-text">渐变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阴影"><span class="nav-number">12.</span> <span class="nav-text">阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本"><span class="nav-number">13.</span> <span class="nav-text">文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段样式"><span class="nav-number">14.</span> <span class="nav-text">线段样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#裁剪"><span class="nav-number">15.</span> <span class="nav-text">裁剪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合成"><span class="nav-number">16.</span> <span class="nav-text">合成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制图片"><span class="nav-number">17.</span> <span class="nav-text">绘制图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导出canvas内容"><span class="nav-number">17.1.</span> <span class="nav-text">导出canvas内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命中检测"><span class="nav-number">18.</span> <span class="nav-text">命中检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非零绕数准则"><span class="nav-number">19.</span> <span class="nav-text">非零绕数准则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决canvas放大模糊问题"><span class="nav-number">20.</span> <span class="nav-text">解决canvas放大模糊问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
