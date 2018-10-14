@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-算法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天介绍一下HTML5中的svg。 新的blog，新的开始。今天我将和大家一起继续学习一下算法方面的知识。 还原二叉树举个小例子吧：   这个二叉树的前序是：1,2,4,5,3,6。 这个二叉树的中序是：4,2,5,1,6,3。 这个二叉树的后序是：4,5,2,6,3,1。 1、那首先选前序和中序来还原整个二叉树。 首先可以选出根节点">
+<meta name="keywords" content="-算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法学习2">
+<meta property="og:url" content="http://moreluckily.com/2018/10/14/算法学习2/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天介绍一下HTML5中的svg。 新的blog，新的开始。今天我将和大家一起继续学习一下算法方面的知识。 还原二叉树举个小例子吧：   这个二叉树的前序是：1,2,4,5,3,6。 这个二叉树的中序是：4,2,5,1,6,3。 这个二叉树的后序是：4,5,2,6,3,1。 1、那首先选前序和中序来还原整个二叉树。 首先可以选出根节点">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/算法学习2/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/算法学习2/a2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/算法学习2/b1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/算法学习2/b2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/算法学习2/b2.png">
+<meta property="og:updated_time" content="2018-10-14T08:03:41.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法学习2">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天介绍一下HTML5中的svg。 新的blog，新的开始。今天我将和大家一起继续学习一下算法方面的知识。 还原二叉树举个小例子吧：   这个二叉树的前序是：1,2,4,5,3,6。 这个二叉树的中序是：4,2,5,1,6,3。 这个二叉树的后序是：4,5,2,6,3,1。 1、那首先选前序和中序来还原整个二叉树。 首先可以选出根节点">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/14/算法学习2/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/14/算法学习2/"/>
+
+
+
+
+
+  <title>算法学习2 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/14/算法学习2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法学习2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-14T00:38:55+08:00">
+                2018-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起继续学习HTML5。</p>
+<p>今天介绍一下HTML5中的svg。</p>
+<p>新的blog，新的开始。今天我将和大家一起继续学习一下算法方面的知识。</p>
+<h2 id="还原二叉树"><a href="#还原二叉树" class="headerlink" title="还原二叉树"></a>还原二叉树</h2><p>举个小例子吧：</p>
+<p> <img src="/2018/10/14/算法学习2/a1.png" alt="小demo"></p>
+<p>这个二叉树的前序是：1,2,4,5,3,6。</p>
+<p>这个二叉树的中序是：4,2,5,1,6,3。</p>
+<p>这个二叉树的后序是：4,5,2,6,3,1。</p>
+<p>1、那首先选前序和中序来还原整个二叉树。</p>
+<p>首先可以选出根节点，前序的第一个就是根节点，然后再中序中可以得到这棵树的左子树和右子树。</p>
+<p>对于前序来说：左子树：2，4，5；对于中序来说，左子树：4,2,5<br>则可以得到左子树的根节点是2，左孩子是4，右孩子是5.</p>
+<p>那对于前序来说：右子树：3,6；对于中序来说，右子树是：6,3.<br>则可以得到右子树的根节点是3，左孩子是6.</p>
+<p>这样我们就能还原整个二叉树了，其实就是每一个子树都满足相同的规律。每一层都慢慢的递归下去。</p>
+<p>2、选后序和中序来还原整个二叉树</p>
+<p>从后面找根节点，这就是和前序的一点区别。</p>
+<p>3、选前序和后序能找到二叉树吗？</p>
+<p><img src="/2018/10/14/算法学习2/a2.png" alt="小demo"></p>
+<p>首先能得到根节点1，前序中后面的所有数设为有n个数，即前序从后面开始找，后序也重后面开始找。</p>
+<p>当n-x=2或者n-x=5时，这个方程有解。即能得到二叉树。</p>
+<p>再继续思考，当n-x=5时，前序：2,4,5,3,6。后序：4,5,2,6,3。其根节点是不一样的。故可以舍去这个解。</p>
+<p>即n-x=2是唯一解，也能得到最初的二叉树，但是太麻烦了。而且也太难了。</p>
+<h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3><p>根节点的选择，最好是中位数，就是中间的数据。这样会使整个二叉树的层数最少。<br>一个平衡的二叉排序树，如果数能找到，则1小于等于x小于等于层数。<br>x为需要找多少次。</p>
+<p>如果数不能找到，则层数减一小于等于x小于等于层数。</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>排序有许多种方法，大约有20多种，但常见的也就那么几种。那我先来分一下类：</p>
+<p>1、冒泡，选择</p>
+<p>2、快排，归并。它们都用到了递归的思想。</p>
+<p>3、堆排，插入</p>
+<p>4、计数</p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>首先我们JS中有一个方法sort( )，它其实用到的方法就是冒泡排序，返回1或者-1来进行比较大小。最后能排序。</p>
+<p>排序其实就是比较，只是比较之后的交换方式不同（本质），交换方式不同，就得到不同的算法。</p>
+<p>首先写一个交换的函数，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function exchange(arr, a, b) &#123;</span><br><span class="line">    var temp = arr[a];</span><br><span class="line">    arr[a] = arr[b];</span><br><span class="line">    arr[b] = temp;</span><br><span class="line">&#125;//就是将数组中的arr[a]和arr[b]进行交换了</span><br></pre></td></tr></table></figure>
+<p>那接下来就写一个第一重的循环。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,2,1,5,7,6];//从小到大排序</span><br><span class="line">for(var j = 0;j &lt; arr.length - 1; j++) &#123;//一次循环解决一个数</span><br><span class="line">    if(arr[j] &lt; arr[j + 1]) &#123;</span><br><span class="line">        continue;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        exchange(arr, j , j + 1);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>其实就是相邻的2个数进行比较，小的就排在前面，大的就排在后面。</p>
+<p>那来一个总的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,2,1,5,7,6];</span><br><span class="line">function exchange(arr, a, b) &#123;</span><br><span class="line">    var temp = arr[a];</span><br><span class="line">    arr[a] = arr[b];</span><br><span class="line">    arr[b] = temp;</span><br><span class="line">&#125;</span><br><span class="line">function compare(a, b) &#123;//加分项</span><br><span class="line">    return a &lt; b ? true : false; </span><br><span class="line">&#125;</span><br><span class="line">//冒泡排序</span><br><span class="line">function mySort(arr) &#123;</span><br><span class="line">    for(var i = 0; i &lt; arr.length; i++) &#123; //能排出n个数</span><br><span class="line">        for(var j = 0;j &lt; arr.length - 1 - i; j++) &#123;//一重循环解决一个数</span><br><span class="line">            //减i让它的性能最大，</span><br><span class="line">            if(arr[j] &lt; arr[j + 1]) &#123;</span><br><span class="line">    //compare(arr[j] &lt; arr[j + 1]),加分项，效果会更好</span><br><span class="line">                continue;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                exchange(arr, j , j + 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">mySort(arr);</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>它的意思就是选出一个最大或者最小的值，放在最后或者最前</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function mySort2(arr) &#123;</span><br><span class="line">    for(var i = 0; i &lt; arr.length; i++) &#123; </span><br><span class="line">        var min = i;</span><br><span class="line">        for(var j = i;j &lt; arr.length; j++) &#123;//主要看里面的循环</span><br><span class="line">            if(arr[j] &lt; arr[min]) &#123;</span><br><span class="line">               //compare(arr[j], arr[min])//改成这样，加分项</span><br><span class="line">                min = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        exchange(arr, min, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">mySort2(arr);</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
+<p>冒泡排序和选择排序比较：<br>冒泡其实就是边比较边交换，选择排序就是找最值</p>
+<p>选择排序的交换次数是最稳定的。</p>
+<p>当数组的顺序刚开始是比较好的时候，用冒泡快，<br>当原数组顺序比较乱的时候，用选择排序。</p>
+<h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><p>首先讲一下人和计算机的一点小区别。</p>
+<p>人简单计算比较慢，而计算机的简单计算比较快。</p>
+<p>我们利用这一点，就可以得到一个算法，傻子排序。</p>
+<p>首先选组长，然后建2个小组，左小右大。循环重复。<br>当最后只剩下一个数的时候，将数组拼接起来，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function quickSort(arr) &#123;</span><br><span class="line">    if (arr.length &lt;= 1) &#123;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line">    //选组长</span><br><span class="line">    var leader = arr[0];</span><br><span class="line">    //建立两个小组</span><br><span class="line">    var left = [];</span><br><span class="line">    var right = [];</span><br><span class="line">    //小左，大右</span><br><span class="line">    for (var i = 1 ; i &lt; arr.length ; i ++) &#123;</span><br><span class="line">        if (compare(arr[i], leader)) &#123;</span><br><span class="line">            left.push(arr[i]);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            right.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //重复第一步</span><br><span class="line">    left = quickSort(left);</span><br><span class="line">    right = quickSort(right);</span><br><span class="line"></span><br><span class="line">    //重复完之后拼接返回</span><br><span class="line">    left.push(leader);</span><br><span class="line">    return left.concat(right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里定义了其他两个数组，当然我们也可以不用定义数组，就是在一个数组中进行比较。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">function quickSort2(arr, begin, end) &#123;</span><br><span class="line">    if (begin &gt;= end) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //选组长</span><br><span class="line">    var leader = arr[begin];</span><br><span class="line">    var left = begin;</span><br><span class="line">    var right = end;</span><br><span class="line"></span><br><span class="line">    while(left &lt; right) &#123;</span><br><span class="line">        //首先右边和leader比，因为leader的位置空出来了</span><br><span class="line">        while (left &lt; right) &#123;</span><br><span class="line">            if (arr[right] &lt; leader) &#123;</span><br><span class="line">                arr[left] = arr[right];</span><br><span class="line">                left += 1;</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                right -= 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while (left &lt; right) &#123;</span><br><span class="line">            if (arr[left] &gt; leader) &#123;</span><br><span class="line">                arr[right] = arr[left];</span><br><span class="line">                right -= 1;</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                left += 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[left] = leader;</span><br><span class="line">    quickSort2(arr, begin, left - 1);</span><br><span class="line">    quickSort2(arr, left + 1, end);</span><br><span class="line">&#125;</span><br><span class="line">quickSort2(arr, 0, arr.length - 1);</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>这里有2个方法，普里姆法（加点法），克鲁斯卡尔法（加边法）</p>
+<p>首先来一个图：</p>
+<p><img src="/2018/10/14/算法学习2/b1.png" alt="小demo"></p>
+<h3 id="普里姆法（加点法）"><a href="#普里姆法（加点法）" class="headerlink" title="普里姆法（加点法）"></a>普里姆法（加点法）</h3><p>其实它就是第一人称的视角的方法，首先随便选一个点，加入选C点，找最小的线，也就是1，和A相连了。</p>
+<p>再找A,C中的最小线，就是3，连接了AD。</p>
+<p>再找A,C,D中的最小线，就是2，连接了DF。</p>
+<p>一步步的最后得到下图：</p>
+<p><img src="/2018/10/14/算法学习2/b2.png" alt="小demo"></p>
+<h3 id="克鲁斯卡尔法（加边法）"><a href="#克鲁斯卡尔法（加边法）" class="headerlink" title="克鲁斯卡尔法（加边法）"></a>克鲁斯卡尔法（加边法）</h3><p>就是全局观的方法。</p>
+<p>还是找C，最近的是A，A,C连接起来了。</p>
+<p>再找到了D，A,C,D。</p>
+<p>但不能形成回路（欧拉回路），就找到了F，再是B。</p>
+<p>慢慢的就得到了和上面一样的图。同样的结果。</p>
+<p><img src="/2018/10/14/算法学习2/b2.png" alt="小demo"></p>
+<p>好吧，那么关于算法学习的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># -算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/13/HTML5之svg/" rel="next" title="HTML5之svg">
+                <i class="fa fa-chevron-left"></i> HTML5之svg
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/14/HTML5学习3/" rel="prev" title="HTML5学习3">
+                HTML5学习3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#还原二叉树"><span class="nav-number">1.</span> <span class="nav-text">还原二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉排序树"><span class="nav-number">1.1.</span> <span class="nav-text">二叉排序树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">2.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">3.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">4.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快排"><span class="nav-number">5.</span> <span class="nav-text">快排</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小生成树"><span class="nav-number">6.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普里姆法（加点法）"><span class="nav-number">6.1.</span> <span class="nav-text">普里姆法（加点法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#克鲁斯卡尔法（加边法）"><span class="nav-number">6.2.</span> <span class="nav-text">克鲁斯卡尔法（加边法）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
