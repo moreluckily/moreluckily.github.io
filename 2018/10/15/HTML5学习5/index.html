@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-HTML5," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天继续介绍一下HTML5中多媒体应用的相关知识。 audio和video APIaudio（音频）和video（视频），它可以使我们不需要采用插件就能播放音频和视频，而且还有完整的API，通用的，可脚本化控制的API。 首先，这两个元素是浏览器自带的原生支持的功能新的audio元素和video元素都无需安装，以前使用flash插件的">
+<meta name="keywords" content="-HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5学习5">
+<meta property="og:url" content="http://moreluckily.com/2018/10/15/HTML5学习5/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天继续介绍一下HTML5中多媒体应用的相关知识。 audio和video APIaudio（音频）和video（视频），它可以使我们不需要采用插件就能播放音频和视频，而且还有完整的API，通用的，可脚本化控制的API。 首先，这两个元素是浏览器自带的原生支持的功能新的audio元素和video元素都无需安装，以前使用flash插件的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/15/HTML5学习5/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/15/HTML5学习5/a2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/15/HTML5学习5/c1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/15/HTML5学习5/c2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/15/HTML5学习5/c3.png">
+<meta property="og:updated_time" content="2018-10-15T01:28:28.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5学习5">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天继续介绍一下HTML5中多媒体应用的相关知识。 audio和video APIaudio（音频）和video（视频），它可以使我们不需要采用插件就能播放音频和视频，而且还有完整的API，通用的，可脚本化控制的API。 首先，这两个元素是浏览器自带的原生支持的功能新的audio元素和video元素都无需安装，以前使用flash插件的">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/15/HTML5学习5/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/15/HTML5学习5/"/>
+
+
+
+
+
+  <title>HTML5学习5 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/15/HTML5学习5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML5学习5</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T08:59:21+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起继续学习HTML5。</p>
+<p>今天继续介绍一下HTML5中多媒体应用的相关知识。</p>
+<h2 id="audio和video-API"><a href="#audio和video-API" class="headerlink" title="audio和video API"></a>audio和video API</h2><p>audio（音频）和video（视频），它可以使我们不需要采用插件就能播放音频和视频，而且还有完整的API，通用的，可脚本化控制的API。</p>
+<p>首先，这两个元素是浏览器自带的原生支持的功能新的audio元素和video元素都无需安装，以前使用flash插件的，再也不用担心插件不更新而看不到视频音频了。但是这两个元素还有些注意的地方就是，不同浏览器自己的解码器不完全相同，这意味着，有些视频格式有些浏览器可以看，有些却不可以。</p>
+<p>另外，在我们使用这两个标签的时候，需要做一个兼容性的检测。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var hasVideo = !!(document.createElement(&apos;video&apos;).canPlayType);</span><br></pre></td></tr></table></figure>
+<p>这段脚本动态创建一个video元素，然后检查canPlayType()是否存在，通过非非来转换为布尔值。如果不兼容，就没办法了，又要跟flash闹腾了。flash通常是使用object包裹的，这里就不展开讲了，请看下图：</p>
+<p>flash:</p>
+<p><img src="/2018/10/15/HTML5学习5/a1.png" alt="小demo"></p>
+<p>h5 中的video：</p>
+<p><img src="/2018/10/15/HTML5学习5/a2.png" alt="小demo"></p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>引入这两个标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio id=&quot;audio&quot; src=&quot;./成都.mp3&quot;&gt;&lt;/audio&gt;</span><br><span class="line">&lt;video id=&quot;video&quot; src=&quot;./成都.mp4&quot;&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<p>它们的属性都是通用的，以下是一些可以使用脚本化来控制的属性</p>
+<p>1.autoplay，表示自动播放，如果设定了这个属性，那么打开页面就会自动播放了。默认的是不自动播放。另外在，这个属性要慎用，因为没有人想突然冒出来一段音乐，把自己吓一跳，除非，是来制造背景氛围的。有些情况，例如，我们经常遇到的，打开一个网页的时候，突然弹出来一个广告，并且还很大声，这就是用了autoplay这个属性。而且，这个属性iOS是不兼容的。通常情况，我们需要是用别的方法，来控制音频视频的播放。</p>
+<p>2.controls，设置控件，设定了这个值，就相当于告诉浏览器显示通用的用户控件，例如，调整声音大小 ，暂停，跳播等，方便我们操作，但是一般样式不太好看，需要后期调整。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio src=&quot;source.mp3&quot; autoplay controls&gt;&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+<p>3.preload(none/metadata/auto)预加载</p>
+<p>说一下这几个属性值分别代表什么意思：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">none， 不需要加载数据，当我们使用audio和video会先预加载，如果是none就直接不加载</span><br><span class="line">metadata 获取元数据，诸如时长、比特率、帧大小这样的原数据而不是媒体内容需要加载的，不获取每一帧的内容。</span><br><span class="line">auto 浏览器应当加载它认为适量的媒体内容（多数情况下使用，根据网络情况来使用不同加载方式</span><br><span class="line">&lt;audio src=&quot;&quot; preload=&quot;auto&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>4、loop 是否循环播放音/视频,</p>
+<p>5.poster (video 独有),当视频不可用时，使用一张图片替代，否则是空白。可以用来做视屏的封面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;成都.mp4&quot; poster=&quot;封面.jpg&quot; controls&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<p>6.muted,为音频文件设置静音或者消除静音，或者检测当前是否为静音，</p>
+<p>7.autobuffer,通知播放器在媒体文件开始播放前，是否进行缓冲加载，如果媒体文件已设置为autoplay，则忽略此属性</p>
+<p>8.volume，在0到1之间设置音频音量或者查询当前音量的相对值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">oDown.onclick = function () &#123;</span><br><span class="line">	var num = Math.floor(oAudio.volume * 10);</span><br><span class="line">	if(num &gt; 0 )&#123;</span><br><span class="line">		console.log(num);</span><br><span class="line">		oAudio.volume -= 0.1;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		oAudio.volume = 0;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">oUp.onclick = function ()&#123;</span><br><span class="line">	oAudio.volume -= 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用点击事件控制音量增加减小。注意的是，0-1之间闭区间，并且，JavaScript计算浮点值不准确，需要向下取整，</p>
+<h2 id="多类型资源"><a href="#多类型资源" class="headerlink" title="多类型资源"></a>多类型资源</h2><p>根据浏览器支持格式，来选择适合的资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio id=&quot;music&quot;&gt;</span><br><span class="line">	&lt;source src=&quot;成都.mp3&quot; type=&quot;audio/mpeg&quot;&gt;</span><br><span class="line">	&lt;source src=&quot;成都.ogg&quot; type=&apos;audio/ogg&quot;&apos;&gt;</span><br><span class="line">&lt;/audio&gt;//用mp3 或者 用ogg格式，按照顺序获取，第一种匹配，就不用第二种，如此类推。</span><br></pre></td></tr></table></figure>
+<h2 id="脚本化标签"><a href="#脚本化标签" class="headerlink" title="脚本化标签"></a>脚本化标签</h2><h3 id="获取标签"><a href="#获取标签" class="headerlink" title="获取标签"></a>获取标签</h3><p>var audio = document.getElementById(‘audio’);</p>
+<p>var audio = new Audio(‘./laojie.mp3’);</p>
+<p>var audio = document.createElement(‘video’);</p>
+<h3 id="增加属性"><a href="#增加属性" class="headerlink" title="增加属性"></a>增加属性</h3><p>controls/loop/preload/autoplay属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">audio.controls = true;</span><br><span class="line">audio.loop = &apos;loop&apos;;</span><br><span class="line">audio.preload = &apos;auto&apos;;</span><br><span class="line">audio.autoplay = true;</span><br></pre></td></tr></table></figure>
+<p>要注意的是，currentSrc 表示的是资源链接，媒体数据的url地址，当我们想获取到这个资源连接的时候，必须要等到它加载完在进行操作。 这个时候，我们需要使用一个事件，loadedmetadata。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var oAudio = new Audio(&apos;url&apos;);</span><br><span class="line">document.body.append(oaudio);</span><br><span class="line">oAudio.controls = &apos;controls&apos;;</span><br><span class="line">oAudio.onloadeddata = function ()&#123;</span><br><span class="line">	console.log(oAudio.currentSrc);</span><br><span class="line">&#125;</span><br><span class="line">oAudio.onloadedmetadata = function () &#123;</span><br><span class="line">	console.log(123);</span><br><span class="line">&#125;;//先打印出出123 ，在打印出地址</span><br></pre></td></tr></table></figure>
+<p>还要注意的是，audio没有load事件</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>play：开始播放，触发该事件</p>
+<p>pause：暂停播放的时候，触发该事件</p>
+<p>loadedmetadata：浏览获取完整媒体的元数据触发</p>
+<p>loaddeddata：浏览器已经加载完当前帧数据，准备播放时触发</p>
+<p>ended： 当前播放结束后触发</p>
+<p>error: 在音频或视频加载发生错误的时候触发</p>
+<p><img src="/2018/10/15/HTML5学习5/c1.png" alt="小demo"></p>
+<p>还有很多事件，这里就提了主要的几个，读者有兴趣可查阅相关资料。</p>
+<h3 id="控制函数"><a href="#控制函数" class="headerlink" title="控制函数"></a>控制函数</h3><p>1.load(),加载音频，为播放做准备，通常情况下不需要调用，除非是动态生成的元素，用来在播放前预加载，或者重新加载视频，音频元素。</p>
+<p>2.play()，播放音频或视频</p>
+<p>3.pause()，暂停处于播放状态的视频或音频文件</p>
+<p>4.canPlayType()，判断获取的资源是否可以播放</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(a.canPlayType(&apos;audio/mp3&quot;))&#123;//a是一段audio</span><br><span class="line">	a.src = &quot;url&quot;;</span><br><span class="line">	a.play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.palybackRate，调整播放速率。默认为一，加上一个负值就变慢，加上一个正值，就变快。但是现在兼容性有待加强，尽量不要使用。</p>
+<h2 id="只读的属性"><a href="#只读的属性" class="headerlink" title="只读的属性"></a>只读的属性</h2><p>1.duration: 整个媒体文件的播放时长返回秒数，如果无法获取，就是返回Nan。</p>
+<p>2.paused，如果媒体文件已经被暂停，则放回true，如果还没播放，默认返回true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">oUp.onclick = function () &#123;</span><br><span class="line">	if(oAudio.paused)&#123;</span><br><span class="line">		oAudio.play();</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		oAudio.pause();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;//使用一个属性，实现播放暂停功能。</span><br></pre></td></tr></table></figure>
+<p>3.ended，如果媒体文件已经播放完毕，则返回true</p>
+<p>4.seeking,如果是true，表示播放器正在调到一个新的播放点</p>
+<p>5.startTime,返回最早播放的起始时间，一般是0.0，除非是缓冲过的媒体文件，并且一部分已经不在缓冲器。</p>
+<p>6.currentTime，获取播放到该位置的时间。</p>
+<p>7.currentSrc，以字符串形式返回当前正在播放或已加载的文件。对应于使用source中选择的文件。</p>
+<p>8.每次音频加载状态也会出发一个readyStage值的改变。</p>
+<p><img src="/2018/10/15/HTML5学习5/c2.png" alt="小demo"></p>
+<p>9.networkState属性返回音频当前网络状态</p>
+<p><img src="/2018/10/15/HTML5学习5/c3.png" alt="小demo"></p>
+<h2 id="TimeRanges-对象"><a href="#TimeRanges-对象" class="headerlink" title="TimeRanges 对象"></a>TimeRanges 对象</h2><p>这个对象有几个属性比较有意思。</p>
+<p>played: 返回已经播放（看过）的时间段</p>
+<p>buffered：返回当前已经缓冲的时间段</p>
+<p>seekable：返回用户可以跳转的时间段</p>
+<p>以上的属性都有start()方法和end()方法，length属性表示当前的一个时间段，start()与end()分别返回当前时间段的起始时间点和结束时间点，单位是秒，其实参数是0.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var percent_loaded = Math.floor(song.buffered.end(0) / song.duration * 100);//获取当前缓存内容的百分比</span><br></pre></td></tr></table></figure>
+<h2 id="video额外的特性"><a href="#video额外的特性" class="headerlink" title="video额外的特性"></a>video额外的特性</h2><p>poster: 在视频加载完成之前，代表视频内容的图片的URL地址，可读可修改，方便更换图片。</p>
+<p>width,height ： 读取或设置显示尺寸，如果设置的宽度与食品本身大小不匹配，可能导致居中显示，上下或作用可能出现黑色条状区域。</p>
+<p>videoWidth，vudeiHeight ：返回视频的固有或自适应的宽度和高度。只读。</p>
+<p>好吧，那么关于HTML5中的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"># -HTML5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/14/HTML5学习4/" rel="next" title="HTML5学习4">
+                <i class="fa fa-chevron-left"></i> HTML5学习4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#audio和video-API"><span class="nav-number">1.</span> <span class="nav-text">audio和video API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">2.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多类型资源"><span class="nav-number">3.</span> <span class="nav-text">多类型资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本化标签"><span class="nav-number">4.</span> <span class="nav-text">脚本化标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取标签"><span class="nav-number">4.1.</span> <span class="nav-text">获取标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加属性"><span class="nav-number">4.2.</span> <span class="nav-text">增加属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">5.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#控制函数"><span class="nav-number">5.1.</span> <span class="nav-text">控制函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只读的属性"><span class="nav-number">6.</span> <span class="nav-text">只读的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TimeRanges-对象"><span class="nav-number">7.</span> <span class="nav-text">TimeRanges 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#video额外的特性"><span class="nav-number">8.</span> <span class="nav-text">video额外的特性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

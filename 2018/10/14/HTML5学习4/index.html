@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-HTML5," />
 
 
 
@@ -86,14 +86,25 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天继续介绍一下HTML5中的知识。 Geolocation（对象）API 地理位置API，这个API应用很广泛，最常见的就是外卖系统，定位之后给我们推送最近的食店，第二个就是计算步数，计算路程的软件，第三个就是基于GPS导航的应用社交网络应用，可以看到好友的方位等。  位置信息html5 获取位置信息，需要先发送一个请求，用户同意，">
+<meta name="keywords" content="-HTML5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML5学习4">
 <meta property="og:url" content="http://moreluckily.com/2018/10/14/HTML5学习4/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天继续介绍一下HTML5中的知识。 Geolocation（对象）API 地理位置API，这个API应用很广泛，最常见的就是外卖系统，定位之后给我们推送最近的食店，第二个就是计算步数，计算路程的软件，第三个就是基于GPS导航的应用社交网络应用，可以看到好友的方位等。  位置信息html5 获取位置信息，需要先发送一个请求，用户同意，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-14T08:05:16.564Z">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/HTML5学习4/h1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/HTML5学习4/h2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/HTML5学习4/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/HTML5学习4/a2.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/HTML5学习4/b1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/14/HTML5学习4/b3.jpg">
+<meta property="og:updated_time" content="2018-10-15T01:15:11.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5学习4">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起继续学习HTML5。 今天继续介绍一下HTML5中的知识。 Geolocation（对象）API 地理位置API，这个API应用很广泛，最常见的就是外卖系统，定位之后给我们推送最近的食店，第二个就是计算步数，计算路程的软件，第三个就是基于GPS导航的应用社交网络应用，可以看到好友的方位等。  位置信息html5 获取位置信息，需要先发送一个请求，用户同意，">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/14/HTML5学习4/h1.png">
 
 
 
@@ -306,6 +317,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -327,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.6k
                 </span>
               
 
@@ -343,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -364,7 +397,60 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天我将和大家一起继续学习HTML5。</p>
+<p>今天继续介绍一下HTML5中的知识。</p>
+<h2 id="Geolocation（对象）"><a href="#Geolocation（对象）" class="headerlink" title="Geolocation（对象）"></a>Geolocation（对象）</h2><p>API 地理位置API，这个API应用很广泛，最常见的就是外卖系统，定位之后给我们推送最近的食店，第二个就是计算步数，计算路程的软件，第三个就是基于GPS导航的应用社交网络应用，可以看到好友的方位等。</p>
+<p><img src="/2018/10/14/HTML5学习4/h1.png" alt="小demo"></p>
+<h2 id="位置信息"><a href="#位置信息" class="headerlink" title="位置信息"></a>位置信息</h2><p>html5 获取位置信息，需要先发送一个请求，用户同意，浏览器会返回一个位置信息，该位置信息是通过支持html5定位功能的底层设备（手机，笔记本电脑等）提供给浏览器的。位置信息一般由纬度，经度坐标和其他一些其他元数据组成的。如果获取不了数据通常会有三个情况，可以通过返回的PositionError,里面的code来判断具体信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户拒绝 code = 1</span><br><span class="line">获取不到 code = 2</span><br><span class="line">连接超时 code = 3</span><br></pre></td></tr></table></figure>
+<p>另外Geoposition对象有一些属性:（如果不存在就是null）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">latitude 纬度(距离赤道以北或以南)</span><br><span class="line">longitude 经度（英国格林威治以东或以西的数值表示）</span><br><span class="line">altitude 海拔</span><br><span class="line">accuracy 定位精准度，单位m</span><br><span class="line">altitudeAccuracy 海拔精准度，单位m</span><br><span class="line">heading 方向</span><br><span class="line">speed 速度</span><br></pre></td></tr></table></figure>
+<p>另外给大家扩展一下知识，定位信息有几种来源</p>
+<p>IP地址获取地理位置数据，过去只能用这个方式，但是这种方式很不靠谱，通常只能定位到地级市。如果用户第IP地址是与ISP提供的话，那么这个位置通常是由服务供应商的物理地址决定的，该地址可能距离用户数千米远。</p>
+<p>GPS定位，精确，但是定位时间长，室内效果不好，用户耗电大。</p>
+<p>WiFi定位：通过三角距离计算出，指的是用户当前位置到已知的多个WiFi接入点的距离，这个也很精确，但是在农村效果不太好。</p>
+<p>手机定位：相当准确，指的是用用户到一些基站的三角距离确定的。但是需要能够访问手机或者其modem的设备，现在一般都能内置了</p>
+<p>用户自定义地理位置，这个是不能再准确的了，自己设定的，能不准确么？</p>
+<p><img src="/2018/10/14/HTML5学习4/h2.png" alt="小demo"></p>
+<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><p>通常我们把参数放在一个对象里面。</p>
+<p>enableHighAccuracy 是否需要高精度位置默认false</p>
+<p>timeout 单位ms 请求超时时间 默认infinity</p>
+<p>maximumAge 单位ms，位置信息过期时间，例如设定为5000，表示5秒就过期了，设置为0就无条件获取新的地理位置信息 默认0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var options = &#123;</span><br><span class="line">	enableHighAccuracy : true,</span><br><span class="line">	timeout : 30,</span><br><span class="line">	maximumAge : 33333</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其他事件"><a href="#其他事件" class="headerlink" title="其他事件"></a>其他事件</h2><p>1、getCurrentPosition(s,e,p) // 获取当前的位置信息</p>
+<p>success回调函数，必须参数；当收到位置信息之后处理的地方。来写一个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function success (position)&#123;</span><br><span class="line">	var latitude = position.coords.latitude,</span><br><span class="line">		longitude = position.coords.longitude,</span><br><span class="line">		accuracy = position.coords.accurcy,</span><br><span class="line">		timestamp = position.coords.timestamp;</span><br><span class="line">	console.log(latidude);</span><br><span class="line">	console.log(longitude);</span><br><span class="line">	console.log(accuracy);</span><br><span class="line">	console.log(timestamp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>error回调函数，可选参数；如果出错了，就回调这个函数。建议使用。</p>
+<p>options参数，可选；</p>
+<p>2、watchPosition() // 监视位置变化，和1参数一样</p>
+<p>var id = geolocation.watchPosition() 用于注册监听器，在设备的地理位置发生改变的时候自动被调用。 参数与 getCurrentPosition 相同</p>
+<p>clearWatch(id) 使用 clearWatch 清除监听</p>
+<p>3、clearWatch() // 清除位置监视 ,需要传worker的名字。</p>
+<h2 id="Devicemotion-事件"><a href="#Devicemotion-事件" class="headerlink" title="Devicemotion 事件"></a>Devicemotion 事件</h2><p>这个事件可以监控到设备上面的加速，如果存在加速，例如摇一摇，手机速度等就会触发这个事件。首先我们需要在window上面绑定一个devicemotion事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;devicemotion&apos;,function(e)&#123;</span><br><span class="line">	console.log(e);</span><br><span class="line">&#125;);// DeviceMotionEvent&#123;&#125; 返回一个对象</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/14/HTML5学习4/a1.png" alt="小demo"></p>
+<p>这里面有些属性挺有用的，</p>
+<p>1.accelerationIncludingGravity （包括重心引力）重力加速度</p>
+<p>2.acceleration 重力加速度（需要陀螺仪支持）</p>
+<p>3.rotationRate(alpha, beta, gamma)旋转速率</p>
+<p>4.interval // 获取的时间间隔</p>
+<p>上述所有属性均为只读属性。然后我们来获取一下各个方向的加速度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var c = document.getElementById(&apos;container&apos;);</span><br><span class="line">window.addEventListener(&apos;devicemotion&apos;,function(e)&#123;</span><br><span class="line">	console.log(e);</span><br><span class="line">	var h = c.innerHTHL + e.accelerationIncludingGravity.x + &apos; - &apos; + e.accelerationIncludingGravity.y + &apos;-&apos; + e.accelerationIncludingGravity.z + &apos;&lt;/br&gt;&apos;;</span><br><span class="line">	c.innerHTML = h;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后挂在手机上面就有这种效果了：</p>
+<p><img src="/2018/10/14/HTML5学习4/a2.png" alt="小demo"></p>
+<p>这个事件还可以用来监控手机上的摇一摇动作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var shake_threshold = 800;//设定最佳用户体</span><br><span class="line">var last_update = 0;//获取上一次时间，与上次位置的做对比</span><br><span class="line">var x, y,z ,  //当前坐标参数</span><br><span class="line">    last_x = 0,</span><br><span class="line">    last_y = 0,</span><br><span class="line">    last_z = 0;</span><br><span class="line">function deviceMotionHeadler(eventData)&#123;</span><br><span class="line">	var acceleration = eventData.accelerationIncludingGravity;</span><br><span class="line">	var curTime = new Date().getTime();// 获取一个时间戳</span><br><span class="line">	if((curTime - last_update) &gt; 300)&#123; //大于3秒在进行操作</span><br><span class="line">		var diffTime = curTime - last_update; //取一个时间差</span><br><span class="line">		last_update = curTime;</span><br><span class="line">		x = acceleration.x;</span><br><span class="line">		y = acceleration.y;</span><br><span class="line">		z = acceleration.z;//获取对应的加速度</span><br><span class="line">		var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000; // 算出来一个动作的速度</span><br><span class="line">		if(speed &gt; shake_threshold)&#123;//如果小于800 不看做是摇一摇的动作 认为一个抖动之类的</span><br><span class="line">			alert(&apos;shake~!&apos;);</span><br><span class="line">			var div = document.createElement(&apos;div&apos;);</span><br><span class="line">		&#125;</span><br><span class="line">		last_x = x;</span><br><span class="line">		last_y = y;</span><br><span class="line">		last_z = z;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">window.addEventListener(&apos;devicemotion&apos;,deviceMotionHeadler,false);</span><br></pre></td></tr></table></figure>
+<h2 id="deviceorientation"><a href="#deviceorientation" class="headerlink" title="deviceorientation"></a>deviceorientation</h2><p>能监听设备在方向上的变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(deviceorientation, function(event)&#123;</span><br><span class="line">       console.log(event);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>deviceorientation事件所包含的属性：</p>
+<p>1.alpha 表示设备沿z轴上的旋转角度，范围为0~360。<br>2.beta 表示设备在x轴上的旋转角度，范围为-180~180。它描述的是设备由前向后旋转的情况。<br>3.gamma 表示设备在y轴上的旋转角度，范围为-90~90。它描述的是设备由左向右旋转的情况。</p>
+<p><img src="/2018/10/14/HTML5学习4/b1.png" alt="小demo"></p>
+<p>4、webkitCompassHeading：与正北方向的角度差值。正北为0度，正东为90度，正南为180度，正西为270度。因为0度是正北，所以叫指北针。</p>
+<p>5、webkitCompassAccuracy：指北针的精确度，表示偏差为正负多少度。一般是10。</p>
+<p><img src="/2018/10/14/HTML5学习4/b3.jpg" alt="小demo"></p>
+<p>好吧，那么关于HTML5中的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -387,6 +473,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"># -HTML5</a>
+          
+        </div>
+      
 
       
       
@@ -405,6 +497,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/15/HTML5学习5/" rel="prev" title="HTML5学习5">
+                HTML5学习5 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -456,8 +552,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -476,7 +581,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -555,6 +660,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Geolocation（对象）"><span class="nav-number">1.</span> <span class="nav-text">Geolocation（对象）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置信息"><span class="nav-number">2.</span> <span class="nav-text">位置信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置参数"><span class="nav-number">3.</span> <span class="nav-text">配置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他事件"><span class="nav-number">4.</span> <span class="nav-text">其他事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Devicemotion-事件"><span class="nav-number">5.</span> <span class="nav-text">Devicemotion 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deviceorientation"><span class="nav-number">6.</span> <span class="nav-text">deviceorientation</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
