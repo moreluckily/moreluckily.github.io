@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-webpack," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天正式开始来讲Webpack。 前端工程化现在的前端发展，已经不是以前的所谓网页设计了，现在更多的是由以WebPage模式为主转变为以WebApp模式为主了。业务逻辑一复杂，就会出现一系列的问题，，比如：如何进行高效的多人协作？如何保证项目的可维护性？如何提高项目的开发质量？… 前端工程化，就是要解决以上的问题的，帮助业务团队更好地完成需求，工程化会预测一些常碰到的问题，">
+<meta name="keywords" content="-webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack学习2">
+<meta property="og:url" content="http://moreluckily.com/2018/10/16/Webpack学习2/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天正式开始来讲Webpack。 前端工程化现在的前端发展，已经不是以前的所谓网页设计了，现在更多的是由以WebPage模式为主转变为以WebApp模式为主了。业务逻辑一复杂，就会出现一系列的问题，，比如：如何进行高效的多人协作？如何保证项目的可维护性？如何提高项目的开发质量？… 前端工程化，就是要解决以上的问题的，帮助业务团队更好地完成需求，工程化会预测一些常碰到的问题，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/16/Webpack学习2/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/16/Webpack学习2/a2.png">
+<meta property="og:updated_time" content="2018-10-16T02:57:07.438Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack学习2">
+<meta name="twitter:description" content="新的blog，新的开始。今天正式开始来讲Webpack。 前端工程化现在的前端发展，已经不是以前的所谓网页设计了，现在更多的是由以WebPage模式为主转变为以WebApp模式为主了。业务逻辑一复杂，就会出现一系列的问题，，比如：如何进行高效的多人协作？如何保证项目的可维护性？如何提高项目的开发质量？… 前端工程化，就是要解决以上的问题的，帮助业务团队更好地完成需求，工程化会预测一些常碰到的问题，">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/16/Webpack学习2/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/16/Webpack学习2/"/>
+
+
+
+
+
+  <title>Webpack学习2 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/16/Webpack学习2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Webpack学习2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T10:55:01+08:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天正式开始来讲Webpack。</p>
+<h2 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h2><p>现在的前端发展，已经不是以前的所谓网页设计了，现在更多的是由以WebPage模式为主转变为以WebApp模式为主了。业务逻辑一复杂，就会出现一系列的问题，，比如：如何进行高效的多人协作？如何保证项目的可维护性？如何提高项目的开发质量？…</p>
+<p>前端工程化，就是要解决以上的问题的，帮助业务团队更好地完成需求，工程化会预测一些常碰到的问题，将之扼杀在摇篮，而这种路径是可重用的，是具有可持续性的，比如第一个优化去除冗余，是在多次去除冗余代码，思考冗余出现的原因而最终思考得出的一个避免冗余的方案。</p>
+<h2 id="自动化构建工具"><a href="#自动化构建工具" class="headerlink" title="自动化构建工具"></a>自动化构建工具</h2><p>日新月异的前端技术已经让前端代码的逻辑和交互效果越来越复杂，更加的不易于管理，模块化开发和预处理框架把项目分成若干个小模块，增加了最后发布的困难，没有一个统一的标准，让前端的项目结构千奇百怪。前端自动化构建在整个项目开发中越来越重要。</p>
+<p>构建工具就是用来让我们不再做机械重复的事情，解放我们的双手的。</p>
+<p>要完成前端工程化，少不了工程化工具，requireJS与grunt的出现，改变了业界前端代码的编写习惯，同时他们也是推动前端工程化的一个基础。 requireJS是一伟大的模块加载器，他的出现让javascript制作多人维护的大型项目变成了事实；grunt是一款javascript构建工具，主要完成编译、压缩、合并等一系列工作，后续又出了yeoman、Gulp、webpack等构建工具。</p>
+<p>Webpack具有Grunt、Gulp对于静态资源自动化构建的能力，但更重要的是，Webpack弥补了requireJS在模块化方面的缺陷，同时兼容AMD与CMD的模块加载规范，具有更强大的JS模块化的功能。</p>
+<h2 id="自动构建工具的两种模式"><a href="#自动构建工具的两种模式" class="headerlink" title="自动构建工具的两种模式"></a>自动构建工具的两种模式</h2><h3 id="开发模式"><a href="#开发模式" class="headerlink" title="开发模式"></a>开发模式</h3><p>开发模式比较简单，主要就是监听文件变化，自动进行打包、合并的操作。</p>
+<h3 id="生产模式"><a href="#生产模式" class="headerlink" title="生产模式"></a>生产模式</h3><p>参考我们的技术栈与需求，我们的静态文件都要发布到cdn上，而且必须有md5版本号，方便快速发布(cdn更新极其缓慢，所以更新必须使用新的文件名) 生产模式主要增加了文件压缩、文件md5名修改、替换html等操作 这样的好处就是上线非常方便，一个命令即可更新线上，而且不存在缓存问题。</p>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。</p>
+<p>CDN的基本原理是广泛采用各种缓存服务器，将这些缓存服务器分布到用户访问相对集中的地区或网络中，在用户访问网站时，利用全局负载技术将用户的访问指向距离最近的工作正常的缓存服务器上，由缓存服务器直接响应用户请求。</p>
+<p>CDN网络是在用户和服务器之间增加Cache层，如何将用户的请求引导到Cache上获得源服务器的数据，主要是通过接管DNS实现，这就是CDN的最基本的原理：</p>
+<p><img src="/2018/10/16/Webpack学习2/a1.png" alt="小demo"></p>
+<p>1.用户向浏览器输入<a href="http://www.web.com这个域名，浏览器第一次发现本地没有dns缓存，则向网站的DNS服务器请求；" target="_blank" rel="noopener">www.web.com这个域名，浏览器第一次发现本地没有dns缓存，则向网站的DNS服务器请求；</a></p>
+<p>2.网站的DNS域名解析器设置了CNAME，指向了<a href="http://www.web.51cdn.com,请求指向了CDN网络中的智能DNS负载均衡系统；" target="_blank" rel="noopener">www.web.51cdn.com,请求指向了CDN网络中的智能DNS负载均衡系统；</a></p>
+<p>3.智能DNS负载均衡系统解析域名，把对用户响应速度最快的IP节点返回给用户；</p>
+<p>4.用户向该IP节点（CDN服务器）发出请求；</p>
+<p>5.由于是第一次访问，CDN服务器会向原web站点请求，并缓存内容；</p>
+<p>6.请求结果发给用户</p>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>前端需要模块化：JS模块化不仅仅为了提高代码复用性，多人协作开发项目，更是为了让资源文件更合理地进行缓存。</p>
+<p><img src="/2018/10/16/Webpack学习2/a2.png" alt="小demo"></p>
+<p>如上图，有一点不知道大家是否注意到：Webpack处理后，输出的静态文件只剩下js与png，而css、less、jade其他的文件都合并到了js中。</p>
+<p>在Webpack当中，所有资源的都是模块，模块都需要通过AMD或者CMD规范加载，就像css样式文件，不再在HTML中以标签加载。</p>
+<h2 id="CommonJs与AMD"><a href="#CommonJs与AMD" class="headerlink" title="CommonJs与AMD"></a>CommonJs与AMD</h2><p>在一开始，我们先讲一下它和以往我们所用的模块管理工具有什么不一样。在最开始的阶段，Js并没有这些模块机制，各种Js到处飞，也就是你们现在的野生代码，得不到有效妥善的管理。后来前端圈开始制定规范，最耳熟能详的是CommonJs和AMD和CMD。</p>
+<h2 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs"></a>CommonJs</h2><p>CommonJs是应用在NodeJs，是一种同步的模块机制。采用同步的require方法来加载依赖并返回导出的接口。一个模块可以通过往exports对象上添加属性或者设置module.exports的值来确定导出哪些接口。它的写法大致如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var firstModule = require(&quot;firstModule&quot;);</span><br><span class="line"></span><br><span class="line">//your code...</span><br><span class="line"></span><br><span class="line">module.export = anotherModule //导出模块，以供调用</span><br></pre></td></tr></table></figure>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">服务端的模块可以被复用</span><br><span class="line">已经有很多模块供使用了（npm）</span><br><span class="line">很容易上手使用</span><br></pre></td></tr></table></figure>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">阻塞式的调用不能适用于网络请求，因为网络请求是异步的</span><br><span class="line">无法同步require多个模块</span><br></pre></td></tr></table></figure>
+<h2 id="AMD-异步require"><a href="#AMD-异步require" class="headerlink" title="AMD:异步require"></a>AMD:异步require</h2><p>之前提到的模块系统只能同步require，而AMD则采用异步的实现形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">require([&quot;module&quot;,&quot;../file.js&quot;],function(module,file)&#123;/*...*/&#125;);</span><br><span class="line">define(&quot;mymodule&quot;,[&quot;dep1&quot;,&quot;dep2&quot;],function(d1,d2)&#123;</span><br><span class="line">    return someExportValue;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>能满足网络请求的异步需求 能同步加载多个模块</p>
+<h3 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h3><p>代码复杂，更难写也更难读 似乎是一种绕路的笨办法</p>
+<h2 id="webpack功能特性"><a href="#webpack功能特性" class="headerlink" title="webpack功能特性"></a>webpack功能特性</h2><p>我们来看看webpack支持哪些功能特性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">支持CommonJs和AMD模块，意思也就是我们基本可以无痛迁移旧项目。</span><br><span class="line">支持模块加载器和插件机制，可对模块灵活定制。特别是我最爱的babel-loader，有效支持ES6。</span><br><span class="line">可以通过配置，打包成多个文件。有效利用浏览器的缓存功能提升性能。</span><br><span class="line">将样式文件和图片等静态资源也可视为模块进行打包。配合loader加载器，可以支持sass，less等CSS预处理器。</span><br><span class="line">内置有source map，即使打包在一起依旧方便调试</span><br></pre></td></tr></table></figure>
+<p>简单来说，任何静态资源都可以视作模块，然后模块之间也可以相互依赖，通过webpack对模块进行处理后，可以打包成我们想要的静态资源。</p>
+<h2 id="webpack-基本操作"><a href="#webpack-基本操作" class="headerlink" title="webpack 基本操作"></a>webpack 基本操作</h2><p>首先我们需要创建一个文件夹，用来存放我们的项目，全路径不含中文，而且不能称作webpack，因为后期会产生冲突。然后创建一个文件夹为src，里面在创建三个文件夹，分别叫做，css，js，image。此外，在src同级路径下创建一个webpack配置文件，叫做“webpack.config.js”,里面是存放webpack的配置信息的。</p>
+<p>另外，我们需要利用node的npm包管理，进行下载webpack，利用这个指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack-cli -g</span><br><span class="line">//这个现在要安装，和webpack3的区别</span><br><span class="line">npm intall webpack -g //将webpack下载到全局</span><br></pre></td></tr></table></figure>
+<p>之后，我们需要编写配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123; </span><br><span class="line">	entry: &apos;./src/js/entry.js&apos;, //是页面的入口函数，将要打包的文件</span><br><span class="line">	output: &#123;</span><br><span class="line">		filename: &apos;index.js&apos;, //打包之后的文件名</span><br><span class="line">		path: __dirname + ./src/js/out,   //打包之后的文件存放路径，如果没有文件，将会新建一个。</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在命令行中输入webpack，表示打包。之后，我们就可以在src中看见新建的一个out文件夹里面有index.js文件了。</p>
+<p>如果需要多次更新的时候，我们每次更改完都需要重新打包的，于是我们需要这个 “webpack -w”，表示实时更新，自动打包。</p>
+<p>当我们需要更改webpack的时候，需要使用“ctrl+c”退出实时监测。</p>
+<h2 id="多模块打包"><a href="#多模块打包" class="headerlink" title="多模块打包"></a>多模块打包</h2><p>如果我们需要有很多文件需要打包，这个时候我们需要使用entry来作为一个入口函数，把需要打包的模块引入到entry.js文件中，对entry实施打包即可。</p>
+<h2 id="loader-加载器"><a href="#loader-加载器" class="headerlink" title="loader 加载器"></a>loader 加载器</h2><p>这些加载器主要做一些预处理的工作：比如 sass less 。这里我们以Less 和 babel 编译ES2015 为例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当一个loader的时候可以写成loader：‘babel-loader’，或者use: [&apos;babel-loader&apos;]</span><br><span class="line">当多个loader的时候只能写成use: [&apos;babel-loader]</span><br></pre></td></tr></table></figure>
+<p>我们第一步就是先要安装好各个必须的loader，我们直接看看需要通过npm安装什么。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-loader babel babel-core css-loader style-loader  url-loader file-loader less-loader less  --save-dev </span><br><span class="line">//babel-loader 是依赖babel-core和babel-core</span><br></pre></td></tr></table></figure>
+<p>然后把配置文件改一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123; </span><br><span class="line">	entry: &apos;./src/js/entry.js&apos;, //是页面的入口函数，将要打包的文件</span><br><span class="line">	output: &#123;</span><br><span class="line">		filename: &apos;index.js&apos;, //打包之后的文件名</span><br><span class="line">		path: __dirname + ./src/js/out,   //打包之后的文件存放路径，如果没有文件，将会新建一个。</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	module: &#123;</span><br><span class="line">		rules: [//注意使用数组</span><br><span class="line">			&#123;test: /.js$/, loader: &apos;babel-loader&apos;&#125;。</span><br><span class="line">			&#123;test: /.css$/, loader: [&apos;style-loader&apos;,&apos;css-loader&apos;]&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以编译出css和ES6的语法了。下面我们来写一下具体的一个小例子：利用webpack打包一个entry文件，该入口文件里面有个三个文件，分别是demo.js，,demo.css,最好实现一个功能，点击红色方块，该方块变成绿色。</p>
+<p>demo.js里面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    init : function()&#123;</span><br><span class="line">	this.bindEvent();</span><br><span class="line">    &#125;,</span><br><span class="line">    bindEvent: function () &#123;</span><br><span class="line">	this.Dom = document.getElementById(&apos;id&apos;);</span><br><span class="line">	this.Dom.onclick = this.changeStyle;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    changeStyle: function ()&#123;</span><br><span class="line">	this.style.backgroundColor = &quot;green&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = obj;// 给出一个接口</span><br></pre></td></tr></table></figure>
+<p>demo.css里面:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#id&#123;</span><br><span class="line">   width:100px;</span><br><span class="line">   height: 100px;</span><br><span class="line">   background:red; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>html中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;id&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script src=&quot;out/index.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>配置文件：webpack.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &apos;./src/js/entry.js&apos;,</span><br><span class="line">    output: &#123;</span><br><span class="line">	filename: &apos;index.js&apos;,</span><br><span class="line">	path: __dirname + &apos;/out&apos;,</span><br><span class="line">	publicPath: __dirname + &apos;out&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    module:&#123;</span><br><span class="line">	rules: [</span><br><span class="line">	    &#123;test: /.js$/, loader: &apos;babel-loader&apos;&#125;,</span><br><span class="line">	    &#123;test: /.css$/, loader: [&apos;style-loader&apos;,&apos;css-loader&apos;]&#125;</span><br><span class="line">	]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>被打包的入口文件：entry.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require(&apos;./demo.js&apos;);</span><br><span class="line">require(&apos;../css/demo.css&apos;);</span><br><span class="line">demo.init();</span><br></pre></td></tr></table></figure>
+<p>这就是webpack的一个例子，现在可能看不出有什么优点，他主要是体验在多人开发的时候的。</p>
+<h2 id="打包图片"><a href="#打包图片" class="headerlink" title="打包图片"></a>打包图片</h2><p>对图片进行引出。，我们也可以使用模块化方式：</p>
+<p>在入口函数中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var img = new Image();</span><br><span class="line">img.src = require(&apos;../a1.png&apos;);</span><br><span class="line">document.body.appendChild(img);</span><br></pre></td></tr></table></figure>
+<p>在配置文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;test: /.(png|jpg|svg|jpeg)$/,loader:[&apos;url-loader?limit=892&amp;name=./[name].[ext]&apos;]&#125;</span><br></pre></td></tr></table></figure>
+<p>需要使用加载器。其中limit表示，如果是大于这个大小的，将会以该文件的名字命名，创建一个图片。</p>
+<p>好吧，那么关于webpack中的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"># -webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/16/Webpack学习1/" rel="next" title="Webpack学习1">
+                <i class="fa fa-chevron-left"></i> Webpack学习1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端工程化"><span class="nav-number">1.</span> <span class="nav-text">前端工程化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化构建工具"><span class="nav-number">2.</span> <span class="nav-text">自动化构建工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动构建工具的两种模式"><span class="nav-number">3.</span> <span class="nav-text">自动构建工具的两种模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发模式"><span class="nav-number">3.1.</span> <span class="nav-text">开发模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生产模式"><span class="nav-number">3.2.</span> <span class="nav-text">生产模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CDN"><span class="nav-number">4.</span> <span class="nav-text">CDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack"><span class="nav-number">5.</span> <span class="nav-text">webpack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJs与AMD"><span class="nav-number">6.</span> <span class="nav-text">CommonJs与AMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJs"><span class="nav-number">7.</span> <span class="nav-text">CommonJs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点："><span class="nav-number">7.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点："><span class="nav-number">7.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMD-异步require"><span class="nav-number">8.</span> <span class="nav-text">AMD:异步require</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">8.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点：-1"><span class="nav-number">8.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack功能特性"><span class="nav-number">9.</span> <span class="nav-text">webpack功能特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-基本操作"><span class="nav-number">10.</span> <span class="nav-text">webpack 基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多模块打包"><span class="nav-number">11.</span> <span class="nav-text">多模块打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loader-加载器"><span class="nav-number">12.</span> <span class="nav-text">loader 加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包图片"><span class="nav-number">13.</span> <span class="nav-text">打包图片</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-webpack," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天我将和大家一起学习webpack。 今天首先介绍一下MVC模式。 MVCMVC全名是Model View Controller，是模型（model）- 视图（view）-控制器（controller）的缩写，MVC 是一种使用 MVC（Model View Controller 模型-视图-控制器）设计创建 Web 应用程序的模式，是一种软件设计典范，指的是用一种业务逻">
+<meta name="keywords" content="-webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack学习1">
+<meta property="og:url" content="http://moreluckily.com/2018/10/16/Webpack学习1/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天我将和大家一起学习webpack。 今天首先介绍一下MVC模式。 MVCMVC全名是Model View Controller，是模型（model）- 视图（view）-控制器（controller）的缩写，MVC 是一种使用 MVC（Model View Controller 模型-视图-控制器）设计创建 Web 应用程序的模式，是一种软件设计典范，指的是用一种业务逻">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/16/Webpack学习1/a1.png">
+<meta property="og:updated_time" content="2018-10-16T02:33:33.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack学习1">
+<meta name="twitter:description" content="新的blog，新的开始。今天我将和大家一起学习webpack。 今天首先介绍一下MVC模式。 MVCMVC全名是Model View Controller，是模型（model）- 视图（view）-控制器（controller）的缩写，MVC 是一种使用 MVC（Model View Controller 模型-视图-控制器）设计创建 Web 应用程序的模式，是一种软件设计典范，指的是用一种业务逻">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/16/Webpack学习1/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/16/Webpack学习1/"/>
+
+
+
+
+
+  <title>Webpack学习1 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/16/Webpack学习1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Webpack学习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T10:16:35+08:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天我将和大家一起学习webpack。</p>
+<p>今天首先介绍一下MVC模式。</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>MVC全名是Model View Controller，是模型（model）- 视图（view）-控制器（controller）的缩写，MVC 是一种使用 MVC（Model View Controller 模型-视图-控制器）设计创建 Web 应用程序的模式，是一种软件设计典范，指的是用一种业务逻辑，数据，界面分离的方法组织代码，将业务逻辑聚集到一个部件里面，在改进个性化定制界面以及用户交互的同时，不需要重新编写业务逻辑。MVC被独特的发展起来用于映射传统的输入，处理和输出功能在一个逻辑的图形化用户界面的结构中。</p>
+<h2 id="模型-Model"><a href="#模型-Model" class="headerlink" title="模型 Model"></a>模型 Model</h2><p>模型代表了业务数据和业务逻辑； 当数据发生改变时，它要负责通知控制器调用视图部分；多个模型能为多个视图提供数据。由于同一个模型可以被多个视图重用，所以提高了应用的可重用性。 Model（模型）是应用程序中用于处理应用程序数据逻辑的部分。通常模型对象负责在数据库中存取数据。</p>
+<h2 id="视图-（view）"><a href="#视图-（view）" class="headerlink" title="视图 （view）"></a>视图 （view）</h2><p>视图向用户显示相关的数据，并能接收用户的输入数据，但是它并不进行任何实际的业务处理。通常是一句模型数据创建的。</p>
+<h2 id="控制器-（controller）"><a href="#控制器-（controller）" class="headerlink" title="控制器 （controller）"></a>控制器 （controller）</h2><p>它通过View来接受用户的输入，之后利用Model来处理用户的数据，最后把结果返回给View。Controll就是View和Model之间的一个协调者。是应用程序中处理用户交互的部分。</p>
+<p><img src="/2018/10/16/Webpack学习1/a1.png" alt="小demo"></p>
+<p>下面举个例子：单击Web页面中的超链接和发送HTML表单时：</p>
+<p>1、视图将超链接和表单发送给控制器</p>
+<p>2、控制器接收请求并决定调用哪个模型构件去处理请求。控制器本身不输出任何东西和做任何处理。</p>
+<p>3、模型开始分析处理数据。经过模型处理后返回数据给控制器。</p>
+<p>4、然后再由控制器确定用哪个视图来显示返回的数据。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>1.耦合性地；视图层和业务层分离，这样就允许更改视图层代码而不用重新编译模型和控制器代码，同样，一个应用的业务流程或者业务规则的改变只需要改动MVC的模型层即可。</p>
+<p>2.重用性高；。MVC模式允许使用各种不同样式的视图来访问同一个服务器端的代码，因为多个视图能共享一个模型，它包括任何WEB（HTTP）浏览器或者无线浏览器（wap），比如，用户可以通过电脑也可通过手机来订购某样产品，虽然订购的方式不一样，但处理订购产品的方式是一样的。</p>
+<p>3.生命周期成本低；MVC使开发和维和用户接口的技术含量降低。</p>
+<p>4.部署快，利于软件工程化管理。</p>
+<p>5.可维护性高，分离视图层和业务逻辑层也是的web应用更易于维护和修改。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>1.定义不明确，使用MVC需要精心计划，内部原理复杂，很耗时间。模型和视图严格分离，给调试应用程序带来困难。每个构件都需要彻底测试。</p>
+<p>2.不适合中小型应用程序，研究MVC的时间，对于中小型应用程序，得不偿失。</p>
+<p>3.增加了系统的结构和实现的复杂性。对于简单的界面，严格遵循MVC，使模型、视图与控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率。</p>
+<p>4.试图对模型数据的低效率访问。依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。</p>
+<h2 id="涉及到H5技术"><a href="#涉及到H5技术" class="headerlink" title="涉及到H5技术"></a>涉及到H5技术</h2><p>一、Local storage &amp; Session storage 键值对存储数据 经常改的就需要用这个</p>
+<p>二、Application Cache 本地缓存应用所需的文件 如果基本不改变就用这个</p>
+<p>三、Web SQL 关系数据库</p>
+<h2 id="web存储"><a href="#web存储" class="headerlink" title="web存储"></a>web存储</h2><p>web存储在之前的HTML5中的客户端存储中介绍过了。这里简单提一下。</p>
+<p>1.localStorage方法，没有时间限制。</p>
+<p>2.sessionStorage方法，针对一个session的数据存储。临时的存储的，当窗口关闭就会删除。</p>
+<p>操作方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">localStorage.firstname=&quot;Sun&quot;;</span><br><span class="line">document.write(localStorage.lastname);</span><br><span class="line"></span><br><span class="line">sessionStorage.lastname=&quot;Smith&quot;;</span><br><span class="line">document.write(sessionStorage.lastname);</span><br></pre></td></tr></table></figure>
+<h2 id="Application-Cache"><a href="#Application-Cache" class="headerlink" title="Application Cache"></a>Application Cache</h2><p>HTML5引入了应用程序缓存技术，意味着web应用可进行缓存，并在没有网络的情况下使用，通过创建cache manifest文件，可以轻松的创建离线应用。</p>
+<p>Application Cache的尺寸限制统一在5M。</p>
+<h2 id="应用程序缓存优势"><a href="#应用程序缓存优势" class="headerlink" title="应用程序缓存优势"></a>应用程序缓存优势</h2><p>离线浏览 - 用户可在应用离线时使用它们；速度 - 已缓存资源加载得更快；减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>如果我们需要在页面中使用Cache缓存的话，需要在html标签中加一个属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html manifest=&quot;demo.cache&quot;&gt;&lt;/html&gt;//规定文档的缓存 manifest 的位置</span><br></pre></td></tr></table></figure>
+<p>其中Manifest分为三部分：</p>
+<p>1、CACHE MANIFEST - 在首次下载后进行缓存</p>
+<p>2、NETWORK - 需要与服务器连接，且不会被缓存</p>
+<p>3、FALLBACK - 当页面无法访问时的回退页面（比如 404 页面）</p>
+<p>这个时候，服务器端需要维护一个manifest清单，我们利用PHP来举例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&apos;Content-Type: text/cache-manifest&apos;)</span><br><span class="line">?&gt;</span><br><span class="line">CACHE MANIFEST</span><br><span class="line"># 2017-04-23 v1.0.0 //版本号，小版本更新，低位改变，大版本更新高位改变。一旦改变，清单所有都要变。</span><br><span class="line">./source/jquery.min.js //需要缓存的文件</span><br><span class="line"></span><br><span class="line">NETWORK:</span><br><span class="line">*</span><br></pre></td></tr></table></figure>
+<p>通常我们使用缓存的对象是很少发生改变的，或者更新频率比较低的文件，例如jquery之类的。如果是经常发生改变的，例如图片。</p>
+<h2 id="配置正确的MIME-type"><a href="#配置正确的MIME-type" class="headerlink" title="配置正确的MIME-type"></a>配置正确的MIME-type</h2><p>MIME类型就是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。</p>
+<p>manifest 文件需要配置正确的 MIME-type，即 “text/cache-manifest”。必须在 web 服务器上进行配置，不同的服务器不一样。</p>
+<h2 id="WEB-SQL"><a href="#WEB-SQL" class="headerlink" title="WEB SQL"></a>WEB SQL</h2><p>Web Sql Database，中文翻译作“本地数据库”，是随着HTML5规范加入的在浏览器端运行的轻量级数据库。在这其中，一项非常重要的功能就是数据库的本地存储功能。在HTML5中内置了一个可以通过SQL语言来访问的数据库。在HTML4中，数据库只能放在服务器端，只能通过服务器来访问数据库，但是在HTML5中，可以就像访问本地文件那样轻松的对内置的数据库进行直接访问。本地数据库通过Javascript脚本来进行对数据库的操作.</p>
+<p>1.openDatabase：使用现有数据库或新建数据库来创建数据库对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">openDatabase(&quot;APP&quot;,&quot;1.0&quot;,&quot;Not the FT Web App&quot;,(5 * 1024 * 1024));</span><br><span class="line">参数：</span><br><span class="line">1、数据库名称</span><br><span class="line">2、数据库版本号</span><br><span class="line">3、对数据库的描述</span><br><span class="line">4、数据库存储大小</span><br><span class="line">5、回调函数（可选）</span><br></pre></td></tr></table></figure>
+<p>transaction：这个方法允许我们根据情况控制事务提交或回滚</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">smallDatabase.transaction(querysql,errorCallback,successCallback);</span><br><span class="line">参数：</span><br><span class="line">1、包含事务内容的一个方法</span><br><span class="line">（querysql中的任何一句sql语句出错，都会回滚）</span><br><span class="line">2、执行成功回调函数（可选）</span><br><span class="line">3、回调函数（可选）</span><br></pre></td></tr></table></figure>
+<p>executeSql：用于执行SQL 查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tx.executeSql(query, data[ ], innerSuccessCallback, errorCallback);</span><br><span class="line">1、表示查询的字符串，使用的SQL语言是SQLite 3.6.19。（必选）</span><br><span class="line">2、插入到查询中问号所在处的字符串数据。（可选）</span><br><span class="line">3、成功时执行的回调函数。返回两个参数：tx和执行的结果（可选）</span><br><span class="line">4、一个失败时执行的回调函数。（可选）</span><br></pre></td></tr></table></figure>
+<p>好吧，那么关于Webpack中的预习部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"># -webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/16/HTML5学习6/" rel="next" title="HTML5学习6">
+                <i class="fa fa-chevron-left"></i> HTML5学习6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/16/Webpack学习2/" rel="prev" title="Webpack学习2">
+                Webpack学习2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC"><span class="nav-number">1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型-Model"><span class="nav-number">2.</span> <span class="nav-text">模型 Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图-（view）"><span class="nav-number">3.</span> <span class="nav-text">视图 （view）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制器-（controller）"><span class="nav-number">4.</span> <span class="nav-text">控制器 （controller）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">5.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">5.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">5.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及到H5技术"><span class="nav-number">6.</span> <span class="nav-text">涉及到H5技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web存储"><span class="nav-number">7.</span> <span class="nav-text">web存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-Cache"><span class="nav-number">8.</span> <span class="nav-text">Application Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用程序缓存优势"><span class="nav-number">9.</span> <span class="nav-text">应用程序缓存优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">10.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置正确的MIME-type"><span class="nav-number">11.</span> <span class="nav-text">配置正确的MIME-type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB-SQL"><span class="nav-number">12.</span> <span class="nav-text">WEB SQL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-HTML5," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。HTML最后一讲，上次写完了，忘记保存了。。。。。。 drag 和 drop初始对象和目标对象在我们鼠标点击的开始位置的元素，我们称之为，初始对象；我们最后把初始对象拖动到达的区域叫做目标对象。 事件详解当用户在支持HTML5中的浏览器开始拖放的时候，会触发一系列事件，接下来就介绍这些事件。 一开始我们先获取一下拖动元素： 12&amp;lt;div id=&amp;quot;drag&amp;q">
+<meta name="keywords" content="-HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5学习6">
+<meta property="og:url" content="http://moreluckily.com/2018/10/16/HTML5学习6/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。HTML最后一讲，上次写完了，忘记保存了。。。。。。 drag 和 drop初始对象和目标对象在我们鼠标点击的开始位置的元素，我们称之为，初始对象；我们最后把初始对象拖动到达的区域叫做目标对象。 事件详解当用户在支持HTML5中的浏览器开始拖放的时候，会触发一系列事件，接下来就介绍这些事件。 一开始我们先获取一下拖动元素： 12&amp;lt;div id=&amp;quot;drag&amp;q">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/16/HTML5学习6/a1.png">
+<meta property="og:updated_time" content="2018-10-16T02:41:48.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5学习6">
+<meta name="twitter:description" content="新的blog，新的开始。HTML最后一讲，上次写完了，忘记保存了。。。。。。 drag 和 drop初始对象和目标对象在我们鼠标点击的开始位置的元素，我们称之为，初始对象；我们最后把初始对象拖动到达的区域叫做目标对象。 事件详解当用户在支持HTML5中的浏览器开始拖放的时候，会触发一系列事件，接下来就介绍这些事件。 一开始我们先获取一下拖动元素： 12&amp;lt;div id=&amp;quot;drag&amp;q">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/16/HTML5学习6/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/16/HTML5学习6/"/>
+
+
+
+
+
+  <title>HTML5学习6 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/16/HTML5学习6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML5学习6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T10:16:01+08:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。HTML最后一讲，上次写完了，忘记保存了。。。。。。</p>
+<h2 id="drag-和-drop"><a href="#drag-和-drop" class="headerlink" title="drag 和 drop"></a>drag 和 drop</h2><h3 id="初始对象和目标对象"><a href="#初始对象和目标对象" class="headerlink" title="初始对象和目标对象"></a>初始对象和目标对象</h3><p>在我们鼠标点击的开始位置的元素，我们称之为，初始对象；我们最后把初始对象拖动到达的区域叫做目标对象。</p>
+<h3 id="事件详解"><a href="#事件详解" class="headerlink" title="事件详解"></a>事件详解</h3><p>当用户在支持HTML5中的浏览器开始拖放的时候，会触发一系列事件，接下来就介绍这些事件。</p>
+<p>一开始我们先获取一下拖动元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;drag&quot; draggable=&quot;true&quot;&gt;&lt;/div&gt;</span><br><span class="line">var odiv = documentgetElementById(&apos;drag&apos;);</span><br></pre></td></tr></table></figure>
+<p>1.dragstart,用户拖拽页面的某个元素是，会触发dragstart事件。这个事件很有意思，因为它是唯一一个支持dataTransfer通过setData调用来设置数据的事件。这意味着在dragStart事件处理器中，必须设置可能使用的数据类型，以便在放置结束时能够查询到之前设置的数据类型。</p>
+<p>2.dragenter，被拖拽的元素进入到目标对象的时候触发这个事件，绑定在目标对象上面，即使目标对象不在同一个页面，只要绑定了这个事件，就能触发。</p>
+<p>3.dragleave，与dragenter事件对应，用户鼠标移出之前调用的dragenter的元素时，浏览器会触发dragleave事件。绑定在目标元素上面。</p>
+<p>4.dragover，拖拽元素在目标元素上面移动就会触发这个事件。与之类似的还有一个drag事件，但是这个事件是绑定在拖动元素上面的，而dragover是绑定在目标元素上的。</p>
+<p>5.drop，这个很重要，它是当拖拽元素在目标元素上，并且释放鼠标的时候，触发的事件，这个事件可以getData，后面会讲到。如果想绑定drop事件，需要在同样的元素上面，先阻止默认事件，然后才能绑定这个drop元素。</p>
+<p>6.dragend， 绑定在拖拽元素上，当拖拽完成的时候触发这个事件。</p>
+<h2 id="dataTransfer-对象"><a href="#dataTransfer-对象" class="headerlink" title="dataTransfer 对象"></a>dataTransfer 对象</h2><p>DragTransfer对象是我们绑定拖拽事件的时候返回给我们的一个对象，里面有一个dataTransfer对象，主要是用这个对象来操作。</p>
+<p>dataTransfer对象用于获取和设置实际的放置数据。利用以下几个函数和属性：</p>
+<p>setData(format,data): 利用这个函数，可以设定一个数据，format就是我们要设定数据的名字，data为值。</p>
+<p>getData(format): 获取setData设定的值。接下来写一个小demo，实现以下功能:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.拖动上面的长条进去下面的矩形，长条消失。</span><br><span class="line">2.拖动哪一个，哪一个消失。并且打印出对应的内容。</span><br><span class="line">3.不同条状物之间可以相互调换顺序。</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/16/HTML5学习6/a1.png" alt="小demo"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ul li&#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 50px;</span><br><span class="line">    background: deepskyblue;</span><br><span class="line">    list-style: none;</span><br><span class="line">    text-align: center;</span><br><span class="line">    line-height: 50px;</span><br><span class="line">    margin-top: 50px;</span><br><span class="line">&#125;</span><br><span class="line">.box&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li draggable = &quot;true&quot;&gt;1&lt;/li&gt;</span><br><span class="line">    &lt;li draggable = &quot;true&quot;&gt;2&lt;/li&gt;</span><br><span class="line">    &lt;li draggable = &quot;true&quot;&gt;3&lt;/li&gt;</span><br><span class="line">    &lt;li draggable = &quot;true&quot;&gt;4&lt;/li&gt;</span><br><span class="line">    &lt;li draggable = &quot;true&quot;&gt;5&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">var oLi = document.getElementsByTagName(&apos;li&apos;),</span><br><span class="line">oUl = document.getElementsByTagName(&apos;ul&apos;)[0],</span><br><span class="line">oBox = document.getElementsByClassName(&apos;box&apos;)[0];</span><br><span class="line">function bindEvent()&#123;</span><br><span class="line">    for(var i = 0;i&lt;oLi.length;i++)&#123;</span><br><span class="line">        </span><br><span class="line">        oLi[i].addEventListener(&apos;dragstart&apos;,function(e)&#123;</span><br><span class="line">            var j = getIndex(oLi,this);</span><br><span class="line">            e.dataTransfer.setData(&apos;num&apos;,j);</span><br><span class="line">        &#125;)</span><br><span class="line">        oLi[i].addEventListener(&apos;dragover&apos;,function(e)&#123;</span><br><span class="line">           </span><br><span class="line">            e.preventDefault();</span><br><span class="line">        &#125;)</span><br><span class="line">        oLi[i].addEventListener(&apos;drop&apos;,function(e)&#123;</span><br><span class="line">            var num = e.dataTransfer.getData(&apos;num&apos;);</span><br><span class="line">            oUl.insertBefore(oLi[num],this);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">function removeList()&#123;</span><br><span class="line">    oBox.addEventListener(&apos;dragover&apos;,function(e)&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">    &#125;)</span><br><span class="line">    oBox.addEventListener(&apos;drop&apos;,function(e)&#123;</span><br><span class="line">        var num = e.dataTransfer.getData(&apos;num&apos;);</span><br><span class="line">        oLi[num].remove();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">function getIndex (list,item)&#123;</span><br><span class="line">    for(var i = 0;i&lt;list.length;i++)&#123;</span><br><span class="line">        if(list[i] == item)&#123;</span><br><span class="line">            return i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">bindEvent();</span><br><span class="line">removeList();</span><br></pre></td></tr></table></figure>
+<p>这里有个问题需要注意的就是，每次拖动，改变了顺序，这个顺序跟一开始的那个索引是一一对应的，但是如果以这个索引来删除节点的话，时会发生逻辑性错误的。例如，如果我们将第一个长条移到第五的位置，然后将它拖进矩形。这个时候，remove的参数是0，所以会删掉第一个位置的长条，为了解决这个错误，需要在每次拖动的时候，都获取一下索引即可。</p>
+<h2 id="利用拖拽上传文件"><a href="#利用拖拽上传文件" class="headerlink" title="利用拖拽上传文件"></a>利用拖拽上传文件</h2><p>file API具有强大的功能，它能够在网页异步读取文件，将文件上传到服务器并跟踪上传状态，还可以将文件转换为页面元素。</p>
+<p>同样的，在DragEvent里面的dataTransfer有一个FileList对象，里面有个File对象，它里面有关于我们所上传的文件信息。例如文件名字，文件大小，文件最后一次修改的时间戳等。</p>
+<p>如果拖拽文件到目标元素，需要阻止默认事件，因为如果是文件的话，drop事件会默认打开文件。</p>
+<h2 id="Filereader"><a href="#Filereader" class="headerlink" title="Filereader"></a>Filereader</h2><p>这个方法可以用来读取文件的各种信息。</p>
+<p>onloadstart 读取开始时触发</p>
+<p>onprogress 读取中</p>
+<p>onloadend 读取完成触发，无论成功或失败</p>
+<p>onload 文件读取成功完成时触发</p>
+<p>onabort 中断时触发</p>
+<p>onerror 出错时触发</p>
+<p>这个知识，需要使用代码来进行说明，但是代码稍长，在这里不方便展示</p>
+<h2 id="websocket-通信"><a href="#websocket-通信" class="headerlink" title="websocket 通信"></a>websocket 通信</h2><p>websockets是html5中最强大的通信功能，它定义了一个全双工通信信道，仅通过web上的一个socket即可进行通信。</p>
+<p>WebSocket 对象提供了一组 API，用于创建和管理 WebSocket 连接, 以及通过连接发送和接收数据.</p>
+<p>Websocket 其实是一个新协议，跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已.借用了HTTP的协议来完成握手</p>
+<h3 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h3><p>在 HTTP/1.0 中,大多实现为每个请求/响应交换使用新的连接</p>
+<p>在 HTTP/1.1 中,一个连接可用于一次或多次请求/响应交换</p>
+<p>HTTP协议中，服务端不能主动联系客户端，只能有客户端发起。这就有一个明显的缺点，多数情况下，如股票价格，新闻报道，交通状况等，当内容呈现到页面的时候，可能已经没有时效性了，我们需要不断刷新页面来获取最新信息，这明显是很麻烦的。而websocket就可以解决这个问题了。</p>
+<p>webSoket服务器和客户端均可主动发送数据</p>
+<h3 id="建立连接的握手"><a href="#建立连接的握手" class="headerlink" title="建立连接的握手"></a>建立连接的握手</h3><p>当Web应用程序调用new WebSocket(url)接口时，Browser就开始了与地址为url的WebServer建立握手连接的过程。</p>
+<p>1、Browser与WebSocket服务器通过TCP握手建立连接，如果这个建立连接失败，那么后面的过程就不会执行，Web应用程序将收到错误消息通知。</p>
+<p>2、在TCP建立连接成功后，Browser通过http协议传送WebSocket支持的版本号，协议的字版本号，原始地址，主机地址等等一些列字段给服务器端。</p>
+<p>3、WebSocket服务器收到Browser发送来的请求后，如果数据包数据和格式正确，客户端和服务器端的协议版本号匹配等等，就接受本次握手连接，并给出相应的数据回复，同样回复的数据包也是采用http协议传输。</p>
+<p>4、Browser收到服务器回复的数据包后，如果数据包内容、格式都没有问题的话，就表示本次连接成功，触发onopen消息，此时Web开发者就可以在此时通过send接口向服务器发送数据。否则，握手连接失败，Web应用程序会收到onerror消息，并且能知道连接失败的原因。</p>
+<p>要注意的是，如果要使用websocket来进行通信，客户端和服务端都必须支持websocket协议才可以。另外，它们两个请求头和响应头都是有区别的。一个connection是keep-alive，一个是upgrade。</p>
+<h3 id="websocket-API使用"><a href="#websocket-API使用" class="headerlink" title="websocket API使用"></a>websocket API使用</h3><p>首先第一个步，我们要先创建一个新的websocket对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var socket = new WebSocket(url,&quot;protocol&apos;/[&apos;proto1&apos;,&apos;proto2&apos;);</span><br></pre></td></tr></table></figure>
+<p>该构造函数能传两个参数，第一个就是传输的服务器端口（必须支持websocket），另一个参数可以是字符串或者是字符串数组，它们是为了确保客户端和服务器发送与接收双方都能理解的消息，它们必须使用相同的协议。WebSocket构造函数允许你定义客户端用于与服务器通信的协议。服务器反过来选择使用的协议（在客户端和服务器之间只能使用一种协议）。</p>
+<p>然后有几个事件：</p>
+<p>socket.onopen：当建立socket连接时候触发这个事件，这个时候可以使用一个方法就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.send(data);</span><br></pre></td></tr></table></figure>
+<p>这个方法可以用来发送信息，发送的数据会挂在socket的事件对象上面。</p>
+<p>socket.onclose:客户端从服务器接收数据时触发，这里我们可以吧连接断开，使用socket.close()，终止任何现有的连接。</p>
+<p>socket.onmessage: 当收到消息是触发message事件，这时候，我们可以获取一下之前发送的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.onmessage = function (e) &#123;</span><br><span class="line">	console.log(e.data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>socket.onerror:当连接失败的时候触发这个事件</p>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var socket = new WebSocket(&apos;ws://echo.websocket.org/&apos;);</span><br><span class="line">socket.onopen = function () &#123;</span><br><span class="line">	socket.send(&apos;hello&apos;);//向服务端发送信息</span><br><span class="line">&#125;</span><br><span class="line">socket.onmessage = function (e) &#123;</span><br><span class="line">	console.log(&apos;message&apos;);</span><br><span class="line">	console.log(e);</span><br><span class="line">	console.log(e.data);</span><br><span class="line">	socket.close();</span><br><span class="line">&#125;</span><br><span class="line">socket.onclose = function (e) &#123;</span><br><span class="line">	console.log(&apos;close&apos;);</span><br><span class="line">	console.log(e);</span><br><span class="line">&#125;</span><br><span class="line">socket.onerror = function () &#123;</span><br><span class="line">	console.log(&apos;error&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="websocket-的优点"><a href="#websocket-的优点" class="headerlink" title="websocket 的优点"></a>websocket 的优点</h3><p>客户端与服务器都可以主动传送数据给对方;（实现实时更新）</p>
+<p>不用频率创建TCP请求及销毁请求，减少网络带宽资源的占用，同时也节省服务器资源;</p>
+<p>好吧，那么关于HTML5中的这一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"># -HTML5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/15/HTML5学习5/" rel="next" title="HTML5学习5">
+                <i class="fa fa-chevron-left"></i> HTML5学习5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/16/Webpack学习1/" rel="prev" title="Webpack学习1">
+                Webpack学习1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#drag-和-drop"><span class="nav-number">1.</span> <span class="nav-text">drag 和 drop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始对象和目标对象"><span class="nav-number">1.1.</span> <span class="nav-text">初始对象和目标对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件详解"><span class="nav-number">1.2.</span> <span class="nav-text">事件详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dataTransfer-对象"><span class="nav-number">2.</span> <span class="nav-text">dataTransfer 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用拖拽上传文件"><span class="nav-number">3.</span> <span class="nav-text">利用拖拽上传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filereader"><span class="nav-number">4.</span> <span class="nav-text">Filereader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#websocket-通信"><span class="nav-number">5.</span> <span class="nav-text">websocket 通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产生原因："><span class="nav-number">5.1.</span> <span class="nav-text">产生原因：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立连接的握手"><span class="nav-number">5.2.</span> <span class="nav-text">建立连接的握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#websocket-API使用"><span class="nav-number">5.3.</span> <span class="nav-text">websocket API使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#websocket-的优点"><span class="nav-number">5.4.</span> <span class="nav-text">websocket 的优点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
