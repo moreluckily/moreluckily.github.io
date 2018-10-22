@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中数组的扩展。 通过Array.xxx调用的Array.from这个方法可以将两种对象转化为真正的数组：类数组，（必须有length属性）；可以遍历的对象（ES6新增的数据结构Set和Map）。 Array.from方法可以将数组的空位转化为undefined，也就是说，这个方法不会忽略空位。下面是一个将类">
+<meta name="keywords" content="-ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6数组扩展">
+<meta property="og:url" content="http://moreluckily.com/2018/10/22/ES6数组扩展/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中数组的扩展。 通过Array.xxx调用的Array.from这个方法可以将两种对象转化为真正的数组：类数组，（必须有length属性）；可以遍历的对象（ES6新增的数据结构Set和Map）。 Array.from方法可以将数组的空位转化为undefined，也就是说，这个方法不会忽略空位。下面是一个将类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/22/ES6数组扩展/a1.png">
+<meta property="og:updated_time" content="2018-10-22T15:37:43.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6数组扩展">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中数组的扩展。 通过Array.xxx调用的Array.from这个方法可以将两种对象转化为真正的数组：类数组，（必须有length属性）；可以遍历的对象（ES6新增的数据结构Set和Map）。 Array.from方法可以将数组的空位转化为undefined，也就是说，这个方法不会忽略空位。下面是一个将类">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/22/ES6数组扩展/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/22/ES6数组扩展/"/>
+
+
+
+
+
+  <title>ES6数组扩展 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/22/ES6数组扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6数组扩展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T23:12:17+08:00">
+                2018-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中数组的扩展。</p>
+<h2 id="通过Array-xxx调用的"><a href="#通过Array-xxx调用的" class="headerlink" title="通过Array.xxx调用的"></a>通过Array.xxx调用的</h2><h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from"></a>Array.from</h3><p>这个方法可以将两种对象转化为真正的数组：类数组，（必须有length属性）；可以遍历的对象（ES6新增的数据结构Set和Map）。</p>
+<p>Array.from方法可以将数组的空位转化为undefined，也就是说，这个方法不会忽略空位。下面是一个将类数组转为真正数组的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    0 : &apos;a&apos;,</span><br><span class="line">    1 : &apos;b&apos;,</span><br><span class="line">    length : 2,</span><br><span class="line">    splice : Array.prototype.splice</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj);//[&quot;a&quot;, &quot;b&quot;, splice: ƒ]</span><br><span class="line">//类数组变成一个数组</span><br><span class="line">var arr = Array.from(obj);</span><br><span class="line">console.log(arr); //[&quot;a&quot;, &quot;b&quot;]</span><br></pre></td></tr></table></figure>
+<p>当然ES5也有一个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// ES5的写法</span><br><span class="line">var arr1 = [].slice.call(obj); // [&apos;a&apos;, &apos;b&apos;]</span><br></pre></td></tr></table></figure>
+<p>上面这两种方法可能会在面试中考到，面试官可能会问，用两种方法实现类数组转化为数组这样的。</p>
+<p>最常见的产生类数组的地方就是DOM操作中，我们通过getElementsBy，，，这样的带s的都是类数组，还有一个就是arguments形参列表。利用Array.from()都可以对他们转变为真正的数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let div = docuement.getElementsByTagName(&apos;div&apos;);</span><br><span class="line">let aa = Array.from(div);</span><br><span class="line">aa.push(123);</span><br><span class="line">function foo()&#123;</span><br><span class="line">	var args = Array.from(arguments);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/22/ES6数组扩展/a1.png" alt="小demo"></p>
+<p>这样就可以正常调用数组的方法了。</p>
+<p>如果参数是一个数组，那么会返回一个一模一样的新数组（浅拷贝）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1,2,3];</span><br><span class="line">var arr2 = Array.from(arr1);</span><br><span class="line">console.log(arr2 == arr1);//false</span><br><span class="line">//说明得到的arr2和arr1是不一样的</span><br></pre></td></tr></table></figure>
+<p>来看一下是深拷贝还是浅拷贝。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [[4,5,6],2,3];</span><br><span class="line">var arr2 = Array.from(arr1);</span><br><span class="line">arr1[0].push(5);</span><br><span class="line">console.log(arr2);//[[4,5,6],2,3]</span><br><span class="line">//是一个浅拷贝</span><br><span class="line">//深拷贝和浅拷贝的区别：当B复制了A，当A改变的时候，</span><br><span class="line">//B也发生改变，就是浅拷贝</span><br></pre></td></tr></table></figure>
+<p>直接把引用值给了arr2.属于浅拷贝。</p>
+<p>Array.from 还可以接受第二个参数 ，作用类似于数组的map方法（第一参数是数组的每一项，第二个参数是下标索引） 用来对每个元素进行处理然后放入返回的数组之中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    0 : &apos;a&apos;,</span><br><span class="line">    1 : &apos;b&apos;,</span><br><span class="line">    length : 2,</span><br><span class="line">    splice : Array.prototype.splice</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj);//[&quot;a&quot;, &quot;b&quot;, splice: ƒ]</span><br><span class="line">//类数组变成一个数组</span><br><span class="line">var arr = Array.from(obj, function (item,index,arr) &#123;</span><br><span class="line">    return item + 10;</span><br><span class="line">&#125;);//相当于forEach</span><br><span class="line">console.log(arr); //[&quot;a10&quot;, &quot;b10&quot;]</span><br></pre></td></tr></table></figure>
+<p>应用：</p>
+<p>1.判断实参类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function typesof()&#123;</span><br><span class="line">	return Array.from(arguments,function value()&#123;</span><br><span class="line">		return typeof value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">typesof(null,[],NaN)</span><br><span class="line">//[&apos;object&apos;, &apos;object&apos;, &apos;number&apos;]</span><br></pre></td></tr></table></figure>
+<p>2.字符串转为数组，然后返回字符串的长度因为它能正确处理各种Unicode字符，可以避免JavaScript将大于\uFFFF的Unicode字符，算作两个字符的bug。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function countSymbols(string) &#123;</span><br><span class="line">	  return Array.from(string).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Array-of"><a href="#Array-of" class="headerlink" title="Array.of()"></a>Array.of()</h3><p>Array.of方法用于将一组值，转换为数组。这个方法的主要目的，是弥补数组构造函数Array()的不足。</p>
+<p>ES5中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = new Array(10)</span><br><span class="line">arr // [undefined * 10]</span><br></pre></td></tr></table></figure>
+<p>这个时候，我们使用Array.of的话就可以产生一些差异。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = Array.of(10)</span><br><span class="line">arr // [10]</span><br><span class="line">Array() // []</span><br><span class="line">Array(3) // [, , ,]</span><br></pre></td></tr></table></figure>
+<p>上面代码中，Array方法没有参数、一个参数、三个参数时，返回结果都不一样。只有当参数个数不少于2个时，Array()才会返回由参数组成的新数组。参数个数只有一个时，实际上是指定数组的长度。</p>
+<h2 id="通过数组直接调用的"><a href="#通过数组直接调用的" class="headerlink" title="通过数组直接调用的"></a>通过数组直接调用的</h2><h3 id="copyWithin"><a href="#copyWithin" class="headerlink" title="copyWithin()"></a>copyWithin()</h3><p>上面的两个方法是定义在数组得构造函数上的，这个copyWithin是定义在数组得原型链上面的。</p>
+<p>它可以在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组。也就是说，使用这个方法，会修改当前数组。</p>
+<p>有三个参数：</p>
+<p> 1、target（必需）：从该位置开始替换数据。<br> 2、start（可选）：从该位置开始读取数据，默认为0。如果为负值，表示倒数。<br> 3、end（可选）：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。</p>
+<p>这三个参数都应该是数值，如果不是，会自动转为数值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 4, 5].copyWithin(0, 3)</span><br><span class="line">// [4, 5, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<p>上面代码表示将从3号位直到数组结束的成员（4和5），复制到从0号位开始的位置，结果覆盖了原来的1和2。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 将3号位复制到0号位</span><br><span class="line">[1, 2, 3, 4, 5].copyWithin(0, 3, 4)</span><br><span class="line">// [4, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<h2 id="数组实例的-find-和-findIndex"><a href="#数组实例的-find-和-findIndex" class="headerlink" title="数组实例的 find() 和 findIndex()"></a>数组实例的 find() 和 findIndex()</h2><p>数组实例的find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,5,10,15];</span><br><span class="line"> var num = arr.find(function(value,index,arr) &#123;</span><br><span class="line">	   return value &gt; 9;</span><br><span class="line"> &#125;);</span><br><span class="line"> //arr = 10;</span><br></pre></td></tr></table></figure>
+<p>数组实例的findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> var index = arr.findIndex(function (value, index, arr) &#123;</span><br><span class="line">		return value &gt; 9;</span><br><span class="line">	 &#125;)</span><br><span class="line">//index = 2</span><br></pre></td></tr></table></figure>
+<h2 id="数组实例的fill"><a href="#数组实例的fill" class="headerlink" title="数组实例的fill()"></a>数组实例的fill()</h2><p>fill方法使用给定值，填充一个数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;].fill(7)</span><br><span class="line">// [7, 7, 7]</span><br><span class="line"></span><br><span class="line">new Array(3).fill(7)</span><br><span class="line">// [7, 7, 7]</span><br></pre></td></tr></table></figure>
+<p>fill方法用于空数组的初始化非常方便。数组中已有的元素，会被全部抹去。</p>
+<p>fill方法还可以接受第二个和第三个参数，用于指定填充的起始位置和结束位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;].fill(7, 1, 2)</span><br><span class="line">// [&apos;a&apos;, 7, &apos;c&apos;]</span><br></pre></td></tr></table></figure>
+<p>上面代码表示，fill方法从1号位开始，向原数组填充7，到2号位之前结束。</p>
+<h2 id="数组实例的-includes"><a href="#数组实例的-includes" class="headerlink" title="数组实例的 includes()"></a>数组实例的 includes()</h2><p>检测数组中的是否有includes()的参数值。返回一个布尔值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3].includes(2) //true</span><br></pre></td></tr></table></figure>
+<p>这个有个强大的地方就是可以判断是否为NaN。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[NaN].includes(NaN) //true</span><br></pre></td></tr></table></figure>
+<h2 id="其他实例方法"><a href="#其他实例方法" class="headerlink" title="其他实例方法"></a>其他实例方法</h2><p>数组实例的 entries()，keys() 和 values()</p>
+<p>用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用for…of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">for (let index of [&apos;a&apos;, &apos;b&apos;].keys()) &#123;</span><br><span class="line">  console.log(index);</span><br><span class="line">&#125;</span><br><span class="line">// 0</span><br><span class="line">// 1</span><br><span class="line"></span><br><span class="line">for (let elem of [&apos;a&apos;, &apos;b&apos;].values()) &#123;</span><br><span class="line">  console.log(elem);</span><br><span class="line">&#125;</span><br><span class="line">// &apos;a&apos;</span><br><span class="line">// &apos;b&apos;</span><br><span class="line"></span><br><span class="line">for (let [index, elem] of [&apos;a&apos;, &apos;b&apos;].entries()) &#123;</span><br><span class="line">  console.log(index, elem);</span><br><span class="line">&#125;</span><br><span class="line">// 0 &quot;a&quot;</span><br><span class="line">// 1 &quot;b&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><p>扩展运算符，这个在之前的数组的解构赋值里面稍微提了一下，没深讲。现在展开讲讲。</p>
+<p>扩展运算符（spread）是三个点（…）。它可以将一个数组转为用逗号分隔的参数序列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...document.getElementsByTagName(&apos;div&apos;)]</span><br><span class="line">//[&lt;div&gt;,&lt;div&gt;,&lt;div&gt;]</span><br></pre></td></tr></table></figure>
+<p>这个运算符主要用于函数的调用。例如：自定义一个push方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function push(array,...items)&#123;</span><br><span class="line">	array.push(...items);</span><br><span class="line">&#125;//传入一个数组，和另一个被push的数组</span><br><span class="line"></span><br><span class="line">function add(x,y)&#123;</span><br><span class="line">	return x + y;</span><br><span class="line">&#125;</span><br><span class="line">var number = [4,36]</span><br><span class="line">add(...numbers) // 42</span><br><span class="line">//将数组拆分之后当做x y 传进去。</span><br></pre></td></tr></table></figure>
+<h2 id="替代数组的apply方法"><a href="#替代数组的apply方法" class="headerlink" title="替代数组的apply方法"></a>替代数组的apply方法</h2><p>回忆一下，call和apply这两个方法都是可以改变this指向的，它们的主要区别在于传参形式不同。apply传的是数组的形式。这里可以使用数组的扩展运算符来进行替代。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// ES5 的写法</span><br><span class="line">function f(x, y, z) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line">var args = [0, 1, 2];</span><br><span class="line">f.apply(null, args);</span><br><span class="line"></span><br><span class="line">// ES6的写法	function f(x, y, z) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line">var args = [0, 1, 2];</span><br><span class="line">f(...args);</span><br></pre></td></tr></table></figure>
+<p>例子二：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// ES5的 写法</span><br><span class="line">var arr1 = [0, 1, 2];</span><br><span class="line">var arr2 = [3, 4, 5];</span><br><span class="line">Array.prototype.push.apply(arr1, arr2);</span><br><span class="line"></span><br><span class="line">// ES6 的写法</span><br><span class="line">var arr1 = [0, 1, 2];</span><br><span class="line">var arr2 = [3, 4, 5];</span><br><span class="line">arr1.push(...arr2)</span><br></pre></td></tr></table></figure>
+<p>上面代码的 ES5 写法中，push方法的参数不能是数组，所以只好通过apply方法变通使用push方法。有了扩展运算符，就可以直接将数组传入push方法。</p>
+<h2 id="扩展运算符的运用"><a href="#扩展运算符的运用" class="headerlink" title="扩展运算符的运用"></a>扩展运算符的运用</h2><h3 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a>合并数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// ES5</span><br><span class="line">[1, 2].concat(more)</span><br><span class="line">// ES6</span><br><span class="line">[1, 2, ...more]</span><br><span class="line"></span><br><span class="line">var arr1 = [&apos;a&apos;, &apos;b&apos;];</span><br><span class="line">var arr2 = [&apos;c&apos;];</span><br><span class="line">var arr3 = [&apos;d&apos;, &apos;e&apos;];</span><br><span class="line"></span><br><span class="line">// ES5的合并数组</span><br><span class="line">arr1.concat(arr2, arr3);</span><br><span class="line">// [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]</span><br><span class="line"></span><br><span class="line">// ES6的合并数组</span><br><span class="line">[...arr1, ...arr2, ...arr3]</span><br><span class="line">// [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]</span><br></pre></td></tr></table></figure>
+<h3 id="与解构赋值结合"><a href="#与解构赋值结合" class="headerlink" title="与解构赋值结合"></a>与解构赋值结合</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const [first, ...rest] = [1, 2, 3, 4, 5];</span><br><span class="line">first // 1</span><br><span class="line">rest  // [2, 3, 4, 5]</span><br><span class="line"></span><br><span class="line">const [first, ...rest] = [];</span><br><span class="line">first // undefined</span><br><span class="line">rest  // []</span><br><span class="line"></span><br><span class="line">const [first, ...rest] = [&quot;foo&quot;];</span><br><span class="line">first  // &quot;foo&quot;</span><br><span class="line">rest   // []</span><br></pre></td></tr></table></figure>
+<h3 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h3><p>JavaScript 的函数只能返回一个值，如果需要返回多个值，只能返回数组或对象。扩展运算符提供了解决这个问题的一种变通方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var dateFields = readDateFields(database);</span><br><span class="line">var d = new Date(...dateFields</span><br></pre></td></tr></table></figure>
+<p>上面代码从数据库取出一行数据，通过扩展运算符，直接将其传入构造函数Date。</p>
+<h3 id="将字符串转化为数组"><a href="#将字符串转化为数组" class="headerlink" title="将字符串转化为数组"></a>将字符串转化为数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...&apos;hello&apos;]</span><br><span class="line">// [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]</span><br></pre></td></tr></table></figure>
+<p>5.实现了 Iterator 接口的对象</p>
+<p>6.Map 和 Set 结构，Generator 函数</p>
+<p>5和6还没讲到，所以先放一下，讲到了再带一下。</p>
+<p>好吧，那么关于ES6的数组扩展部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># -ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/18/ES6学习2/" rel="next" title="ES6学习2">
+                <i class="fa fa-chevron-left"></i> ES6学习2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/22/ES6对象扩展/" rel="prev" title="ES6对象扩展">
+                ES6对象扩展 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过Array-xxx调用的"><span class="nav-number">1.</span> <span class="nav-text">通过Array.xxx调用的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from"><span class="nav-number">1.1.</span> <span class="nav-text">Array.from</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-of"><span class="nav-number">1.2.</span> <span class="nav-text">Array.of()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过数组直接调用的"><span class="nav-number">2.</span> <span class="nav-text">通过数组直接调用的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#copyWithin"><span class="nav-number">2.1.</span> <span class="nav-text">copyWithin()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组实例的-find-和-findIndex"><span class="nav-number">3.</span> <span class="nav-text">数组实例的 find() 和 findIndex()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组实例的fill"><span class="nav-number">4.</span> <span class="nav-text">数组实例的fill()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组实例的-includes"><span class="nav-number">5.</span> <span class="nav-text">数组实例的 includes()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他实例方法"><span class="nav-number">6.</span> <span class="nav-text">其他实例方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展运算符"><span class="nav-number">7.</span> <span class="nav-text">扩展运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替代数组的apply方法"><span class="nav-number">8.</span> <span class="nav-text">替代数组的apply方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展运算符的运用"><span class="nav-number">9.</span> <span class="nav-text">扩展运算符的运用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#合并数组"><span class="nav-number">9.1.</span> <span class="nav-text">合并数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与解构赋值结合"><span class="nav-number">9.2.</span> <span class="nav-text">与解构赋值结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的返回值"><span class="nav-number">9.3.</span> <span class="nav-text">函数的返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将字符串转化为数组"><span class="nav-number">9.4.</span> <span class="nav-text">将字符串转化为数组</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
