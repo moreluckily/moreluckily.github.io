@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。 复习上节课来个例子： 1234567891011121314&amp;lt;div&amp;gt;0&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt;var oDiv = do">
+<meta name="keywords" content="-ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习2">
+<meta property="og:url" content="http://moreluckily.com/2018/10/18/ES6学习2/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。 复习上节课来个例子： 1234567891011121314&amp;lt;div&amp;gt;0&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt;var oDiv = do">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/18/ES6学习2/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/18/ES6学习2/a2.png">
+<meta property="og:updated_time" content="2018-10-18T03:06:42.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习2">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。 复习上节课来个例子： 1234567891011121314&amp;lt;div&amp;gt;0&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt;var oDiv = do">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/18/ES6学习2/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/18/ES6学习2/"/>
+
+
+
+
+
+  <title>ES6学习2 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/18/ES6学习2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6学习2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T10:22:58+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。</p>
+<h2 id="复习上节课"><a href="#复习上节课" class="headerlink" title="复习上节课"></a>复习上节课</h2><p>来个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;0&lt;/div&gt;</span><br><span class="line">&lt;div&gt;1&lt;/div&gt;</span><br><span class="line">&lt;div&gt;2&lt;/div&gt;</span><br><span class="line">&lt;div&gt;3&lt;/div&gt;</span><br><span class="line">&lt;div&gt;4&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">var oDiv = document.getElementsByTagName(&apos;div&apos;);</span><br><span class="line">for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    (function (j) &#123;</span><br><span class="line">        oDiv[j].onclick = function () &#123;</span><br><span class="line">        alert(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(i))</span><br><span class="line">&#125;//用立即执行函数解决了闭包问题</span><br></pre></td></tr></table></figure>
+<p>其实就是相当于：</p>
+<p><img src="/2018/10/18/ES6学习2/a1.png" alt="小demo"></p>
+<p>而ES的写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//es6的写法</span><br><span class="line">var oDiv = document.getElementsByTagName(&apos;div&apos;);</span><br><span class="line">for(let i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">         let i = i;</span><br><span class="line">        oDiv[i].onclick = function () &#123;</span><br><span class="line">        alert(i);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;//for循环对let的一个处理,</span><br><span class="line">//块级作用域了</span><br><span class="line">//不用立即执行函数再写一个作用域了</span><br></pre></td></tr></table></figure>
+<h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><p>ES6中，可以从对象，数组等一些引用值当中，按照一定的模式，从其中提取值，对变量进行赋值。这被称作为结构。</p>
+<p>举个例子，利用数组来进行解构赋值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [a,b,c] = [1,2,3]</span><br><span class="line">//a = 1, b = 2, c = 3;</span><br></pre></td></tr></table></figure>
+<p>等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let a = 1; let b = 2; c = 3;</span><br></pre></td></tr></table></figure>
+<p>只要等式两端的“模式匹配”，左边的变量就会被赋值给右边对应的变量。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//结构失败</span><br><span class="line">var [a,b,c] = [1,2];</span><br><span class="line">console.log(a,b,c);//1,2,undefined</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [foo,[[bar],baz]] = [1,[[2],3]];//foo = 1,bar = 2 baz = 3;</span><br><span class="line">let [head,...tail] = [1,2,3,4] // head = 1 ,tail = [2,3,4]</span><br></pre></td></tr></table></figure>
+<p>注意，如果是想给数组解构的话，需要使用”…“来进行引用。如上面的第二个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [x,y,...z] = [&apos;a&apos;]// x = &apos;a&apos;,y = undefined ,z = [ ] ;</span><br><span class="line">let [a,[b],d] = [1,[2,3],4] // 注意这个是对应的模式才能对上</span><br></pre></td></tr></table></figure>
+<p>解构不成功（左边变量右边没有对应值），变量的值就等于undefined。如果右边不是数组（跟Iterator接口有关），那么将会报错。以下全部都会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let [foo] = 1;</span><br><span class="line">let [foo] = false;</span><br><span class="line">let [foo] = NaN ;</span><br><span class="line">let [foo] = undefined;</span><br><span class="line">let [foo] = &#123; &#125;;</span><br></pre></td></tr></table></figure>
+<p>事实上只要某种数据结构具有 Iterator 接口，都可以采用数组形式的解构赋值。以后会介绍为什么会报错。</p>
+<h2 id="默认赋值"><a href="#默认赋值" class="headerlink" title="默认赋值"></a>默认赋值</h2><p>我们还能够给它们附一个默认值。如果解构不成功就会使用默认值。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [foo = true] = [];</span><br><span class="line">foo // true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var [a = 10 , b = 20, c = 30] = [];</span><br><span class="line">console.log(a,b,c)//10,20,30</span><br><span class="line">//就是a后面为undefined时，可以这样默认赋值</span><br><span class="line">var [a = 10 , b = 20, c = 30] = [1,2,3];</span><br><span class="line">console.log(a,b,c)//1,2,3</span><br><span class="line">//后面不是undefined的时候，就直接用后面的值</span><br></pre></td></tr></table></figure>
+<p>要注意的是，ES6，内部使用严格相等运算符（“===”）来判断一个未知是否有值。所以，如果一组成员不严格等于undefined，默认值是不会生效的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let [x = 1] = [undefined];</span><br><span class="line">x // 1</span><br><span class="line">let [x = 1] = [null];</span><br><span class="line">// x = null</span><br></pre></td></tr></table></figure>
+<p>上面代码中，如果一个数组成员是null，默认值就不会生效，因为null不严格等于undefined。这里要注意的是，空跟undefined是两回事。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = new Array(3);</span><br><span class="line">// arr = [undefined * 3]</span><br><span class="line">var arr2 = new Array(3)</span><br><span class="line">arr2[1] = undefined;</span><br><span class="line">//arr2 = [undefined*1 , undefined,undefined*1]</span><br></pre></td></tr></table></figure>
+<p>用乘号表示的的undefined其实表示的是这个位置是空，但是手动加上的undefined，是占有实际位置的。这个注意下。</p>
+<p>一个数组里面都是从左向右解析的，这个要注意一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var [a = 1, b = a] = [];</span><br><span class="line">//从左到右解析</span><br><span class="line">console.log(a,b) //1,1</span><br><span class="line"></span><br><span class="line">var [a = b, b = 1] = [];</span><br><span class="line">console.log(a,b) //undefined,1</span><br></pre></td></tr></table></figure>
+<p>再举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let [a = b, b = 1] = [];</span><br><span class="line">console.log(a,b)</span><br><span class="line">//b is not defined</span><br><span class="line">//相当于：</span><br><span class="line">let a = b;</span><br><span class="line">let b = 1;//不会变量提升，b没有被定义</span><br></pre></td></tr></table></figure>
+<p>如果默认值是一个表达式，那么这个表达式是惰性求值，即只有在用到的时候，才会求值。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">	console.log(&apos;aaa&apos;);</span><br><span class="line">&#125;</span><br><span class="line">let [x = f()] = [1];</span><br></pre></td></tr></table></figure>
+<p>上面代码中，因为x能取到值，所以函数f根本不会执行。其实等价于下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let x;</span><br><span class="line">if([1][0]  === undefined)&#123;</span><br><span class="line">	x = f();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	x = [1][0];</span><br><span class="line">&#125;//所以走的是else</span><br></pre></td></tr></table></figure>
+<p>还有要注意的地方就是，默认值在解构赋值给其他变量的时候，变量必须要是已经声明的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [x = 1,y = x] = []; // x = 1 y = 1</span><br><span class="line">let [x = y,y = 1] = [];//RefernceError ,因为这个时候，默认值y还没有声明</span><br></pre></td></tr></table></figure>
+<h2 id="对象的解构赋值"><a href="#对象的解构赋值" class="headerlink" title="对象的解构赋值"></a>对象的解构赋值</h2><p>举几个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var &#123;a,b&#125; = &#123;a : 1,b : 2&#125;;</span><br><span class="line">console.log(a,b);//1,2</span><br><span class="line"></span><br><span class="line">var &#123;foo : bar&#125; = &#123;foo : 1&#125;;</span><br><span class="line">console.log(bar);  //1</span><br><span class="line">console.log(foo,bar); //foo is not defined</span><br><span class="line"></span><br><span class="line">var x;</span><br><span class="line">(&#123;x&#125; = &#123;x:1&#125;);</span><br><span class="line">console.log(x);//用表达式的方式，1</span><br></pre></td></tr></table></figure>
+<p>对象的结构域数组有一个重要的不同，就是数组的元素是按次序排列的，变量的取值由它的位置决定，而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let &#123;bar,foo.baz&#125; = &#123;foo:&apos;aaa&apos;,bar:&quot;bbb&quot;&#125;;</span><br><span class="line">foo // &quot;aaa&quot;</span><br><span class="line">bar // &quot;bbb&quot;</span><br><span class="line">baz //undefined</span><br></pre></td></tr></table></figure>
+<p>如果变量名与属性名是不一致的，必须写称一下形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var &#123;foo : baz &#125; = &#123; foo : &quot;aaa&quot;,bar : &quot;bbb&quot;&quot;&#125;;</span><br><span class="line">baz // &quot;aaa&quot;</span><br><span class="line">let obj = &#123; first : &quot;hello&quot; ,last: &quot;world&quot;&#125;;</span><br><span class="line">let &#123; first : f, last : 1 &#125; = obj;</span><br><span class="line">f // &quot;hello&quot;</span><br><span class="line">l // &quot;world&quot;</span><br></pre></td></tr></table></figure>
+<p>这实际上说明，对象的解构赋值是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo : baz , bar : ddd&#125; = &#123;foo : &quot;aaa&quot; ,bar : &quot;bbb&quot;&#125;;</span><br><span class="line">//baz = “aaa” ddd = &quot;bbb&quot;</span><br></pre></td></tr></table></figure>
+<p>真正被赋值的，是左边表达式中的属性值，在上式中，foo并没有被赋值，而是它后面的属性值被赋值。foo是匹配模式，baz才是变量，真正被赋值的是baz而不是foo。</p>
+<p>先找到同名属性，然后再赋给对应的变量。</p>
+<h2 id="对象解构赋值的嵌套"><a href="#对象解构赋值的嵌套" class="headerlink" title="对象解构赋值的嵌套"></a>对象解构赋值的嵌套</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">	p: [</span><br><span class="line">		&quot;hello&quot;,</span><br><span class="line">		&#123;y : &apos;world&apos; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;;</span><br><span class="line">let &#123; p : [x,&#123;y&#125;] &#125; = obj;</span><br><span class="line">x // &quot;hello&quot;</span><br><span class="line">y // &quot;world&quot;</span><br></pre></td></tr></table></figure>
+<p>来一个复杂一点的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var  node = &#123;	</span><br><span class="line">	loc : &#123;</span><br><span class="line">		start : &#123;</span><br><span class="line">			line : 1,</span><br><span class="line">			colomn : 5</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var &#123; loc, loc: &#123;start &#125;,loc: &#123;start:&#123;line&#125; &#125; &#125; &#125; = node;</span><br><span class="line">line //1</span><br><span class="line">loc //Object &#123; start: Object&#125;</span><br><span class="line">start //Object &#123; line : 1,colum: 5&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/18/ES6学习2/a2.png" alt="小demo"></p>
+<p>这个例子，主要是找准那个是匹配模式，哪个才是真正的变量，就可以解决问题。 第一个是对loc这个变量进行解构赋值，接着是start，接着是line。然后再找对应的属性名即可，loc对应的是一个对象，start也是一个对象，line则对应的是1.</p>
+<p>对象也有默认值，也能利用对象属性进行嵌套。就不一一举例了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123; &#125;;</span><br><span class="line">let arr = [];</span><br><span class="line">(&#123;foo : obj.prop,bar : arr[0] &#125; = &#123; foo : 123, bar : true &#125; );</span><br><span class="line">obj // &#123; prop : 123 &#125;</span><br><span class="line">arr //[true]</span><br></pre></td></tr></table></figure>
+<p>如果解构模式是嵌套的对象，而且子对象所在的父属性不存在，那么将会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo: &#123;bar&#125;&#125; = &#123;baz: &apos;baz&apos;&#125;;</span><br><span class="line"> //TypeError : Cannot match against &apos;undefined&apos; or &apos;null&apos;.</span><br></pre></td></tr></table></figure>
+<p>因为这个时候的foo是undefined，undefined再取自属性自然是报错。</p>
+<p>还有一个就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let x;</span><br><span class="line">&#123;x&#125; = &#123;x: 1&#125;;</span><br><span class="line">// SyntaxError: syntax error 因为 JavaScript 引擎会将&#123;x&#125;理解成一个代码块，我们需要将它变为表达式。</span><br><span class="line"></span><br><span class="line">let x;</span><br><span class="line">(&#123; x &#125; = &#123; x : 1 &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="原始值的解构赋值"><a href="#原始值的解构赋值" class="headerlink" title="原始值的解构赋值"></a>原始值的解构赋值</h2><p>原始值的解构赋值，都会先转化为对象，然后再结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">const [a, b, c, d, e] = &apos;hello&apos;;</span><br><span class="line">a // &quot;h&quot;</span><br><span class="line">b // &quot;e&quot;</span><br><span class="line">c // &quot;l&quot;</span><br><span class="line">d // &quot;l&quot;</span><br><span class="line">e // &quot;o&quot; //字符串的结构</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line">let &#123;length : len&#125; = &apos;hello&apos;;</span><br><span class="line">len // 5 类数组中的length解构</span><br><span class="line"></span><br><span class="line">3.</span><br><span class="line">let &#123;toString: s&#125; = 123;</span><br><span class="line">s === Number.prototype.toString // true</span><br><span class="line"></span><br><span class="line">let &#123;toString: s&#125; = true;</span><br><span class="line">s === Boolean.prototype.toString // true</span><br></pre></td></tr></table></figure>
+<p>第三个代码块中，数值和布尔值得包装对象都有toString属性，因此变量s都能取到值。</p>
+<p>解构赋值的规则是，只要等号右边的值不是对象或数组，就先将其转为对象。由于undefined和null无法转为对象，所以对它们进行解构赋值，都会报错。</p>
+<h2 id="函数的解构赋值"><a href="#函数的解构赋值" class="headerlink" title="函数的解构赋值"></a>函数的解构赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function add([x,y])&#123;</span><br><span class="line">	return x + y;</span><br><span class="line">&#125;</span><br><span class="line">add([1,2]); //3</span><br></pre></td></tr></table></figure>
+<p>但在传入参数的那一刻，数组参数就被解构成变量x和y。</p>
+<p>来两个例题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function move(&#123;x = 0, y = 0&#125; = &#123;&#125;) &#123;</span><br><span class="line">	return [x, y];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  move(&#123;x: 3, y: 8&#125;); // [3, 8]</span><br><span class="line">  move(&#123;x: 3&#125;); // [3, 0]</span><br><span class="line">  move(&#123;&#125;); // [0, 0]</span><br><span class="line">  move(); // [0, 0]</span><br></pre></td></tr></table></figure>
+<p>换个写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function move(&#123;x, y&#125; = &#123; x: 0, y: 0 &#125;) &#123;</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">move(&#123;x: 3, y: 8&#125;); // [3, 8]</span><br><span class="line">move(&#123;x: 3&#125;); // [3, undefined]</span><br><span class="line">move(&#123;&#125;); // [undefined, undefined]</span><br><span class="line">move(); // [0, 0]</span><br></pre></td></tr></table></figure>
+<p>上面代码是为函数move的参数指定默认值，而不是为变量x和y指定默认值，所以会得到与前一种写法不同的结果。</p>
+<p>undefined会触发函数参数的默认值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, undefined, 3].map((x = &apos;yes&apos;) =&gt; x);// [ 1, &apos;yes&apos;, 3 ]</span><br></pre></td></tr></table></figure>
+<p>好吧，那么关于ES6的第二部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># -ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/18/ES6学习1/" rel="next" title="ES6学习1">
+                <i class="fa fa-chevron-left"></i> ES6学习1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/18/ES6学习3/" rel="prev" title="ES6学习3">
+                ES6学习3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复习上节课"><span class="nav-number">1.</span> <span class="nav-text">复习上节课</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值"><span class="nav-number">2.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认赋值"><span class="nav-number">3.</span> <span class="nav-text">默认赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的解构赋值"><span class="nav-number">4.</span> <span class="nav-text">对象的解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象解构赋值的嵌套"><span class="nav-number">5.</span> <span class="nav-text">对象解构赋值的嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原始值的解构赋值"><span class="nav-number">6.</span> <span class="nav-text">原始值的解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的解构赋值"><span class="nav-number">7.</span> <span class="nav-text">函数的解构赋值</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

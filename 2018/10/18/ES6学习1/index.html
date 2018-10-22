@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，开始一起来学习一下ES6。 什么是ES6首先，ES6的全称是ECMAScript6，因为实在2015年发布的，所以也可以叫它ES2015，我的理解其实就是ES5的基础上加了一些特殊语句，这些特殊的语句是ES5中的基础上加一些算法来更加简单的去实现对浏览器的操作。 ECMAscript 和JavaScript的关系JavaScript的创造者Netsca">
+<meta name="keywords" content="-ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习1">
+<meta property="og:url" content="http://moreluckily.com/2018/10/18/ES6学习1/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，开始一起来学习一下ES6。 什么是ES6首先，ES6的全称是ECMAScript6，因为实在2015年发布的，所以也可以叫它ES2015，我的理解其实就是ES5的基础上加了一些特殊语句，这些特殊的语句是ES5中的基础上加一些算法来更加简单的去实现对浏览器的操作。 ECMAscript 和JavaScript的关系JavaScript的创造者Netsca">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-18T02:28:21.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习1">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，开始一起来学习一下ES6。 什么是ES6首先，ES6的全称是ECMAScript6，因为实在2015年发布的，所以也可以叫它ES2015，我的理解其实就是ES5的基础上加了一些特殊语句，这些特殊的语句是ES5中的基础上加一些算法来更加简单的去实现对浏览器的操作。 ECMAscript 和JavaScript的关系JavaScript的创造者Netsca">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/18/ES6学习1/"/>
+
+
+
+
+
+  <title>ES6学习1 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/18/ES6学习1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6学习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T10:22:29+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天进入一个新的开始，开始一起来学习一下ES6。</p>
+<h2 id="什么是ES6"><a href="#什么是ES6" class="headerlink" title="什么是ES6"></a>什么是ES6</h2><p>首先，ES6的全称是ECMAScript6，因为实在2015年发布的，所以也可以叫它ES2015，我的理解其实就是ES5的基础上加了一些特殊语句，这些特殊的语句是ES5中的基础上加一些算法来更加简单的去实现对浏览器的操作。</p>
+<h2 id="ECMAscript-和JavaScript的关系"><a href="#ECMAscript-和JavaScript的关系" class="headerlink" title="ECMAscript 和JavaScript的关系"></a>ECMAscript 和JavaScript的关系</h2><p>JavaScript的创造者Netscape公司将JavaScript提交给国际标准化组织ECMA，希望该语言成为国际标准，于是ECMA就规定了JavaScript为浏览器的脚本语言的标准，并将其命名为ECMAscript。</p>
+<p>因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 ActionScript）。日常场合，这两个词是可以互换的。</p>
+<h2 id="let-命令"><a href="#let-命令" class="headerlink" title="let 命令"></a>let 命令</h2><p>今天开始讲一下ES6中新加的一个命令，let命令。</p>
+<p>ES6新增了let命令，用来声明变量，它的用法类似于var,但是所声明的变量，跟var声明的变量有很大的区别。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>首先它是ES6中的语法，为了让浏览器具有更好的兼容性，首先需要遵守”one javascript”，意思就是新加的一些功能，但之前的语法还是可以用的。即不会像python一样，python3语法不能用在python2中。</p>
+<p>在非严格模式下，let不是关键字。</p>
+<p>我们可以利用let采取以下方式来进行声明变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	let a = 30;</span><br><span class="line">&#125;//这里有个块级作用域的概念，下节课再说块级作用域的概念</span><br></pre></td></tr></table></figure>
+<p>然后，究竟var和let有什么区别呢？别着急，来看一下这个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	let a = 30;</span><br><span class="line">	var b = 20;</span><br><span class="line">	console.log(a);//30</span><br><span class="line">&#125;</span><br><span class="line">console.log(a) // a is not defined;</span><br><span class="line">console.log(b) // 20</span><br></pre></td></tr></table></figure>
+<p>看到这里，大家应该都知道它们的第一个区别了，利用let声明的变量，就像是一个局部作用域(就是后面要讲的块级作用域)，只能在其内部才能访问，而利用var声明的，就可以提到全局里面。就是这样的，利用let声明的变量，只在它自己的代码块里面有效。之后，别忘了，这里的代码块是需要利用{}，进行包含的。后面会讲到这一点。</p>
+<p>利用let来进行变量声明，有一点好处，就是减少全局变量的污染。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; 10 ; i ++)&#123; .........&#125;//handle function</span><br><span class="line">console.log(i);  //  i  is not defined;</span><br></pre></td></tr></table></figure>
+<p>这时候，要是我们利用var来进行i的生命的时候，如果for循环都是利用i，那么就可能会出现问题。但是利用let就不会，因为它只在自己的代码块里才能被访问。</p>
+<p>我们再来看一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var a = [ ] ;</span><br><span class="line">for ( var i = 0; i &lt; 10 ; i++) &#123;</span><br><span class="line">a [ i ] = function () &#123;</span><br><span class="line">console.log(i)</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">a[ 6 ]();  // 10 </span><br><span class="line"></span><br><span class="line">var a = [ ] ;</span><br><span class="line">for ( let i = 0; i &lt; 10 ; i++) &#123;</span><br><span class="line">a [ i ] = function () &#123;</span><br><span class="line">console.log(i)</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">a[ 6 ]();  // 6</span><br></pre></td></tr></table></figure>
+<p>为什么会出现这种情况呢，因为，let声明的i，只在该轮循环有效，所以每一次循环的i其实都是一个新的变量，JavaScript内部会记住上一轮循环的值，初始化本轮的变量的时候，就在上一轮循环的基础上进行计算。</p>
+<p>体现let内部作用域机制在一个地方显示的更加明显，也是循环这里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(let = 0; i &lt; 3; i++)&#123;</span><br><span class="line">  let i = &quot;abc&quot;;</span><br><span class="line">  console.log(i);// 3*abc</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">for(let = 0; i &lt; 3; i++)&#123;</span><br><span class="line">  console.log(i);// i is not define;</span><br><span class="line">  let i = &quot;abc&quot;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>我们看到代码块1，打印出的是3个abc，但是交换了声明和打印顺序，却爆出了错误，说明了，循环用的i变量和子域中的i变量不是同一个i，即使他们的名字相同，也是不可以的。它们有各自的作用域。</p>
+<h2 id="let不存在变量提升"><a href="#let不存在变量提升" class="headerlink" title="let不存在变量提升"></a>let不存在变量提升</h2><p>这是let声明和var声明的一个重要区别，let声明的变量不存在变量提升。let所声明的变量，如果在声明之前就使用，就会报错。报的是引用错误(referenceError)；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// use var to declare</span><br><span class="line">console.log(foo);//undefined,会有一个预编译环节</span><br><span class="line">var foo = 5;</span><br><span class="line"></span><br><span class="line">//use let to declare</span><br><span class="line">console.log(foo); // foo is not define</span><br><span class="line">let  foo = 5;      现在说一下，为什么会出现这种情况。</span><br></pre></td></tr></table></figure>
+<p>首先我们要知道，一个变量的正式生成需要有三个阶段：声明阶段，初始化阶段，赋值阶段；</p>
+<p>利用var进行声明的变量，当JavaScript解析器进入该代码块，该变量的声明阶段和初始化阶段就被立即执行了，这时候，变量的值就是undefined，就是我们平常所熟知的变量提升。最后在赋值阶段正式赋值。</p>
+<p>对于let进行声明的变量，当JavaScript解析器进入了该代码块，声明阶段和初始化阶段，并不是一起就被立即执行的，而是先执行了声明阶段，但是，初始化阶段是要在解析到let语句的时候才被初始化的。这时候，我们要引入了一个新名词——————暂时失效区(暂时性死区)。我将会在接下来介绍，先略过。所有，变量还没有初始化就被使用，就会报错。</p>
+<p>那什么是暂时失效区呢？就是，当一个变量进入了暂时失效区（暂时性死区），只要访问了该变量就会报错。我们都知道，在ES6之前，利用typeof来判断一个未经声明的变量是不会报错的，但是对于ES6，因为let的存在，就不一样了。如果利用let进行声明变量，当解析器没有读到let语句的时候，你就是用了typeof，此时的变量在暂时失效区，所以系统将会报错。</p>
+<p>所以，为了保证平稳的变量声明，有些技巧需要采取：</p>
+<p>声明，初始化变量之后在使用变量，万能解决方法。</p>
+<p>尽可能的减少变量数，暴露变量越少，代码月稳定  </p>
+<h2 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h2><p>let不允许重复在相同作用域内重复声明一个变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function ()&#123;</span><br><span class="line">   let a = 10;</span><br><span class="line">   var a = 1 ;</span><br><span class="line">  &#125;//报错</span><br><span class="line"></span><br><span class="line">function()&#123;</span><br><span class="line"> let a = 10;</span><br><span class="line"> let a = 30;</span><br><span class="line"> &#125;//报错         不能在函数内部重新声明参数。</span><br><span class="line"></span><br><span class="line">function(arg)&#123;</span><br><span class="line">	let arg = 35;//报错</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">function(arg)&#123;</span><br><span class="line">	&#123;</span><br><span class="line">	 let arg = 93;</span><br><span class="line">	&#125;//不报错</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="const-命令"><a href="#const-命令" class="headerlink" title="const 命令"></a>const 命令</h2><h3 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h3><p>const声明一个只读变量，相信很多学过C或者C++的同学都应该听说过，在很多语言当中，它都是用来声明常量的。</p>
+<p>注意const声明的是一个只读的常量，常量的值是不能够修改的。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const PI = 3.14;</span><br><span class="line">PI // 3.14;</span><br><span class="line">PI = 3;</span><br><span class="line">// TypeError: ASsignment to constant variable 类型错误： 赋值给了一个常量</span><br></pre></td></tr></table></figure>
+<p>还有一种情况就是，如果声明了一个常量，但是没有赋值的话也还是会报错的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const foo;</span><br><span class="line">// SyntaxError: Missing initializer in const declaration 声明的常量当中没有初始化</span><br></pre></td></tr></table></figure>
+<p>const的作用域与let命令是基本相同的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">只在声明所在的块级作用域内有效。</span><br><span class="line">没有声明提升</span><br><span class="line">存在临时死区</span><br><span class="line">只能在声明的位置后面使用。</span><br><span class="line">不能重复声明；</span><br></pre></td></tr></table></figure>
+<p>看一下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if(true)&#123;</span><br><span class="line">	console.log(MAX); //ReferenceError 引用错误</span><br><span class="line">	const MAX = 5;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var message = &quot; hello &quot;;</span><br><span class="line">let age = 25;</span><br><span class="line">// those two code will Report errors</span><br><span class="line">const message = &quot;Goodbye&quot;;</span><br><span class="line">const age = 30; </span><br><span class="line">//Uncaught SyntaxError: Identifier &apos;message&apos; has already been declared. 已经声明过</span><br></pre></td></tr></table></figure>
+<h2 id="const本质"><a href="#const本质" class="headerlink" title="const本质"></a>const本质</h2><p>const实际上保证的并不是变量的值不能改动，而是变量指向的那个内存地址不得改动。对于简单的原始值，值就保存在那个内存地址，因此等同于常量。但对于引用值，变量指向的内存地址保存的只会是一个指针，const只能保证这个指针是固定的，至于它指向的数据结构是不是可变的就是完全不能控制了。因此，将一个对象声明为常量需要小心出漏洞。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123; &#125;;</span><br><span class="line">foo.prop = 123;</span><br><span class="line">foo.prop = 123;</span><br><span class="line">//make the foo point to another Object</span><br><span class="line">foo = &#123; &#125; //TypeError ： &quot;foo&quot; is read-only</span><br></pre></td></tr></table></figure>
+<p>只读，满足增删改查，但是不能改变foo的指向。</p>
+<p>拓展：如果想将对象冻结，可以使用Object.freeze方法。这样它就变成了只能查，增删改都是不能实现的，即是新增了，马上会被还原。</p>
+<h2 id="顶层对象的属性"><a href="#顶层对象的属性" class="headerlink" title="顶层对象的属性"></a>顶层对象的属性</h2><p>这节课稍微提了一下global对象，这个是个顶层对象。在浏览器中，指的是window对象。顶层对象的属性是跟全局变量挂钩的，这个是被认为JavaScript语言中最大的设计败笔之一。这样的设计带来了几个很大的问题，首先是没法在编译时就报出变量未声明的错误，只有在运行的时候才能知道（污染全局变量）；其次，很容易在全局中声明了一个变量，这样，就会导致有很多的全局变量，最后顶层对象的属性到处都是可以读写的，这样既不利于模块化编程，也不利于多人开发，容易产生变量冲突。另一方面，window对象是有实体含义的，指的是浏览器的窗口对象，这样也是不合适的。</p>
+<p>在ES6中，为了改变这一点，一方面规定，let和const和class命令声明全局变量的时候，不属于顶层对象属性，而且当他们重复声明的时候，将会报错，这就很方便我们知道什么时候我们重复声明一个变量，提高开发效率。为了保持兼容性，var命令和function命令声明的全局变量，依旧是顶层对象的属性；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = 1; </span><br><span class="line">window.a // 1</span><br><span class="line">var b = 2;</span><br><span class="line">window.b //undefined</span><br></pre></td></tr></table></figure>
+<h2 id="ES6-块级作用域"><a href="#ES6-块级作用域" class="headerlink" title="ES6 块级作用域"></a>ES6 块级作用域</h2><p>ES5里，以function来划分作用域，大括号{}却限定不了var的作用域，我们把它叫做函数作用域。</p>
+<p>ES6里增加了let，const, 声明在{<br>}, -&gt; “function,if ,for等语句” 的变量作用域被限制在块级。（严格模式下 function 变量属于块级作用域）</p>
+<p>let的出现实际上为JavaScript新增了块级作用域。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f4() &#123;</span><br><span class="line">	let n = 5;</span><br><span class="line">	if(true)&#123;</span><br><span class="line">		let n = 10;</span><br><span class="line">	&#125;</span><br><span class="line">	console.log(n); // 5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然都是声明变量n，但是外层的代码不受内层代码的影响，所以就是5；如果说变量是利用var声明的话，那么最后输出就是10；</p>
+<p>另外，块级作用域是可以进行任意嵌套的。内层作用域可以定义外层作用域的同名变量。块级作用域的出现实际上使广泛应用的立即执行函数表达式不在必要了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var a = [ ] ;</span><br><span class="line">for ( var i = 0; i &lt; 10 ; i++) &#123;</span><br><span class="line">	a [ i ] = function () &#123;</span><br><span class="line">		console.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">a[ 6 ]();  // 10，闭包 </span><br><span class="line"></span><br><span class="line">var a = [ ] ;</span><br><span class="line">for ( let i = 0; i &lt; 10 ; i++) &#123;</span><br><span class="line">	a [ i ] = function () &#123;</span><br><span class="line">		console.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">a[ 6 ]();  // 6</span><br></pre></td></tr></table></figure>
+<p>这个要注意的是，使用let变量声明的这个i在for循环代码块里跟花括号里面的是不一样的，但是在内部通过转换是的a数组可以获取的。这样我们可以很方便就解决了闭包问题。</p>
+<h2 id="块级作用域和函数声明"><a href="#块级作用域和函数声明" class="headerlink" title="块级作用域和函数声明"></a>块级作用域和函数声明</h2><p>ES5中规定，函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域中声明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if(true)&#123;	</span><br><span class="line">	function f()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">//情况2 </span><br><span class="line">try &#123;</span><br><span class="line">	function f()&#123;&#125;</span><br><span class="line">&#125; catch(e)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面两种情况都是不允许的。但是在浏览器中，为了兼容以前的代码，还是支持块级作用域之中声明函数，因此上面两种情况都是不会报错的。</p>
+<p>ES6引入了块级作用域，明确允许在块级作用域之中声明函数。ES6规定，块级作用域之中，函数声明语句的行为类似于let，在块级作用域之外不可引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">	console.log(&apos;I am outside&apos;);</span><br><span class="line">&#125;</span><br><span class="line">(function () &#123;</span><br><span class="line">	if(true)&#123;</span><br><span class="line">		function f()&#123;</span><br><span class="line">		    console.log(&quot;i am inside&quot;)&apos;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	f();</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<p>这部分其实每个浏览器都可能有自己的制定情况，在Chrome中会打印出outside。（严格模式），如果在非严格模式下，是会打印出inside。。。</p>
+<p>还有一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">	console.log(321);</span><br><span class="line">&#125;</span><br><span class="line">(function () &#123;</span><br><span class="line">   	 f();</span><br><span class="line">	if(1)&#123;// 变量提升</span><br><span class="line">		function f()&#123;</span><br><span class="line">			console.log(123);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<p>在严格模式下打印出321，在非严格模式中报错：Uncaught TypeError: f is not a function，实际操作的代码相当于是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">	console.log(321);</span><br><span class="line">&#125;</span><br><span class="line">(function ()&#123;</span><br><span class="line">	var f = undefined;</span><br><span class="line">	if(false)&#123;</span><br><span class="line">		function f() &#123;</span><br><span class="line">			console.log(123);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	f();</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<p>所以就报错not a function。</p>
+<p>反正，避免以上所有坑，就不要再if语句里面定义function就OK。</p>
+<p>好吧，那么关于ES6的第一部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># -ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/17/Webpack之模块化/" rel="next" title="Webpack之模块化">
+                <i class="fa fa-chevron-left"></i> Webpack之模块化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/18/ES6学习2/" rel="prev" title="ES6学习2">
+                ES6学习2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是ES6"><span class="nav-number">1.</span> <span class="nav-text">什么是ES6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAscript-和JavaScript的关系"><span class="nav-number">2.</span> <span class="nav-text">ECMAscript 和JavaScript的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-命令"><span class="nav-number">3.</span> <span class="nav-text">let 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">3.1.</span> <span class="nav-text">基本用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let不存在变量提升"><span class="nav-number">4.</span> <span class="nav-text">let不存在变量提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不允许重复声明"><span class="nav-number">5.</span> <span class="nav-text">不允许重复声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const-命令"><span class="nav-number">6.</span> <span class="nav-text">const 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法-1"><span class="nav-number">6.1.</span> <span class="nav-text">基本用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const本质"><span class="nav-number">7.</span> <span class="nav-text">const本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶层对象的属性"><span class="nav-number">8.</span> <span class="nav-text">顶层对象的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-块级作用域"><span class="nav-number">9.</span> <span class="nav-text">ES6 块级作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块级作用域和函数声明"><span class="nav-number">10.</span> <span class="nav-text">块级作用域和函数声明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
