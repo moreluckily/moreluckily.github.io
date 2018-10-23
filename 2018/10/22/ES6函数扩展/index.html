@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-ES6," />
 
 
 
@@ -86,14 +86,18 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中函数的扩展。 今天主要讲的是作用域，这个原来是个大坑，有些点跟原来的认识差异比较大。最典型的就是在父级和子级中声明同一个变量，不存在覆盖问题了。 函数参数的默认值ES6中可以在函数的参数中设置默认值，即直接写在参数定义的后面。 1234function func(x,y = &amp;quot;hello&amp;quo">
+<meta name="keywords" content="-ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6函数扩展">
 <meta property="og:url" content="http://moreluckily.com/2018/10/22/ES6函数扩展/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中函数的扩展。 今天主要讲的是作用域，这个原来是个大坑，有些点跟原来的认识差异比较大。最典型的就是在父级和子级中声明同一个变量，不存在覆盖问题了。 函数参数的默认值ES6中可以在函数的参数中设置默认值，即直接写在参数定义的后面。 1234function func(x,y = &amp;quot;hello&amp;quo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-23T02:43:15.474Z">
+<meta property="og:updated_time" content="2018-10-23T06:04:55.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6函数扩展">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中函数的扩展。 今天主要讲的是作用域，这个原来是个大坑，有些点跟原来的认识差异比较大。最典型的就是在父级和子级中声明同一个变量，不存在覆盖问题了。 函数参数的默认值ES6中可以在函数的参数中设置默认值，即直接写在参数定义的后面。 1234function func(x,y = &amp;quot;hello&amp;quo">
 
 
 
@@ -306,6 +310,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -327,7 +353,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  3.1k
                 </span>
               
 
@@ -343,7 +369,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -364,7 +390,82 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中函数的扩展。</p>
+<p>今天主要讲的是作用域，这个原来是个大坑，有些点跟原来的认识差异比较大。最典型的就是在父级和子级中声明同一个变量，不存在覆盖问题了。</p>
+<h2 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h2><p>ES6中可以在函数的参数中设置默认值，即直接写在参数定义的后面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function func(x,y = &quot;hello&quot;)&#123;</span><br><span class="line">    console.log(x,y);</span><br><span class="line">&#125;</span><br><span class="line">func(&quot;hey&quot;);// &quot;hey hello&quot;</span><br></pre></td></tr></table></figure>
+<p>如果没有赋值就会使用默认值，赋值了就直接使用实参。</p>
+<p>这样写的好处是，让阅读代码的人，可以立刻意识到哪些参数是可以省略的，不用查看函数体或文档；其次，有利于将来的代码优化，即使未来的版本在对外接口中，彻底拿掉这个参数，也不会导致以前的代码无法运行。</p>
+<p>参数变量是默认声明的，所以不能用let或const再次声明。否则会报错。当然也不能有同名的形参。</p>
+<p>另外，一个容易忽略的地方是，参数默认值不是传值的，而是每次都重新计算默认值表达式的值。也就是说，参数默认值是惰性求值的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let x = 99;</span><br><span class="line">function foo(p = x + 1) &#123;</span><br><span class="line">console.log(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo() // 100</span><br><span class="line"></span><br><span class="line">x = 100;</span><br><span class="line">foo() // 101</span><br></pre></td></tr></table></figure>
+<p>上面代码中，参数p的默认值是x + 1。这时，每次调用函数foo，都会重新计算x + 1，而不是默认p等于 100。</p>
+<h2 id="参数默认值的位置"><a href="#参数默认值的位置" class="headerlink" title="参数默认值的位置"></a>参数默认值的位置</h2><p>通常情况下，定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function f(x = 1, y) &#123;</span><br><span class="line">    return [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f() // [1, undefined]</span><br><span class="line">f(2) // [2, undefined])</span><br><span class="line">f(, 1) // 报错</span><br><span class="line">f(undefined, 1) // [1, 1]</span><br><span class="line"></span><br><span class="line">function f(x, y = 5, z) &#123;</span><br><span class="line">    return [x, y, z];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f() // [undefined, 5, undefined]</span><br><span class="line">f(1) // [1, 5, undefined]</span><br><span class="line">f(1, ,2) // 报错</span><br><span class="line">f(1, undefined, 2) // [1, 5, 2]</span><br></pre></td></tr></table></figure>
+<p>上面代码中，有默认值的参数都不是尾参数。这时，无法只省略该参数，而不省略它后面的参数，除非显式输入undefined。</p>
+<p>如果传入undefined，将触发该参数等于默认值，null则没有这个效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function foo(x = 5, y = 6) &#123;</span><br><span class="line">console.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(undefined, null)</span><br><span class="line">// 5 null</span><br></pre></td></tr></table></figure>
+<p>上面代码中，x参数对应undefined，结果触发了默认值，y参数等于null，就没有触发默认值。</p>
+<h2 id="函数的length属性"><a href="#函数的length属性" class="headerlink" title="函数的length属性"></a>函数的length属性</h2><p>指定默认值之后，函数的length属性，将返回没有指定默认值的参数个数，指定默认值之后，length属性就会不准确。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function (a) &#123;&#125;).length // 1；1-0 = 1</span><br><span class="line">(function (a = 5) &#123;&#125;).length // 0； 0-0 = 0</span><br><span class="line">(function (a, b, c = 5) &#123;&#125;).length // 2； 3 - 1- 2</span><br></pre></td></tr></table></figure>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>先这里声明一下，ES6里面的作用域，跟咱么以前的作用域是不能混为一谈的了。两个一样的变量，一个在声明父级中，一个声明在子级中，两者是不会影响的。有了这个认识之后就可以向下讲了。</p>
+<p>一旦设置了参数的默认值，函数进行声明初始化时，参数形成一个单独的作用域（context），等到初始化结束，这个作用域就会消失。这种行为，在不设置参数默认值的时候是不会出现的。来看几个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line"></span><br><span class="line">function f(x, y = x) &#123;</span><br><span class="line">console.log(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(2) // 2 </span><br><span class="line"></span><br><span class="line">let x = 1;</span><br><span class="line">---</span><br><span class="line">function f(y = x) &#123;</span><br><span class="line">let x = 2;</span><br><span class="line">console.log(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f() // 1</span><br><span class="line">---</span><br><span class="line">function f(y = x) &#123;</span><br><span class="line">let x = 2;</span><br><span class="line">console.log(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f() // ReferenceError: x is not defined</span><br></pre></td></tr></table></figure>
+<p>通过上面这些例子，应该可以了解到具体是怎样的指向的。只要，传参了，就会使用实参。如果没有，那么就会向上寻找默认值，如果都没有就报错，并不会向底部的局部变量去寻找参数。再来一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">function foo(x, y = function() &#123; x = 2; &#125;) &#123;</span><br><span class="line">var x = 3;</span><br><span class="line">y();</span><br><span class="line">console.log(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo() // 3</span><br><span class="line">x // 1</span><br></pre></td></tr></table></figure>
+<p>上面代码，这里注意的是惰性操作。不过，尽管y执行了，但是x的指向是他自己的那个作用域，不能影响到外层作用域，最后x还是1，foo执行，就打印出自己作用域中的3.注意的是，let声明实现不了这样的实验，不能重复声明。</p>
+<p>如果把foo中的var去掉了呢？？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">function foo(x, y = function() &#123; x = 2; &#125;) &#123;</span><br><span class="line">x = 3;//即使没有声明，也是不能改变全局的x</span><br><span class="line">y();</span><br><span class="line">console.log(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo() // 2</span><br><span class="line">x // 全局的x  =  1</span><br></pre></td></tr></table></figure>
+<p>这个时候，x就是指向的参数作用域里的x，这个时候的x就是2，因为y这个时候执行了，x就是2.但是全局里面的还是1.</p>
+<p>这个东西，要是笔试要难为咱们的话，还是有很多坑能坑我们的。注意一下。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//利用参数默认值，可以指定某一个参数不得省略，如果省略就抛出一个错误。</span><br><span class="line"></span><br><span class="line">function throwIfMissing() &#123;</span><br><span class="line">throw new Error(&apos;Missing parameter&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function foo(mustBeProvided = throwIfMissing()) &#123;</span><br><span class="line">return mustBeProvided;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line">// Error: Missing parameter</span><br></pre></td></tr></table></figure>
+<p>有句话“道高一尺魔高一丈”，既然能报错，我也能表示参数是可以忽略的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function foo(optional = undefined) &#123; ··· &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h2><p>ES6 引入rest参数这样来表示(…value)用于获取函数的多与参数，这样就不用使用arguments对象了。而且arguments是一个类数组，它不能使用很多数组的方法，而rest是一个真正的数组，它可以使用数组的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function add(...values) &#123;</span><br><span class="line">let sum = 0;</span><br><span class="line"></span><br><span class="line">for (var val of values) &#123;</span><br><span class="line">    sum += val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(2, 5, 3,&quot;hehe&quot;) // 10hehe</span><br></pre></td></tr></table></figure>
+<p>注意，rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。</p>
+<p>还有就是函数的length属性，不包括rest参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function(a) &#123;&#125;).length  // 1</span><br><span class="line">(function(...a) &#123;&#125;).length  // 0</span><br><span class="line">(function(a, ...b) &#123;&#125;).length  // 1</span><br></pre></td></tr></table></figure>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>从 ES5 开始，函数内部可以设定为严格模式。在ES2016 做了一点修改，规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错。</p>
+<p>这样规定的原因是，函数内部的严格模式，同时适用于函数体和函数参数。但是，函数执行的时候，先执行函数参数，然后再执行函数体。这样就有一个不合理的地方，只有从函数体之中，才能知道参数是否应该以严格模式执行，但是参数却应该先于函数体执行。</p>
+<h2 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h2><p>函数的name属性，返回该函数的函数名。</p>
+<p>这样规定的原因是，函数内部的严格模式，同时适用于函数体和函数参数。但是，函数执行的时候，先执行函数参数，然后再执行函数体。这样就有一个不合理的地方，只有从函数体之中，才能知道参数是否应该以严格模式执行，但是参数却应该先于函数体执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var f = function () &#123;&#125;;</span><br><span class="line"></span><br><span class="line">// ES5</span><br><span class="line">f.name // &quot;&quot;</span><br><span class="line"></span><br><span class="line">// ES6</span><br><span class="line">f.name // &quot;f</span><br></pre></td></tr></table></figure>
+<p>如果是一个函数表达式赋值给一个变量，那么调用函数的name属性的时候，返回的是函数名字，而不是变量名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const bar = function baz() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">// ES5</span><br><span class="line">bar.name // &quot;baz&quot;</span><br><span class="line"></span><br><span class="line">// ES6</span><br><span class="line">bar.name // &quot;baz&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>这个比较重要的。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>ES6中，允许使用“=&gt;”箭头，来定义函数，我们称之为箭头函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var f = v =&gt; v;</span><br><span class="line">//is the same as </span><br><span class="line">var f = function(v)&#123;</span><br><span class="line">    return v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.当箭头函数不需要参数或需要多个参数，就要使用一个圆括号代表参数部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var f = () =&gt; 5;</span><br><span class="line">//is the same as</span><br><span class="line">var f = function () &#123;return 5&#125;;</span><br><span class="line"></span><br><span class="line">var sum = (num1,num2) =&gt; num1 + num2</span><br><span class="line">//is the same as </span><br><span class="line">var sum = function(num1,num2)&#123;</span><br><span class="line">    return num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var sum = (num1, num2) =&gt; &#123; return num1 + num2; &#125;</span><br></pre></td></tr></table></figure>
+<p>3.由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//Error: Uncaught SyntaxError: Unexpected token :</span><br><span class="line">let getTempItem = id =&gt; &#123; id: id, name: &quot;Temp&quot; &#125;;</span><br><span class="line"></span><br><span class="line">// no error</span><br><span class="line">let getTempItem = id =&gt; (&#123; id: id, name: &quot;Temp&quot; &#125;);</span><br></pre></td></tr></table></figure>
+<p>4.如果箭头函数只有一行语句，且不需要返回值，可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let func = () =&gt; void noReturnValue();</span><br></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="与变量解构结合使用"><a href="#与变量解构结合使用" class="headerlink" title="与变量解构结合使用"></a>与变量解构结合使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const full = (&#123;left,middle,right&#125;) =&gt; left + middle + right;</span><br><span class="line">//is the same as </span><br><span class="line">function add(number)&#123;</span><br><span class="line">    return number.left + number.middle + number.right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样写使得代码更加简洁，但是问题就是，可阅读性有待加强。</p>
+<h3 id="简化回调函数"><a href="#简化回调函数" class="headerlink" title="简化回调函数"></a>简化回调函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3].map(function(x)&#123;</span><br><span class="line">    return x * x;</span><br><span class="line">&#125;)</span><br><span class="line">//is the same as </span><br><span class="line">[1,2,3].map(x=&gt; x * x);</span><br><span class="line">var result = values.sort(function (a, b) &#123;</span><br><span class="line">return a - b;</span><br><span class="line">&#125;);</span><br><span class="line">//is the same as</span><br><span class="line">var result = values.sort((a, b) =&gt; a - b);</span><br></pre></td></tr></table></figure>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>（1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
+<p>（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</p>
+<p>（3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</p>
+<p>（4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。</p>
+<p>上面四点中，第一点尤其值得注意。this对象的指向是可变的，但是在箭头函数中，它是固定的。总是与它生效时的指向是一致的。</p>
+<h2 id="this固定化"><a href="#this固定化" class="headerlink" title="this固定化"></a>this固定化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    setTimeout()&#123;()=&gt;&#123;</span><br><span class="line">        console.log(&quot;id:&quot;,this.id);</span><br><span class="line">    &#125;,1000&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var id = 123;</span><br><span class="line">foo.call(&#123;id: 321&#125;);</span><br><span class="line">//id ：321</span><br></pre></td></tr></table></figure>
+<p>在箭头函数生成的时候，已经把this指向了id：321，所以即使延迟了1秒钟执行的setTimeout打印出的也是321，如果是普通函数，这个时候this指向的是window。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function Timer() &#123;</span><br><span class="line">    this.s1 = 0;</span><br><span class="line">    this.s2 = 0;</span><br><span class="line">    // 箭头函数</span><br><span class="line">    setInterval(() =&gt; this.s1++, 1000);</span><br><span class="line">    // 普通函数</span><br><span class="line">    setInterval(function () &#123;</span><br><span class="line">        this.s2++;</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var timer = new Timer();</span><br><span class="line"></span><br><span class="line">setTimeout(() =&gt; console.log(&apos;s1: &apos;, timer.s1), 3100);</span><br><span class="line">setTimeout(() =&gt; console.log(&apos;s2: &apos;, timer.s2), 3100);</span><br><span class="line">//s1 : 3</span><br><span class="line">//s2 : 0</span><br></pre></td></tr></table></figure>
+<p>因为一开始，箭头函数已经绑定了timer中的s1，而普通的函数只是绑定了全局中的s2，不会改变timer里面的s2.所以是0.</p>
+<p>箭头函数可以让this指向固定化，这种特性有利于封装回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var handler = &#123;</span><br><span class="line">id: &apos;123456&apos;,</span><br><span class="line"></span><br><span class="line">init: function() &#123;</span><br><span class="line">    document.addEventListener(&apos;click&apos;,</span><br><span class="line">    event =&gt; this.doSomething(event.type), false);</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">    doSomething: function(type) &#123;</span><br><span class="line">        console.log(&apos;Handling &apos; + type  + &apos; for &apos; + this.id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面代码的init方法中，使用了箭头函数，这导致这个箭头函数里面的this，总是指向handler对象。否则，回调函数运行时，this.doSomething这一行会报错，因为此时this指向document对象。</p>
+<p>this指向的固定化，并不是因为箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。</p>
+<p>由于箭头函数没有自己的this，所以当然也就不能用call()、apply()、bind()这些方法去改变this的指向</p>
+<h2 id="嵌套的箭头函数"><a href="#嵌套的箭头函数" class="headerlink" title="嵌套的箭头函数"></a>嵌套的箭头函数</h2><p>箭头函数内部可以在使用箭头函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function insert(value) &#123;</span><br><span class="line">return &#123;into: function (array) &#123;</span><br><span class="line">    return &#123;after: function (afterValue) &#123;</span><br><span class="line">    array.splice(array.indexOf(afterValue) + 1, 0, value);</span><br><span class="line">    return array;</span><br><span class="line">    &#125;&#125;;</span><br><span class="line">&#125;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">insert(2).into([1, 3]).after(1); //[1, 2, 3]</span><br><span class="line">//  is the same as </span><br><span class="line">let insert = (value) =&gt; (&#123;into: (array) =&gt; (&#123;after: (afterValue) =&gt; &#123;</span><br><span class="line">array.splice(array.indexOf(afterValue) + 1, 0, value);</span><br><span class="line">return array;</span><br><span class="line">&#125;&#125;)&#125;);</span><br><span class="line"></span><br><span class="line">insert(2).into([1, 3]).after(1); //[1, 2, 3]</span><br></pre></td></tr></table></figure>
+<p>好吧，那么关于ES6的函数扩展部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -386,6 +487,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># -ES6</a>
+          
+        </div>
       
 
       
@@ -460,8 +567,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -480,7 +596,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -559,6 +675,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数默认值的位置"><span class="nav-number">2.</span> <span class="nav-text">参数默认值的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的length属性"><span class="nav-number">3.</span> <span class="nav-text">函数的length属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">4.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">5.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rest参数"><span class="nav-number">6.</span> <span class="nav-text">rest参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#严格模式"><span class="nav-number">7.</span> <span class="nav-text">严格模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#name属性"><span class="nav-number">8.</span> <span class="nav-text">name属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">9.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">9.1.</span> <span class="nav-text">基本用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">10.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与变量解构结合使用"><span class="nav-number">10.1.</span> <span class="nav-text">与变量解构结合使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简化回调函数"><span class="nav-number">10.2.</span> <span class="nav-text">简化回调函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点"><span class="nav-number">11.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this固定化"><span class="nav-number">12.</span> <span class="nav-text">this固定化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套的箭头函数"><span class="nav-number">13.</span> <span class="nav-text">嵌套的箭头函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
