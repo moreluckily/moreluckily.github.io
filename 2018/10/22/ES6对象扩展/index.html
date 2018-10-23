@@ -86,15 +86,21 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中对象的扩展。 学习git的时候，把博客给弄炸了，最近的几篇博客没有跟上，这几天好好的将之前的补上。 属性新表示ES6中，允许直接写入变量和函数，作为对象的属性和方法，这样的书写更加简洁。 12345var foo = &amp;quot;bar&amp;quot;;var baz = &amp;quot;&amp;#123;foo&amp;#1">
 <meta name="keywords" content="-ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6对象扩展">
 <meta property="og:url" content="http://moreluckily.com/2018/10/22/ES6对象扩展/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中对象的扩展。 学习git的时候，把博客给弄炸了，最近的几篇博客没有跟上，这几天好好的将之前的补上。 属性新表示ES6中，允许直接写入变量和函数，作为对象的属性和方法，这样的书写更加简洁。 12345var foo = &amp;quot;bar&amp;quot;;var baz = &amp;quot;&amp;#123;foo&amp;#1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-23T02:43:15.474Z">
+<meta property="og:image" content="http://moreluckily.com/2018/10/22/ES6对象扩展/a1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/10/22/ES6对象扩展/a2.png">
+<meta property="og:updated_time" content="2018-10-23T05:28:21.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6对象扩展">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中对象的扩展。 学习git的时候，把博客给弄炸了，最近的几篇博客没有跟上，这几天好好的将之前的补上。 属性新表示ES6中，允许直接写入变量和函数，作为对象的属性和方法，这样的书写更加简洁。 12345var foo = &amp;quot;bar&amp;quot;;var baz = &amp;quot;&amp;#123;foo&amp;#1">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/22/ES6对象扩展/a1.png">
 
 
 
@@ -350,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  3.5k
                 </span>
               
 
@@ -366,7 +372,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  14
                 </span>
               
             </div>
@@ -387,7 +393,110 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中对象的扩展。</p>
+<p>学习git的时候，把博客给弄炸了，最近的几篇博客没有跟上，这几天好好的将之前的补上。</p>
+<h2 id="属性新表示"><a href="#属性新表示" class="headerlink" title="属性新表示"></a>属性新表示</h2><p>ES6中，允许直接写入变量和函数，作为对象的属性和方法，这样的书写更加简洁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var foo = &quot;bar&quot;;</span><br><span class="line">var baz = &quot;&#123;foo&#125;&quot;;</span><br><span class="line">//baz //&#123;foo: &quot;bar&quot;&#125;</span><br><span class="line">//等价于</span><br><span class="line">var baz = &#123;foo:foo&#125;;</span><br></pre></td></tr></table></figure>
+<p>ES6 允许在对象之中，直接写变量。这时，属性名为变量名, 属性值为变量的值。又如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f(x,y)&#123;</span><br><span class="line">    return &#123;x,y&#125;;</span><br><span class="line">&#125;//等价于</span><br><span class="line">function f(x,y)&#123;</span><br><span class="line">    return &#123;x: x,y:y&#125;;</span><br><span class="line">&#125;</span><br><span class="line">f(1,2) // Object&#123;x:1,y:2&#125;</span><br></pre></td></tr></table></figure>
+<p>除了属性简写，方法也可以简写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;</span><br><span class="line">    method() &#123;</span><br><span class="line">        return &quot;Hello!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 等同于</span><br><span class="line"></span><br><span class="line">var o = &#123;</span><br><span class="line">   method: function() &#123;</span><br><span class="line">        return &quot;Hello!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>来一个实际的例子吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var b = 5;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    hello() &#123;</span><br><span class="line">            console.log(this.b)</span><br><span class="line">        &#125;,</span><br><span class="line">    b  : 4</span><br><span class="line">&#125;</span><br><span class="line">function a ()&#123;</span><br><span class="line">    console.log(this.b);</span><br><span class="line">&#125;</span><br><span class="line">a()//5</span><br><span class="line">var d = obj.hello;</span><br><span class="line">d()//5</span><br></pre></td></tr></table></figure>
+<p>顺便简单的复习了一下this指向的问题。两个都是打印出5哦。</p>
+<p>利用这个特性来进行返回值也是很方便的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function try()&#123; </span><br><span class="line">    var x = 1;</span><br><span class="line">    var y = 10;</span><br><span class="line">    return &#123;x,y&#125;;</span><br><span class="line">&#125;</span><br><span class="line">var demo = try();</span><br><span class="line">demo // &#123;x:1,y:10&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="属性表达式"><a href="#属性表达式" class="headerlink" title="属性表达式"></a>属性表达式</h2><p>JavaScript定义对象的属性，有两种方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.foo = true ;</span><br><span class="line">obj[&quot;a&quot; + &quot;bc&quot; ] = 123;</span><br></pre></td></tr></table></figure>
+<p>第一种方式我们经常使用，第二种方式是用表达式作为属性名，这是要将表达式放在方括号之内。</p>
+<p>但是，如果使用字面量定义对象（使用大括号）在ES5中只能使用方法一（标识符）定义属性。但是在ES6中允许字面量定义对象时，用方法二（表达式）作为对象的属性名，即把表达式放在方括号内。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let proKey = &quot;foo&quot;;</span><br><span class="line">let obj = &#123;</span><br><span class="line">    [proKey] :true,</span><br><span class="line">    [&quot;a&quot; + &quot;bc&quot;] : 123</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再来举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var lastWord = &apos;last word&apos;;</span><br><span class="line"></span><br><span class="line">var a = &#123;</span><br><span class="line">&apos;first word&apos;: &apos;hello&apos;,</span><br><span class="line">[lastWord]: &apos;world&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">a[&apos;first word&apos;] // &quot;hello&quot;</span><br><span class="line">a[lastWord] // &quot;world&quot;</span><br><span class="line">a[&apos;last word&apos;] // &quot;world&quot;</span><br></pre></td></tr></table></figure>
+<p>表达式还可以用于定义方法名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">    [&quot;fight&quot; + &quot;ing&quot;] ()&#123;</span><br><span class="line">        console.log(&quot;come on&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fighting(); // &quot;come on&quot;</span><br></pre></td></tr></table></figure>
+<p>要注意的是，属性名表达式与间接表示法不能同时使用，会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 报错</span><br><span class="line">var foo = &apos;bar&apos;;</span><br><span class="line">var bar = &apos;abc&apos;;</span><br><span class="line">var baz = &#123; [foo] &#125;;</span><br><span class="line"></span><br><span class="line">// 正确</span><br><span class="line">var foo = &apos;bar&apos;;</span><br><span class="line">var baz = &#123; [foo]: &apos;abc&apos;&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意，属性名表达式如果是一个对象，默认情况下会自动将对象转为字符串[object Object]，这一点要特别小心。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const keyA = &#123;a: 1&#125;;</span><br><span class="line">const keyB = &#123;b: 2&#125;;</span><br><span class="line"></span><br><span class="line">const myObject = &#123;</span><br><span class="line">[keyA]: &apos;valueA&apos;,</span><br><span class="line">[keyB]: &apos;valueB&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myObject // Object &#123;[object Object]: &quot;valueB&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，[keyA]和[keyB]得到的都是[object Object]，所以[keyB]会把[keyA]覆盖掉，而myObject最后只有一个[object Object]属性。</p>
+<h2 id="对象上的方法"><a href="#对象上的方法" class="headerlink" title="对象上的方法"></a>对象上的方法</h2><h3 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h3><p>ES5比较两个值是否相等，用两个运算符，（= =）和（= = =）。它们的缺点都是存在的，第一个是前者会存在隐式类型转换，第二个是使用的时候，NaN是不能被正确判断出来的。还有就是正负零不等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+0 === -0 //true</span><br></pre></td></tr></table></figure>
+<p>ES6提出“same-value equality”（同值相等）算法，用来解决这个问题，Object.is就是部署这个算法的新方法。用它可以比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致。不同之处在于（正负0和NaN）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+0 === -0 //true</span><br><span class="line">NaN === NaN // false</span><br><span class="line"></span><br><span class="line">Object.is(+0, -0) // false</span><br><span class="line">Object.is(NaN, NaN) // true</span><br></pre></td></tr></table></figure>
+<p>然后我们可以写一下它的原理是怎样实现的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(Object, &apos;is&apos;, &#123;</span><br><span class="line">value: function(x, y) &#123;</span><br><span class="line">    if (x === y) &#123;</span><br><span class="line">    // 针对+0 不等于 -0的情况</span><br><span class="line">    return x !== 0 || 1 / x === 1 / y;</span><br><span class="line">    //1/-0 = -Infinity 1/0 = Infinity</span><br><span class="line">    &#125;</span><br><span class="line">    // 针对NaN的情况</span><br><span class="line">    return x !== x &amp;&amp; y !== y;</span><br><span class="line">&#125;,</span><br><span class="line">configurable: true,</span><br><span class="line">enumerable: false,</span><br><span class="line">writable: true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可能有些同学不太了解关于defineProperty这个方法，我也稍微带一下。其实这个方法很重要，很常用的。</p>
+<p>Object.defineProperty()方法可以直接在对象上定义一个新属性，或者修改对象上的现有属性，并返回该对象。它有三个参数，第一个是定义属性的对象名，第二个属性是是要定义的属性名，第三个是要定义或修改的属性的描述符。有以下几个：</p>
+<p>1、configurable: 总开关，一旦是false，就不能设置它以下的各种属性<br>2、enumerable : 是否可枚举（for…in）<br>3、 value : 与属性关联的值。可以是任何有效的JavaScript值（数字，对象，函数等）。就相当于函数体。<br>4、writable : false表示只读，不能被重写 true表示可读可写</p>
+<p>先了解一下吧，以后要是用到了再说，估计用到这个方法，应该是要到架构师哪一个层次的了。</p>
+<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h3><p>Obejct.assign方法可以用于对象的合并，将原对象的所有可枚举属性都复制到目标对象。第一个参数是目标对象，后面的参数都是源对象。</p>
+<p>注意，如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var target = &#123; a: 1, b: 1 &#125;;</span><br><span class="line"></span><br><span class="line">var source1 = &#123; b: 2, c: 2 &#125;;</span><br><span class="line">var source2 = &#123; c: 3 &#125;;</span><br><span class="line"></span><br><span class="line">Object.assign(target, source1, source2);</span><br><span class="line">target // &#123;a:1, b:2, c:3&#125;</span><br></pre></td></tr></table></figure>
+<p>如果该参数不是对象，则会先转成对象，然后返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof Object.assign(2) // &quot;object&quot;</span><br></pre></td></tr></table></figure>
+<p>由于undefined和null无法转成对象，所以如果它们作为参数，就会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(undefined) // 报错</span><br><span class="line">Object.assign(null) // 报错</span><br></pre></td></tr></table></figure>
+<p>如果非对象参数出现在源对象的位置（即非首参数），那么处理规则有所不同。首先，这些参数都会转成对象，如果无法转成对象，就会跳过。这意味着，如果undefined和null不在首参数，就不会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;a: 1&#125;;</span><br><span class="line">Object.assign(obj, undefined) === obj // true</span><br><span class="line">Object.assign(obj, null) === obj // true</span><br></pre></td></tr></table></figure>
+<p>Object.assign方法实行的是浅拷贝，而不是深拷贝。也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;a : &#123;b : 1&#125;&#125;;</span><br><span class="line">var obj2 = Object.assign(&#123;&#125;,obj1);</span><br><span class="line">obj1.a.b = 2;</span><br><span class="line">obj2.a.b // 2;</span><br></pre></td></tr></table></figure>
+<p>上面的代码，源对象obj1的a属性的值是一个对象，Object.assign拷贝得到的是这个对象的引用。这个对象的任何变化，都会反映到目标对象上面。</p>
+<p>另外，Object.assign可以用来处理数组，但是会把数组视为对象。</p>
+<h2 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h2><p>1.为对象添加属性和方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Point &#123;</span><br><span class="line">    constructor (x,y)&#123;</span><br><span class="line">        Object.assign(this,&#123;x,y&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;//添加属性，将x属性和y属性添加到Point类的对象实例。</span><br><span class="line"></span><br><span class="line">Object.assign(SomeClass.prototype,&#123;</span><br><span class="line">    someMethod(arg1,arg2)&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    anotherMethod()&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)//添加方法使用了对象属性的简洁表示法，</span><br><span class="line">//直接将两个函数放在大括号中，再使用assign方法</span><br><span class="line">//添加到SomeClass.prototype之中。</span><br></pre></td></tr></table></figure>
+<p>2.克隆对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Clone(origin)&#123;</span><br><span class="line">    return Object.assign(&#123;&#125;,origin);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码将原始对象拷贝到一个空对象，就得到了原始对象的克隆。不过，采用这种方法克隆，只能克隆原始对象自身的值，不能克隆它继承的值。如果想要保持继承链，可以采用下面的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function clone(origin) &#123;</span><br><span class="line">    let originProto = Object.getPrototypeOf(origin);</span><br><span class="line">    return Object.assign(Object.create(originProto), origin);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.合并多个对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const merge = (target,...sources) =&gt; Object.assign(target,...source);</span><br></pre></td></tr></table></figure>
+<p>4.为属性指定默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const DEFAULTS = &#123;</span><br><span class="line">    logLevel: 0,</span><br><span class="line">    outputFromat: &quot;html&quot;</span><br><span class="line">&#125;</span><br><span class="line">function processContent(ooptions)&#123;</span><br><span class="line">    options = Object.assign(&#123;&#125;,DEFAULTS,options);</span><br><span class="line">    console.log(options);</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>DEFAULTS对象是默认值，options对象是用户提供的参数。Object.assign方法将DEFAULTS和options合并成一个新对象，如果两者有同名属性，则option的属性值会覆盖DEFAULTS的属性值。</p>
+<p>注意到，因为不是深度拷贝，所以两个对象的所有属性的值，最好都是简单类型，不要指向另一个对象，否则默认对象可能会出现bug。就是不起作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const DEFAULTS = &#123;</span><br><span class="line">url: &#123;</span><br><span class="line">    host: &apos;example.com&apos;,</span><br><span class="line">    port: 7070</span><br><span class="line">&#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">processContent(&#123; url: &#123;port: 8000&#125; &#125;)</span><br><span class="line">// &#123;</span><br><span class="line">//   url: &#123;port: 8000&#125;</span><br><span class="line">// &#125; 浅拷贝，options.url覆盖DEFAULTS.url 所以url.host不存在了</span><br></pre></td></tr></table></figure>
+<h2 id="ES6中的遍历"><a href="#ES6中的遍历" class="headerlink" title="ES6中的遍历"></a>ES6中的遍历</h2><p>先来整理一下关于遍历的各种方式。（没有特殊说明，都是不含Symbol属性的遍历）</p>
+<p>1、for in ：循环遍历是对象自身和继承的可枚举属性<br>2、Object.keys(obj) ：返回一个数组，包括对象自身的（不含继承的）所有可枚举属性。<br>3、Object.getOwnPropertyNames(obj) : 返回一个数组，包含对象自身的所有属性，包括不可枚举属性<br>4、Object.getOwnPropertySymbols(obj):返回一个数组，包含对象自身的所有Symbol属性。(没有symbols属性就返回一个空数组)<br>5、Reflect.ownKeys(obj) ：返回一个数组，包含对象的自身所有属性，不管属性名是Symbol或者字符串也不管是否可枚举。</p>
+<p>以上的5种方法遍历对象的属性，都遵守同样的属性遍历的次序规则。</p>
+<p>1、首先遍历所有属性名为数值的属性，按照数字排序。<br>2、其次遍历所有属性名为字符串的属性，按照生成时间排序。<br>3、最后遍历所有属性名为 Symbol 值的属性，按照生成时间排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function bb() &#123; this.b = 12; this.a = 23; this.c = &#123; name : “steven”, age : 21 &#125; &#125; var bb2 = new bb();</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/22/ES6对象扩展/a1.png" alt="小demo"></p>
+<h2 id="Object-getOwnPropertyDescriptors"><a href="#Object-getOwnPropertyDescriptors" class="headerlink" title="Object.getOwnPropertyDescriptors()"></a>Object.getOwnPropertyDescriptors()</h2><p>这个方法会返回某个对象属性的描述对象。这个涉及到昨天讲到的definedproperty中的那些描述符。它会返回那些对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    foo: 123,</span><br><span class="line">    get bar() &#123; return &apos;abc&apos; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">console.log(Object.getOwnPropertyDescriptors(obj))</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/22/ES6对象扩展/a2.png" alt="小demo"></p>
+<p>Object.getOwnPropertyDescriptors方法返回一个对象，所有原对象的属性名都是该对象的属性名，对应的属性值就是该属性的描述对象。主要是为了解决Object.assign()无法正确拷贝get属性和set属性的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const source = &#123;</span><br><span class="line">    set foo(value) &#123;</span><br><span class="line">    console.log(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const target1 = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">console.log(  Object.assign(target1, source))  </span><br><span class="line">console.log(  Object.getOwnPropertyDescriptor(target1, &apos;foo&apos;))</span><br></pre></td></tr></table></figure>
+<p>这个方法还能与Object.create两会，克隆对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const clone = Object.create(Object.getPrototypeOf(obj),</span><br><span class="line">Object.getOwnPropertyDescriptors(obj));</span><br></pre></td></tr></table></figure>
+<h2 id="Object-setPrototypeOf-和Object-getPrototypeOf"><a href="#Object-setPrototypeOf-和Object-getPrototypeOf" class="headerlink" title="Object.setPrototypeOf()和Object.getPrototypeOf()"></a>Object.setPrototypeOf()和Object.getPrototypeOf()</h2><h3 id="proto"><a href="#proto" class="headerlink" title="proto"></a>proto</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__proto__</span><br></pre></td></tr></table></figure>
+<p>属性（前后各两个下划线），用来读取或设置当前对象的prototype对象。目前，所有浏览器（包括 IE11）都部署了这个属性。</p>
+<p>但是在ES6中,这个属性并没有写进正文，而是写入了附录，因为这个属性本质上不是一个对外的API，无论从语义的角度还是兼容性的角度都不要使用这个属性，而是要使用题目中哪两个方法和Object.create()来进行代替。</p>
+<h3 id="Object-setPrototypeOf"><a href="#Object-setPrototypeOf" class="headerlink" title="Object.setPrototypeOf()"></a>Object.setPrototypeOf()</h3><p>这个方法用来设置一个对象的prototype对象，返回参数对象本身。它是 ES6 正式推荐的设置原型对象的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let myProto = &#123;</span><br><span class="line">    y : 5,</span><br><span class="line">    z : 6</span><br><span class="line">&#125;</span><br><span class="line">let obj = &#123;</span><br><span class="line">    x : 30</span><br><span class="line">&#125;</span><br><span class="line">Object.setPrototypeOf(obj,myProto);</span><br><span class="line">cosole.log(obj.x);//30</span><br><span class="line">cosole.log(obj.y);//5</span><br><span class="line">cosole.log(obj.z);//6</span><br></pre></td></tr></table></figure>
+<p>由于undefined和null无法转为对象，所以如果第一个参数是undefined或null，就会报错。</p>
+<h3 id="Object-getPrototypeOf"><a href="#Object-getPrototypeOf" class="headerlink" title="Object.getPrototypeOf()"></a>Object.getPrototypeOf()</h3><p>这个方法是用来读取一个对象的原型对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function GrandPa()&#123;</span><br><span class="line">    //</span><br><span class="line">&#125;</span><br><span class="line">var son = new GrandPa()</span><br><span class="line">Objecte.getPrototypeOf(son) === Rectangle.prototype // true</span><br></pre></td></tr></table></figure>
+<p>如果参数不是对象，会被自动转为对象。如果参数不是对象，会被自动转为对象。</p>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><h3 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys()"></a>Object.keys()</h3><p>ES5引入了Object.keys方法，返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历属性（enumerable）属性的键名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;foo: &apos;bar&apos;,baz: 42&#125;;</span><br><span class="line">Object.keys(obj)</span><br><span class="line">//[&quot;foo&quot;,&quot;baz&quot;]</span><br></pre></td></tr></table></figure>
+<h3 id="Object-value"><a href="#Object-value" class="headerlink" title="Object.value()"></a>Object.value()</h3><p>这个方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历属性的键值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; foo: &apos;bar&apos;, baz: 42 &#125;;</span><br><span class="line">Object.values(obj)</span><br><span class="line">// [&quot;bar&quot;, 42]</span><br></pre></td></tr></table></figure>
+<p>Object.values只返回对象自身的可遍历属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj = Object.create(&#123;&#125;, &#123;p: &#123;value: 42&#125;&#125;);</span><br><span class="line">Object.values(obj) // []</span><br></pre></td></tr></table></figure>
+<p>上面代码中，Object.create方法的第二个参数添加的对象属性（属性p），如果不显式声明，默认是不可遍历的，因为p的属性描述对象的enumerable默认是false，Object.values不会返回这个属性。只要把enumerable改成true，Object.values就会返回属性p的值。</p>
+<p>如果Object.values方法的参数是一个字符串，会返回各个字符组成的一个数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.values(&apos;foo&apos;)</span><br><span class="line">// [&apos;f&apos;, &apos;o&apos;, &apos;o&apos;]</span><br></pre></td></tr></table></figure>
+<p>如果参数不是对象，Object.values会先将其转为对象。由于数值和布尔值的包装对象，都不会为实例添加非继承的属性。所以，Object.values会返回空数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.values(1996) // []</span><br><span class="line">Object.values(false) // []</span><br></pre></td></tr></table></figure>
+<h3 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries"></a>Object.entries</h3><p>Object.entries方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; foo: &apos;bar&apos;, baz: 42 &#125;;</span><br><span class="line">Object.entries(obj)</span><br><span class="line">// [ [&quot;foo&quot;, &quot;bar&quot;], [&quot;baz&quot;, 42] ]</span><br></pre></td></tr></table></figure>
+<p>这个方法也是可以用来遍历对象的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123; one: 1, two: 2 &#125;;</span><br><span class="line">for (let [k, v] of Object.entries(obj)) &#123;</span><br><span class="line">console.log(</span><br><span class="line">    `$&#123;JSON.stringify(k)&#125;: $&#123;JSON.stringify(v)&#125;`</span><br><span class="line">);</span><br><span class="line">&#125;</span><br><span class="line">// &quot;one&quot;: 1 &quot;two&quot; : 2</span><br></pre></td></tr></table></figure>
+<p>那么关于对象的扩展就先讲到这里。</p>
+<p>好吧，那么关于ES6的对象扩展部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -489,8 +598,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,6 +706,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性新表示"><span class="nav-number">1.</span> <span class="nav-text">属性新表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性表达式"><span class="nav-number">2.</span> <span class="nav-text">属性表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象上的方法"><span class="nav-number">3.</span> <span class="nav-text">对象上的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-is"><span class="nav-number">3.1.</span> <span class="nav-text">Object.is()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-assign"><span class="nav-number">3.2.</span> <span class="nav-text">Object.assign()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见用法"><span class="nav-number">4.</span> <span class="nav-text">常见用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6中的遍历"><span class="nav-number">5.</span> <span class="nav-text">ES6中的遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-getOwnPropertyDescriptors"><span class="nav-number">6.</span> <span class="nav-text">Object.getOwnPropertyDescriptors()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-setPrototypeOf-和Object-getPrototypeOf"><span class="nav-number">7.</span> <span class="nav-text">Object.setPrototypeOf()和Object.getPrototypeOf()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proto"><span class="nav-number">7.1.</span> <span class="nav-text">proto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-setPrototypeOf"><span class="nav-number">7.2.</span> <span class="nav-text">Object.setPrototypeOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-getPrototypeOf"><span class="nav-number">7.3.</span> <span class="nav-text">Object.getPrototypeOf()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方法"><span class="nav-number">8.</span> <span class="nav-text">其他方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-keys"><span class="nav-number">8.1.</span> <span class="nav-text">Object.keys()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-value"><span class="nav-number">8.2.</span> <span class="nav-text">Object.value()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-entries"><span class="nav-number">8.3.</span> <span class="nav-text">Object.entries</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
