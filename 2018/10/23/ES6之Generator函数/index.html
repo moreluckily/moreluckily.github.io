@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Generator函数。 ES6 提供了一种异步编程的解决方法，它就是Generator。 Introductionthe basic concept of Generator从英文的角度直译过来，Generator的意思是“发生器”。这个函数内部封装了多个状态。 直接执行它，会返回一个Iterator">
+<meta name="keywords" content="-ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6之Generator函数">
+<meta property="og:url" content="http://moreluckily.com/2018/10/23/ES6之Generator函数/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Generator函数。 ES6 提供了一种异步编程的解决方法，它就是Generator。 Introductionthe basic concept of Generator从英文的角度直译过来，Generator的意思是“发生器”。这个函数内部封装了多个状态。 直接执行它，会返回一个Iterator">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-23T15:16:47.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6之Generator函数">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Generator函数。 ES6 提供了一种异步编程的解决方法，它就是Generator。 Introductionthe basic concept of Generator从英文的角度直译过来，Generator的意思是“发生器”。这个函数内部封装了多个状态。 直接执行它，会返回一个Iterator">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/23/ES6之Generator函数/"/>
+
+
+
+
+
+  <title>ES6之Generator函数 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/23/ES6之Generator函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6之Generator函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T21:58:01+08:00">
+                2018-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Generator函数。</p>
+<p>ES6 提供了一种异步编程的解决方法，它就是Generator。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="the-basic-concept-of-Generator"><a href="#the-basic-concept-of-Generator" class="headerlink" title="the basic concept of Generator"></a>the basic concept of Generator</h3><p>从英文的角度直译过来，Generator的意思是“发生器”。这个函数内部封装了多个状态。</p>
+<p>直接执行它，会返回一个Iterator对象，之前讲过Iterator就是一个遍历接口，那么意味着，它可以被for…of遍历。</p>
+<p>作为一个函数，它在函数名之间有一个*号（看到这个星号有种莫名的恐惧感，C++中的指针。。。），还有就是，函数内部使用yield表达式，定义不同的内部状态（yield：产出）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function * hh()&#123;</span><br><span class="line">    yield &quot; hello &quot;;</span><br><span class="line">    yield &quot; world &quot;;</span><br><span class="line">    return  &quot; ending &quot;;</span><br><span class="line">&#125;</span><br><span class="line">var hhn = hh();</span><br></pre></td></tr></table></figure>
+<p>每个yield代表一个状态，那么这里一共有三个状态：hello，world，return语句（结束）。</p>
+<p>当Generator函数被调用之后，不会执行，返回的也不是函数执行的结果。而是一个指向内部状态的指针对象，就是之前讲过的Iterator遍历器对象。</p>
+<p>之后我们就可以使用next方法，遍历每个状态。每次调用next，都会把指针指向下一个状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hhn.next()</span><br><span class="line">// &#123; value: &apos;hello&apos;, done: false &#125;</span><br><span class="line"></span><br><span class="line">hhn.next()</span><br><span class="line">// &#123; value: &apos;world&apos;, done: false &#125;</span><br><span class="line"></span><br><span class="line">hhn.next()</span><br><span class="line">// &#123; value: &apos;ending&apos;, done: true &#125;</span><br><span class="line"></span><br><span class="line">hhn.next()</span><br><span class="line">// &#123; value: undefined, done: true &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="about-the-yield-expression"><a href="#about-the-yield-expression" class="headerlink" title="about the yield expression"></a>about the yield expression</h2><p>由于Generator函数返回的遍历对象，只有调用next方法才会遍历下一个内部状态，所以相当于提供了一种可以暂停执行的函数。yield表达式就是暂停的标志。</p>
+<p>next方法的具体逻辑：</p>
+<p>（1）遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。</p>
+<p>（2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。</p>
+<p>（3）如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。</p>
+<p>（4）如果该函数没有return语句，则返回的对象的value属性值为undefined。</p>
+<p>需要注意的是，yield表达式后面的表达式，只有当调用next方法、内部指针指向该语句时才会执行。还有一点要注意的是，yield表达式只能用在Generator函数里面，用在其他地方都会报错。</p>
+<h2 id="the-relationship-with-Generator"><a href="#the-relationship-with-Generator" class="headerlink" title="the relationship with Generator"></a>the relationship with Generator</h2><p>任意一个对象的Symbol.iterator方法，等于该对象的遍历器生成函数，调用该函数会返回该对象的一个遍历器对象。</p>
+<p>由于 Generator 函数就是遍历器生成函数，因此可以把 Generator 赋值给对象的Symbol.iterator属性，从而使得该对象具有 Iterator 接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var myIterable = &#123;&#125;;</span><br><span class="line">myIterable[Symbol.iterator] = function* () &#123;</span><br><span class="line">yield 1;</span><br><span class="line">yield 2;</span><br><span class="line">yield 3;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">[...myIterable] // [1, 2, 3]</span><br><span class="line">function * gen()&#123;</span><br><span class="line">yield hh()</span><br><span class="line">&#125;</span><br><span class="line">function hh()&#123;</span><br><span class="line">        console.log(33);</span><br><span class="line">    &#125;</span><br><span class="line">var ha = gen();</span><br><span class="line">ha.next()//33</span><br></pre></td></tr></table></figure>
+<p>Generator 函数赋值给Symbol.iterator属性，从而使得myIterable对象具有了 Iterator 接口，可以被…运算符遍历了。</p>
+<h2 id="next-parameter"><a href="#next-parameter" class="headerlink" title="next parameter"></a>next parameter</h2><p>yield表达式本身没有返回值，next方法可以自带一个参数，该参数就会被当做上一个yield表达式的返回值。</p>
+<h2 id="for…of循环"><a href="#for…of循环" class="headerlink" title="for…of循环"></a>for…of循环</h2><p>for…of循环可以自动遍历Generator函数时生成的Iterator对象，且这个时候不需要调用next方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function *foo() &#123;</span><br><span class="line">yield 1;</span><br><span class="line">yield 2;</span><br><span class="line">yield 3;</span><br><span class="line">yield 4;</span><br><span class="line">yield 5;</span><br><span class="line">return 6;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (let v of foo()) &#123;</span><br><span class="line">console.log(v);</span><br><span class="line">&#125;</span><br><span class="line">// 1 2 3 4 5</span><br></pre></td></tr></table></figure>
+<p>上面代码使用for…of循环，依次显示5个yield表达式的值。这里需要注意，一旦next方法的返回对象的done属性为true，for…of循环就会中止，且不包含该返回对象，所以上面代码的return语句返回的6，不包括在for…of循环之中。</p>
+<h2 id="Generator-prototype-throw"><a href="#Generator-prototype-throw" class="headerlink" title="Generator.prototype.throw()"></a>Generator.prototype.throw()</h2><p>Generator函数返回的遍历对象，都有一个throw方法，可以在函数体外抛出错误，然后再Generator函数体内捕获。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var g = function* () &#123;</span><br><span class="line">try &#123;</span><br><span class="line">    yield;</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">    console.log(&apos;内部捕获&apos;, e);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var i = g();</span><br><span class="line">i.next();</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">i.throw(&apos;a&apos;);</span><br><span class="line">i.throw(&apos;b&apos;);</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">console.log(&apos;外部捕获&apos;, e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，遍历器对象i连续抛出两个错误。第一个错误被 Generator 函数体内的catch语句捕获。i第二次抛出错误，由于 Generator 函数内部的catch语句已经执行过了，不会再捕捉到这个错误了，所以这个错误就被抛出了 Generator 函数体，被函数体外的catch语句捕获。</p>
+<h2 id="Generator-prototype-return"><a href="#Generator-prototype-return" class="headerlink" title="Generator.prototype.return()"></a>Generator.prototype.return()</h2><p>Generator 函数返回的遍历器对象，还有一个return方法，可以返回给定的值，并且终结遍历 Generator 函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function* gen() &#123;</span><br><span class="line">yield 1;</span><br><span class="line">yield 2;</span><br><span class="line">yield 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var g = gen();</span><br><span class="line"></span><br><span class="line">g.next()        // &#123; value: 1, done: false &#125;</span><br><span class="line">g.return(&apos;foo&apos;) // &#123; value: &quot;foo&quot;, done: true &#125;</span><br><span class="line">g.next()        // &#123; value: undefined, done: true &#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，遍历器对象g调用return方法后，返回值的value属性就是return方法的参数foo。并且，Generator函数的遍历就终止了，返回值的done属性为true，以后再调用next方法，done属性总是返回true。</p>
+<p>Generator是用来进行异步编程的，那么接下来就介绍它是怎样进行异步操作的。</p>
+<h2 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h2><p>传统方法异步编程大概有以下几种：</p>
+<p>1、回调函数<br>2、事件监听<br>3、Promise对象<br>4、发布订阅模式（这个具体大家可以自行百度，这里不展开）</p>
+<p>接下来介绍Generator实现的异步编程    </p>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><p>“协程”（coroutine），意思是多个线程互相协作，完成异步任务。</p>
+<p>协程有点像函数，又有点像线程。它的运行流程大致如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第一步，协程A开始执行。</span><br><span class="line">第二步，协程A执行到一半，进入暂停，执行权转移到协程B。</span><br><span class="line">第三步，（一段时间后）协程B交还执行权。</span><br><span class="line">第四步，协程A恢复执行。</span><br></pre></td></tr></table></figure>
+<p>上面流程的协程A，就是异步任务，因为它分成两段（或多段）执行。</p>
+<h2 id="协程的Generator-实现"><a href="#协程的Generator-实现" class="headerlink" title="协程的Generator 实现"></a>协程的Generator 实现</h2><p>Generator 函数是协程在 ES6 的实现，最大特点就是可以交出函数的执行权（即暂停执行）。</p>
+<p>整个 Generator 函数就是一个封装的异步任务，或者说是异步任务的容器。异步操作需要暂停的地方，都用yield语句注明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function * gen(x)&#123;</span><br><span class="line">    var y = yield x + 3;</span><br><span class="line">    return y;</span><br><span class="line">&#125;</span><br><span class="line">var g = gen(1);</span><br><span class="line">g.next() //&#123;value: 4,done: false&#125;</span><br><span class="line">g.next() //&#123;value: undefined,done:true&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的方法，调用Generator函数，返回一个遍历器（内部指针对象），每次调用next都会将内部指针移动一次，指向第一个遇到的yield，上面执行到x+2为止。</p>
+<h2 id="Generator-函数的数据交换和错误处理"><a href="#Generator-函数的数据交换和错误处理" class="headerlink" title="Generator 函数的数据交换和错误处理"></a>Generator 函数的数据交换和错误处理</h2><p>Generator 函数可以暂停执行和恢复执行，这是它能封装异步任务的根本原因。除此之外，它还有两个特性，使它可以作为异步编程的完整解决方案：函数体内外的数据交换和错误处理机制。</p>
+<p>next返回值的value属性，是 Generator 函数向外输出数据；next方法还可以接受参数，向 Generator 函数体内输入数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function* gen(x)&#123;</span><br><span class="line">var y = yield x + 2;</span><br><span class="line">return y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var g = gen(1);</span><br><span class="line">g.next() // &#123; value: 3, done: false &#125;</span><br><span class="line">g.next(2) // 把2传入 Generator 函数&#123; value: 2, done: true &#125;</span><br></pre></td></tr></table></figure>
+<p>处理错误代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function  * gen(x)&#123;</span><br><span class="line">    try&#123;</span><br><span class="line">        var y = yield x + 2;</span><br><span class="line">    &#125;catch(e)&#123;</span><br><span class="line">        console.log(e);</span><br><span class="line">    &#125;</span><br><span class="line">    return y;</span><br><span class="line">&#125;</span><br><span class="line">var g = gen(1);</span><br><span class="line">g.next();</span><br><span class="line">g.throw(&quot;getting wrong&quot;)</span><br><span class="line">//getting wrong</span><br></pre></td></tr></table></figure>
+<p>使用指针对象的throw方法抛出的错误，可以被函数体内的try…catch代码块捕获。这意味着，出错的代码与处理错误的代码，实现了时间和空间上的分离，这对于异步编程很重要。</p>
+<h2 id="异步任务的封装"><a href="#异步任务的封装" class="headerlink" title="异步任务的封装"></a>异步任务的封装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var fetch = require(&quot;node-fetch&quot;);</span><br><span class="line">function * gen()&#123;</span><br><span class="line">    var url = &quot;https://baidu.com&quot;;</span><br><span class="line">    var result = yield fetch(url);</span><br><span class="line">    console.log(result.bio);</span><br><span class="line">&#125;</span><br><span class="line">var g = gen();</span><br><span class="line">var result = g.next();</span><br><span class="line"></span><br><span class="line">result.value.then(function(data)&#123;</span><br><span class="line">return data.json();</span><br><span class="line">&#125;).then(function(data)&#123;</span><br><span class="line">g.next(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>第一段代码，读取一个远程接口，从JSON格式的数据解析信息。第二段代码，执行Generator函数，使用next方法，执行异步任务的第一个阶段。</p>
+<p>好吧，那么关于ES6中的这一部分部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># -ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/23/ES6之Iterator遍历器/" rel="next" title="ES6之Iterator遍历器">
+                <i class="fa fa-chevron-left"></i> ES6之Iterator遍历器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/23/ES6之Module语法/" rel="prev" title="ES6之Module语法">
+                ES6之Module语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-basic-concept-of-Generator"><span class="nav-number">1.1.</span> <span class="nav-text">the basic concept of Generator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#about-the-yield-expression"><span class="nav-number">2.</span> <span class="nav-text">about the yield expression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-relationship-with-Generator"><span class="nav-number">3.</span> <span class="nav-text">the relationship with Generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next-parameter"><span class="nav-number">4.</span> <span class="nav-text">next parameter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…of循环"><span class="nav-number">5.</span> <span class="nav-text">for…of循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generator-prototype-throw"><span class="nav-number">6.</span> <span class="nav-text">Generator.prototype.throw()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generator-prototype-return"><span class="nav-number">7.</span> <span class="nav-text">Generator.prototype.return()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步编程"><span class="nav-number">8.</span> <span class="nav-text">异步编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协程"><span class="nav-number">9.</span> <span class="nav-text">协程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协程的Generator-实现"><span class="nav-number">10.</span> <span class="nav-text">协程的Generator 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generator-函数的数据交换和错误处理"><span class="nav-number">11.</span> <span class="nav-text">Generator 函数的数据交换和错误处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步任务的封装"><span class="nav-number">12.</span> <span class="nav-text">异步任务的封装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

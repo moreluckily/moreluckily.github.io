@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Iterator。 IteratorIterator（遍历器），是种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署了Iterator接口，就可以完成便利的操作。它的具体作用如下： 1、为各种数据结构提供一个统一的，简便的访问接口；2、是数据结构的成员能够按照某种次序排列3、为for…">
+<meta name="keywords" content="-ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6之Iterator遍历器">
+<meta property="og:url" content="http://moreluckily.com/2018/10/23/ES6之Iterator遍历器/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Iterator。 IteratorIterator（遍历器），是种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署了Iterator接口，就可以完成便利的操作。它的具体作用如下： 1、为各种数据结构提供一个统一的，简便的访问接口；2、是数据结构的成员能够按照某种次序排列3、为for…">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/10/23/ES6之Iterator遍历器/a1.png">
+<meta property="og:updated_time" content="2018-10-23T14:36:32.318Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6之Iterator遍历器">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Iterator。 IteratorIterator（遍历器），是种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署了Iterator接口，就可以完成便利的操作。它的具体作用如下： 1、为各种数据结构提供一个统一的，简便的访问接口；2、是数据结构的成员能够按照某种次序排列3、为for…">
+<meta name="twitter:image" content="http://moreluckily.com/2018/10/23/ES6之Iterator遍历器/a1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/10/23/ES6之Iterator遍历器/"/>
+
+
+
+
+
+  <title>ES6之Iterator遍历器 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/10/23/ES6之Iterator遍历器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6之Iterator遍历器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T21:57:18+08:00">
+                2018-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天进入一个新的开始，继续一起来学习一下ES6。今天要学习就是ES6中的Iterator。</p>
+<h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>Iterator（遍历器），是种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署了Iterator接口，就可以完成便利的操作。它的具体作用如下：</p>
+<p>1、为各种数据结构提供一个统一的，简便的访问接口；<br>2、是数据结构的成员能够按照某种次序排列<br>3、为for…of 循环服务（ES6新创建的一种遍历命令）</p>
+<h2 id="Iterator便利过程"><a href="#Iterator便利过程" class="headerlink" title="Iterator便利过程"></a>Iterator便利过程</h2><p>1.创建一个指针对象，指向当前数据结构的起始位置，也就是说，遍历对象本质上就是一个指针对象。</p>
+<p>2.第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。</p>
+<p>3.第二次调用指针对象的next方法，指针就指向数据结构的第二个成员。</p>
+<p>4.不断调用指针对象的next方法，直到它指向数据结构的结束位置。</p>
+<p>每一次调用next方法，都会返回数据结构当前成员的信息，具体就是返回一个包含value和done两个属性的对象。value属性就是当前成员的值，done就是一个布尔值，表示便利是否结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let it = makeIteator([&quot;Steven&quot;,&quot;20&quot;])</span><br><span class="line">console.log(it.next())</span><br><span class="line">console.log(it.next())</span><br><span class="line">console.log(it.next())</span><br><span class="line">function makeIteator(array)&#123;</span><br><span class="line">    var nextIndex = 0;</span><br><span class="line">    return &#123;</span><br><span class="line">        next : function()&#123;</span><br><span class="line">            return nextIndex &lt; array.length ? </span><br><span class="line">            &#123;value: array[nextIndex++],done : false&#125; :</span><br><span class="line">            &#123;value : undefined, done :true&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/23/ES6之Iterator遍历器/a1.png" alt="小demo"></p>
+<h2 id="默认Iterator接口"><a href="#默认Iterator接口" class="headerlink" title="默认Iterator接口"></a>默认Iterator接口</h2><p>Iterator接口的目的，就是为了所有数据结构，提供一种统一的访问机制，即for…of循环。当使用for…of循环遍历某种数据结构是，该循环会自动去寻找Iterator接口。</p>
+<p>一种数据结构只要部署了Iterator接口，我们就称它是可遍历的。ES6 规定，默认的 Iterator 接口部署在数据结构的Symbol.iterator属性，或者说，一个数据结构只要具有Symbol.iterator属性，就可以认为是“可遍历的”（iterable）。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    [Symbol.iterator] : function () &#123;//有了Symbol.iterator 属性就能遍历</span><br><span class="line">        return &#123;</span><br><span class="line">        next: function () &#123;//该对象的根本特征就是具有next方法。</span><br><span class="line">            return &#123;</span><br><span class="line">            value: 1,</span><br><span class="line">            done: true</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>有些原生的数据结构也具备Iterator接口。既不用任何处理，节能用法for…of循环遍历。（原生有Symbol.Iterator属性）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">Map</span><br><span class="line">Set</span><br><span class="line">String</span><br><span class="line">TypedArray</span><br><span class="line">arguments</span><br><span class="line">NodeList 对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];</span><br><span class="line">let iter = arr[Symbol.iterator](); </span><br><span class="line">iter.next() // &#123; value: &apos;a&apos;, done: false &#125;</span><br><span class="line">iter.next() // &#123; value: &apos;b&apos;, done: false &#125;</span><br><span class="line">iter.next() // &#123; value: &apos;c&apos;, done: false &#125;</span><br><span class="line">iter.next() // &#123; value: undefined, done: true &#125;</span><br></pre></td></tr></table></figure>
+<p>对于原生部署 Iterator 接口的数据结构，不用自己写遍历器生成函数，for…of循环会自动遍历它们。除此之外，其他数据结构（主要是对象）的 Iterator 接口，都需要自己在Symbol.iterator属性上面部署，这样才会被for…of循环遍历。</p>
+<p>对象（Object）之所以没有默认部署 Iterator 接口，是因为对象的哪个属性先遍历，哪个属性后遍历是不确定的，需要开发者手动指定。本质上，遍历器是一种线性处理，对于任何非线性的数据结构，部署遍历器接口，就等于部署一种线性转换。不过，严格地说，对象部署遍历器接口并不是很必要，因为这时对象实际上被当作 Map 结构使用，ES5 没有 Map 结构，而 ES6 原生提供了。</p>
+<p>一个对象如果要具备可被for…of循环调用的 Iterator 接口，就必须在Symbol.iterator的属性上部署遍历器生成方法（原型链上的对象具有该方法也可）。</p>
+<h2 id="字符串的Iterator接口"><a href="#字符串的Iterator接口" class="headerlink" title="字符串的Iterator接口"></a>字符串的Iterator接口</h2><p>字符串是一个原始值，但是它有原生的Iterator接口，我们可以直接调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;hi&quot;;</span><br><span class="line">typeof str[Symbol.iterator]//function 说明存在</span><br><span class="line">var iter = str[Symbol.iterator]();</span><br><span class="line">iterator.next() // &#123;value : &quot;h&quot; ,done : &quot;false&quot;&#125;</span><br><span class="line">iter.next() // &#123;value : &quot;i&quot; , done : &quot;false&quot;&#125;</span><br><span class="line">iter.next() //&#123;value : undefined, done : true&#125;</span><br></pre></td></tr></table></figure>
+<p>利用这个可以实现对字符串的遍历。</p>
+<h2 id="调用Iterator接口的场合"><a href="#调用Iterator接口的场合" class="headerlink" title="调用Iterator接口的场合"></a>调用Iterator接口的场合</h2><p>1.解构赋值</p>
+<p>对数组和 Set 结构进行解构赋值时，会默认调用Symbol.iterator方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let set = new Set().add(&apos;a&apos;).add(&apos;b&apos;).add(&apos;c&apos;);</span><br><span class="line"></span><br><span class="line">let [x,y] = set;</span><br><span class="line">// x=&apos;a&apos;; y=&apos;b&apos;</span><br><span class="line"></span><br><span class="line">let [first, ...rest] = set;</span><br><span class="line">// first=&apos;a&apos;; rest=[&apos;b&apos;,&apos;c&apos;];</span><br></pre></td></tr></table></figure>
+<p>（2）扩展运算符</p>
+<p>扩展运算符（…）也会调用默认的 Iterator 接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// example one</span><br><span class="line">var str = &apos;hello&apos;;</span><br><span class="line">[...str] //  [&apos;h&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;]</span><br><span class="line"></span><br><span class="line">// example two</span><br><span class="line">let arr = [&apos;b&apos;, &apos;c&apos;];</span><br><span class="line">[&apos;a&apos;, ...arr, &apos;d&apos;]</span><br><span class="line">// [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;]</span><br></pre></td></tr></table></figure>
+<h2 id="for…of-循环"><a href="#for…of-循环" class="headerlink" title="for…of 循环"></a>for…of 循环</h2><p>ES6引入了for…of循环，作为遍历所有数据结构的统一的方法。</p>
+<p>一个数据结构只要部署了Symbol.iterator属性，就被视为具有iterator接口，就可以用for…of循环遍历它的成员。也就是说，for…of循环内部调用的是数据结构的Symbol.iterator方法。</p>
+<p>for…of循环可以用于数组、set、Map、类数组、Generator对象以及字符串。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1,2,3,4,5];</span><br><span class="line">for(let v of arr)&#123;</span><br><span class="line">    console.log(v);// 1 2 3 4 5</span><br><span class="line">&#125;//获取每一个数组的值</span><br><span class="line">//be used as forEach</span><br><span class="line">const arr2 = [1,2,3,4];</span><br><span class="line">arr.forEach(function(element,index)&#123;</span><br><span class="line">    console.log(element);//1 2 3 4</span><br><span class="line">    console.log(index); // 0 1 2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Set-和-Map结构"><a href="#Set-和-Map结构" class="headerlink" title="Set 和 Map结构"></a>Set 和 Map结构</h2><p>Set和Map也是具有原生的Iterator接口，可以直接使用for…of循环。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//set</span><br><span class="line">var people = new Set([&apos;age&apos;,&apos;name&apos;,&apos;sex&apos;,&apos;company&apos;]);</span><br><span class="line">for(var man of people)&#123;</span><br><span class="line">    console.log(man);</span><br><span class="line">&#125;//age name sex company</span><br><span class="line">//map</span><br><span class="line">var people = new Map()</span><br><span class="line">people.set(&quot;name&quot;,&quot;steven&quot;);</span><br><span class="line">people.set(&quot;age&quot;,&quot;20&quot;);</span><br><span class="line">people.set(&quot;sex&quot;,&quot;man&quot;);</span><br><span class="line">for(var [name,value] of people)&#123;</span><br><span class="line">    console.log(name + &quot;:&quot; + value);</span><br><span class="line">&#125;</span><br><span class="line">//name : steven </span><br><span class="line">//age : 20 </span><br><span class="line">//sex : man</span><br></pre></td></tr></table></figure>
+<p>这里要注意的地方是，首先遍历的顺序是按照各个成员被添加进数据结构的顺序。其次，set结构遍历时，返回的是一个值，而Map结构遍历时，返回的是一个数组，该数组两个成员分别是当前Map成员的键名和键值。</p>
+<p>好吧，那么关于ES6中的这一部分部分的知识就讲到这，希望大家能有所收获。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># -ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/23/ES6之Set和Map/" rel="next" title="ES6之Set和Map">
+                <i class="fa fa-chevron-left"></i> ES6之Set和Map
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/23/ES6之Generator函数/" rel="prev" title="ES6之Generator函数">
+                ES6之Generator函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator"><span class="nav-number">1.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator便利过程"><span class="nav-number">2.</span> <span class="nav-text">Iterator便利过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认Iterator接口"><span class="nav-number">3.</span> <span class="nav-text">默认Iterator接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的Iterator接口"><span class="nav-number">4.</span> <span class="nav-text">字符串的Iterator接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用Iterator接口的场合"><span class="nav-number">5.</span> <span class="nav-text">调用Iterator接口的场合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…of-循环"><span class="nav-number">6.</span> <span class="nav-text">for…of 循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">7.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-和-Map结构"><span class="nav-number">8.</span> <span class="nav-text">Set 和 Map结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
