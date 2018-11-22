@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-Vue," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。 啊，好烦啊！心态都快崩了。 Vue的声明周期复习一下1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253&amp;lt;div id=&amp;quot;demo&amp;quot;&amp;gt;&amp;lt;/di">
+<meta name="keywords" content="-Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue学习2">
+<meta property="og:url" content="http://moreluckily.com/2018/11/22/Vue学习2/index.html">
+<meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。 啊，好烦啊！心态都快崩了。 Vue的声明周期复习一下1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253&amp;lt;div id=&amp;quot;demo&amp;quot;&amp;gt;&amp;lt;/di">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://moreluckily.com/2018/11/22/Vue学习2/1.png">
+<meta property="og:image" content="http://moreluckily.com/2018/11/22/Vue学习2/2.png">
+<meta property="og:updated_time" content="2018-11-22T10:41:01.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue学习2">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。 啊，好烦啊！心态都快崩了。 Vue的声明周期复习一下1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253&amp;lt;div id=&amp;quot;demo&amp;quot;&amp;gt;&amp;lt;/di">
+<meta name="twitter:image" content="http://moreluckily.com/2018/11/22/Vue学习2/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://moreluckily.com/2018/11/22/Vue学习2/"/>
+
+
+
+
+
+  <title>Vue学习2 | Mr.Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://moreluckily.com/2018/11/22/Vue学习2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moreluckily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue学习2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T16:11:47+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。</p>
+<p>啊，好烦啊！心态都快崩了。</p>
+<h2 id="Vue的声明周期"><a href="#Vue的声明周期" class="headerlink" title="Vue的声明周期"></a>Vue的声明周期</h2><h2 id="复习一下"><a href="#复习一下" class="headerlink" title="复习一下"></a>复习一下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;demo&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">//上面就是html模板</span><br><span class="line">//字符串模板 --&gt;template</span><br><span class="line">//render函数</span><br><span class="line"></span><br><span class="line">//html模板</span><br><span class="line">//要遵循html的规则</span><br><span class="line">//如table标签里写div,div会到table外面</span><br><span class="line">//那就要用到字符串模板了</span><br><span class="line"></span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">    el : &quot;#demo&quot;,  //这个Vue就挂在了上面的div上了</span><br><span class="line">    template:&quot;&lt;div&gt;hahhah&lt;/div&gt;&quot;,//这个div就把body里的div给替换了(整个里面就剩这个div了)</span><br><span class="line">    //在生命周期里template比html优先级高</span><br><span class="line">//或者用ES6的语法：(就可以随意的空格了)</span><br><span class="line">	template:`&lt;div&gt;hahhah</span><br><span class="line">	&lt;/div&gt;`</span><br><span class="line">    render(createElement) &#123;</span><br><span class="line">        return createElement(&quot;div&quot;,[&quot;lalala&quot;,createElement(&quot;p&quot;,[&quot;hahaha&quot;])]);</span><br><span class="line">    &#125;,</span><br><span class="line">    //用js去表示html</span><br><span class="line">    //return一下，就会渲染成真实的dom节点</span><br><span class="line">    //就不会整片的重拍重绘，而是部分的</span><br><span class="line">	//render函数比template优先级高</span><br><span class="line">    //在生命周期里，最后html和template都编译成render函数</span><br><span class="line">    //首先创建一个虚拟的DOM节点，然后渲染成真实的DOM节点</span><br><span class="line">    computed: &#123;</span><br><span class="line">        msgReverse() &#123;</span><br><span class="line">            return this.msg.split(&quot;&quot;).reverse().join(&quot;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    data : &#123;</span><br><span class="line">        checked : true,//true选中，false就不选择</span><br><span class="line">        value : 123,</span><br><span class="line">        msg : &quot;fa&quot;,</span><br><span class="line">        age : 18,</span><br><span class="line">        flag : true,</span><br><span class="line">        demo : &quot;&lt;div&gt;123&lt;/div&gt;&quot;,</span><br><span class="line">        arr : [1,2,3],</span><br><span class="line">        color : &quot;red&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods : &#123;</span><br><span class="line">        clickHandle : function(item,e) &#123;</span><br><span class="line">            console.log(item);</span><br><span class="line">            console.log(e);</span><br><span class="line">            console.log(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//自己去写一个虚拟DOM</span><br><span class="line">//用JS去表达HTml</span><br><span class="line">function createElement(tag,prop,children) &#123;</span><br><span class="line">    if(!(this instanceof createElement))&#123;</span><br><span class="line">        return new createElement(tag,prop,children);</span><br><span class="line">    &#125;</span><br><span class="line">    if(Object.prototype.toString.call(prop) == &quot;[object Array]&quot;)&#123;</span><br><span class="line">        children = prop;</span><br><span class="line">        prop = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    this.tag = tag;</span><br><span class="line">    this.prop = prop;</span><br><span class="line">    this.children = children;</span><br><span class="line">    var count = 0;</span><br><span class="line">    this.children.forEach(function(item) &#123;</span><br><span class="line">        if(item instanceof createElement) &#123;</span><br><span class="line">            count += item.count;</span><br><span class="line">        &#125;</span><br><span class="line">        count ++;</span><br><span class="line">    &#125;)</span><br><span class="line">    this.count = count;</span><br><span class="line">&#125;</span><br><span class="line">createElement.prototype.render = function () &#123;</span><br><span class="line">    var tag = this.tag;</span><br><span class="line">    var prop = this.prop;</span><br><span class="line">    var children = this.children;</span><br><span class="line">    var dom = document.createElement(tag);</span><br><span class="line">    for(item in prop)&#123;</span><br><span class="line">        dom.setAttribute(item,prop[item]);</span><br><span class="line">    &#125;</span><br><span class="line">    children.forEach(function (child) &#123;</span><br><span class="line">        if(child instanceof createElement) &#123;</span><br><span class="line">            var childDom = child.render();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            var childDom = document.createTextNode(child)</span><br><span class="line">        &#125;</span><br><span class="line">        dom.appendChild(childDom)</span><br><span class="line">    &#125;)</span><br><span class="line">    return dom</span><br><span class="line">&#125;</span><br><span class="line">var dom =  createElement(&quot;div&quot;,&#123;class:&quot;demo&quot;&#125;,[&quot;liu&quot;,createElement(&quot;p&quot;,&#123;id: &quot;demo&quot;&#125;,[&quot;li&quot;])]);</span><br><span class="line">console.log(dom.render());</span><br></pre></td></tr></table></figure>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="生命周期钩子"><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h3><p>每个Vue实例在被创建时都要经过一系列的初始化过程，数据监听，编译模版将实例挂载到DOM并在数据变化时更新DOM等。同时在这个过程中也会运行一些生命周期钩子函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">beforeCreate: 组件实例刚被创建，组价属性计算之前，如data属性等</span><br><span class="line">created: 组件实例创建完成，属性已经绑定，但是DOM还未生成，$el属性还不存在</span><br><span class="line">beforeMount: 模版编译/挂载之前</span><br><span class="line">mounted: 模版编译/挂载之后</span><br><span class="line">beforeUpdated: 组件更新之前</span><br><span class="line">updated: 组件更新之后</span><br><span class="line">activeted: for keep-alive组件被激活时调用</span><br><span class="line">deactivated: for keep-alive,组件被移除时调用</span><br><span class="line">beforeDestroy: 组件销毁前使用</span><br><span class="line">destoryed: 组件销毁后调用</span><br></pre></td></tr></table></figure>
+<h3 id="生命周期图形"><a href="#生命周期图形" class="headerlink" title="生命周期图形"></a>生命周期图形</h3><p><img src="/2018/11/22/Vue学习2/1.png" alt="小demo"></p>
+<h3 id="create-和-mounted相关"><a href="#create-和-mounted相关" class="headerlink" title="create 和 mounted相关"></a>create 和 mounted相关</h3><p>beforeCreated: el和data并未初始化 created: 完成了data数据的初始化，el没有 beforeMount: 完成了el和data初始化 mounted: 完成挂载</p>
+<h3 id="update相关"><a href="#update相关" class="headerlink" title="update相关"></a>update相关</h3><p>update: 当页面中data的值被修改的时候，将会触发update操作</p>
+<h3 id="destroy相关"><a href="#destroy相关" class="headerlink" title="destroy相关"></a>destroy相关</h3><p>执行了destroy操作，后续的dom将不再受到vue的控制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementById(&apos;app&apos;);</span><br><span class="line">var div1, div2;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">    el : &apos;#app&apos;,</span><br><span class="line">    beforeCreate()&#123;</span><br><span class="line">        console.log(&apos;beforeCreate&apos;)</span><br><span class="line">        //这里不能打印this,不能打印console.log(this)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">    &#125;,</span><br><span class="line">    create()&#123;</span><br><span class="line">        console.log(&apos;create&apos;)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeMount()&#123;</span><br><span class="line">        console.log(&apos;beforeMount&apos;)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">        div1 = $el;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted()&#123;</span><br><span class="line">        console.log(&apos;mounted&apos;)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">        div2 = $el;</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeUpdata()&#123;</span><br><span class="line">        console.log(&apos;beforeUpdata&apos;)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">    &#125;,</span><br><span class="line">    updata()&#123;</span><br><span class="line">        console.log(&apos;updata&apos;)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeDestroy()&#123;</span><br><span class="line">        console.log(&apos;beforeDestroy&apos;)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">    &#125;,</span><br><span class="line">    destroy()&#123;</span><br><span class="line">        console.log(&apos;destroy&apos;)</span><br><span class="line">        console.log(Object.entries(this))</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        getMsg() &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        msg: 123</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">        newMsg() &#123;</span><br><span class="line">            return this.msg</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>通过它打印出来对象的值就能看出整个生命周期的变化</p>
+<p><img src="/2018/11/22/Vue学习2/2.png" alt="小demo"></p>
+<p>好了，今天的这篇blog就到这里结束了 ,下节课去写一个实例,很好的复习前面的知识，谢谢大家的陪伴，希望大家能有所收获。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt="moreluckily wechat" style="width: 200px; max-width: 100%;"/>
+    <div>加微信好友一起交流</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"># -Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/11/什么是bfc/" rel="next" title="什么是bfc">
+                <i class="fa fa-chevron-left"></i> 什么是bfc
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="moreluckily" />
+            
+              <p class="site-author-name" itemprop="name">moreluckily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/moreluckily" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="fa1328440709@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue的声明周期"><span class="nav-number">1.</span> <span class="nav-text">Vue的声明周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复习一下"><span class="nav-number">2.</span> <span class="nav-text">复习一下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟DOM"><span class="nav-number">3.</span> <span class="nav-text">虚拟DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">4.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期钩子"><span class="nav-number">4.1.</span> <span class="nav-text">生命周期钩子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期图形"><span class="nav-number">4.2.</span> <span class="nav-text">生命周期图形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#create-和-mounted相关"><span class="nav-number">4.3.</span> <span class="nav-text">create 和 mounted相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update相关"><span class="nav-number">4.4.</span> <span class="nav-text">update相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#destroy相关"><span class="nav-number">4.5.</span> <span class="nav-text">destroy相关</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moreluckily</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
