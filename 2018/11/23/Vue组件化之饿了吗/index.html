@@ -86,15 +86,20 @@
 
 
 
+<meta name="description" content="新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。 啊，加油吧，慢慢来，别着急，Fighting。慢慢的努力，总会有结果的。 饿了吗插件首先我们可以去下载饿了吗插件：http://element-cn.eleme.io/#/zh-CN 在这个网站可以知道一些插件的使用方法。 我们在这里写一个alert这个功能： 首先找到其所有的CSS文件。将alert.css和icon.">
 <meta name="keywords" content="-Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue组件化之饿了吗">
 <meta property="og:url" content="http://moreluckily.com/2018/11/23/Vue组件化之饿了吗/index.html">
 <meta property="og:site_name" content="Mr.Wang&#39;s blog">
+<meta property="og:description" content="新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。 啊，加油吧，慢慢来，别着急，Fighting。慢慢的努力，总会有结果的。 饿了吗插件首先我们可以去下载饿了吗插件：http://element-cn.eleme.io/#/zh-CN 在这个网站可以知道一些插件的使用方法。 我们在这里写一个alert这个功能： 首先找到其所有的CSS文件。将alert.css和icon.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-23T08:42:45.844Z">
+<meta property="og:image" content="http://moreluckily.com/2018/11/23/Vue组件化之饿了吗/1.png">
+<meta property="og:updated_time" content="2018-11-23T15:35:40.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue组件化之饿了吗">
+<meta name="twitter:description" content="新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。 啊，加油吧，慢慢来，别着急，Fighting。慢慢的努力，总会有结果的。 饿了吗插件首先我们可以去下载饿了吗插件：http://element-cn.eleme.io/#/zh-CN 在这个网站可以知道一些插件的使用方法。 我们在这里写一个alert这个功能： 首先找到其所有的CSS文件。将alert.css和icon.">
+<meta name="twitter:image" content="http://moreluckily.com/2018/11/23/Vue组件化之饿了吗/1.png">
 
 
 
@@ -350,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  818
                 </span>
               
 
@@ -366,7 +371,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -387,7 +392,21 @@
       
 
       
-        
+        <p>新的blog，新的开始。今天进入一个新的开始，今天继续学习Vue.js框架。</p>
+<p>啊，加油吧，慢慢来，别着急，Fighting。慢慢的努力，总会有结果的。</p>
+<h2 id="饿了吗插件"><a href="#饿了吗插件" class="headerlink" title="饿了吗插件"></a>饿了吗插件</h2><p>首先我们可以去下载饿了吗插件：<a href="http://element-cn.eleme.io/#/zh-CN" target="_blank" rel="noopener">http://element-cn.eleme.io/#/zh-CN</a></p>
+<p>在这个网站可以知道一些插件的使用方法。</p>
+<p>我们在这里写一个alert这个功能：</p>
+<p>首先找到其所有的CSS文件。将alert.css和icon.css拷贝下来：</p>
+<p>然后引入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;./alert.css&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;./icon.css&quot;&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后用Vue插件的功能区写这个功能:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app2&quot;&gt;</span><br><span class="line">    &lt;el-alert type=&quot;success&quot; title=&quot;成功提示的文案&quot; description=&quot;辅助性文字&quot; :closeable=&quot;true&quot; closetext=&quot;关闭&quot; :closeable=&quot;true&quot;</span><br><span class="line">        @close=&quot;close&quot;&gt;&lt;/el-alert&gt;</span><br><span class="line">    &lt;el-alert type=&quot;info&quot; title=&quot;消息提示的文案&quot; description=&quot;辅助性文字&quot; :closeable=&quot;true&quot; closetext=&quot;关闭&quot; :closeable=&quot;true&quot;</span><br><span class="line">        @close=&quot;close&quot;&gt;&lt;/el-alert&gt;</span><br><span class="line">    &lt;el-alert type=&quot;warning&quot; title=&quot;警告提示的文案&quot; description=&quot;辅助性文字&quot; :closeable=&quot;true&quot; :showicon=&quot;false&quot; :closeable=&quot;true&quot;</span><br><span class="line">        @close=&quot;close&quot;&gt;</span><br><span class="line">        &lt;div&gt;你真帅&lt;/div&gt;</span><br><span class="line">    &lt;/el-alert&gt;</span><br><span class="line">    &lt;el-alert type=&quot;error&quot; title=&quot;错误提示的文案&quot; description=&quot;辅助性文字&quot; :closeable=&quot;true&quot; :closeable=&quot;true&quot; @close=&quot;close&quot;&gt;&lt;/el-alert&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var TYPE_ICON = &#123;</span><br><span class="line">        success: &quot;el-icon-success is-big&quot;,</span><br><span class="line">        warning: &quot;el-icon-warning is-big&quot;,</span><br><span class="line">        error: &quot;el-icon-error is-big&quot;,</span><br><span class="line">        info: &quot;el-icon-info is-big&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    Vue.component(&quot;el-alert&quot;, &#123;</span><br><span class="line">        template: `</span><br><span class="line">        &lt;div class = &quot;el-alert&quot; v-if = &quot;closeabl&quot; :class = &quot;[typeClass]&quot;&gt;</span><br><span class="line">            &lt;i class = &quot;el-alert__icon&quot; :class = &quot;[iconClass]&quot; v-if =&quot;showicon&quot;&gt;&lt;/i&gt;</span><br><span class="line">            &lt;div class = &quot;el-alert__content&quot;&gt;</span><br><span class="line">                &lt;span class=&quot;el-alert__title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/span&gt;</span><br><span class="line">                &lt;slot&gt;</span><br><span class="line">                &lt;p class = &quot;el-alert__description&quot;&gt;&#123;&#123;description&#125;&#125;&lt;/p&gt;</span><br><span class="line">                &lt;/slot&gt;</span><br><span class="line">                &lt;span class = &quot;el-alert__closebtn&quot; :class=&quot;[closeClass]&quot; v-if = &quot;closeable&quot; @click = &quot;clickHandle&quot;&gt;&#123;&#123;closetext&#125;&#125;&lt;/span&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        `,</span><br><span class="line">        props: &#123;</span><br><span class="line">            type: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">                default: &quot;info&quot; //默认的值</span><br><span class="line">            &#125;,</span><br><span class="line">            title: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">                required: true //必选参数</span><br><span class="line">            &#125;,</span><br><span class="line">            description: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">                default: &quot;&quot; //默认的值</span><br><span class="line">            &#125;,</span><br><span class="line">            closeable: &#123;</span><br><span class="line">                type: Boolean,</span><br><span class="line">                default: true //默认的值</span><br><span class="line">            &#125;,</span><br><span class="line">            closetext: &#123;</span><br><span class="line">                type: String,</span><br><span class="line">                default: &apos;&apos; //默认的值</span><br><span class="line">            &#125;,</span><br><span class="line">            showicon: &#123;</span><br><span class="line">                type: Boolean,</span><br><span class="line">                default: true //默认的值</span><br><span class="line">            &#125;,</span><br><span class="line">            closeabl: &#123;</span><br><span class="line">                type: Boolean,</span><br><span class="line">                default: true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        computed: &#123;</span><br><span class="line">            typeClass() &#123;</span><br><span class="line">                return &quot;el-alert--&quot; + this.type;</span><br><span class="line">                //去拼接一下,用户不传的话就是el-alert--info,接着上面的type</span><br><span class="line">            &#125;,</span><br><span class="line">            iconClass() &#123;</span><br><span class="line">                return TYPE_ICON[this.type];</span><br><span class="line">            &#125;,</span><br><span class="line">            closeClass() &#123;</span><br><span class="line">                return this.closetext ? &quot;is-customed&quot; : &quot;el-icon-close&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            clickHandle() &#123;</span><br><span class="line">                this.closeabl = false;</span><br><span class="line">                this.$emit(&quot;close&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el: &quot;#app2&quot;,</span><br><span class="line">        data: &#123;</span><br><span class="line">            closeabl: true</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            close() &#123;</span><br><span class="line">                this.closeabl = false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>可以得到如下图所示的功能：</p>
+<p><img src="/2018/11/23/Vue组件化之饿了吗/1.png" alt="小demo"></p>
+<p>并且点击右上角的关闭或者一个小× 。可以将这个DOM删除。</p>
+<p>好了，今天的这篇blog就到这里结束了 ,慢慢的努力吧。下一篇详细的介绍一下这些东西。谢谢大家的陪伴，希望大家能有所收获。</p>
+
       
     </div>
     
@@ -489,8 +508,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,6 +616,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#饿了吗插件"><span class="nav-number">1.</span> <span class="nav-text">饿了吗插件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
